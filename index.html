@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>知识蒸馏工坊</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#007AFF;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;--r-xl:28px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 4px 24px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:0 16px}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em}
+.nav-badge{margin-left:auto;font-size:13px;color:var(--t3);font-weight:500}
+
+/* Container */
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+
+/* Hero */
+.hero{padding:48px 0 32px;text-align:center}
+.hero-icon{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#007AFF,#5856D6);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;box-shadow:0 8px 32px rgba(0,122,255,.25)}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero p{font-size:15px;color:var(--t3);margin-top:8px;line-height:1.5}
+
+/* Stats Row */
+.stats{display:flex;gap:0;background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);margin-bottom:28px;overflow:hidden}
+.stat{flex:1;text-align:center;padding:16px 8px;border-right:.5px solid var(--border)}
+.stat:last-child{border-right:none}
+.stat-n{font-size:24px;font-weight:700;color:var(--accent);letter-spacing:-.02em}
+.stat-l{font-size:11px;color:var(--t3);margin-top:2px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+
+/* Section */
+.sec{margin-bottom:28px}
+.sec-h{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:14px;padding:0 4px}
+.sec-sub{font-size:13px;color:var(--t3);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;padding:0 4px}
+
+/* Book Card */
+.book-card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px;transition:transform .15s,box-shadow .15s}
+.book-card:active{transform:scale(.98);box-shadow:var(--shadow-lg)}
+.book-link{display:block;padding:18px 20px;text-decoration:none;color:inherit}
+.book-top{display:flex;align-items:center;gap:14px;margin-bottom:10px}
+.book-emoji{font-size:36px;line-height:1}
+.book-name{font-size:17px;font-weight:600;letter-spacing:-.01em;flex:1}
+.book-arrow{color:var(--t4);font-size:20px;font-weight:300}
+.book-meta{font-size:13px;color:var(--t3);display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+.book-tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;letter-spacing:.01em}
+.tag-blue{background:rgba(0,122,255,.1);color:var(--accent)}
+.tag-red{background:rgba(255,59,48,.1);color:var(--red)}
+.tag-purple{background:rgba(175,82,222,.1);color:var(--purple)}
+.book-ph{opacity:.4;pointer-events:none}
+
+/* Theme Grid */
+.theme-card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.theme-title{font-size:15px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.theme-title .ic{font-size:18px}
+.theme-link{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);text-decoration:none;color:var(--text);font-size:14px;line-height:1.4;gap:8px;min-height:44px}
+.theme-link:last-child{border-bottom:none}
+.theme-link:active{opacity:.6}
+.tl-text{flex:1}
+.tl-src{font-size:11px;color:var(--t3);font-weight:500;white-space:nowrap;flex-shrink:0}
+.tl-arrow{color:var(--t4);font-size:16px;font-weight:300;flex-shrink:0}
+
+/* Tension Cards */
+.tens-card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.tens-card:active{opacity:.8}
+.tens-title{font-size:15px;font-weight:600;margin-bottom:6px}
+.tens-vs{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:13px;flex-wrap:wrap}
+.vs-a{background:rgba(0,122,255,.1);color:var(--accent);padding:3px 8px;border-radius:6px;font-weight:600;font-size:12px}
+.vs-b{background:rgba(255,149,0,.1);color:var(--orange);padding:3px 8px;border-radius:6px;font-weight:600;font-size:12px}
+.vs-bolt{color:var(--red);font-weight:700}
+.tens-desc{font-size:13px;color:var(--t2);line-height:1.5}
+
+/* How Section */
+.how{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-top:8px}
+.how h3{font-size:17px;font-weight:600;margin-bottom:14px}
+.how-item{display:flex;gap:12px;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;line-height:1.5;color:var(--t2)}
+.how-item:last-child{border-bottom:none}
+.how-icon{font-size:20px;flex-shrink:0;margin-top:1px}
+.how-item strong{color:var(--text);font-weight:600}
+
+/* Footer */
+.foot{text-align:center;padding:32px 16px;color:var(--t4);font-size:12px}
+
+/* Bottom Tab Bar (decorative for index) */
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:center;gap:0}
+.tab{flex:1;max-width:120px;text-align:center;padding:4px 0;color:var(--accent)}
+.tab-icon{font-size:22px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+
+/* Responsive */
+@media(min-width:700px){
+  .hero h1{font-size:34px}
+  .theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+  .theme-grid .theme-card{margin-bottom:0}
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="nav-inner"><span class="nav-title">知识蒸馏工坊</span><span class="nav-badge">知识库</span></div></div>
+
+<div class="c">
+
+<div class="hero">
+  <div class="hero-icon">📖</div>
+  <h1>知识蒸馏工坊</h1>
+  <p>从书中蒸馏方法论，映射到实际工作难题</p>
+</div>
+
+<div class="stats">
+  <div class="stat"><div class="stat-n">2</div><div class="stat-l">本书</div></div>
+  <div class="stat"><div class="stat-n">12</div><div class="stat-l">决策卡片</div></div>
+  <div class="stat"><div class="stat-n">8</div><div class="stat-l">原则张力</div></div>
+  <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景领域</div></div>
+</div>
+
+<!-- Books -->
+<div class="sec">
+  <div class="sec-sub">Library</div>
+  <div class="sec-h">书目目录</div>
+  <div class="book-card">
+    <a class="book-link" href="sunzi.html">
+      <div class="book-top"><span class="book-emoji">⚔️</span><span class="book-name">华杉讲透孙子兵法</span><span class="book-arrow">›</span></div>
+      <div class="book-meta"><span>华杉</span><span>6 张卡片</span><span>战略 · 竞争</span></div>
+      <div class="book-tags">
+        <span class="tag tag-red">不战</span><span class="tag tag-red">先胜</span><span class="tag tag-red">五事七计</span>
+        <span class="tag tag-red">正奇</span><span class="tag tag-red">致人</span><span class="tag tag-red">兵贵胜</span>
+      </div>
+    </a>
+  </div>
+  <div class="book-card">
+    <a class="book-link" href="mao.html">
+      <div class="book-top"><span class="book-emoji">⭐</span><span class="book-name">毛泽东选集</span><span class="book-arrow">›</span></div>
+      <div class="book-meta"><span>方法论蒸馏</span><span>6 张卡片</span><span>调研 · 矛盾 · 实践</span></div>
+      <div class="book-tags">
+        <span class="tag tag-red">调查研究</span><span class="tag tag-red">矛盾论</span><span class="tag tag-red">实践论</span>
+        <span class="tag tag-red">群众路线</span><span class="tag tag-red">集中力量</span><span class="tag tag-red">自力更生</span>
+      </div>
+    </a>
+  </div>
+  <div class="book-card book-ph">
+    <div class="book-link">
+      <div class="book-top"><span class="book-emoji">📖</span><span class="book-name">下一本书…</span><span class="book-arrow">+</span></div>
+      <div class="book-meta"><span>等待蒸馏</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- Themes -->
+<div class="sec">
+  <div class="sec-sub">Browse</div>
+  <div class="sec-h">跨书主题索引</div>
+  <div class="theme-grid">
+    <div class="theme-card">
+      <div class="theme-title"><span class="ic">🎯</span>竞争策略</div>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">不战而屈人之兵 — 用实力壁垒避免消耗战</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">以正合以奇胜 — 基本面 + 创新突破</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">致人而不致于人 — 主动权三原则</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">集中优势兵力 — 关键战场配置压倒性资源</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
+    </div>
+    <div class="theme-card">
+      <div class="theme-title"><span class="ic">🧮</span>决策评估</div>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">五事七计 — 道天地将法五维评估</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">先胜后战 — Go / No-Go 决策法</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">调查研究 — 没有调查就没有发言权</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">矛盾论 — 抓主要矛盾的方法论</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
+    </div>
+    <div class="theme-card">
+      <div class="theme-title"><span class="ic">⏱</span>节奏与时机</div>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">兵贵胜不贵久 — 速战速决与止损线</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">先胜后战 — 条件不具备时选择"不打"</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">实践论 — 快迭代 vs 深调查的选择</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
+    </div>
+    <div class="theme-card">
+      <div class="theme-title"><span class="ic">🏪</span>KA 运营</div>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">用运营深度建壁垒，让竞品伐不动</span><span class="tl-src">卡片 1</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">品牌经营五维诊断</span><span class="tl-src">卡片 3</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">稳定节奏 + 关键节点爆发</span><span class="tl-src">卡片 4</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">品牌拜访前深入一线"解剖麻雀"</span><span class="tl-src">毛选·调研</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">聚焦1-2个品牌集中力量打穿</span><span class="tl-src">毛选·集中</span><span class="tl-arrow">›</span></a>
+    </div>
+    <div class="theme-card">
+      <div class="theme-title"><span class="ic">🎯</span>职业发展</div>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">在竞争稀少的细分建壁垒</span><span class="tl-src">卡片 1</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">评估 offer 五维框架</span><span class="tl-src">卡片 3</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">定义叙事 + 保持选择权</span><span class="tl-src">卡片 5</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">自身能力和业绩是根基</span><span class="tl-src">毛选·自立</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">不确定就试——最小成本验证方向</span><span class="tl-src">毛选·实践</span><span class="tl-arrow">›</span></a>
+    </div>
+    <div class="theme-card">
+      <div class="theme-title"><span class="ic">💰</span>商业决策</div>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">找巨头覆盖不到的细分切入</span><span class="tl-src">卡片 1</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">尽调+回报+退出全到位再投</span><span class="tl-src">卡片 2</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="sunzi.html"><span class="tl-text">6-12月验证PMF，设止损线</span><span class="tl-src">卡片 6</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">进入新市场前亲自走访解剖麻雀</span><span class="tl-src">毛选·调研</span><span class="tl-arrow">›</span></a>
+      <a class="theme-link" href="mao.html"><span class="tl-text">先设计"没有融资也能活"的方案</span><span class="tl-src">毛选·自立</span><span class="tl-arrow">›</span></a>
+    </div>
+  </div>
+</div>
+
+<!-- Tensions -->
+<div class="sec">
+  <div class="sec-sub">Tensions</div>
+  <div class="sec-h">八组核心张力</div>
+  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">耐心 vs 速度</div>
+    <div class="tens-vs"><span class="vs-a">先胜后战</span><span class="vs-bolt">⚡</span><span class="vs-b">兵贵胜</span></div>
+    <div class="tens-desc">准备阶段要耐心，执行阶段要速度。最危险：没准备好就急着打 + 打了又犹豫不决。</div>
+  </a>
+  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">等待 vs 行动</div>
+    <div class="tens-vs"><span class="vs-a">先胜后战</span><span class="vs-bolt">⚡</span><span class="vs-b">致人</span></div>
+    <div class="tens-desc">准备多个方案本身就是"致人"。等待不是被动，是积极建设+保持警觉。</div>
+  </a>
+  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">碾压 vs 巧取</div>
+    <div class="tens-vs"><span class="vs-a">不战</span><span class="vs-bolt">⚡</span><span class="vs-b">正奇</span></div>
+    <div class="tens-desc">不战是目标状态，奇正是过程手段。通往不战的路上需要持续用"奇"。</div>
+  </a>
+  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">实力 vs 创新</div>
+    <div class="tens-vs"><span class="vs-a">五事七计</span><span class="vs-bolt">⚡</span><span class="vs-b">正奇</span></div>
+    <div class="tens-desc">五事决定"该不该打"，奇正决定"怎么打得更漂亮"。</div>
+  </a>
+  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">先调研 vs 先行动</div>
+    <div class="tens-vs"><span class="vs-a">调查研究</span><span class="vs-bolt">⚡</span><span class="vs-b">实践论</span></div>
+    <div class="tens-desc">调查研究是"获取信息"，实践论是"验证判断"。同一循环的不同阶段。</div>
+  </a>
+  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">集中 vs 分散</div>
+    <div class="tens-vs"><span class="vs-a">集中力量</span><span class="vs-bolt">⚡</span><span class="vs-b">群众路线</span></div>
+    <div class="tens-desc">信息收集要分散，资源投入要集中。用群众路线收集信息，用集中力量投入资源。</div>
+  </a>
+  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">自立 vs 开放</div>
+    <div class="tens-vs"><span class="vs-a">自力更生</span><span class="vs-bolt">⚡</span><span class="vs-b">群众路线</span></div>
+    <div class="tens-desc">能力建设靠自己，信息输入靠群众。执行基础自力更生，信息来源群众路线。</div>
+  </a>
+  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
+    <div class="tens-title">快迭代 vs 深调查</div>
+    <div class="tens-vs"><span class="vs-a">实践论</span><span class="vs-bolt">⚡</span><span class="vs-b">调查研究</span></div>
+    <div class="tens-desc">试错成本低就快迭代，试错成本高就深调查。</div>
+  </a>
+</div>
+
+<!-- How -->
+<div class="how">
+  <h3>使用方式</h3>
+  <div class="how-item"><span class="how-icon">📚</span><span><strong>读书模式</strong> — 给我一本书（PDF / 书名 / 笔记），走完蒸馏流程，输出知识卡片</span></div>
+  <div class="how-item"><span class="how-icon">🔍</span><span><strong>查用模式</strong> — 遇到问题时按场景或主题浏览索引，找到方法论，按决策流操作</span></div>
+  <div class="how-item"><span class="how-icon">⚡</span><span><strong>张力模式</strong> — 多个原则矛盾时查看调和逻辑</span></div>
+  <div class="how-item"><span class="how-icon">🔄</span><span><strong>跨书对话</strong> — 不同书对同一问题的不同观点，主题索引标注来源</span></div>
+</div>
+
+<div class="foot">知识蒸馏工坊 · 持续积累中</div>
+</div>
+
+<div class="tabbar">
+  <div class="tab"><div class="tab-icon">📚</div><div class="tab-label">书库</div></div>
+  <div class="tab tab-inactive"><div class="tab-icon">🔍</div><div class="tab-label">检索</div></div>
+  <div class="tab tab-inactive"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+</div>
+
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>
