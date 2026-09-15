@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>第一性原理 · 思维方法论</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#7C3AED;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#B488F8;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.ov p strong{color:var(--text)}
+.src-note{background:var(--fill);border-radius:var(--r-sm);padding:12px 14px;margin:12px 8px;font-size:13px;color:var(--t3);line-height:1.6}
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.card.hidden{display:none}
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(124,58,237,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+.cb{padding:0 20px 24px}
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+.ot{background:var(--fill);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:15px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}
+.ot-i strong{color:var(--text)}
+.deep{background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}
+.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}
+.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}
+.ft2 strong{color:var(--text)}
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}
+.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+.al{list-style:none}
+.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}
+.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(124,58,237,.1);color:var(--accent)}
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(124,58,237,.1);color:var(--accent)}
+.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--accent);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--accent)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+@media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="nav-inner">
+  <a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 书库</a>
+  <span class="nav-title">第一性原理</span>
+</div></div>
+
+<div class="c">
+<div class="hero">
+  <h1>第一性原理</h1>
+  <div class="hero-sub">思维方法论 · 10 张决策卡片</div>
+  <div class="hero-meta"><span>亚里士多德 → 马斯克 → 李善友</span><span>2026-09-15</span></div>
+  <div class="legend">
+    <div class="legend-i"><div class="dot dg"></div>原文 = 采访/原典直接引述</div>
+    <div class="legend-i"><div class="dot do"></div>综述 = 多源交叉提炼</div>
+  </div>
+</div>
+
+<div class="ov">
+  <h2>蒸馏说明</h2>
+  <p>第一性原理不是一个封闭的文本体系，而是一条跨越2300年的思维传承链：<strong>亚里士多德提出概念 → 欧几里得/牛顿/笛卡尔发展为公理化方法 → 马斯克应用于商业创新 → 李善友系统化为创新理论</strong>。</p>
+  <div class="src-note"><strong>来源构成：</strong>① 亚里士多德《形而上学》核心命题（哲学原典）；② 马斯克2014南加大演讲、TED访谈原始语录（直接引述）；③ 李善友混沌大学公开课程笔记与书籍公开内容（综述）；④ 教育学术机构综述文章（hr.edu.cn）。每条引文标注来源类型。</div>
+</div>
+</div>
+
+<div class="fb"><div class="fb-inner">
+  <div class="frow"><span class="flbl">维度</span>
+    <button class="fbtn on" data-f="all" data-t="p">全部</button>
+    <button class="fbtn" data-f="p1" data-t="p">定义</button>
+    <button class="fbtn" data-f="p2" data-t="p">演绎法</button>
+    <button class="fbtn" data-f="p3" data-t="p">公理化</button>
+    <button class="fbtn" data-f="p4" data-t="p">马斯克</button>
+    <button class="fbtn" data-f="p5" data-t="p">白痴指数</button>
+    <button class="fbtn" data-f="p6" data-t="p">破界创新</button>
+    <button class="fbtn" data-f="p7" data-t="p">第二曲线</button>
+    <button class="fbtn" data-f="p8" data-t="p">多元模型</button>
+    <button class="fbtn" data-f="p9" data-t="p">刻意练习</button>
+    <button class="fbtn" data-f="p10" data-t="p">边界</button>
+  </div>
+  <div class="frow"><span class="flbl">场景</span>
+    <button class="fbtn on" data-f="all" data-t="s">全部</button>
+    <button class="fbtn" data-f="ka" data-t="s">KA运营</button>
+    <button class="fbtn" data-f="mg" data-t="s">管理</button>
+    <button class="fbtn" data-f="cr" data-t="s">职业</button>
+    <button class="fbtn" data-f="bz" data-t="s">商业</button>
+    <button class="fbtn" data-f="lf" data-t="s">生活</button>
+  </div>
+  <div class="fc">显示 <span id="vc">10</span>/10</div>
+</div></div>
+
+<div class="c"><div class="cards">
+
+<!-- CARD 1 -->
+<div class="card" data-p="p1" data-s="ka,bz,mg,cr,lf">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">第一性原理的定义</div><div class="cs">亚里士多德《形而上学》 · 一切推理的起点</div><div class="ctags"><span class="tag ts">核心定义</span><span class="tag tt">全部场景</span></div></div><div class="conf"><div class="dot dg"></div>原文</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>每个系统中都存在一个<strong>最基本的命题或假设，它不能被省略或删除，也不能被违反</strong>。从这个最根本的命题出发，通过逻辑演绎推导出其余一切结论。</p></div>
+<div class="s"><div class="st">原文引证</div>
+  <div class="ot"><div class="ot-q">"在每个系统探索中，存在第一原理，它是一个最基本的命题或假设，不能被省略或删除，也不能被违反。"</div><div class="ot-s">—— 亚里士多德《形而上学》（哲学原典概念）</div><div class="ot-i"><strong>解读：</strong>亚里士多德用"archē"（本原）表达这个思想：任何知识体系都有不可再分解的起点。你不需要证明它，它是一切证明的前提。</div></div>
+  <div class="ot"><div class="ot-q">"第一性原理的思考方式是用物理学的角度看待世界的方法，也就是说一层层剥开事物的表象，看到里面的本质，然后再从本质一层层往上走。这要消耗大量的脑力。"</div><div class="ot-s">—— 马斯克 TED 访谈（采访原文）</div></div>
+  <div class="ot"><div class="ot-q">"成年人学习的目的，应该是追求更好的思维模型，而不是更多的知识。在一个落后的思维模型里，即使增加再多的信息量，也只是低水平的重复。"</div><div class="ot-s">—— 李善友（公开课程语录）</div></div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>"不可省略、不可删除、不可违反"意味着什么？</h4>
+    <p>亚里士多德的三个否定词定义了第一性原理的严格性：<strong>如果省略了它，系统就不成立；如果删除了它，系统就崩塌；如果违反了它，结论就错误。</strong>反过来，任何可以被省略、被删除、被违反的东西，都不是第一性原理——它只是中间结论或表面现象。</p>
+    <div class="insight"><strong>深层洞见：</strong>多数人思考的起点是"别人怎么说"（类比）或"我以前怎么做"（经验）。第一性原理要求你找到那个"不依赖任何其他东西就能成立"的基点——<strong>当你的推理起点错了，无论后面逻辑多严密，结论都是错的。</strong></div>
+  </div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>第一性原理思考 · 五步法</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>写下你的假设</strong> — 你正在基于什么前提思考？这个前提是事实还是"大家都这么做"？</div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>追问"为什么"</strong> — 每个假设追问：这是真的吗？能被省略/删除/违反吗？</div></div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>找到不可分解的基点</strong> — 追问到"不依赖其他东西就能成立"的层级（物理定律、数学公理、人性基本需求）</div></div>
+    <div class="fs"><div class="fsn">4</div><div class="fst"><strong>从基点重新推导</strong> — 抛开现有方案，从基点出发重新构建解决方案</div></div>
+    <div class="fsg"><b>信号：</b>如果你说不出自己推理的"第一前提"是什么 → 你还没开始第一性思考</div>
+    <div class="ftr"><b>拐点：</b>如果追问后发现的基点不支持现有做法 → 现有做法需要被推翻重来</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">"这个活动必须做满减"是假设还是原理？追问：满减的本质是什么（刺激下单）？刺激下单的第一性是什么（用户觉得划算）？有没有更好的方式让用户觉得划算？</div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">进入新市场前，追问业务的第一性：用户的核心需求是什么？我们的解决方案是否从需求出发，还是从"竞品这么做"出发？</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">购物前追问："我为什么要买这个东西？它真的能满足我目前的核心需求吗？"（hr.edu.cn 应用案例）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（第一性原理的推理方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（第一性原理的失效场景）</a></div></div>
+</div></div>
+
+<!-- CARD 2 -->
+<div class="card" data-p="p2" data-s="ka,bz,mg,cr">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">演绎法 vs 归纳法</div><div class="cs">两种推理方式的分野 · 第一性原理用演绎</div><div class="ctags"><span class="tag ts">推理方法</span><span class="tag tt">商业</span><span class="tag tt">KA</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>归纳法从大量经验中总结规律（<strong>从特殊到一般</strong>），演绎法从第一原理推导结论（<strong>从一般到特殊</strong>）。第一性原理思维使用的是演绎法——但多数人默认使用归纳法。</p></div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>两种推理方式对比</h4>
+    <div class="fs2"><div class="fn2">归</div><div class="ft2"><strong>归纳法</strong>：看到100只白天鹅 → "天鹅都是白的"。速度快、成本低，但结论不必然成立——第101只可能是黑的。商业中的"行业惯例""竞品都这么做""历史数据表明"都是归纳。</div></div>
+    <div class="fs2"><div class="fn2">演</div><div class="ft2"><strong>演绎法</strong>：从不可违反的前提出发 → 逻辑推导出必然结论。三段论："凡人皆有死（前提），苏格拉底是人（事实），所以苏格拉底有死（结论）"。前提真+逻辑对=结论必然真。</div></div>
+    <div class="fs2"><div class="fn2">⚠</div><div class="ft2"><strong>关键差异</strong>：归纳法告诉你"过去是什么样的"，演绎法告诉你"必然是什么样的"。创新需要的是后者——因为创新就是要打破"过去是什么样的"。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原文引证</div>
+  <div class="ot"><div class="ot-q">"也许你听我说过，要从物理学的角度思考问题，这是第一性原理。即不要进行类比推理。你把事情细分到你可以想象的最基本元素，然后你从那里开始推理。"</div><div class="ot-s">—— 马斯克 2014 南加州大学毕业演讲（采访原文）</div><div class="ot-i"><strong>解读：</strong>马斯克明确把第一性原理与"类比推理"对立。类比=看别人怎么做我照做；第一性=从基本元素自己推。</div></div>
+  <div class="ot"><div class="ot-q">"人们通常模仿别人做的事情并加以微幅更改。"</div><div class="ot-s">—— 马斯克（采访原文）</div></div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>为什么归纳法是"思维陷阱"？</h4>
+    <p>归纳法的致命缺陷是<strong>隐含假设"未来和过去一样"</strong>。在稳定环境中归纳法高效（太阳明天还会升起）；在变化环境中归纳法危险（诺基亚归纳出"手机需要键盘"，iPhone演绎出"手机是一块玻璃"）。</p>
+    <div class="insight"><strong>深层洞见：</strong>李善友的核心论点是：当环境连续时用归纳法（省力），当环境不连续时（技术革命、范式转移、行业颠覆）必须用演绎法。<strong>问题在于：多数人无法判断自己正处在连续性还是非连续性之中——而恰恰是在非连续性的转折点上，归纳法会让你死得最惨。</strong></div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">"去年双十一补贴10元效果好"是归纳。"用户补贴敏感度的本质是价格锚定对比"是演绎。当你需要复制成功（连续性）用归纳；当你需要创新打法（非连续）用演绎。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">行业都在烧钱换增长（归纳结论）≠烧钱换增长是对的（演绎起点）。从"用户为什么留下"的第一性推导增长模型。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">"同学都去大厂了"是归纳；"我的能力结构和市场需求的最优匹配点在哪"是演绎。择业禁忌：与周围同学同化竞争、服从同一KPI（李善友价值网理论）。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 公理化方法（演绎法的极致形态）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（演绎的起点是第一性原理）</a></div></div>
+</div></div>
+
+<!-- CARD 3 -->
+<div class="card" data-p="p3" data-s="bz,mg">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">公理化方法</div><div class="cs">欧几里得 → 牛顿 → 笛卡尔 · 从公理到体系</div><div class="ctags"><span class="tag ts">体系构建</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>公理化方法 = <strong>少量不可证明的公理 + 严格逻辑推理 = 整个知识体系</strong>。欧几里得用5条公理构建了几何学；牛顿用3条定律构建了力学；笛卡尔用"我思故我在"构建了哲学。</p></div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>公理化方法三要素</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>公理</strong> — 不证自明的起点。欧几里得五公理（两点成一线等）；牛顿三定律；笛卡尔"我思故我在"。</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>逻辑推演</strong> — 从公理出发的严格推理链条，每步可验证。</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>定理体系</strong> — 推导出的所有结论构成完整体系。几何学的465个命题全部从5条公理推出。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原文引证</div>
+  <div class="ot"><div class="ot-q">"笛卡尔是一个伟大的哲学家，他提出一个大胆的观点：你怎么就能证明这个世界是真实的？其结论是'我思故我在'——即一切皆可怀疑，唯有怀疑本身不可怀疑。"</div><div class="ot-s">—— 笛卡尔哲学概述（综述）</div><div class="ot-i"><strong>解读：</strong>笛卡尔的"普遍怀疑法"是公理化方法的哲学版：怀疑一切，直到找到那个"不可怀疑"的基点，再从它出发重建一切。</div></div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>商业中的"公理体系"长什么样？</h4>
+    <p>一个公司的战略体系、一个团队的工作方法、一个人的决策原则，都可以公理化：<strong>找到3-5条不可妥协的基本原则（公理），所有决策从这些原则推导。</strong>巴菲特的价值投资体系就是公理化：安全边际、护城河、能力圈是公理，具体买卖决策是定理。</p>
+    <div class="insight"><strong>深层洞见：</strong>多数人和组织的决策体系是"没有公理的"——每条决策都是临时权衡、经验判断、看情况办。这样的体系无法积累、无法迭代、无法传承。<strong>公理化使知识可积累：你只需要修正公理，整个体系自动更新。</strong></div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">把你的工作方法公理化：列出3-5条"不可妥协原则"（如"数据说话""客户利益优先"），所有具体决策从原则推导。团队新人只需要学公理+推理方法。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">芒格守则："先找到一个简单基本的道理，再非常严格地按此行事。"先定义你的投资/经营公理，再推导行动。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（公理化方法使用演绎推理）</a><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（公理的来源是跨学科）</a></div></div>
+</div></div>
+
+<!-- CARD 4 -->
+<div class="card" data-p="p4" data-s="bz,ka,mg">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">马斯克的第一性原理实践</div><div class="cs">SpaceX 火箭 · 特斯拉电池 · 拆解到物理层</div><div class="ctags"><span class="tag ts">实战案例</span><span class="tag tt">商业</span><span class="tag tt">KA</span></div></div><div class="conf"><div class="dot dg"></div>原文</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>马斯克把第一性原理从哲学概念变成了<strong>商业创新的操作工具</strong>：把产品拆解到物理/原材料层面，重新计算成本与可行性，发现"行业共识"不过是未被质疑的假设。</p></div>
+<div class="s"><div class="st">原文引证</div>
+  <div class="ot"><div class="ot-q">"我当时气不打一处来（俄罗斯买火箭被漫天要价），但当我为此愤怒的时候，我就开始重新规划这个问题的解决方案。"</div><div class="ot-s">—— 马斯克（采访原文）</div></div>
+  <div class="ot"><div class="ot-q">"为什么我们必须这样做？""谁起草的？为什么这么要求？"</div><div class="ot-s">—— 马斯克对供应商规格的质疑（采访原文）</div><div class="ot-i"><strong>解读：</strong>这三问是第一性原理的实操版——对每个"要求"追问来源和理由。马斯克只把物理学定律约束下的条件视为不可变更，其他一切"要求"都当作建议质疑。</div></div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">SpaceX：火箭为何不能重复使用？</div><div class="cd">行业共识：火箭是一次性的（归纳：历史上所有火箭都一次性）。第一性追问：<strong>飞机和轮船可以重复使用，火箭为何不行？</strong>从物理学出发没有不可重复使用的理由——于是发明了可回收火箭，发射成本降至传统方式的十分之一。</div><div class="csrc">来源：采访原文 + 公开事实</div></div>
+    <div class="ci"><div class="cn">特斯拉：电池成本从600到80美元</div><div class="cd">行业共识：电池成本600美元/千瓦时（归纳：供应商报价）。第一性拆解：<strong>电池=锂+镍+钴+铝等原材料</strong>，按伦敦金属交易所价格计算，原材料成本仅80美元。差价520美元是"加工成本和行业惯例"。于是自建电池工厂重构生产流程。</div><div class="csrc">来源：采访原文</div></div>
+    <div class="ci"><div class="cn">Cybertruck：外骨骼结构</div><div class="cd">行业共识：皮卡必须有车架+车身（归纳：100年皮卡都这样）。第一性追问：<strong>为什么强度不能由外壳提供？</strong>"我们可以把强度都放在外圈，让车身成为车辆的外骨骼。"</div><div class="csrc">来源：采访原文</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>马斯克式拆解 · 决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>写下"行业共识"</strong> — 这个产品/业务中，所有人默认接受的假设是什么？</div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>拆解到物理层</strong> — 把产品拆成原材料/基本组件，把业务拆成基本环节</div></div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>重新计算成本</strong> — 用原材料价格/基本环节成本重新计算（白痴指数）</div></div>
+    <div class="fs"><div class="fsn">4</div><div class="fst"><strong>质疑每个"要求"</strong> — "为什么必须这样做？谁起草的？为什么这么要求？"</div></div>
+    <div class="fsg"><b>信号：</b>如果重新计算的成本远低于市场价格 → 存在巨大的重构空间</div>
+    <div class="ftr"><b>拐点：</b>如果重新计算后成本与市价接近 → 行业定价合理，找别处的创新机会</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">"品牌必须投广告才有量"是共识。拆解：广告的本质=曝光。曝光的替代方案有哪些（自然流量/私域/联名）？"门店必须做满减"拆解：满减的本质=价格让利，还有哪些让利方式效率更高？</div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">对核心业务做"白痴指数"分析：你的产品成本是原材料成本的几倍？差距在哪一环？哪个环节可以重构？</div></div>
+    <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">"周报必须周五交"是要求还是物理定律？追问每条流程的起草人和理由——多数流程是历史惯性而非必要约束。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 白痴指数（成本重构的量化工具）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（拆解的目的是找到第一性）</a></div></div>
+</div></div>
+
+<!-- CARD 5 -->
+<div class="card" data-p="p5" data-s="bz,ka">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">白痴指数</div><div class="cs">Idiot Index · 成品价/原材料价的倍数</div><div class="ctags"><span class="tag ts">量化工具</span><span class="tag tt">商业</span><span class="tag tt">KA</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>白痴指数 = <strong>成品成本 ÷ 基本材料成本</strong>。指数越高，说明这个环节的"溢价泡沫"越大，越有重构空间。这是马斯克将第一性原理量化的工具。</p></div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>白痴指数的用法</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>拆解成本结构</strong> — 把产品/服务拆成原材料/基本环节，计算基础成本</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>计算指数</strong> — 白痴指数 = 成品价格 ÷ 原材料价格</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>定位泡沫环节</strong> — 指数>3的环节=加工溢价高=重构空间大</div></div>
+    <div class="fs2"><div class="fn2">4</div><div class="ft2"><strong>重构该环节</strong> — 自建/替换/重新设计该环节的生产方式</div></div>
+  </div>
+  <p><strong>特斯拉电池案例：</strong>成品600美元 ÷ 原材料80美元 = 白痴指数 7.5倍 → 特斯拉自建电池工厂。<strong>火箭案例：</strong>传统火箭报价 ÷ 原材料+制造成本 = 数倍 → SpaceX自研火箭。</p>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">对供应链做白痴指数审计：每个外购环节的成品价是原材料价的几倍？指数最高的环节就是自建/重构的候选。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">品牌营销费用里，多少是"原材料"（真实的流量/曝光/补贴），多少是"加工费"（中间商、低效投放）？白痴指数高的投放环节值得重构。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 马斯克实践（白痴指数是其核心工具）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（白痴指数不适用于服务/品牌溢价场景）</a></div></div>
+</div></div>
+
+<!-- CARD 6 -->
+<div class="card" data-p="p6" data-s="bz,ka,mg,cr">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">破界创新</div><div class="cs">李善友创新理论 · 打破隐含假设</div><div class="ctags"><span class="tag ts">创新框架</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>真正的创新不是"在现有边界内做得更好"，而是<strong>发现并打破系统中的隐含假设</strong>。每个系统都建立在一组未被质疑的假设之上，打破其中一条，整个系统就会被重新定义。</p></div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>破界创新三步</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>识别隐含假设</strong> — 这个行业的"公理"是什么？大家都默认什么？</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>找到最脆弱的一条</strong> — 哪条假设最容易被推翻？推翻它代价最小收益最大？</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>打破并重建</strong> — 假设被打破后，重新推导整个业务模型</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">iPhone：打破"手机需要键盘"</div><div class="cd">诺基亚时代的隐含假设：手机需要物理键盘（归纳自BB机/功能机时代）。iPhone打破假设：手机=一块玻璃。整个行业被重新定义。</div><div class="csrc">来源：综述</div></div>
+    <div class="ci"><div class="cn">纳德拉：打破"Windows=一切"</div><div class="cd">微软的隐含假设：Windows是核心。纳德拉打破它，拥抱云和跨平台，微软市值翻了数倍。</div><div class="csrc">来源：综述</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">外卖行业的隐含假设："补贴是增长的必要手段"。打破它：如果补贴不是必要的，增长的第一性是什么？（复购率？供给质量？）</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">"我必须在同一个行业继续做"是隐含假设。打破它：我的可迁移能力是什么？哪些行业需要这些能力？</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 第二曲线（破界后需要新曲线承接）</a><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（打破假设靠演绎而非归纳）</a></div></div>
+</div></div>
+
+<!-- CARD 7 -->
+<div class="card" data-p="p7" data-s="bz,ka,cr">
+<div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">非连续性与第二曲线</div><div class="cs">李善友创新理论 · 增长引擎的切换</div><div class="ctags"><span class="tag ts">战略框架</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>任何增长曲线都会到达极限点。<strong>在第一条曲线到达极限之前，必须启动第二条曲线</strong>——而第二曲线往往与第一曲线"非连续"（需要完全不同的能力和组织）。</p></div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>第二曲线的时间窗口</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>识别极限点</strong> — 第一曲线的增长在放缓：增速下降、成本上升、用户疲劳</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>在失速前启动</strong> — 第二曲线必须在第一曲线到达极限前启动（此时还有资源供养新曲线）</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>容忍非连续性</strong> — 新曲线的逻辑、能力、人才与旧曲线不同，不能旧瓶装新酒</div></div>
+    <div class="fs2"><div class="fn2">4</div><div class="ft2"><strong>管理新旧共存</strong> — 旧曲线负责现金流，新曲线负责未来，两条曲线需要不同的管理方式</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">当主营业务增速连续下降时，不要加倍投入旧曲线——问自己：第二曲线是什么？现在有没有资源可以启动它？</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">职业第一曲线（当前岗位技能）见顶前，启动第二曲线（新技能/新领域）。等到被裁员再学新技能就晚了。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">传统满减营销是第一曲线；内容化/私域运营可能是第二曲线。别等满减失效再转型。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 破界创新（第二曲线的启动方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（识别极限点需要冷静判断）</a></div></div>
+</div></div>
+
+<!-- CARD 8 -->
+<div class="card" data-p="p8" data-s="bz,mg,cr">
+<div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">多元思维模型</div><div class="cs">查理·芒格 · 跨学科的模型网络</div><div class="ctags"><span class="tag ts">思维工具库</span><span class="tag tt">商业</span><span class="tag tt">管理</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>原文</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>单一学科的思维模型会导致"铁锤人综合症"。<strong>多个学科的核心模型组成网络，才能看清事物的全貌</strong>。第一性原理是多元思维模型网络中的"根节点"——它教会你如何为每个学科找到基本原理。</p></div>
+<div class="s"><div class="st">原文引证</div>
+  <div class="ot"><div class="ot-q">"在手里拿着铁锤的人看来，世界就像一颗钉子。"</div><div class="ot-s">—— 查理·芒格（公开语录）</div></div>
+  <div class="ot"><div class="ot-q">"在头脑里形成一种思维模型的复式框架，就能逐渐提高对事物的认识。你必须把经验悬挂在头脑中的一个由许多思维模型组成的框架上。"</div><div class="ot-s">—— 查理·芒格（公开语录）</div></div>
+</div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>重要学科的重要理论（张首晟/李善友总结）</h4>
+    <div class="fs2"><div class="fn2">数</div><div class="ft2"><strong>数学</strong>：复利模型、概率论</div></div>
+    <div class="fs2"><div class="fn2">物</div><div class="ft2"><strong>物理学</strong>：临界点、第一性原理、熵增</div></div>
+    <div class="fs2"><div class="fn2">生</div><div class="ft2"><strong>生物学</strong>：自然选择、现代综合进化论</div></div>
+    <div class="fs2"><div class="fn2">经</div><div class="ft2"><strong>经济学</strong>：看不见的手、边际效用</div></div>
+    <div class="fs2"><div class="fn2">心</div><div class="ft2"><strong>心理学</strong>：误判心理学、双轨分析</div></div>
+    <div class="fs2"><div class="fn2">工</div><div class="ft2"><strong>工程学</strong>：冗余备份、安全边际</div></div>
+  </div>
+  <p>多个模型联合产生 <strong>lollapalooza 效应</strong>——多个因素同向叠加时，效果不是加法而是指数级放大。</p>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">用复利模型看用户增长，用临界点模型看市场爆发，用自然选择看产品迭代，用误判心理学看自己的决策偏差。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">判断一个人是否撒谎看瞳孔（心理学）；判断团队健康看发言是否平均（社会学）——跨学科模型提高判断准确率。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 刻意练习（模型需要练习才能内化）</a><a class="rt" href="javascript:scrollCard(3)">→ 公理化（每个学科的模型就是该学科的"公理"）</a></div></div>
+</div></div>
+
+<!-- CARD 9 -->
+<div class="card" data-p="p9" data-s="mg,cr,lf">
+<div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">刻意练习与思维模型</div><div class="cs">李善友学习法 · 模型 → 讲课 → 迭代</div><div class="ctags"><span class="tag ts">学习方法</span><span class="tag tt">职业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>知道模型≠掌握模型。<strong>模型必须经过"提炼→讲授→迭代"的循环才能内化为自己的思维工具。</strong>脑力工作者的水平取决于掌握"套路"（心理表征）的多少。</p></div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>李善友模型学习三环节</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>建模</strong> — 提炼书中不超过5个核心概念，画出逻辑图</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>讲课</strong> — 换用自己的案例重新讲述，从听众反应中获反馈</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>迭代</strong> — 根据反馈修正理解，反复循环</div></div>
+  </div>
+  <p><strong>李叫兽学习法：</strong>①任何事物背后必有道理；②学到一个理论后自问它还能解释什么；③思考自己的哪些行为可用该理论改进。</p>
+  <p><strong>成功公式：</strong>核心算法 × 大量重复动作（李善友）</p>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">读完这本书的知识库卡片后：①用自己的案例重讲一遍（发朋友圈/讲给同事）；②问"它还能解释什么"；③找3个可改进的行为。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">日常重复经验无法建立思维模型——刷100个短视频不如精读1本书提炼1个模型。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（练习的对象）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（第一性原理本身就是最重要的模型）</a></div></div>
+</div></div>
+
+<!-- CARD 10 -->
+<div class="card" data-p="p10" data-s="bz,ka,mg,cr,lf">
+<div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">第一性原理的边界</div><div class="cs">什么时候不该用 · 诚实面对局限</div><div class="ctags"><span class="tag ts">适用边界</span><span class="tag tt">全部场景</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>第一性原理不是万能钥匙。马斯克自己承认它"<strong>很花精力</strong>"。在错误场景使用第一性原理，代价大于收益。</p></div>
+<div class="s"><div class="st">适用边界</div>
+  <div class="fbox"><h4>该用 vs 不该用</h4>
+    <div class="fs2"><div class="fn2">用</div><div class="ft2"><strong>该用第一性原理：</strong>高价值决策（战略方向/重大投资/产品定义）、创新场景（行业无先例）、反直觉场景（共识可疑）、成本结构重构</div></div>
+    <div class="fs2"><div class="fn2">免</div><div class="ft2"><strong>不必用：</strong>日常重复决策（中午吃什么）、低风险试错（可快速验证的事直接试）、已充分验证的领域（1+1=2不需要重新推导）、情感/审美判断（喜欢哪个颜色不需要"第一性"）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>三个常见误用</h4>
+    <p>① <strong>把"我以为"当第一性</strong>——真正的第一性需要物理定律/数学公理/人性基本需求级别的确定性，"我认为用户喜欢"不是第一性，是臆断。</p>
+    <p>② <strong>无限追问导致瘫痪</strong>——追问"为什么"可以无限进行（为什么吃饭？为什么活着？），需要在"够用的深度"停止。实用原则：追问到"再往下追不影响决策"为止。</p>
+    <p>③ <strong>忽视归纳法的价值</strong>——归纳法在连续环境中高效省力，是演化的默认算法。全盘否定归纳法，等于放弃人类最有效的快速决策机制。</p>
+    <div class="insight"><strong>深层洞见：</strong>第一性原理的最高用法不是"永远演绎"，而是<strong>知道什么时候演绎、什么时候归纳</strong>。判断标准：环境是否连续。连续→归纳（省力），非连续→演绎（保命）。</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">战略级决策（进入新市场/定义新产品）用第一性原理；战术级决策（选哪个供应商/活动定什么价）用经验和数据。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">选餐厅用归纳（大众点评评分）；选职业方向用演绎（从能力/兴趣/需求的第一性推导）。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法 vs 归纳法（边界的本质是场景判断）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（回到起点）</a></div></div>
+</div></div>
+
+</div><!-- end cards -->
+
+<!-- TENSIONS -->
+<div class="tens-sec">
+  <h2>原则间的张力</h2>
+  <p>第一性原理体系内部存在真实的矛盾。</p>
+
+  <div class="tc"><div class="tc-t">演绎 vs 归纳</div>
+    <div class="tc-vs"><span class="vs-tag va">演绎法</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">归纳法</span></div>
+    <div class="tc-ess">演绎法严谨但昂贵，归纳法省力但危险。什么时候用哪个？</div>
+    <div class="tc-res"><strong>调和：</strong>环境连续用归纳（太阳明天升起），环境非连续用演绎（范式转移）。关键能力是<strong>识别自己处在连续性还是非连续性的拐点</strong>——拐点前用归纳的人占便宜，拐点后用归纳的人被淘汰。</div>
+  </div>
+
+  <div class="tc"><div class="tc-t">拆解 vs 直觉</div>
+    <div class="tc-vs"><span class="vs-tag va">第一性拆解</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">专家直觉</span></div>
+    <div class="tc-ess">马斯克说第一性原理"消耗大量脑力"，而专家直觉（模式识别）快速高效。事事拆解会瘫痪，事事直觉会盲从。</div>
+    <div class="tc-res"><strong>调和：</strong>把直觉当作<strong>假设生成器</strong>（快），把第一性原理当作<strong>假设验证器</strong>（严）。直觉提出方向，第一性检验方向。只有直觉未经检验就执行，才是危险。</div>
+  </div>
+
+  <div class="tc"><div class="tc-t">追本质 vs 快执行</div>
+    <div class="tc-vs"><span class="vs-tag va">无限追问</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">快速行动</span></div>
+    <div class="tc-ess">追问本质可以无限进行（为什么活着？），但商业需要快速行动。追问到哪一层停？</div>
+    <div class="tc-res"><strong>调和：</strong>追问到<strong>"再往下追不影响决策"</strong>为止。选餐厅问到"饿不饿"就够，做战略要问到"用户需求的本质"。深度与决策的杠杆大小成正比。</div>
+  </div>
+</div>
+
+<!-- PANORAMA -->
+<div class="pano">
+  <h2>场景全景</h2>
+  <div class="pc"><h3><span class="ic">🏪</span>KA运营</h3>
+    <a class="pl" href="javascript:scrollCard(1)"><span class="pr">定义</span>追问每个活动方案的"第一性"<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">马斯克</span>质疑行业共识："必须做满减"？<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(5)"><span class="pr">白痴指数</span>营销费用的泡沫环节审计<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(6)"><span class="pr">破界创新</span>打破"补贴是增长必要手段"<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(7)"><span class="pr">第二曲线</span>满减见顶前启动内容化/私域<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">👥</span>管理协作</h3>
+    <a class="pl" href="javascript:scrollCard(3)"><span class="pr">公理化</span>团队工作方法的3-5条不可妥协原则<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">马斯克</span>"谁起草的？为什么这么要求？"<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(8)"><span class="pr">多元模型</span>跨学科判断团队健康<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">🎯</span>职业发展</h3>
+    <a class="pl" href="javascript:scrollCard(2)"><span class="pr">演绎法</span>"同学都去大厂"是归纳，别跟<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(6)"><span class="pr">破界创新</span>打破"必须同行业继续做"<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(7)"><span class="pr">第二曲线</span>技能见顶前启动新技能<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(9)"><span class="pr">刻意练习</span>模型→讲课→迭代的内化循环<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">💰</span>商业决策</h3>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">马斯克</span>拆解到物理层重新计算成本<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(5)"><span class="pr">白痴指数</span>供应链泡沫环节定位<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(8)"><span class="pr">多元模型</span>复利+临界点+自然选择看增长<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(10)"><span class="pr">边界</span>战略级演绎，战术级归纳<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc" style="grid-column:1/-1"><h3><span class="ic">🌱</span>个人生活</h3>
+    <a class="pl" href="javascript:scrollCard(1)"><span class="pr">定义</span>购物前追问核心需求<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(9)"><span class="pr">刻意练习</span>刷100个视频不如精读1本书<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(10)"><span class="pr">边界</span>选餐厅用归纳，选方向用演绎<span class="pl-arrow">›</span></a>
+  </div>
+</div>
+
+<div class="disc">
+  <strong>来源声明：</strong>本知识库蒸馏的是"第一性原理"这一思维方法论本身（非单一著作）。来源构成：① 亚里士多德《形而上学》第一原理概念（哲学原典，经学术综述转述）；② 马斯克2014南加大毕业演讲与TED访谈原始语录（采访原文）；③ 李善友混沌大学公开课程笔记与书籍公开内容（综述）；④ 教育学术机构综述（hr.edu.cn）。<strong>标"原文"=直接引述可溯源的语录；标"综述"=多源交叉提炼，非单一出处原文。</strong>
+</div>
+<div class="footer">知识蒸馏工坊 · 2026-09-15 · 第一性原理 · 10 张卡片</div>
+</div>
+
+<div class="tabbar">
+  <div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+  <div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+  <div class="tab tab-inactive" onclick="document.querySelector('.pano').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">🗺</div><div class="tab-label">全景</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll(`.fbtn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v;
+})});
+function scrollCard(n){const t=document.querySelectorAll('.card')[n-1];if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>

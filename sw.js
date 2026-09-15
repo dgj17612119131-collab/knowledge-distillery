@@ -1,9 +1,10 @@
-const CACHE_NAME = 'knowledge-v2';
+const CACHE_NAME = 'knowledge-v3';
 const ASSETS = [
   '/',
   '/index.html',
   '/sunzi.html',
   '/mao.html',
+  '/fp.html',
   '/manifest.json'
 ];
 
