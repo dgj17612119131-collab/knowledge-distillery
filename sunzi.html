@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>华杉讲透孙子兵法</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#007AFF;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;--r-xl:28px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;margin-right:12px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+@media(max-width:400px){.nav-title{font-size:15px}}
+
+/* Container */
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+
+/* Hero */
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}.dr{background:var(--red)}
+
+/* Overview Card */
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent);border-radius:0 2px 2px 0}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.thesis{background:var(--fill);border-left:3px solid var(--orange);padding:12px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:12px 8px;font-size:15px;color:var(--text);line-height:1.65;font-style:italic}
+
+/* Filter Bar */
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px;letter-spacing:.03em}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+
+/* Cards */
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.card.hidden{display:none}
+
+/* Card Header */
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px;cursor:pointer}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(0,122,255,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+
+/* Card Body */
+.cb{padding:0 20px 24px}
+
+/* Sections */
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+
+/* Original Text */
+.ot{background:var(--fill);border-left:3px solid var(--orange);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:16px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}.ot-i strong{color:var(--text)}
+
+/* Deep */
+.deep{background:rgba(0,122,255,.04);border:1px solid rgba(0,122,255,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+
+/* Cases */
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+
+/* Flow */
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+
+/* Framework */
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}.ft2 strong{color:var(--text)}
+
+/* Boundary */
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+
+/* Scenario Grid */
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px;transition:opacity .15s}
+.si:active{opacity:.7}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+
+/* Actions */
+.al{list-style:none}.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+
+/* Cross Ref */
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;transition:all .15s;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(0,122,255,.1);color:var(--accent)}
+
+/* Tensions */
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--red);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(0,122,255,.1);color:var(--accent)}.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--red);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+
+/* Panorama */
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+
+/* Disclaimer */
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--red)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+
+/* Bottom Tab Bar */
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+
+/* Responsive */
+@media(min-width:700px){
+  .hero h1{font-size:34px}
+  .sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+}
+</style>
+</head>
+<body>
+
+<div class="nav"><div class="nav-inner">
+  <a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none"><path d="M10 2L2 10l8 8" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/></svg> 书库</a>
+  <span class="nav-title">华杉讲透孙子兵法</span>
+</div></div>
+
+<div class="c">
+
+<div class="hero">
+  <h1>华杉讲透孙子兵法</h1>
+  <div class="hero-sub">6 张决策卡片 · 4 组原则张力</div>
+  <div class="hero-meta"><span>作者 华杉</span><span>2026-09-14</span><span>5 个场景</span></div>
+  <div class="legend"><div class="legend-i"><div class="dot dg"></div>有据</div><div class="legend-i"><div class="dot do"></div>推演</div><div class="legend-i"><div class="dot dr"></div>缺口</div></div>
+</div>
+
+<div class="ov">
+  <h2>全书核心论点</h2>
+  <p>华杉对《孙子兵法》的解读颠覆了大众最常见的理解。多数人把孙子兵法当作"打仗的方法"，华杉认为恰恰相反——<strong>核心思想是"不要打仗"</strong>。</p>
+  <div class="thesis">"孙子兵法的本质不是教你怎么打赢，而是教你怎么做到不需要打就能赢。真正的智者，在开战之前就已经赢了。"</div>
+  <p>六个决策框架之间存在真实的矛盾和张力——理解张力比记住单个原则更重要。</p>
+</div>
+
+</div>
+
+<div class="fb"><div class="fb-inner">
+  <div class="frow"><span class="flbl">原理</span>
+    <button class="fbtn on" data-f="all" data-t="p">全部</button>
+    <button class="fbtn" data-f="p1" data-t="p">不战</button>
+    <button class="fbtn" data-f="p2" data-t="p">先胜</button>
+    <button class="fbtn" data-f="p3" data-t="p">五事七计</button>
+    <button class="fbtn" data-f="p4" data-t="p">正奇</button>
+    <button class="fbtn" data-f="p5" data-t="p">致人</button>
+    <button class="fbtn" data-f="p6" data-t="p">兵贵胜</button>
+  </div>
+  <div class="frow"><span class="flbl">场景</span>
+    <button class="fbtn on" data-f="all" data-t="s">全部</button>
+    <button class="fbtn" data-f="ka" data-t="s">KA运营</button>
+    <button class="fbtn" data-f="mg" data-t="s">管理</button>
+    <button class="fbtn" data-f="cr" data-t="s">职业</button>
+    <button class="fbtn" data-f="bz" data-t="s">商业</button>
+    <button class="fbtn" data-f="lf" data-t="s">生活</button>
+  </div>
+  <div class="fc">显示 <span id="vc">6</span>/6 张卡片</div>
+</div></div>
+
+<div class="c"><div class="cards">
+
+<!-- CARD 1 -->
+<div class="card" data-p="p1" data-s="ka,bz,cr,lf">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">不战而屈人之兵</div><div class="cs">上兵伐谋 · 其下攻城</div><div class="ctags"><span class="tag ts">战略哲学</span><span class="tag tt">KA</span><span class="tag tt">商业</span><span class="tag tt">职业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>战争本身是失败。<strong>真正的胜利是不需要通过战斗就能达成的胜利。</strong></p></div>
+<div class="s"><div class="st">原文锚定</div>
+  <div class="ot"><div class="ot-q">"百战百胜，非善之善者也；不战而屈人之兵，善之善者也。"</div><div class="ot-s">——《谋攻篇》</div><div class="ot-i"><strong>华杉：</strong>打了一百仗说明每次都需要靠打仗来赢——战略有问题。真正善战的人不需要打一百仗。</div></div>
+  <div class="ot"><div class="ot-q">"上兵伐谋，其次伐交，其次伐兵，其下攻城。攻城之法为不得已。"</div><div class="ot-s">——《谋攻篇》</div><div class="ot-i"><strong>华杉：</strong>四层手段有严格优先级。伐谋 > 伐交 > 伐兵 > 攻城。"攻城"是"被逼无奈"。</div></div>
+</div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>四层竞争手段</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>伐谋</strong> — 用实力和态势让对手自己放弃，不是用阴谋。</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>伐交</strong> — 通过联盟/孤立改变力量对比。</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>伐兵</strong> — 正面竞争，成本高昂但可控。</div></div>
+    <div class="fs2"><div class="fn2">4</div><div class="ft2"><strong>攻城</strong> — 不计代价硬打，伤亡惨重且不确定。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>为什么"百战百胜"反而是问题？</h4>
+    <p><strong>如果每次都需要打仗才能赢，说明没在战前创造足够优势。</strong>每打一次消耗一次资源、承受一次不确定性。百战百胜的人，第101次可能因资源耗尽输掉全部。</p>
+    <div class="insight"><strong>深层洞见：</strong>竞争的本质是资源消耗。最高效的竞争是让对方在你不消耗资源的情况下就退出。</div>
+    <h4 style="margin-top:14px">华杉纠正："伐谋" ≠ 阴谋</h4>
+    <p>伐谋的基础是<strong>实力</strong>，不是聪明。"兵者诡道也"的"诡"是"差异/变化"，不是"欺骗"。兵法本质是实力和准备。</p>
+    <div class="insight">多数人学孙子兵法想找"妙招"。华杉告诉你没有妙招——只有扎实的准备和实力的碾压。</div>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">蜜雪冰城：供应链伐谋</div><div class="cd">核心壁垒是<strong>上游供应链的绝对控制</strong>——自建工厂、自建物流、2万+门店采购规模。成本结构低到竞品算完账发现"打不赢"，自己放弃。</div><div class="csrc">华与华公开案例</div></div>
+    <div class="ci"><div class="cn">拼多多：进入巨头"伐不动"的位置</div><div class="cd">找到巨头"不值得打"的下沉市场。当巨头算完账发现不划算时，拼多多已长大。<strong>不是打败对手，是进入对手伐不动的位置。</strong></div><div class="csrc">商业分析（推演）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">适用边界</div><p><strong>有效：</strong>已有足够实力基础，对手能感知差距。</p>
+  <div class="bnd"><h4>失效场景</h4><p>① 你是新进入者——没势就只能真打。② 信息不对称——对手不知道你实力时伐谋失效。③ "不战"≠躺平——它要求做更多准备。</p></div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>识别竞争</strong> — 对手是谁？争的是什么？</div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>评估实力差</strong> — 差距大到对手自己会放弃吗？</div></div>
+    <div class="fsg"><b>信号：</b>对手在撤退/收缩 → "势"够了</div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>势不够 → 建势</strong></div></div>
+    <div class="ftr"><b>拐点：</b>对手不退 → 退到卡片5重新选战场</div>
+    <div class="fs"><div class="fsn">4</div><div class="fst"><strong>对手退出 → 不追击</strong></div></div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">帮品牌做好运营基本功，让竞品"伐不动"。<strong>用运营深度建壁垒。</strong></div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">找巨头覆盖不到的细分建立"局部垄断"。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">在竞争稀少的细分领域建专业壁垒。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">选择不需要费力维持的关系。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">行动清单</div><ul class="al"><li>审视当前竞争，判断你在四层手段的哪一层</li><li>列出你的"势"，评估能否让对手不战而退</li><li>准备"战斗"前先问"有没有不打就赢的方案"</li></ul></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(4)">→ 以正合以奇胜</a></div></div>
+</div></div>
+
+<!-- CARD 2 -->
+<div class="card" data-p="p2" data-s="ka,bz,cr">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">先胜后战</div><div class="cs">胜兵先胜而后求战 · 败兵先战而后求胜</div><div class="ctags"><span class="tag ts">决策逻辑</span><span class="tag tt">KA</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>胜利不是打仗打出来的，是<strong>开战前就创造了必胜条件</strong>。打仗只是"收割"。</p></div>
+<div class="s"><div class="st">原文锚定</div>
+  <div class="ot"><div class="ot-q">"先为不可胜，以待敌之可胜。不可胜在己，可胜在敌。"</div><div class="ot-s">——《军形篇》</div><div class="ot-i"><strong>华杉：</strong>前半句你能控制（不被打败），后半句控制不了（对手何时犯错）。<strong>做好能控制的，耐心等待窗口。</strong></div></div>
+  <div class="ot"><div class="ot-q">"胜兵先胜而后求战，败兵先战而后求胜。"</div><div class="ot-s">——《军形篇》</div><div class="ot-i">整本孙子兵法最具操作性的一句话。</div></div>
+</div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>决策三步</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>先为不可胜</strong> — 让自己立于不败之地</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>以待敌之可胜</strong> — 等待对手犯错</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>先胜而后求战</strong> — 确认必胜后再开战</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>你能控制"不输"，不能控制"赢"</h4>
+    <p>赢需要对手配合（犯错）。你只能确保自己不犯错。</p>
+    <div class="insight">多数人："我要赢"→行动→看结果。孙子："能不能不输"→准备→等条件出现→行动。前者赌博，后者投资。</div>
+    <h4 style="margin-top:14px">条件不具备时正确选择是"不打"</h4>
+    <p>不是"边打边创造条件"。很多企业死掉不是打输了，是条件不具备就开打了。</p>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">足力健：先造品类再卖货</div><div class="cd">先创造"老人鞋"品类，定义标准+建认知+铺渠道，<strong>所有条件具备后才大规模销售</strong>。</div><div class="csrc">华与华公开案例</div></div>
+    <div class="ci"><div class="cn">华为5G：先建标准再扩张</div><div class="cd">标准制定阶段大量投入专利。<strong>先胜=在标准阶段就赢了，后面只是收割。</strong></div><div class="csrc">商业分析（推演）</div></div>
+    <div class="ci"><div class="cn">反面：ofo</div><div class="cd">先大规模铺车（战），再想怎么盈利（求胜）。先胜条件全不具备，最终"钝兵挫锐"。</div><div class="csrc">商业分析（推演）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">适用边界</div><p><strong>有效：</strong>可以选择"不打"的场景。</p>
+  <div class="bnd"><h4>失效</h4><p>① 被动应战 ② 过度准备（华杉承认70%就可行动） ③ "不可胜"≠保守，是积极建设</p></div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>定义"胜"</strong> — 什么程度算赢？</div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>列先胜清单</strong> — 需哪些条件？</div></div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>逐条核查</strong></div></div>
+    <div class="fsg"><b>信号：</b>≥70%具备→可行动。<50%→不打。</div>
+    <div class="ftr"><b>拐点：</b>时间逼你行动但条件不够→退到卡片6"拙速"</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">活动先小规模跑通再全量。<strong>没跑通数据就全量推=先战而后求胜。</strong></div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">尽调+回报+退出全到位再投。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">有offer在手再谈离职。<strong>裸辞=先战而后求胜。</strong></div></div>
+  </div>
+</div>
+<div class="s"><div class="st">行动清单</div><ul class="al"><li>列"先胜清单"：需哪些条件具备？</li><li>逐项检查：已具备/可创造/需等待？</li><li>核心条件不具备→练习说"现在不是时候"</li></ul></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜（张力）</a></div></div>
+</div></div>
+
+<!-- CARD 3 -->
+<div class="card" data-p="p3" data-s="ka,mg,bz,cr">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">五事七计</div><div class="cs">庙算 · 多算胜，少算不胜</div><div class="ctags"><span class="tag ts">系统评估</span><span class="tag tt">KA</span><span class="tag tt">管理</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>开战前用系统化维度<strong>对比双方实力</strong>。赢面大打，赢面小不打。不是勇气问题，是数学。</p></div>
+<div class="s"><div class="st">原文锚定</div>
+  <div class="ot"><div class="ot-q">"一曰道，二曰天，三曰地，四曰将，五曰法。"</div><div class="ot-s">——《始计篇》</div><div class="ot-i"><strong>华杉：</strong>"道"排第一——上下同心是所有战略的基础。</div></div>
+</div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>五事（五个维度）</h4>
+    <div class="fs2"><div class="fn2">道</div><div class="ft2"><strong>上下同心</strong> — 团队目标一致？</div></div>
+    <div class="fs2"><div class="fn2">天</div><div class="ft2"><strong>天时</strong> — 宏观环境、行业周期</div></div>
+    <div class="fs2"><div class="fn2">地</div><div class="ft2"><strong>地利</strong> — 渠道、资源壁垒</div></div>
+    <div class="fs2"><div class="fn2">将</div><div class="ft2"><strong>将领</strong> — 执行力、专业度</div></div>
+    <div class="fs2"><div class="fn2">法</div><div class="ft2"><strong>制度</strong> — 流程、考核机制</div></div>
+  </div>
+  <div class="fbox"><h4>七计（七个对比）</h4>
+    <div class="fs2"><div class="fn2">→</div><div class="ft2">主孰有道？将孰有能？天地孰得？法令孰行？兵众孰强？士卒孰练？赏罚孰明？<strong>逐项打分，谁分多谁赢。</strong></div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>为什么"很笨"的方法最可靠？</h4>
+    <p>复杂分析模型给你"我很聪明"的错觉。五事七计的"笨"迫使你做诚实评估。</p>
+    <div class="insight"><strong>深层洞见：</strong>多数人失败不是"分析不够精细"，是"在基本维度上就评估错了"。</div>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">美团 vs 饿了么</div><div class="cd">道（聚焦度）、地（二三线渗透）、将（地推执行力）、法（数据系统）四事领先。结果不意外。</div><div class="csrc">商业分析（推演）</div></div>
+    <div class="ci"><div class="cn">西贝莜面村</div><div class="cd">道="闭着眼睛点，道道都好吃"；地=商场+明厨亮灶。在两个维度做差异化。</div><div class="csrc">华与华公开案例</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>明确对手</strong></div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>五事自评</strong>（1-10分）</div></div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>对手评估</strong></div></div>
+    <div class="fsg"><b>信号：</b>≥3项领先→可打。≤1项→不打或换战场。</div>
+    <div class="ftr"><b>拐点：</b>"道"落后→先解决内部。"天"落后→换赛道。</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">品牌五维诊断。比只看GMV更全面。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队排查。<strong>多数管理者只在"将""法"找原因，忽略"道""天"。</strong></div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">评估offer五维：避免"只看薪资"。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">竞品对标=七计商业版。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(5)">→ 致人</a></div></div>
+</div></div>
+
+<!-- CARD 4 -->
+<div class="card" data-p="p4" data-s="ka,mg,bz,lf">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">以正合，以奇胜</div><div class="cs">奇正相生，如循环之无端</div><div class="ctags"><span class="tag ts">资源配置</span><span class="tag tt">KA</span><span class="tag tt">管理</span><span class="tag tt">商业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>"正"（基本面）稳住局面，"奇"（额外投入）取得胜利。<strong>没"正"打底=赌博，只有"正"没"奇"=消耗战。</strong></p></div>
+<div class="s"><div class="st">原文锚定</div>
+  <div class="ot"><div class="ot-q">"凡战者，以正合，以奇胜。"</div><div class="ot-s">——《势篇》</div><div class="ot-i"><strong>华杉纠正：</strong>"奇"读jī（多余的），不是qí（神奇的）。"奇兵"=多派一路兵，不是神机妙算。</div></div>
+</div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>正与奇</h4>
+    <div class="fs2"><div class="fn2">正</div><div class="ft2"><strong>正=基本面</strong>。产品品质、运营标准、稳定输出。正面顶住。</div></div>
+    <div class="fs2"><div class="fn2">奇</div><div class="ft2"><strong>奇=额外投入</strong>。创新、新渠道、特殊资源。在正面顶住后多派一路包抄。</div></div>
+    <div class="fs2"><div class="fn2">⚠</div><div class="ft2"><strong>"奇"不是"巧"</strong>。不是靠妙招赢，是多投入一路力量。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>"出奇制胜"是最大误读</h4>
+    <p>追求"出奇制胜"的人往往因为"正"不够强。<strong>"正"越强，"奇"才越有效。基本面差时"奇"是加速死亡。</strong></p>
+    <div class="insight">"奇正相生"=你的每个创新（奇）最终都变成行业标配（正）。要么持续创新，要么接受同质化。</div>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">蜜雪冰城：正=低价标准化，奇=主题曲病毒传播</div><div class="cd">没有"正"，再洗脑的歌也留不住客户。</div><div class="csrc">华与华公开案例</div></div>
+    <div class="ci"><div class="cn">厨邦：正=产品质量+渠道，奇=绿格子超级符号</div><div class="cd">绿格子是在"正"稳固前提下多加一路视觉力量。</div><div class="csrc">华与华公开案例</div></div>
+    <div class="ci"><div class="cn">反面：瑞幸早期只有"奇"没有"正"</div><div class="cd">大量补贴（奇），产品力和盈利模型（正）没建立。后来补上才站稳。</div><div class="csrc">商业分析（推演）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>盘"正"</strong> — 基本面稳不稳？</div></div>
+    <div class="fsg"><b>信号：</b>有漏洞→先补正，不急出"奇"</div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>选"奇"</strong> — "正"稳后最值得额外投入的一路</div></div>
+    <div class="fsg"><b>参考：</b>奇正比7:3或8:2健康</div>
+    <div class="ftr"><b>拐点：</b>"奇"变常态→它已变"正"，需新的"奇"</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA</div><div class="stx">"正"=稳定营销节奏；"奇"=关键节点爆发。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">"正"=流程分工；"奇"=特殊激励。<strong>没正乱，没奇平庸。</strong></div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">"正"=核心稳定；"奇"=差异化创新。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🌱</span>生活</div><div class="stx">"正"=规律作息；"奇"=旅行/跨界。<strong>光规律无聊，光刺激失控。</strong></div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜</a></div></div>
+</div></div>
+
+<!-- CARD 5 -->
+<div class="card" data-p="p5" data-s="ka,mg,cr,bz">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">致人而不致于人</div><div class="cs">善战者，致人而不致于人</div><div class="ctags"><span class="tag ts">主动权</span><span class="tag tt">KA</span><span class="tag tt">管理</span><span class="tag tt">职业</span><span class="tag tt">商业</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p><strong>让对手跟你节奏走（致人），不是你被牵着走（致于人）。</strong>主动权=可选战场、时间、方式。</p></div>
+<div class="s"><div class="st">原文锚定</div>
+  <div class="ot"><div class="ot-q">"先处战地而待敌者佚，后处战地而趋战者劳。"</div><div class="ot-s">——《虚实篇》</div><div class="ot-i"><strong>华杉：</strong>先到的人从容，后到的人疲惫。"致人"=让自己处于以逸待劳的位置。<strong>不是控制对手，是让自己有选择权。</strong></div></div>
+</div>
+<div class="s"><div class="st">框架拆解</div>
+  <div class="fbox"><h4>主动权三原则</h4>
+    <div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>选战场</strong> — 在你有利的时间/地点交战</div></div>
+    <div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>定节奏</strong> — 你决定何时行动</div></div>
+    <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>设规则</strong> — 你定义"好的标准"</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>选择权 = 致人</h4>
+    <p>选择权来自<strong>你有Plan B</strong>。只有一个方案=致于人，有多个方案=致人。</p>
+    <div class="insight">谈判中"致人"的不是嗓门最大的，是<strong>可以站起来走掉的那个</strong>。</div>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">苹果App Store：定义平台规则</div><div class="cd">30%分成、审核规则。所有开发者在苹果框架里玩。</div><div class="csrc">商业分析（推演）</div></div>
+    <div class="ci"><div class="cn">谈薪：3个offer vs 1个offer</div><div class="cd">区别不是谁更能谈判，是<strong>谁有走掉的底气</strong>。</div><div class="csrc">职场经验（推演）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>诊断</strong> — 谁在定节奏？谁定义标准？</div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>如果致于人</strong> — 找翻转杠杆（换维度/准备Plan B）</div></div>
+    <div class="fsg"><b>信号：</b>你在被动回应→致于人</div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>先提框架</strong> — 谁先提评估框架谁掌握起点</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA</div><div class="stx">你定义评估标准。"看单店效率不是总GMV"。<strong>谁定义"好的标准"？</strong></div></div>
+    <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">主动提方案=天然"致人"优势。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">你定义叙事框架+多个offer。<strong>选择权=主动权=致人。</strong></div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">你定义价格锚点vs跟着竞品定价。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(1)">→ 不战</a></div></div>
+</div></div>
+
+<!-- CARD 6 -->
+<div class="card" data-p="p6" data-s="ka,bz,cr,lf">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">兵贵胜，不贵久</div><div class="cs">兵闻拙速 · 未睹巧之久也</div><div class="ctags"><span class="tag ts">节奏控制</span><span class="tag tt">KA</span><span class="tag tt">商业</span><span class="tag tt">职业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p><strong>贵在速战速决。</strong>每天烧钱，拖越久成本越高。宁可"笨拙地快"，不要"精巧地慢"。</p></div>
+<div class="s"><div class="st">原文锚定</div>
+  <div class="ot"><div class="ot-q">"久则钝兵挫锐，力屈，国用不足。"</div><div class="ot-s">——《作战篇》</div><div class="ot-i"><strong>华杉：</strong>四重损耗递进：钝兵→挫锐→力屈→国用不足。<strong>不可逆衰退链。</strong></div></div>
+  <div class="ot"><div class="ot-q">"兵闻拙速，未睹巧之久也。"</div><div class="ot-s">——《作战篇》</div><div class="ot-i">历史只证明"笨拙但快速"的胜利。速度比完美重要。</div></div>
+</div>
+<div class="s"><div class="st">原理纵深</div>
+  <div class="deep"><h4>坚持本身在消耗赢的资本</h4>
+    <p>有些战争不是"赢了但代价太大"，而是"赢了但净收益为负"。</p>
+    <div class="insight">"拙速"≠鲁莽。是"不追求完美，在方案够用时尽快行动"。<strong>前提是先胜条件已具备。</strong></div>
+  </div>
+</div>
+<div class="s"><div class="st">案例锚定</div>
+  <div class="cases"><h4>案例</h4>
+    <div class="ci"><div class="cn">反面：ofo — 持久战拖垮自己</div><div class="cd">共享单车战争约2年。ofo/摩拜两败俱伤，美团低价收购。<strong>"诸侯乘其弊而起"。</strong></div><div class="csrc">商业分析（推演）</div></div>
+    <div class="ci"><div class="cn">抖音vs快手：拙速典型</div><div class="cd">抖音不追求完美（拙）但速度极快（速），3月爆发。快手早4年但"巧久"失去窗口。</div><div class="csrc">商业分析（推演）</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">决策流</div>
+  <div class="flow"><h4>决策路径</h4>
+    <div class="fs"><div class="fsn">1</div><div class="fst"><strong>计算日成本</strong></div></div>
+    <div class="fs"><div class="fsn">2</div><div class="fst"><strong>设止损线</strong></div></div>
+    <div class="fs"><div class="fsn">3</div><div class="fst"><strong>选"拙速"方案</strong></div></div>
+    <div class="fsg"><b>信号：</b>纠结超2周→你已经"久"了</div>
+    <div class="ftr"><b>拐点：</b>到止损线没结果→退出。"再给时间"是衰退的开始。</div>
+  </div>
+</div>
+<div class="s"><div class="st">场景映射</div>
+  <div class="sg">
+    <div class="si"><div class="slbl"><span class="ic">🏪</span>KA</div><div class="stx">活动设止损线。持续补贴=钝兵挫锐。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">6-12月无法验证PMF→止损。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">3轮面试没进展→转向。</div></div>
+    <div class="si"><div class="slbl"><span class="ic">🌱</span>生活</div><div class="stx">小决定"拙速"，重大决定"先胜"。</div></div>
+  </div>
+</div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战（张力）</a><a class="rt" href="javascript:scrollCard(4)">→ 正奇</a></div></div>
+</div></div>
+
+</div><!-- end cards -->
+
+<!-- TENSIONS -->
+<div class="tens-sec">
+  <h2>原则间的张力</h2>
+  <p>六个原则之间有真实矛盾。理解张力比记住单个原则更重要。</p>
+  <div class="tc"><div class="tc-t">耐心 vs 速度</div>
+    <div class="tc-vs"><span class="vs-tag va">先胜后战</span><span style="color:var(--red);font-weight:700">⚡</span><span class="vs-tag vb">兵贵胜</span></div>
+    <div class="tc-ess">一个说"条件不够就不打"，一个说"贵在速战"。</div>
+    <div class="tc-res"><strong>调和：</strong>准备阶段要耐心（先胜），执行阶段要速度（兵贵胜）。最危险：没准备好就急着打 + 打了又犹豫。</div>
+  </div>
+  <div class="tc"><div class="tc-t">等待 vs 行动</div>
+    <div class="tc-vs"><span class="vs-tag va">先胜后战</span><span style="color:var(--red);font-weight:700">⚡</span><span class="vs-tag vb">致人</span></div>
+    <div class="tc-ess">"待敌犯错"要求等，"致人"要求主动。</div>
+    <div class="tc-res"><strong>调和：</strong>准备多个方案本身就是"致人"。等待不是被动的。</div>
+  </div>
+  <div class="tc"><div class="tc-t">碾压 vs 巧取</div>
+    <div class="tc-vs"><span class="vs-tag va">不战</span><span style="color:var(--red);font-weight:700">⚡</span><span class="vs-tag vb">正奇</span></div>
+    <div class="tc-ess">靠实力碾压还是靠创新突破？</div>
+    <div class="tc-res"><strong>调和：</strong>不战是目标状态，奇正是过程手段。</div>
+  </div>
+  <div class="tc"><div class="tc-t">实力 vs 创新</div>
+    <div class="tc-vs"><span class="vs-tag va">五事七计</span><span style="color:var(--red);font-weight:700">⚡</span><span class="vs-tag vb">正奇</span></div>
+    <div class="tc-ess">五事算"总分"，奇胜赢"某一科"。</div>
+    <div class="tc-res"><strong>调和：</strong>五事决定"该不该打"，奇正决定"怎么打得更漂亮"。</div>
+  </div>
+</div>
+
+<!-- PANORAMA -->
+<div class="pano">
+  <h2>场景全景</h2>
+  <div class="pc"><h3><span class="ic">🏪</span>KA运营</h3>
+    <a class="pl" href="javascript:scrollCard(1)"><span class="pr">不战</span>用运营深度建壁垒<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(2)"><span class="pr">先胜</span>活动先跑通再全量<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(3)"><span class="pr">五事</span>品牌五维诊断<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">正奇</span>稳定节奏+节点爆发<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(5)"><span class="pr">致人</span>你定义评估标准<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(6)"><span class="pr">兵贵胜</span>活动设止损线<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">👥</span>管理协作</h3>
+    <a class="pl" href="javascript:scrollCard(3)"><span class="pr">五事</span>团队五维排查<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">正奇</span>流程+激励组合<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(5)"><span class="pr">致人</span>主动提方案=主导权<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">🎯</span>职业发展</h3>
+    <a class="pl" href="javascript:scrollCard(1)"><span class="pr">不战</span>细分领域建壁垒<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(2)"><span class="pr">先胜</span>先为不可胜再跳槽<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(3)"><span class="pr">五事</span>评估offer五维框架<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(5)"><span class="pr">致人</span>定义叙事+保持选择权<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(6)"><span class="pr">兵贵胜</span>面试不拖，快速拿offer<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">💰</span>商业决策</h3>
+    <a class="pl" href="javascript:scrollCard(1)"><span class="pr">不战</span>找巨头覆盖不到的细分<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(2)"><span class="pr">先胜</span>尽调+回报+退出全到位<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(3)"><span class="pr">五事</span>竞品对标七维度<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">正奇</span>核心稳定+差异化创新<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(5)"><span class="pr">致人</span>定义价格锚点<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(6)"><span class="pr">兵贵胜</span>6-12月验证PMF<span class="pl-arrow">›</span></a>
+  </div>
+  <div class="pc"><h3><span class="ic">🌱</span>个人生活</h3>
+    <a class="pl" href="javascript:scrollCard(1)"><span class="pr">不战</span>选择不需费力维持的关系<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(4)"><span class="pr">正奇</span>规律生活+偶尔突破<span class="pl-arrow">›</span></a>
+    <a class="pl" href="javascript:scrollCard(6)"><span class="pr">兵贵胜</span>小决定拙速，重大先胜<span class="pl-arrow">›</span></a>
+  </div>
+</div>
+
+<div class="disc">
+  <strong>来源声明：</strong>基于华杉公开文章/演讲、多源书评交叉确认及《孙子兵法》原典理解。非逐章逐句提取。场景映射为蒸馏者推演。<br>
+  <strong>置信等级：</strong>有据=多源确认；推演=合理推导；缺口=未能确认。
+</div>
+<div class="footer">知识蒸馏工坊 · 2026-09-14</div>
+</div>
+
+<div class="tabbar">
+  <div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+  <div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+  <div class="tab tab-inactive" onclick="document.querySelector('.pano').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">🗺</div><div class="tab-label">全景</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll(`.fbtn[data-t="${t}"]`).forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v;
+})});
+function scrollCard(n){const t=document.querySelectorAll('.card')[n-1];if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+</script>
+<script>
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>
