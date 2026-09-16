@@ -59,7 +59,7 @@ a{color:var(--accent);text-decoration:none}
 .fbtn.on{background:var(--accent);color:#fff;font-weight:600}
 .fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
 .cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
-.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
 .card.hidden{display:none}
 .ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
 .cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -223,7 +223,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="c"><div class="cards">
 
 <!-- CARD 1 -->
-<div class="card" data-p="p1" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-1" data-p="p1" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">战略式博弈</div><div class="cs">Strategic Form Games · 博弈论的基本表示</div><div class="ctags"><span class="tag ts">基础概念</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>博弈的<strong>战略式表示</strong>（也称正规式）是博弈论最基本的表示方法。它用三个要素描述一个博弈：<strong>参与者集合</strong>、<strong>每个参与者的战略集</strong>、<strong>每个参与者的收益函数</strong>。</p>
@@ -253,10 +253,11 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">边界</div>
   <div class="bnd"><h4>何时用战略式</h4><p><strong>用战略式：</strong>静态博弈（同时决策）、有限战略、收益可量化。<strong>不用战略式：</strong>动态博弈（用扩展式）、无限战略（用微分博弈）、收益不可比较（用序数效用）。</p></div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a></div></div>
 </div></div>
 
 <!-- CARD 2 -->
-<div class="card" data-p="p2" data-s="bz,mg,ka,cr">
+<div class="card" id="card-2" data-p="p2" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">纳什均衡</div><div class="cs">Nash Equilibrium · 博弈论的核心概念</div><div class="ctags"><span class="tag ts">核心概念</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p><strong>纳什均衡</strong>是博弈论最重要的概念。它描述了一种战略组合：每个参与者选择的战略都是对他人战略的最优反应。<strong>没有人有动机单方面偏离。</strong></p>
@@ -283,10 +284,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">求职市场中，纳什均衡描述了薪资和职位的匹配——偏离均衡会导致供需失衡。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a></div></div>
 </div></div>
 
 <!-- CARD 3 -->
-<div class="card" data-p="p3" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-3" data-p="p3" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">囚徒困境</div><div class="cs">Prisoner's Dilemma · 博弈论的核心悖论</div><div class="ctags"><span class="tag ts">核心悖论</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>囚徒困境展示了博弈论最深刻的悖论：<strong>个体理性导致集体非理性</strong>。每个参与者追求自身利益最大化的行为，最终导致所有人都得到更差的结果。</p>
@@ -312,10 +314,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队协作中的搭便车：都努力工作→团队成功（合作），一方偷懒一方努力→偷懒方搭便车（背叛诱惑），都偷懒→团队失败（背叛结果）。如何设计激励机制解决搭便车问题？</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a></div></div>
 </div></div>
 
 <!-- CARD 4 -->
-<div class="card" data-p="p4" data-s="bz,mg,ka">
+<div class="card" id="card-4" data-p="p4" data-s="bz,mg,ka">
 <div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">扩展式博弈</div><div class="cs">Extensive Form Games · 动态决策的树形表示</div><div class="ctags"><span class="tag ts">动态博弈</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>扩展式博弈用<strong>博弈树</strong>表示动态决策过程。它包含：参与者集合、决策节点（谁在何时做决策）、信息集（决策者知道什么）、可用行动、收益。</p>
@@ -342,10 +345,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx"> sequential decision-making：CEO先决策（投资/不投资），部门经理观察后决策（跟进/不跟进）。用扩展式分析可以预测各部门的反应。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a></div></div>
 </div></div>
 
 <!-- CARD 5 -->
-<div class="card" data-p="p5" data-s="bz,mg,ka">
+<div class="card" id="card-5" data-p="p5" data-s="bz,mg,ka">
 <div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">逆向归纳</div><div class="cs">Backward Induction · 动态博弈的求解方法</div><div class="ctags"><span class="tag ts">求解方法</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>逆向归纳是求解完美信息扩展式博弈的方法。从博弈树的<strong>最后一个决策节点开始</strong>，倒推每个参与者的最优选择，一直倒推到初始节点。</p>
@@ -369,10 +373,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">薪酬谈判：员工先提要求，公司观察后决策（接受/拒绝）。用逆向归纳可以预测：如果员工要求合理，公司会接受；如果要求过高，公司会拒绝。然后倒推员工的初始要求。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="sunzi.html#card-6">孙子兵法 · 兵贵胜，不贵久</a></div></div>
 </div></div>
 
 <!-- CARD 6 -->
-<div class="card" data-p="p6" data-s="bz,mg,ka">
+<div class="card" id="card-6" data-p="p6" data-s="bz,mg,ka">
 <div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">子博弈完美均衡</div><div class="cs">Subgame-perfect Equilibrium · 逆向归纳的推广</div><div class="ctags"><span class="tag ts">均衡概念</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>子博弈完美均衡是逆向归纳在不完美信息博弈中的推广。它要求战略组合在<strong>每个子博弈</strong>中都是纳什均衡。</p>
@@ -395,10 +400,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">薪酬谈判：员工的"不接受就离职"威胁是否可信？如果离职对员工也不利，威胁不可信，公司可以拒绝过高要求。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a></div></div>
 </div></div>
 
 <!-- CARD 7 -->
-<div class="card" data-p="p7" data-s="bz,mg,ka,cr">
+<div class="card" id="card-7" data-p="p7" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">期望效用理论</div><div class="cs">Expected Utility Theory · 不确定性下的决策</div><div class="ctags"><span class="tag ts">风险决策</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>期望效用理论描述理性人在<strong>不确定性</strong>下如何做决策。核心思想：理性人最大化期望效用，而非期望收益。</p>
@@ -423,10 +429,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">职业选择：工作A确定年薪30万，工作B 50%概率得50万、50%概率得10万（期望也是30万）。如果是风险规避的，选A；如果是风险偏好的，选B。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a><a class="rt" href="fp.html#card-1">第一性原理 · 第一性原理的定义</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
 </div></div>
 
 <!-- CARD 8 -->
-<div class="card" data-p="p8" data-s="bz,mg,ka,cr">
+<div class="card" id="card-8" data-p="p8" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">混合策略</div><div class="cs">Mixed Strategies · 随机化决策</div><div class="ctags"><span class="tag ts">策略类型</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>混合策略是参与者以某种<strong>概率分布</strong>随机选择纯策略。例如，以50%概率选A、50%概率选B。</p>
@@ -450,10 +457,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">求职策略：如果总是申请同类型职位，竞争对手就会针对你；如果总是申请不同类型，竞争对手就无法预测...混合策略：以某种概率分布申请不同类型职位。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></div>
 </div></div>
 
 <!-- CARD 9 -->
-<div class="card" data-p="p9" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-9" data-p="p9" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">重复博弈</div><div class="cs">Repeated Games · 长期关系中的合作</div><div class="ctags"><span class="tag ts">动态博弈</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>重复博弈是将同一个博弈<strong>重复进行多次</strong>。核心发现：在无限重复博弈中，参与者可以通过"触发策略"维持合作，即使单次博弈中背叛是优势战略。</p>
@@ -479,10 +487,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>生活</div><div class="stx">友谊：单次互动可能不诚实，但长期友谊中使用触发策略（如果你不诚实，我就终止友谊），可以维持诚实关系。这解释了为什么长期友谊比短期关系更可靠。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a></div></div>
 </div></div>
 
 <!-- CARD 10 -->
-<div class="card" data-p="p10" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-10" data-p="p10" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">无名氏定理</div><div class="cs">Folk Theorem · 重复博弈的核心定理</div><div class="ctags"><span class="tag ts">核心定理</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>无名氏定理描述了无限重复博弈中<strong>可能的均衡收益集</strong>。核心发现：如果未来足够重要（贴现因子 δ 足够大），任何帕累托优于纳什均衡的收益都可以是均衡收益。</p>
@@ -506,10 +515,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队建设：如果团队成员足够重视未来合作（δ足够大），可以维持高质量协作；如果团队成员短视（δ太小），就会搭便车。这解释了为什么长期团队比临时团队更有效。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a><a class="rt" href="sunzi.html#card-6">孙子兵法 · 兵贵胜，不贵久</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></div>
 </div></div>
 
 <!-- CARD 11 -->
-<div class="card" data-p="p11" data-s="bz,mg,ka,cr">
+<div class="card" id="card-11" data-p="p11" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">11</div><div class="ctg"><div class="ct">不完全信息博弈</div><div class="cs">Games with Incomplete Information · 私人信息的博弈</div><div class="ctags"><span class="tag ts">信息结构</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>不完全信息博弈中，参与者拥有<strong>私人信息</strong>（他人不知道的信息）。核心问题：如何在信息不对称下做最优决策？</p>
@@ -534,10 +544,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">求职决策：公司知道自己的发展前景，候选人不知道。结果：发展前景差的公司更愿意招人（因为他们更需要人），候选人只能提高筛选标准，发展前景好的公司不愿意招人。这就是逆向选择。解决机制：公司声誉、员工评价、行业口碑。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
 </div></div>
 
 <!-- CARD 12 -->
-<div class="card" data-p="p12" data-s="bz,mg,ka,cr">
+<div class="card" id="card-12" data-p="p12" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">12</div><div class="ctg"><div class="ct">贝叶斯博弈</div><div class="cs">Bayesian Games · 不完全信息博弈的形式化</div><div class="ctags"><span class="tag ts">均衡概念</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>贝叶斯博弈是不完全信息博弈的形式化表示。核心概念：<strong>贝叶斯纳什均衡</strong>——每个参与者在给定自己的类型下，选择对他人类型的最优反应（基于信念）。</p>
@@ -561,10 +572,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">薪资谈判：你知道自己的能力 θ，对公司的支付意愿有信念。贝叶斯纳什均衡：你要求薪资 s = θ·(n-1)/n（其中 n 是候选人数）。这解释了为什么候选人倾向于"低报"自己的能力（要求低于能力的薪资）。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="fp.html#card-2">第一性原理 · 演绎法 vs 归纳法</a></div></div>
 </div></div>
 
 <!-- CARD 13 -->
-<div class="card" data-p="p13" data-s="bz,mg,ka,cr">
+<div class="card" id="card-13" data-p="p13" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">13</div><div class="ctg"><div class="ct">信号博弈</div><div class="cs">Signaling Games · 信息发送的博弈</div><div class="ctags"><span class="tag ts">信号机制</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>信号博弈是不完全信息博弈的特殊形式。核心问题：<strong>拥有私人信息的一方如何通过"信号"向不知情方传递信息？</strong></p>
@@ -588,10 +600,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">学历投资：高能力者获得高学历（高成本但对高能力者成本低），低能力者不获得高学历。学历成为能力的可信信号。这解释了为什么人们愿意投资学历——即使学历本身不直接提高能力。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
 </div></div>
 
 <!-- CARD 14 -->
-<div class="card" data-p="p14" data-s="bz,mg,ka,cr">
+<div class="card" id="card-14" data-p="p14" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">14</div><div class="ctg"><div class="ct">拍卖理论</div><div class="cs">Auction Theory · 竞价机制的设计</div><div class="ctags"><span class="tag ts">机制设计</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>拍卖理论研究了不同拍卖机制下参与者的<strong>最优竞价策略</strong>。核心发现：不同拍卖机制下，参与者的最优策略不同，但收益等价定理表明某些拍卖机制的期望收益相同。</p>
@@ -615,10 +628,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">薪资谈判：一级价格密封谈判中，候选人会"低报"自己的能力（要求低于能力的薪资）。二级价格密封谈判中，候选人会"诚实报告"自己的能力。这解释了为什么面试常用多轮面试——类似二级价格机制，鼓励诚实报告。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-5">第一性原理 · 白痴指数</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></div>
 </div></div>
 
 <!-- CARD 15 -->
-<div class="card" data-p="p15" data-s="bz,mg,ka,cr">
+<div class="card" id="card-15" data-p="p15" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">15</div><div class="ctg"><div class="ct">机制设计</div><div class="cs">Mechanism Design · 规则的设计</div><div class="ctags"><span class="tag ts">机制设计</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>机制设计是"逆向博弈论"——<strong>给定目标，设计规则使参与者的均衡行为达到目标</strong>。核心问题：如何设计规则使自利的参与者做出对社会最优的行为？</p>
@@ -643,10 +657,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队激励机制：设计激励机制使团队成员有动机合作（激励相容）且愿意加入团队（个体理性）。例如，团队绩效奖金（激励相容）+个人底薪（个体理性）。这解释了为什么好的团队激励机制比好的团队成员更重要。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a></div></div>
 </div></div>
 
 <!-- CARD 16 -->
-<div class="card" data-p="p16" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-16" data-p="p16" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">16</div><div class="ctg"><div class="ct">讨价还价</div><div class="cs">Bargaining · 谈判的博弈</div><div class="ctags"><span class="tag ts">谈判机制</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>讨价还价博弈研究参与者如何<strong>分配合作剩余</strong>。核心模型：Rubinstein轮流报价模型——参与者轮流提出分配方案，对方接受或拒绝。</p>
@@ -670,10 +685,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">薪资谈判：如果你更有耐心（δ更大），你可以得更高的薪资；如果公司更有耐心，公司支付更低的薪资。这解释了为什么面试中"不急于接受offer"往往是优势。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></div>
 </div></div>
 
 <!-- CARD 17 -->
-<div class="card" data-p="p17" data-s="bz,mg,ka,cr">
+<div class="card" id="card-17" data-p="p17" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">17</div><div class="ctg"><div class="ct">演化博弈</div><div class="cs">Evolutionary Games · 策略的演化</div><div class="ctags"><span class="tag ts">动态演化</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>演化博弈研究<strong>策略在群体中的演化</strong>。核心概念：演化稳定策略（ESS）——如果群体中大多数使用该策略，任何少数变异策略都无法入侵。</p>
@@ -697,10 +713,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队文化：如果大多数团队成员都合作，任何少数搭便车的人都无法成功（因为大多数人都不信任他们）。这解释了为什么合作文化能够在团队中稳定存在——即使单次合作中搭便车是优势战略。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-14">毛选 · 星星之火可以燎原</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="fp.html#card-7">第一性原理 · 非连续性与第二曲线</a></div></div>
 </div></div>
 
 <!-- CARD 18 -->
-<div class="card" data-p="p18" data-s="bz,mg,ka,cr">
+<div class="card" id="card-18" data-p="p18" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">18</div><div class="ctg"><div class="ct">合作博弈</div><div class="cs">Cooperative Games · 联盟的形成</div><div class="ctags"><span class="tag ts">联盟形成</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>合作博弈研究<strong>联盟如何形成、如何分配合作收益</strong>。核心概念：特征函数 v(S) 表示联盟 S 可以获得的收益。</p>
@@ -724,10 +741,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队激励：3人团队合作。如果分配方案在核心中，团队稳定；否则，某些成员会脱离。这解释了为什么某些团队激励方案能够长期存在，而某些会导致团队分裂。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-6">毛选 · 阶级分析法</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a></div></div>
 </div></div>
 
 <!-- CARD 19 -->
-<div class="card" data-p="p19" data-s="bz,mg,ka,cr">
+<div class="card" id="card-19" data-p="p19" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">19</div><div class="ctg"><div class="ct">廉价交谈</div><div class="cs">Cheap Talk · 无成本沟通</div><div class="ctags"><span class="tag ts">沟通机制</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>廉价交谈是<strong>无成本的、不可验证的沟通</strong>。核心问题：在没有成本的情况下，沟通能否传递信息？</p>
@@ -751,10 +769,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队沟通：如果团队成员利益一致（固定薪资），团队沟通可以信任；如果利益不一致（绩效奖金），团队沟通不可信任。这解释了为什么固定薪资团队比绩效奖金团队沟通更有效。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
 </div></div>
 
 <!-- CARD 20 -->
-<div class="card" data-p="p20" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-20" data-p="p20" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">20</div><div class="ctg"><div class="ct">声誉</div><div class="cs">Reputation · 长期信誉的博弈</div><div class="ctags"><span class="tag ts">信誉机制</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>声誉是<strong>长期关系中建立的信誉</strong>。核心发现：在重复博弈中，参与者可以通过建立"好声誉"获得长期收益。</p>
@@ -778,10 +797,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业</div><div class="stx">个人品牌：如果个人建立好声誉（工作能力强），吸引更多机会，得更多收益；如果个人欺骗（工作能力差），坏声誉损害长期利益。这解释了为什么个人重视个人品牌——因为好声誉可以带来长期收益。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a></div></div>
 </div></div>
 
 <!-- CARD 21 -->
-<div class="card" data-p="p21" data-s="bz,mg,ka,cr">
+<div class="card" id="card-21" data-p="p21" data-s="bz,mg,ka,cr">
 <div class="ch"><div class="cnum">21</div><div class="ctg"><div class="ct">核心与沙普利值</div><div class="cs">Core & Shapley Value · 合作收益的分配</div><div class="ctags"><span class="tag ts">分配机制</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>核心（Core）和沙普利值（Shapley Value）是合作博弈中<strong>分配合作收益的两种方法</strong>。</p>
@@ -805,10 +825,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队激励分配：如果分配方案在核心中，团队稳定；如果分配方案是沙普利值，团队公平。这解释了为什么某些团队激励方案既稳定又公平——因为分配方案既在核心中又是沙普利值。</div></div>
   </div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-6">毛选 · 阶级分析法</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a></div></div>
 </div></div>
 
 <!-- CARD 22 -->
-<div class="card" data-p="p22" data-s="bz,mg,ka,cr,lf">
+<div class="card" id="card-22" data-p="p22" data-s="bz,mg,ka,cr,lf">
 <div class="ch"><div class="cnum">22</div><div class="ctg"><div class="ct">边界与应用总结</div><div class="cs">Boundaries & Applications · 博弈论的局限与总结</div><div class="ctags"><span class="tag ts">边界总结</span><span class="tag tt">全场景</span></div></div><div class="conf"><div class="dot dg"></div>经典</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心定义</div><p>博弈论的<strong>边界与局限</strong>：博弈论假设参与者是理性的、收益函数已知、信息结构明确。现实中这些假设可能不成立。</p>
@@ -831,6 +852,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">边界</div>
   <div class="bnd"><h4>何时不用博弈论</h4><p><strong>不用博弈论：</strong>如果参与者不是完全理性的（如情绪化决策）、收益函数未知、信息结构不明确。此时应使用行为博弈论、不完全契约理论等替代理论。</p></div>
 </div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-10">第一性原理 · 第一性原理的边界</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></div>
 </div></div>
 
 </div></div>

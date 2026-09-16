@@ -59,7 +59,7 @@ a{color:var(--accent);text-decoration:none}
 .fbtn.on{background:var(--accent);color:#fff;font-weight:600}
 .fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
 .cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
-.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
 .card.hidden{display:none}
 .ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
 .cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
@@ -211,7 +211,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="c"><div class="cards">
 
 <!-- CARD 1 -->
-<div class="card" data-p="p1" data-s="ka,bz,mg,cr,lf">
+<div class="card" id="card-1" data-p="p1" data-s="ka,bz,mg,cr,lf">
 <div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">第一性原理的定义</div><div class="cs">亚里士多德《形而上学》 · 一切推理的起点</div><div class="ctags"><span class="tag ts">核心定义</span><span class="tag tt">全部场景</span></div></div><div class="conf"><div class="dot dg"></div>原文</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>每个系统中都存在一个<strong>最基本的命题或假设，它不能被省略或删除，也不能被违反</strong>。从这个最根本的命题出发，通过逻辑演绎推导出其余一切结论。</p></div>
@@ -248,11 +248,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">购物前追问："我为什么要买这个东西？它真的能满足我目前的核心需求吗？"（hr.edu.cn 应用案例）</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（第一性原理的推理方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（第一性原理的失效场景）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（第一性原理的推理方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（第一性原理的失效场景）</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a></div></div>
 </div></div>
 
 <!-- CARD 2 -->
-<div class="card" data-p="p2" data-s="ka,bz,mg,cr">
+<div class="card" id="card-2" data-p="p2" data-s="ka,bz,mg,cr">
 <div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">演绎法 vs 归纳法</div><div class="cs">两种推理方式的分野 · 第一性原理用演绎</div><div class="ctags"><span class="tag ts">推理方法</span><span class="tag tt">商业</span><span class="tag tt">KA</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>归纳法从大量经验中总结规律（<strong>从特殊到一般</strong>），演绎法从第一原理推导结论（<strong>从一般到特殊</strong>）。第一性原理思维使用的是演绎法——但多数人默认使用归纳法。</p></div>
@@ -280,11 +280,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">"同学都去大厂了"是归纳；"我的能力结构和市场需求的最优匹配点在哪"是演绎。择业禁忌：与周围同学同化竞争、服从同一KPI（李善友价值网理论）。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 公理化方法（演绎法的极致形态）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（演绎的起点是第一性原理）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 公理化方法（演绎法的极致形态）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（演绎的起点是第一性原理）</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="game-theory.html#card-12">博弈论 · 贝叶斯博弈</a></div></div>
 </div></div>
 
 <!-- CARD 3 -->
-<div class="card" data-p="p3" data-s="bz,mg">
+<div class="card" id="card-3" data-p="p3" data-s="bz,mg">
 <div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">公理化方法</div><div class="cs">欧几里得 → 牛顿 → 笛卡尔 · 从公理到体系</div><div class="ctags"><span class="tag ts">体系构建</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>公理化方法 = <strong>少量不可证明的公理 + 严格逻辑推理 = 整个知识体系</strong>。欧几里得用5条公理构建了几何学；牛顿用3条定律构建了力学；笛卡尔用"我思故我在"构建了哲学。</p></div>
@@ -317,11 +317,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">芒格守则："先找到一个简单基本的道理，再非常严格地按此行事。"先定义你的投资/经营公理，再推导行动。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（公理化方法使用演绎推理）</a><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（公理的来源是跨学科）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（公理化方法使用演绎推理）</a><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（公理的来源是跨学科）</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a><a class="rt" href="game-theory.html#card-1">博弈论 · 战略式博弈</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
 </div></div>
 
 <!-- CARD 4 -->
-<div class="card" data-p="p4" data-s="bz,ka,mg">
+<div class="card" id="card-4" data-p="p4" data-s="bz,ka,mg">
 <div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">马斯克的第一性原理实践</div><div class="cs">SpaceX 火箭 · 特斯拉电池 · 拆解到物理层</div><div class="ctags"><span class="tag ts">实战案例</span><span class="tag tt">商业</span><span class="tag tt">KA</span></div></div><div class="conf"><div class="dot dg"></div>原文</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>马斯克把第一性原理从哲学概念变成了<strong>商业创新的操作工具</strong>：把产品拆解到物理/原材料层面，重新计算成本与可行性，发现"行业共识"不过是未被质疑的假设。</p></div>
@@ -353,11 +353,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">"周报必须周五交"是要求还是物理定律？追问每条流程的起草人和理由——多数流程是历史惯性而非必要约束。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 白痴指数（成本重构的量化工具）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（拆解的目的是找到第一性）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 白痴指数（成本重构的量化工具）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（拆解的目的是找到第一性）</a><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
 </div></div>
 
 <!-- CARD 5 -->
-<div class="card" data-p="p5" data-s="bz,ka">
+<div class="card" id="card-5" data-p="p5" data-s="bz,ka">
 <div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">白痴指数</div><div class="cs">Idiot Index · 成品价/原材料价的倍数</div><div class="ctags"><span class="tag ts">量化工具</span><span class="tag tt">商业</span><span class="tag tt">KA</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>白痴指数 = <strong>成品成本 ÷ 基本材料成本</strong>。指数越高，说明这个环节的"溢价泡沫"越大，越有重构空间。这是马斯克将第一性原理量化的工具。</p></div>
@@ -376,11 +376,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">品牌营销费用里，多少是"原材料"（真实的流量/曝光/补贴），多少是"加工费"（中间商、低效投放）？白痴指数高的投放环节值得重构。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 马斯克实践（白痴指数是其核心工具）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（白痴指数不适用于服务/品牌溢价场景）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 马斯克实践（白痴指数是其核心工具）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（白痴指数不适用于服务/品牌溢价场景）</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="game-theory.html#card-14">博弈论 · 拍卖理论</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
 </div></div>
 
 <!-- CARD 6 -->
-<div class="card" data-p="p6" data-s="bz,ka,mg,cr">
+<div class="card" id="card-6" data-p="p6" data-s="bz,ka,mg,cr">
 <div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">破界创新</div><div class="cs">李善友创新理论 · 打破隐含假设</div><div class="ctags"><span class="tag ts">创新框架</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>真正的创新不是"在现有边界内做得更好"，而是<strong>发现并打破系统中的隐含假设</strong>。每个系统都建立在一组未被质疑的假设之上，打破其中一条，整个系统就会被重新定义。</p></div>
@@ -404,11 +404,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">"我必须在同一个行业继续做"是隐含假设。打破它：我的可迁移能力是什么？哪些行业需要这些能力？</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 第二曲线（破界后需要新曲线承接）</a><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（打破假设靠演绎而非归纳）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 第二曲线（破界后需要新曲线承接）</a><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（打破假设靠演绎而非归纳）</a><a class="rt" href="game-theory.html#card-2">博弈论 · 纳什均衡</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a></div></div>
 </div></div>
 
 <!-- CARD 7 -->
-<div class="card" data-p="p7" data-s="bz,ka,cr">
+<div class="card" id="card-7" data-p="p7" data-s="bz,ka,cr">
 <div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">非连续性与第二曲线</div><div class="cs">李善友创新理论 · 增长引擎的切换</div><div class="ctags"><span class="tag ts">战略框架</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>任何增长曲线都会到达极限点。<strong>在第一条曲线到达极限之前，必须启动第二条曲线</strong>——而第二曲线往往与第一曲线"非连续"（需要完全不同的能力和组织）。</p></div>
@@ -427,11 +427,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">传统满减营销是第一曲线；内容化/私域运营可能是第二曲线。别等满减失效再转型。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 破界创新（第二曲线的启动方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（识别极限点需要冷静判断）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 破界创新（第二曲线的启动方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（识别极限点需要冷静判断）</a><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a><a class="rt" href="mao.html#card-14">毛选 · 星星之火可以燎原</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈</a></div></div>
 </div></div>
 
 <!-- CARD 8 -->
-<div class="card" data-p="p8" data-s="bz,mg,cr">
+<div class="card" id="card-8" data-p="p8" data-s="bz,mg,cr">
 <div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">多元思维模型</div><div class="cs">查理·芒格 · 跨学科的模型网络</div><div class="ctags"><span class="tag ts">思维工具库</span><span class="tag tt">商业</span><span class="tag tt">管理</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>原文</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>单一学科的思维模型会导致"铁锤人综合症"。<strong>多个学科的核心模型组成网络，才能看清事物的全貌</strong>。第一性原理是多元思维模型网络中的"根节点"——它教会你如何为每个学科找到基本原理。</p></div>
@@ -456,11 +456,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">判断一个人是否撒谎看瞳孔（心理学）；判断团队健康看发言是否平均（社会学）——跨学科模型提高判断准确率。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 刻意练习（模型需要练习才能内化）</a><a class="rt" href="javascript:scrollCard(3)">→ 公理化（每个学科的模型就是该学科的"公理"）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 刻意练习（模型需要练习才能内化）</a><a class="rt" href="javascript:scrollCard(3)">→ 公理化（每个学科的模型就是该学科的"公理"）</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="mao.html#card-11">毛选 · 改造我们的学习</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
 </div></div>
 
 <!-- CARD 9 -->
-<div class="card" data-p="p9" data-s="mg,cr,lf">
+<div class="card" id="card-9" data-p="p9" data-s="mg,cr,lf">
 <div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">刻意练习与思维模型</div><div class="cs">李善友学习法 · 模型 → 讲课 → 迭代</div><div class="ctags"><span class="tag ts">学习方法</span><span class="tag tt">职业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>知道模型≠掌握模型。<strong>模型必须经过"提炼→讲授→迭代"的循环才能内化为自己的思维工具。</strong>脑力工作者的水平取决于掌握"套路"（心理表征）的多少。</p></div>
@@ -479,11 +479,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">日常重复经验无法建立思维模型——刷100个短视频不如精读1本书提炼1个模型。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（练习的对象）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（第一性原理本身就是最重要的模型）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（练习的对象）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（第一性原理本身就是最重要的模型）</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a></div></div>
 </div></div>
 
 <!-- CARD 10 -->
-<div class="card" data-p="p10" data-s="bz,ka,mg,cr,lf">
+<div class="card" id="card-10" data-p="p10" data-s="bz,ka,mg,cr,lf">
 <div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">第一性原理的边界</div><div class="cs">什么时候不该用 · 诚实面对局限</div><div class="ctags"><span class="tag ts">适用边界</span><span class="tag tt">全部场景</span></div></div><div class="conf"><div class="dot do"></div>综述</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>第一性原理不是万能钥匙。马斯克自己承认它"<strong>很花精力</strong>"。在错误场景使用第一性原理，代价大于收益。</p></div>
@@ -507,7 +507,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">选餐厅用归纳（大众点评评分）；选职业方向用演绎（从能力/兴趣/需求的第一性推导）。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法 vs 归纳法（边界的本质是场景判断）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（回到起点）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法 vs 归纳法（边界的本质是场景判断）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（回到起点）</a><a class="rt" href="game-theory.html#card-22">博弈论 · 边界与应用总结</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
 </div></div>
 
 </div><!-- end cards -->

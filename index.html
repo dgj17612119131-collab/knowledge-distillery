@@ -3,303 +3,432 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="default">
-<link rel="manifest" href="manifest.json">
-<link rel="apple-touch-icon" href="icon-192.png">
-<title>知识蒸馏工坊</title>
+<title>知识蒸馏工坊 · 书库</title>
 <style>
 :root{
-  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.82);--surface-solid:#FFF;
   --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
   --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
   --accent:#007AFF;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
-  --r-sm:10px;--r-md:14px;--r-lg:20px;--r-xl:28px;
+  --blue:#007AFF;--crimson:#C41E3A;--violet:#7C3AED;--emerald:#059669;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
   --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
-  --shadow-lg:0 4px 24px rgba(0,0,0,.08);
-  --safe-b:env(safe-area-inset-bottom,0px);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
 }
 @media(prefers-color-scheme:dark){:root{
-  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --bg:#000;--surface:rgba(28,28,30,.82);--surface-solid:#1C1C1E;
   --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
   --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#0A84FF;--blue:#0A84FF;--crimson:#FF453A;--violet:#B488F8;--emerald:#34D399;
   --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
-  --shadow-lg:0 4px 24px rgba(0,0,0,.25);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
 }}
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh}
 a{color:var(--accent);text-decoration:none}
-
-/* Nav */
-.nav{position:sticky;top:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:0 16px}
-.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px}
-.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em}
-.nav-badge{margin-left:auto;font-size:13px;color:var(--t3);font-weight:500}
-
-/* Container */
-.c{max-width:680px;margin:0 auto;padding:0 16px}
+.container{max-width:900px;margin:0 auto;padding:0 16px}
 
 /* Hero */
-.hero{padding:48px 0 32px;text-align:center}
-.hero-icon{width:72px;height:72px;border-radius:18px;background:linear-gradient(135deg,#007AFF,#5856D6);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;font-size:32px;box-shadow:0 8px 32px rgba(0,122,255,.25)}
-.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
-.hero p{font-size:15px;color:var(--t3);margin-top:8px;line-height:1.5}
-
-/* Stats Row */
-.stats{display:flex;gap:0;background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);margin-bottom:28px;overflow:hidden}
-.stat{flex:1;text-align:center;padding:16px 8px;border-right:.5px solid var(--border)}
+.hero{padding:40px 0 24px;text-align:center}
+.hero-icon{width:64px;height:64px;border-radius:16px;background:linear-gradient(135deg,#007AFF,#5856D6);display:flex;align-items:center;justify-content:center;margin:0 auto 16px;font-size:28px;box-shadow:0 8px 24px rgba(0,122,255,.2)}
+.hero h1{font-size:28px;font-weight:800;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px;line-height:1.6}
+.hero-stats{display:flex;justify-content:center;gap:0;margin-top:20px;background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden}
+.stat{flex:1;text-align:center;padding:14px 8px;border-right:.5px solid var(--border)}
 .stat:last-child{border-right:none}
-.stat-n{font-size:24px;font-weight:700;color:var(--accent);letter-spacing:-.02em}
-.stat-l{font-size:11px;color:var(--t3);margin-top:2px;font-weight:500;text-transform:uppercase;letter-spacing:.05em}
+.stat-n{font-size:22px;font-weight:700;color:var(--accent)}
+.stat-l{font-size:11px;color:var(--t4);margin-top:2px;font-weight:500}
 
-/* Section */
-.sec{margin-bottom:28px}
-.sec-h{font-size:22px;font-weight:700;letter-spacing:-.02em;margin-bottom:14px;padding:0 4px}
-.sec-sub{font-size:13px;color:var(--t3);font-weight:500;text-transform:uppercase;letter-spacing:.06em;margin-bottom:8px;padding:0 4px}
+/* Books */
+.books{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:28px}
+.book{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px;cursor:pointer;transition:all .15s;text-decoration:none;color:var(--text);display:block;border-left:4px solid var(--accent)}
+.book:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.book:active{transform:scale(.98)}
+.book-title{font-size:16px;font-weight:700;margin-bottom:3px;line-height:1.3}
+.book-author{font-size:12px;color:var(--t3);margin-bottom:8px}
+.book-count{font-size:11px;font-weight:600;color:var(--accent);background:rgba(0,122,255,.1);padding:2px 10px;border-radius:20px;display:inline-block}
+.book:nth-child(1){border-left-color:var(--blue)}
+.book:nth-child(2){border-left-color:var(--crimson)}
+.book:nth-child(3){border-left-color:var(--violet)}
+.book:nth-child(4){border-left-color:var(--emerald)}
+.book:nth-child(1) .book-count{background:rgba(0,122,255,.1);color:var(--blue)}
+.book:nth-child(2) .book-count{background:rgba(196,30,58,.1);color:var(--crimson)}
+.book:nth-child(3) .book-count{background:rgba(124,58,237,.1);color:var(--violet)}
+.book:nth-child(4) .book-count{background:rgba(5,150,105,.1);color:var(--emerald)}
 
-/* Book Card */
-.book-card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px;transition:transform .15s,box-shadow .15s}
-.book-card:active{transform:scale(.98);box-shadow:var(--shadow-lg)}
-.book-link{display:block;padding:18px 20px;text-decoration:none;color:inherit}
-.book-top{display:flex;align-items:center;gap:14px;margin-bottom:10px}
-.book-emoji{font-size:36px;line-height:1}
-.book-name{font-size:17px;font-weight:600;letter-spacing:-.01em;flex:1}
-.book-arrow{color:var(--t4);font-size:20px;font-weight:300}
-.book-meta{font-size:13px;color:var(--t3);display:flex;gap:12px;flex-wrap:wrap;margin-bottom:10px}
-.book-tags{display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px;letter-spacing:.01em}
-.tag-blue{background:rgba(0,122,255,.1);color:var(--accent)}
-.tag-red{background:rgba(255,59,48,.1);color:var(--red)}
-.tag-purple{background:rgba(175,82,222,.1);color:var(--purple)}
-.book-ph{opacity:.4;pointer-events:none}
+/* Search Section */
+.search-section{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:28px}
+.search-label{font-size:13px;font-weight:600;color:var(--t3);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.search-row{display:flex;gap:8px;margin-bottom:16px}
+.search-input{flex:1;padding:10px 14px;border-radius:var(--r-md);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:border-color .2s}
+.search-input:focus{border-color:var(--accent)}
+.search-input::placeholder{color:var(--t4)}
+.search-btn{padding:10px 20px;border-radius:var(--r-md);border:none;background:var(--accent);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s;white-space:nowrap}
+.search-btn:hover{opacity:.85}
+.question-row{display:flex;gap:8px}
+.question-input{flex:1;padding:10px 14px;border-radius:var(--r-md);border:1.5px solid var(--border);background:var(--bg);color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:border-color .2s;resize:none;min-height:42px;max-height:100px}
+.question-input:focus{border-color:var(--orange)}
+.question-input::placeholder{color:var(--t4)}
+.question-btn{padding:10px 20px;border-radius:var(--r-md);border:none;background:var(--orange);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s;white-space:nowrap}
+.question-btn:hover{opacity:.85}
+.search-hint{font-size:11px;color:var(--t4);margin-top:8px}
+.result-count{font-size:13px;color:var(--t2);margin-bottom:16px;padding:8px 14px;background:var(--fill);border-radius:var(--r-sm);display:none;font-weight:500}
+.result-count.show{display:block}
 
-/* Theme Grid */
-.theme-card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
-.theme-title{font-size:15px;font-weight:600;margin-bottom:12px;display:flex;align-items:center;gap:8px}
-.theme-title .ic{font-size:18px}
-.theme-link{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);text-decoration:none;color:var(--text);font-size:14px;line-height:1.4;gap:8px;min-height:44px}
-.theme-link:last-child{border-bottom:none}
-.theme-link:active{opacity:.6}
-.tl-text{flex:1}
-.tl-src{font-size:11px;color:var(--t3);font-weight:500;white-space:nowrap;flex-shrink:0}
-.tl-arrow{color:var(--t4);font-size:16px;font-weight:300;flex-shrink:0}
+/* Match Results */
+.match-section{margin-bottom:28px;display:none}
+.match-section.show{display:block}
+.match-header{font-size:17px;font-weight:700;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.match-count{font-size:13px;color:var(--t4);font-weight:400}
+.match-grid{display:grid;grid-template-columns:1fr;gap:10px}
 
-/* Tension Cards */
-.tens-card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
-.tens-card:active{opacity:.8}
-.tens-title{font-size:15px;font-weight:600;margin-bottom:6px}
-.tens-vs{display:flex;align-items:center;gap:6px;margin-bottom:8px;font-size:13px;flex-wrap:wrap}
-.vs-a{background:rgba(0,122,255,.1);color:var(--accent);padding:3px 8px;border-radius:6px;font-weight:600;font-size:12px}
-.vs-b{background:rgba(255,149,0,.1);color:var(--orange);padding:3px 8px;border-radius:6px;font-weight:600;font-size:12px}
-.vs-bolt{color:var(--red);font-weight:700}
-.tens-desc{font-size:13px;color:var(--t2);line-height:1.5}
+/* Topic Nav */
+.topic-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
+.topic-nav::-webkit-scrollbar{display:none}
+.topic-btn{padding:7px 16px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;font-family:inherit}
+.topic-btn.active{color:#fff;font-weight:600}
+.topic-btn[data-topic="all"].active{background:var(--accent)}
+.topic-btn[data-topic="compete"].active{background:var(--blue)}
+.topic-btn[data-topic="decision"].active{background:var(--violet)}
+.topic-btn[data-topic="system"].active{background:var(--emerald)}
+.topic-btn[data-topic="org"].active{background:var(--crimson)}
+.topic-btn[data-topic="innovate"].active{background:var(--orange)}
 
-/* How Section */
-.how{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-top:8px}
-.how h3{font-size:17px;font-weight:600;margin-bottom:14px}
-.how-item{display:flex;gap:12px;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;line-height:1.5;color:var(--t2)}
-.how-item:last-child{border-bottom:none}
-.how-icon{font-size:20px;flex-shrink:0;margin-top:1px}
-.how-item strong{color:var(--text);font-weight:600}
+/* Topic Section */
+.topic-section{margin-bottom:32px}
+.topic-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--border)}
+.topic-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+.topic-header h2{font-size:18px;font-weight:700;letter-spacing:-.02em}
+.topic-header .tc{font-size:12px;color:var(--t4);margin-left:auto;font-weight:500}
+
+/* Cards Grid */
+.cards-grid{display:grid;grid-template-columns:1fr;gap:10px}
+
+/* Card Item */
+.ci{background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;transition:all .15s;cursor:pointer;text-decoration:none;color:var(--text);display:block;position:relative;overflow:hidden}
+.ci:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.ci:active{transform:scale(.99)}
+.ci::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;border-radius:0 2px 2px 0}
+.ci[data-book="sunzi"]::before{background:var(--blue)}
+.ci[data-book="mao"]::before{background:var(--crimson)}
+.ci[data-book="fp"]::before{background:var(--violet)}
+.ci[data-book="gt"]::before{background:var(--emerald)}
+.ci-head{display:flex;align-items:center;margin-bottom:4px;padding-left:2px}
+.ci-num{font-size:10px;font-weight:700;color:#fff;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;margin-right:6px;flex-shrink:0}
+.ci[data-book="sunzi"] .ci-num{background:var(--blue)}
+.ci[data-book="mao"] .ci-num{background:var(--crimson)}
+.ci[data-book="fp"] .ci-num{background:var(--violet)}
+.ci[data-book="gt"] .ci-num{background:var(--emerald)}
+.ci-title{font-size:14px;font-weight:700;line-height:1.3}
+.ci-score{font-size:10px;font-weight:700;color:#fff;background:var(--orange);padding:2px 6px;border-radius:4px;margin-left:6px;flex-shrink:0}
+.ci-book{font-size:11px;color:var(--t4);margin-bottom:4px;padding-left:30px}
+.ci-concept{font-size:13px;color:var(--t2);line-height:1.5;margin-bottom:6px;padding-left:30px}
+.ci-tags{display:flex;gap:4px;flex-wrap:wrap;padding-left:30px}
+.tag{font-size:10px;font-weight:600;padding:2px 6px;border-radius:5px}
+.tag-b{background:rgba(0,122,255,.1);color:var(--accent)}
+.ci[data-book="mao"] .tag-b{background:rgba(196,30,58,.1);color:var(--crimson)}
+.ci[data-book="fp"] .tag-b{background:rgba(124,58,237,.1);color:var(--violet)}
+.ci[data-book="gt"] .tag-b{background:rgba(5,150,105,.1);color:var(--emerald)}
+.ci.hidden{display:none}
 
 /* Footer */
-.foot{text-align:center;padding:32px 16px;color:var(--t4);font-size:12px}
-
-/* Bottom Tab Bar (decorative for index) */
-.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:100;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:center;gap:0}
-.tab{flex:1;max-width:120px;text-align:center;padding:4px 0;color:var(--accent)}
-.tab-icon{font-size:22px;margin-bottom:2px}
-.tab-label{font-size:10px;font-weight:500}
-.tab-inactive{color:var(--t4)}
+.footer{text-align:center;padding:28px 0;color:var(--t4);font-size:12px}
 
 /* Responsive */
+@media(min-width:600px){
+  .cards-grid,.match-grid{grid-template-columns:1fr 1fr}
+}
 @media(min-width:700px){
   .hero h1{font-size:34px}
-  .theme-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-  .theme-grid .theme-card{margin-bottom:0}
+  .books{grid-template-columns:repeat(4,1fr)}
+}
+@media(max-width:500px){
+  .hero h1{font-size:24px}
+  .search-row,.question-row{flex-direction:column}
+  .search-btn,.question-btn{width:100%}
+  .hero-stats{flex-wrap:wrap}
+  .stat{min-width:25%}
 }
 </style>
 </head>
 <body>
 
-<div class="nav"><div class="nav-inner"><span class="nav-title">知识蒸馏工坊</span><span class="nav-badge">知识库</span></div></div>
-
-<div class="c">
+<div class="container">
 
 <div class="hero">
   <div class="hero-icon">📖</div>
   <h1>知识蒸馏工坊</h1>
-  <p>从书中蒸馏方法论，映射到实际工作难题</p>
-</div>
-
-<div class="stats">
-  <div class="stat"><div class="stat-n">2</div><div class="stat-l">本书</div></div>
-  <div class="stat"><div class="stat-n">12</div><div class="stat-l">决策卡片</div></div>
-  <div class="stat"><div class="stat-n">8</div><div class="stat-l">原则张力</div></div>
-  <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景领域</div></div>
+  <div class="hero-sub">4本经典 · 56张决策卡片 · 从竞争策略到创新突破的思维工具箱</div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-n">4</div><div class="stat-l">本书</div></div>
+    <div class="stat"><div class="stat-n">56</div><div class="stat-l">卡片</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">主题</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景</div></div>
+  </div>
 </div>
 
 <!-- Books -->
-<div class="sec">
-  <div class="sec-sub">Library</div>
-  <div class="sec-h">书目目录</div>
-  <div class="book-card">
-    <a class="book-link" href="sunzi.html">
-      <div class="book-top"><span class="book-emoji">⚔️</span><span class="book-name">华杉讲透孙子兵法</span><span class="book-arrow">›</span></div>
-      <div class="book-meta"><span>华杉</span><span>6 张卡片</span><span>战略 · 竞争</span></div>
-      <div class="book-tags">
-        <span class="tag tag-red">不战</span><span class="tag tag-red">先胜</span><span class="tag tag-red">五事七计</span>
-        <span class="tag tag-red">正奇</span><span class="tag tag-red">致人</span><span class="tag tag-red">兵贵胜</span>
-      </div>
-    </a>
-  </div>
-  <div class="book-card">
-    <a class="book-link" href="mao.html">
-      <div class="book-top"><span class="book-emoji">⭐</span><span class="book-name">毛泽东选集</span><span class="book-arrow">›</span></div>
-      <div class="book-meta"><span>方法论蒸馏</span><span>18 张卡片 · 159篇索引</span><span>调研 · 矛盾 · 实践</span></div>
-      <div class="book-tags">
-        <span class="tag tag-red">调查研究</span><span class="tag tag-red">矛盾论</span><span class="tag tag-red">实践论</span>
-        <span class="tag tag-red">群众路线</span><span class="tag tag-red">集中力量</span><span class="tag tag-red">愚公移山</span>
-      </div>
-    </a>
-  </div>
-  <div class="book-card">
-    <a class="book-link" href="fp.html">
-      <div class="book-top"><span class="book-emoji">🧠</span><span class="book-name">第一性原理</span><span class="book-arrow">›</span></div>
-      <div class="book-meta"><span>思维方法论</span><span>10 张卡片</span><span>亚里士多德 → 马斯克 → 李善友</span></div>
-      <div class="book-tags">
-        <span class="tag tag-purple">演绎法</span><span class="tag tag-purple">公理化</span><span class="tag tag-purple">白痴指数</span>
-        <span class="tag tag-purple">破界创新</span><span class="tag tag-purple">第二曲线</span><span class="tag tag-purple">多元模型</span>
-      </div>
-    </a>
-  </div>
-  <div class="book-card book-ph">
-    <div class="book-link">
-      <div class="book-top"><span class="book-emoji">📖</span><span class="book-name">下一本书…</span><span class="book-arrow">+</span></div>
-      <div class="book-meta"><span>等待蒸馏</span></div>
-    </div>
-  </div>
-</div>
-
-<!-- Themes -->
-<div class="sec">
-  <div class="sec-sub">Browse</div>
-  <div class="sec-h">跨书主题索引</div>
-  <div class="theme-grid">
-    <div class="theme-card">
-      <div class="theme-title"><span class="ic">🎯</span>竞争策略</div>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">不战而屈人之兵 — 用实力壁垒避免消耗战</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">以正合以奇胜 — 基本面 + 创新突破</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">致人而不致于人 — 主动权三原则</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">集中优势兵力 — 关键战场配置压倒性资源</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
-    </div>
-    <div class="theme-card">
-      <div class="theme-title"><span class="ic">🧮</span>决策评估</div>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">五事七计 — 道天地将法五维评估</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">先胜后战 — Go / No-Go 决策法</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">调查研究 — 没有调查就没有发言权</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">矛盾论 — 抓主要矛盾的方法论</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
-    </div>
-    <div class="theme-card">
-      <div class="theme-title"><span class="ic">⏱</span>节奏与时机</div>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">兵贵胜不贵久 — 速战速决与止损线</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">先胜后战 — 条件不具备时选择"不打"</span><span class="tl-src">孙子兵法</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">实践论 — 快迭代 vs 深调查的选择</span><span class="tl-src">毛选</span><span class="tl-arrow">›</span></a>
-    </div>
-    <div class="theme-card">
-      <div class="theme-title"><span class="ic">🏪</span>KA 运营</div>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">用运营深度建壁垒，让竞品伐不动</span><span class="tl-src">卡片 1</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">品牌经营五维诊断</span><span class="tl-src">卡片 3</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">稳定节奏 + 关键节点爆发</span><span class="tl-src">卡片 4</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">品牌拜访前深入一线"解剖麻雀"</span><span class="tl-src">毛选·调研</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">聚焦1-2个品牌集中力量打穿</span><span class="tl-src">毛选·集中</span><span class="tl-arrow">›</span></a>
-    </div>
-    <div class="theme-card">
-      <div class="theme-title"><span class="ic">🎯</span>职业发展</div>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">在竞争稀少的细分建壁垒</span><span class="tl-src">卡片 1</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">评估 offer 五维框架</span><span class="tl-src">卡片 3</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">定义叙事 + 保持选择权</span><span class="tl-src">卡片 5</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">自身能力和业绩是根基</span><span class="tl-src">毛选·自立</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">不确定就试——最小成本验证方向</span><span class="tl-src">毛选·实践</span><span class="tl-arrow">›</span></a>
-    </div>
-    <div class="theme-card">
-      <div class="theme-title"><span class="ic">💰</span>商业决策</div>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">找巨头覆盖不到的细分切入</span><span class="tl-src">卡片 1</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">尽调+回报+退出全到位再投</span><span class="tl-src">卡片 2</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="sunzi.html"><span class="tl-text">6-12月验证PMF，设止损线</span><span class="tl-src">卡片 6</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">进入新市场前亲自走访解剖麻雀</span><span class="tl-src">毛选·调研</span><span class="tl-arrow">›</span></a>
-      <a class="theme-link" href="mao.html"><span class="tl-text">先设计"没有融资也能活"的方案</span><span class="tl-src">毛选·自立</span><span class="tl-arrow">›</span></a>
-    </div>
-  </div>
-</div>
-
-<!-- Tensions -->
-<div class="sec">
-  <div class="sec-sub">Tensions</div>
-  <div class="sec-h">八组核心张力</div>
-  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">耐心 vs 速度</div>
-    <div class="tens-vs"><span class="vs-a">先胜后战</span><span class="vs-bolt">⚡</span><span class="vs-b">兵贵胜</span></div>
-    <div class="tens-desc">准备阶段要耐心，执行阶段要速度。最危险：没准备好就急着打 + 打了又犹豫不决。</div>
+<div class="books">
+  <a class="book" href="sunzi.html">
+    <div class="book-title">华杉讲透孙子兵法</div>
+    <div class="book-author">华杉</div>
+    <div class="book-count">6 张卡片</div>
   </a>
-  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">等待 vs 行动</div>
-    <div class="tens-vs"><span class="vs-a">先胜后战</span><span class="vs-bolt">⚡</span><span class="vs-b">致人</span></div>
-    <div class="tens-desc">准备多个方案本身就是"致人"。等待不是被动，是积极建设+保持警觉。</div>
+  <a class="book" href="mao.html">
+    <div class="book-title">毛泽东选集</div>
+    <div class="book-author">原文蒸馏 · 159篇</div>
+    <div class="book-count">18 张卡片</div>
   </a>
-  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">碾压 vs 巧取</div>
-    <div class="tens-vs"><span class="vs-a">不战</span><span class="vs-bolt">⚡</span><span class="vs-b">正奇</span></div>
-    <div class="tens-desc">不战是目标状态，奇正是过程手段。通往不战的路上需要持续用"奇"。</div>
+  <a class="book" href="fp.html">
+    <div class="book-title">第一性原理</div>
+    <div class="book-author">亚里士多德 → 马斯克</div>
+    <div class="book-count">10 张卡片</div>
   </a>
-  <a class="tens-card" href="sunzi.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">实力 vs 创新</div>
-    <div class="tens-vs"><span class="vs-a">五事七计</span><span class="vs-bolt">⚡</span><span class="vs-b">正奇</span></div>
-    <div class="tens-desc">五事决定"该不该打"，奇正决定"怎么打得更漂亮"。</div>
-  </a>
-  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">先调研 vs 先行动</div>
-    <div class="tens-vs"><span class="vs-a">调查研究</span><span class="vs-bolt">⚡</span><span class="vs-b">实践论</span></div>
-    <div class="tens-desc">调查研究是"获取信息"，实践论是"验证判断"。同一循环的不同阶段。</div>
-  </a>
-  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">集中 vs 分散</div>
-    <div class="tens-vs"><span class="vs-a">集中力量</span><span class="vs-bolt">⚡</span><span class="vs-b">群众路线</span></div>
-    <div class="tens-desc">信息收集要分散，资源投入要集中。用群众路线收集信息，用集中力量投入资源。</div>
-  </a>
-  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">自立 vs 开放</div>
-    <div class="tens-vs"><span class="vs-a">自力更生</span><span class="vs-bolt">⚡</span><span class="vs-b">群众路线</span></div>
-    <div class="tens-desc">能力建设靠自己，信息输入靠群众。执行基础自力更生，信息来源群众路线。</div>
-  </a>
-  <a class="tens-card" href="mao.html" style="display:block;text-decoration:none;color:inherit">
-    <div class="tens-title">快迭代 vs 深调查</div>
-    <div class="tens-vs"><span class="vs-a">实践论</span><span class="vs-bolt">⚡</span><span class="vs-b">调查研究</span></div>
-    <div class="tens-desc">试错成本低就快迭代，试错成本高就深调查。</div>
+  <a class="book" href="game-theory.html">
+    <div class="book-title">博弈论</div>
+    <div class="book-author">纳什 → 现代应用</div>
+    <div class="book-count">22 张卡片</div>
   </a>
 </div>
 
-<!-- How -->
-<div class="how">
-  <h3>使用方式</h3>
-  <div class="how-item"><span class="how-icon">📚</span><span><strong>读书模式</strong> — 给我一本书（PDF / 书名 / 笔记），走完蒸馏流程，输出知识卡片</span></div>
-  <div class="how-item"><span class="how-icon">🔍</span><span><strong>查用模式</strong> — 遇到问题时按场景或主题浏览索引，找到方法论，按决策流操作</span></div>
-  <div class="how-item"><span class="how-icon">⚡</span><span><strong>张力模式</strong> — 多个原则矛盾时查看调和逻辑</span></div>
-  <div class="how-item"><span class="how-icon">🔄</span><span><strong>跨书对话</strong> — 不同书对同一问题的不同观点，主题索引标注来源</span></div>
+<!-- Search -->
+<div class="search-section">
+  <div class="search-label">🔍 关键词搜索</div>
+  <div class="search-row">
+    <input class="search-input" id="searchInput" type="text" placeholder="输入关键词搜索（如：谈判、竞争、创新）...">
+    <button class="search-btn" onclick="doSearch()">搜索</button>
+  </div>
+  <div class="search-label" style="margin-top:4px">💡 问题匹配</div>
+  <div class="question-row">
+    <textarea class="question-input" id="questionInput" placeholder="描述你的问题（如：如何谈薪资？团队冲突怎么办？）"></textarea>
+    <button class="question-btn" onclick="doMatch()">匹配</button>
+  </div>
+  <div class="search-hint">搜索范围：标题、核心概念、标签 · 问题匹配基于语义关键词分析</div>
 </div>
 
-<div class="foot">知识蒸馏工坊 · 持续积累中</div>
+<!-- Result Count -->
+<div class="result-count" id="resultCount"></div>
+
+<!-- Match Results -->
+<div class="match-section" id="matchSection">
+  <div class="match-header">🎯 匹配结果 <span class="match-count" id="matchCount"></span></div>
+  <div class="match-grid" id="matchGrid"></div>
 </div>
 
-<div class="tabbar">
-  <div class="tab"><div class="tab-icon">📚</div><div class="tab-label">书库</div></div>
-  <div class="tab tab-inactive"><div class="tab-icon">🔍</div><div class="tab-label">检索</div></div>
-  <div class="tab tab-inactive"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+<!-- Topic Nav -->
+<div class="topic-nav">
+  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 56</button>
+  <button class="topic-btn" data-topic="compete" onclick="filterTopic('compete')">⚔️ 竞争策略</button>
+  <button class="topic-btn" data-topic="decision" onclick="filterTopic('decision')">🧠 决策方法</button>
+  <button class="topic-btn" data-topic="system" onclick="filterTopic('system')">🌐 系统思维</button>
+  <button class="topic-btn" data-topic="org" onclick="filterTopic('org')">👥 组织管理</button>
+  <button class="topic-btn" data-topic="innovate" onclick="filterTopic('innovate')">💡 创新突破</button>
+</div>
+
+<!-- Cards Container -->
+<div id="allCards"></div>
+
+<div class="footer">知识蒸馏工坊 · 2026 · 4本经典 · 56张决策卡片</div>
 </div>
 
 <script>
-if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+const cards=[
+// 孙子兵法
+{id:"s1",n:1,t:"不战而屈人之兵",bk:"sunzi",bn:"孙子兵法",c:"战争本身是失败。真正的胜利是不需要通过战斗就能达成的胜利。",tg:["战略哲学","KA","商业","职业","生活"],tp:["compete"],f:"sunzi.html",kw:"不战 屈人 伐谋 伐交 竞争 壁垒 实力 蜜雪冰城 拼多多 垄断 避免竞争"},
+{id:"s2",n:2,t:"先胜后战",bk:"sunzi",bn:"孙子兵法",c:"胜利不是打仗打出来的，是开战前就创造了必胜条件。",tg:["决策逻辑","KA","商业","职业"],tp:["compete","decision"],f:"sunzi.html",kw:"先胜 后战 条件 准备 必胜 足力健 华为 ofo 耐心 Go NoGo"},
+{id:"s3",n:3,t:"五事七计",bk:"sunzi",bn:"孙子兵法",c:"开战前用系统化维度对比双方实力。赢面大打，赢面小不打。",tg:["系统评估","KA","管理","商业","职业"],tp:["system","decision"],f:"sunzi.html",kw:"五事 七计 道天地将法 评估 系统 打分 美团 饿了么 西贝 对标 五维"},
+{id:"s4",n:4,t:"以正合，以奇胜",bk:"sunzi",bn:"孙子兵法",c:"正（基本面）稳住局面，奇（额外投入）取得胜利。没正=赌博，没奇=消耗战。",tg:["资源配置","KA","管理","商业","生活"],tp:["compete","innovate"],f:"sunzi.html",kw:"正奇 基本面 创新 配置 资源 蜜雪冰城 厨邦 瑞幸 突破"},
+{id:"s5",n:5,t:"致人而不致于人",bk:"sunzi",bn:"孙子兵法",c:"让对手跟你节奏走，不是你被牵着走。主动权=可选战场、时间、方式。",tg:["主动权","KA","管理","职业","商业"],tp:["compete"],f:"sunzi.html",kw:"致人 主动权 选择权 谈判 苹果 谈薪 offer 规则 战场 主导"},
+{id:"s6",n:6,t:"兵贵胜，不贵久",bk:"sunzi",bn:"孙子兵法",c:"贵在速战速决。每天烧钱，拖越久成本越高。宁可笨拙地快，不要精巧地慢。",tg:["节奏控制","KA","商业","职业","生活"],tp:["compete","decision"],f:"sunzi.html",kw:"速战速决 兵贵胜 速度 止损 拙速 ofo 抖音 快手 消耗 快速"},
+// 毛选
+{id:"m1",n:1,t:"积极防御",bk:"mao",bn:"毛泽东选集",c:"弱势时，防御不是退缩，而是保存实力、等待反攻时机的主动战略。",tg:["战略防御","KA","商业","管理"],tp:["compete"],f:"mao.html",kw:"积极防御 弱势 反攻 诱敌深入 退让 保存实力 以退为进 防御"},
+{id:"m2",n:2,t:"集中优势兵力",bk:"mao",bn:"毛泽东选集",c:"在关键战场配置压倒性资源优势。宁可放弃非关键战场，也不平分兵力。",tg:["资源配置","KA","商业","管理"],tp:["compete","decision"],f:"mao.html",kw:"集中兵力 歼灭 资源 聚焦 压强 断指 华为 OKR 重点 做减法"},
+{id:"m3",n:3,t:"矛盾分析法",bk:"mao",bn:"毛泽东选集",c:"矛盾有主次，在条件下可相互转化。抓主要矛盾，创造转化条件。",tg:["矛盾分析","KA","商业","管理","职业"],tp:["system","decision"],f:"mao.html",kw:"矛盾 主次 转化 优先级 二重性 坏事变好事 团结批评团结 冲突"},
+{id:"m4",n:4,t:"调查研究",bk:"mao",bn:"毛泽东选集",c:"一切正确决策的前提是掌握第一手事实。不做周密侦察就下判断=盲人摸象。",tg:["调研方法","KA","商业","管理"],tp:["decision"],f:"mao.html",kw:"调查 研究 侦察 一手事实 去粗取精 去伪存真 摸熟 信息 数据"},
+{id:"m5",n:5,t:"实践认识循环",bk:"mao",bn:"毛泽东选集",c:"认识不是一次完成的，而是计划-执行-检验-修正的持续循环。",tg:["迭代验证","KA","商业","职业","生活"],tp:["decision","system"],f:"mao.html",kw:"实践 认识 循环 迭代 验证 修正 MVP 反馈 假设 试错"},
+{id:"m6",n:6,t:"阶级分析法",bk:"mao",bn:"毛泽东选集",c:"先分析各方的经济地位和利益诉求，就能判断他们的态度和立场。",tg:["利益分析","管理","KA","职业"],tp:["system","org"],f:"mao.html",kw:"阶级 利益 分析 立场 态度 经济地位 两重性 利益相关者 干系人"},
+{id:"m7",n:7,t:"没有调查没有发言权",bk:"mao",bn:"毛泽东选集",c:"不做调查就没有资格做判断。一切结论必须产生于调查之后。",tg:["反教条","KA","商业","管理"],tp:["decision"],f:"mao.html",kw:"调查 发言权 本本主义 教条 结论 寻乌 闭嘴 盲目执行"},
+{id:"m8",n:8,t:"矛盾论",bk:"mao",bn:"毛泽东选集",c:"一切事物都包含矛盾。找到主要矛盾就找到全局的钥匙。",tg:["矛盾哲学","KA","商业","管理","职业"],tp:["system"],f:"mao.html",kw:"矛盾论 对立统一 普遍性 特殊性 主要矛盾 转化 条件 系统分析"},
+{id:"m9",n:9,t:"实践论",bk:"mao",bn:"毛泽东选集",c:"认识从实践开始，经实践得理论认识，再回到实践验证。循环往复以至无穷。",tg:["认识论","KA","商业","职业","生活"],tp:["decision","system"],f:"mao.html",kw:"实践论 感性认识 理性认识 螺旋 飞跃 经验 理论 精益 迭代"},
+{id:"m10",n:10,t:"论持久战",bk:"mao",bn:"毛泽东选集",c:"面对强大对手时，接受持久性、规划阶段性、在持久中积蓄力量。",tg:["持久战略","商业","职业","KA"],tp:["compete"],f:"mao.html",kw:"持久战 三阶段 防御 相持 反攻 速胜 亡国 创业 弱势 长期"},
+{id:"m11",n:11,t:"改造我们的学习",bk:"mao",bn:"毛泽东选集",c:"学习必须有的放矢。三种坏作风：不研究现状、不研究历史、不应用理论。",tg:["学习态度","管理","职业","KA","商业"],tp:["decision"],f:"mao.html",kw:"改造学习 有的放矢 实事求是 主观主义 教条 现状 历史 应用 学习"},
+{id:"m12",n:12,t:"从群众中来到群众中去",bk:"mao",bn:"毛泽东选集",c:"正确领导方法：收集分散意见→系统化→推回群众→实践检验→再次收集。",tg:["领导方法","管理","KA","职业","商业"],tp:["org"],f:"mao.html",kw:"群众路线 领导方法 从群众中来 到群众中去 收集 系统化 试点 推广 用户"},
+{id:"m13",n:13,t:"愚公移山精神",bk:"mao",bn:"毛泽东选集",c:"面对不可能的任务，用坚定信念+持续行动+广泛动员来达成。",tg:["信念方法","商业","管理","职业"],tp:["org"],f:"mao.html",kw:"愚公移山 信念 坚持 动员 分解目标 下定决心 不怕牺牲 长期项目"},
+{id:"m14",n:14,t:"星星之火可以燎原",bk:"mao",bn:"毛泽东选集",c:"弱小力量只要方向正确，就有成长为强大力量的必然性。",tg:["战略判断","商业","职业","KA"],tp:["compete"],f:"mao.html",kw:"星星之火 燎原 战略乐观 本质 趋势 弱小 成长 创业 信心"},
+{id:"m15",n:15,t:"为人民服务",bk:"mao",bn:"毛泽东选集",c:"以服务对象利益为最高准则，有缺点就改，不论谁指出都接受。",tg:["价值观","管理","KA","商业"],tp:["org"],f:"mao.html",kw:"为人民服务 价值观 用户 批评 张思德 泰山 鸿毛 五湖四海 开放"},
+{id:"m16",n:16,t:"反对自由主义",bk:"mao",bn:"毛泽东选集",c:"11种自由主义表现腐蚀组织。有问题当面说、背后不议论。",tg:["组织纪律","管理","KA"],tp:["org"],f:"mao.html",kw:"自由主义 组织纪律 当面说 背后议论 一团和气 明哲保身 腐蚀 团队"},
+{id:"m17",n:17,t:"党委会的工作方法",bk:"mao",bn:"毛泽东选集",c:"问题摆桌面+事先通知+集体讨论+形成决议。领导=善于当班长。",tg:["领导方法","管理"],tp:["org"],f:"mao.html",kw:"党委会 工作方法 摆桌面 安民告示 班长 协调 集体讨论 会议 决策流程"},
+{id:"m18",n:18,t:"将革命进行到底",bk:"mao",bn:"毛泽东选集",c:"关键时刻不能妥协、不被假和平迷惑、不半途而废。识别蛇的本质。",tg:["战略坚持","商业","管理"],tp:["compete"],f:"mao.html",kw:"将革命进行到底 坚持 半途而废 农夫与蛇 假和平 妥协 关键时刻 完成"},
+// 第一性原理
+{id:"f1",n:1,t:"第一性原理的定义",bk:"fp",bn:"第一性原理",c:"每个系统中都存在一个最基本的命题，不能被省略、删除或违反。",tg:["核心定义","全部场景"],tp:["decision","system"],f:"fp.html",kw:"第一性原理 定义 亚里士多德 不可省略 不可删除 不可违反 基点 5why 追问"},
+{id:"f2",n:2,t:"演绎法 vs 归纳法",bk:"fp",bn:"第一性原理",c:"归纳从经验总结（特殊→一般），演绎从原理推导（一般→特殊）。创新靠演绎。",tg:["推理方法","商业","KA"],tp:["decision"],f:"fp.html",kw:"演绎法 归纳法 推理 类比 三段论 连续 非连续 诺基亚 iPhone"},
+{id:"f3",n:3,t:"公理化方法",bk:"fp",bn:"第一性原理",c:"少量公理+严格逻辑=整个知识体系。欧几里得5条公理构建几何学。",tg:["体系构建","商业","管理"],tp:["system","decision"],f:"fp.html",kw:"公理化 欧几里得 牛顿 笛卡尔 我思故我在 公理 定理 体系 框架"},
+{id:"f4",n:4,t:"马斯克的第一性原理实践",bk:"fp",bn:"第一性原理",c:"拆解到物理/原材料层面，重新计算成本，发现行业共识不过是未被质疑的假设。",tg:["实战案例","商业","KA"],tp:["innovate"],f:"fp.html",kw:"马斯克 SpaceX 特斯拉 电池 火箭 拆解 物理层 成本 重构 Cybertruck"},
+{id:"f5",n:5,t:"白痴指数",bk:"fp",bn:"第一性原理",c:"白痴指数=成品成本/基本材料成本。指数越高，溢价泡沫越大。",tg:["量化工具","商业","KA"],tp:["innovate"],f:"fp.html",kw:"白痴指数 成本 原材料 成品 倍数 泡沫 重构 供应链 审计 价格"},
+{id:"f6",n:6,t:"破界创新",bk:"fp",bn:"第一性原理",c:"真正的创新不是做得更好，而是发现并打破系统中的隐含假设。",tg:["创新框架","商业","职业"],tp:["innovate"],f:"fp.html",kw:"破界创新 隐含假设 打破 iPhone 纳德拉 微软 特斯拉 内燃机 键盘 颠覆"},
+{id:"f7",n:7,t:"非连续性与第二曲线",bk:"fp",bn:"第一性原理",c:"任何增长曲线都会到极限点。在极限前必须启动第二曲线。",tg:["战略框架","商业","职业"],tp:["innovate","system"],f:"fp.html",kw:"第二曲线 非连续性 极限点 增长 切换 失速 新旧 转型 创新"},
+{id:"f8",n:8,t:"多元思维模型",bk:"fp",bn:"第一性原理",c:"单一学科导致铁锤人综合症。多学科核心模型组成网络才能看清全貌。",tg:["思维工具库","商业","管理","职业"],tp:["system"],f:"fp.html",kw:"多元思维模型 芒格 跨学科 铁锤人 复利 临界点 熵增 lollapalooza 查理"},
+{id:"f9",n:9,t:"刻意练习与思维模型",bk:"fp",bn:"第一性原理",c:"知道≠掌握。模型必须经过提炼-讲授-迭代循环才能内化。",tg:["学习方法","职业","生活"],tp:["org"],f:"fp.html",kw:"刻意练习 建模 讲课 迭代 内化 李善友 套路 心理表征 学习 成长"},
+{id:"f10",n:10,t:"第一性原理的边界",bk:"fp",bn:"第一性原理",c:"第一性原理不是万能钥匙。在错误场景使用代价大于收益。",tg:["适用边界","全部场景"],tp:["decision"],f:"fp.html",kw:"边界 局限 误用 归纳 演绎 选择 日常 低风险 瘫痪 适用"},
+// 博弈论
+{id:"g1",n:1,t:"战略式博弈",bk:"gt",bn:"博弈论",c:"用三要素描述博弈：参与者集合、战略集、收益函数。",tg:["基础概念","全场景"],tp:["system"],f:"game-theory.html",kw:"战略式 正规式 参与者 战略集 收益函数 收益矩阵 囚徒困境 价格战"},
+{id:"g2",n:2,t:"纳什均衡",bk:"gt",bn:"博弈论",c:"每个参与者的战略都是对他人战略的最优反应。没人想单方面偏离。",tg:["核心概念","商业","管理"],tp:["compete","system"],f:"game-theory.html",kw:"纳什均衡 最优反应 自我强化 稳定 性别战 市场均衡 预测"},
+{id:"g3",n:3,t:"囚徒困境",bk:"gt",bn:"博弈论",c:"个体理性导致集体非理性。每个人都追求自身利益最大化，最终所有人都更差。",tg:["核心悖论","全场景"],tp:["compete","system"],f:"game-theory.html",kw:"囚徒困境 个体理性 集体非理性 背叛 合作 价格战 公地悲剧 军备竞赛 搭便车"},
+{id:"g4",n:4,t:"扩展式博弈",bk:"gt",bn:"博弈论",c:"用博弈树表示动态决策过程：决策节点、信息集、行动、收益。",tg:["动态博弈","商业","管理"],tp:["system","decision"],f:"game-theory.html",kw:"扩展式 博弈树 动态 决策节点 信息集 完美信息 进入反击 先后"},
+{id:"g5",n:5,t:"逆向归纳",bk:"gt",bn:"博弈论",c:"从最后一个决策节点开始倒推每个参与者的最优选择。",tg:["求解方法","商业","管理"],tp:["decision"],f:"game-theory.html",kw:"逆向归纳 倒推 后向归纳 从后往前 承诺 不可信威胁 蜈蚣博弈 动态"},
+{id:"g6",n:6,t:"子博弈完美均衡",bk:"gt",bn:"博弈论",c:"战略组合在每个子博弈中都是纳什均衡。排除不可信威胁。",tg:["均衡概念","商业","管理"],tp:["system","decision"],f:"game-theory.html",kw:"子博弈完美 不可信威胁 纳什 子树 进入反击 可信"},
+{id:"g7",n:7,t:"期望效用理论",bk:"gt",bn:"博弈论",c:"理性人在不确定性下最大化期望效用。效用函数捕捉对风险的态度。",tg:["风险决策","商业","职业"],tp:["decision"],f:"game-theory.html",kw:"期望效用 不确定性 风险规避 风险偏好 风险中性 保险 彩票 决策"},
+{id:"g8",n:8,t:"混合策略",bk:"gt",bn:"博弈论",c:"以概率分布随机选择策略。让对手无法预测你。",tg:["策略类型","商业","职业"],tp:["compete"],f:"game-theory.html",kw:"混合策略 随机 概率分布 石头剪刀布 点球 不可预测 竞价"},
+{id:"g9",n:9,t:"重复博弈",bk:"gt",bn:"博弈论",c:"重复进行博弈。无限重复中，触发策略可以维持合作。",tg:["动态博弈","全场景"],tp:["compete","org"],f:"game-theory.html",kw:"重复博弈 触发策略 冷酷策略 以牙还牙 未来阴影 合作 OPEC 长期关系"},
+{id:"g10",n:10,t:"无名氏定理",bk:"gt",bn:"博弈论",c:"如果未来足够重要，任何帕累托优于纳什均衡的收益都可以实现。",tg:["核心定理","全场景"],tp:["compete","org"],f:"game-theory.html",kw:"无名氏定理 Folk Theorem 贴现因子 合作条件 未来阴影 长期 耐心"},
+{id:"g11",n:11,t:"不完全信息博弈",bk:"gt",bn:"博弈论",c:"参与者拥有私人信息。如何在信息不对称下做最优决策？",tg:["信息结构","商业","职业"],tp:["system","decision"],f:"game-theory.html",kw:"不完全信息 私人信息 信息不对称 逆向选择 道德风险 柠檬市场 二手车"},
+{id:"g12",n:12,t:"贝叶斯博弈",bk:"gt",bn:"博弈论",c:"不完全信息博弈的形式化。给定自己类型，选对他人类型的最优反应。",tg:["均衡概念","商业","职业"],tp:["system","decision"],f:"game-theory.html",kw:"贝叶斯 类型 信念 概率 拍卖 面试 密封 信息"},
+{id:"g13",n:13,t:"信号博弈",bk:"gt",bn:"博弈论",c:"知情方通过信号传递信息。信号成本对不同类型不同才可信。",tg:["信号机制","商业","职业"],tp:["innovate","org"],f:"game-theory.html",kw:"信号博弈 信号 教育 学历 品牌 成本 可信 Spence 能力 面试 简历"},
+{id:"g14",n:14,t:"拍卖理论",bk:"gt",bn:"博弈论",c:"不同拍卖机制下最优竞价策略。收益等价定理：某些机制期望收益相同。",tg:["机制设计","商业","职业"],tp:["innovate","decision"],f:"game-theory.html",kw:"拍卖 竞价 一级价格 二级价格 英式 荷式 收益等价 Vickrey 招标"},
+{id:"g15",n:15,t:"机制设计",bk:"gt",bn:"博弈论",c:"逆向博弈论——给定目标，设计规则使自利参与者做出社会最优行为。",tg:["机制设计","商业","管理"],tp:["org","innovate"],f:"game-theory.html",kw:"机制设计 逆向博弈论 激励相容 个体理性 VCG Myerson 规则 制度 薪酬"},
+{id:"g16",n:16,t:"讨价还价",bk:"gt",bn:"博弈论",c:"研究如何分配合作剩余。耐心是谈判中的权力。",tg:["谈判机制","全场景"],tp:["compete","innovate"],f:"game-theory.html",kw:"讨价还价 谈判 Rubinstein 耐心 贴现因子 薪资 并购 议价 谈薪 加薪"},
+{id:"g17",n:17,t:"演化博弈",bk:"gt",bn:"博弈论",c:"策略在群体中的演化。ESS：大多数用该策略时，少数变异无法入侵。",tg:["动态演化","商业","管理"],tp:["system","org"],f:"game-theory.html",kw:"演化博弈 ESS 演化稳定 鹰鸽 群体 规范 文化 入侵 行业规范"},
+{id:"g18",n:18,t:"合作博弈",bk:"gt",bn:"博弈论",c:"研究联盟如何形成、如何分配合作收益。",tg:["联盟形成","商业","管理"],tp:["org"],f:"game-theory.html",kw:"合作博弈 联盟 特征函数 核心 稳定 合资 手套博弈 分配"},
+{id:"g19",n:19,t:"廉价交谈",bk:"gt",bn:"博弈论",c:"无成本沟通。利益一致时空口说白话可传递信息；利益不一致则不能。",tg:["沟通机制","商业","管理"],tp:["org"],f:"game-theory.html",kw:"廉价交谈 沟通 利益一致 信任 顾问 员工 固定薪资 绩效 可信"},
+{id:"g20",n:20,t:"声誉",bk:"gt",bn:"博弈论",c:"长期关系中建立的信誉。好声誉带来长期收益。",tg:["信誉机制","全场景"],tp:["org","compete"],f:"game-theory.html",kw:"声誉 信誉 长期 品牌 电商 好评 连锁 个人品牌 口碑"},
+{id:"g21",n:21,t:"核心与沙普利值",bk:"gt",bn:"博弈论",c:"合作收益的两种分配方法：核心强调稳定性，沙普利值强调公平性。",tg:["分配机制","商业","管理"],tp:["org"],f:"game-theory.html",kw:"核心 沙普利值 分配 稳定 公平 边际贡献 合资 利润 分红"},
+{id:"g22",n:22,t:"边界与应用总结",bk:"gt",bn:"博弈论",c:"博弈论假设理性人、收益已知、信息明确。现实中这些假设可能不成立。",tg:["边界总结","全场景"],tp:["system","decision"],f:"game-theory.html",kw:"边界 局限 行为博弈 不完全契约 理性 假设 适用范围"}
+];
+
+const topics={
+  compete:{name:"竞争策略",color:"var(--blue)",icon:"\u2694\ufe0f"},
+  decision:{name:"决策方法",color:"var(--violet)",icon:"\ud83e\udde0"},
+  system:{name:"系统思维",color:"var(--emerald)",icon:"\ud83c\udf10"},
+  org:{name:"组织管理",color:"var(--crimson)",icon:"\ud83d\udc65"},
+  innovate:{name:"创新突破",color:"var(--orange)",icon:"\ud83d\udca1"}
+};
+
+const qMap={
+  "谈判|薪资|谈薪|议价|加薪|涨薪|面试":["s5","g16","g13","g14","m6"],
+  "竞争|打仗|打败|对手|竞品|价格战":["s1","s2","s3","s5","m1","m2","m10","g2","g3"],
+  "团队|协作|合作|管理|带人|领导":["m12","m15","m16","m17","g9","g18","g19","g21"],
+  "冲突|矛盾|分歧|吵架|不和":["m3","m8","m16","g3","g9"],
+  "创业|商业|做生意|开公司":["s1","m2","m10","m14","f4","f6","f7"],
+  "创新|突破|颠覆|变革|转型":["f6","f4","f5","s4","f7"],
+  "决策|选择|判断|该不该":["s2","s3","m4","m7","m9","f1","f2","g5","g7"],
+  "学习|成长|提升|进步":["f9","f8","m11","m9"],
+  "信息|不对称|欺骗|信任|真假":["g11","g12","g13","g19","g20","m4","m7"],
+  "资源|分配|投入|聚焦|优先级":["m2","s4","g18","g21","m3"],
+  "弱势|以弱胜强|小公司|小团队|创业初期":["m1","m10","m14","s1","s5"],
+  "坚持|放弃|长期|耐心|持续":["m10","m13","m18","s6","g9","g10"],
+  "速度|快速|效率|拖延":["s6","f4","f5"],
+  "调查|了解|研究|分析|数据":["m4","m7","m3","m8","m11"],
+  "规则|制度|设计|激励|考核":["g15","m17","g18","g21"],
+  "价格|成本|补贴|定价|收费":["f5","g3","g14","s1"],
+  "职业|跳槽|求职|面试|转行":["s5","g13","g16","m14","f7"],
+  "组织|文化|纪律|风气":["m16","m15","m12","g17","g20"],
+  "风险|不确定|概率|赌博":["g7","g8","g11","g12","s2"],
+  "品牌|营销|用户|客户":["s1","g20","g13","m15","f4"]
+};
+
+function renderCard(c,score){
+  const sc=score!==undefined?`<span class="ci-score">${score}</span>`:'';
+  const tags=c.tg.slice(0,3).map(t=>`<span class="tag tag-b">${t}</span>`).join('');
+  return `<a class="ci" data-book="${c.bk}" data-id="${c.id}" href="${c.f}">
+    <div class="ci-head"><span class="ci-num">${c.n}</span><span class="ci-title">${c.t}</span>${sc}</div>
+    <div class="ci-book">${c.bn}</div>
+    <div class="ci-concept">${c.c}</div>
+    <div class="ci-tags">${tags}</div>
+  </a>`;
+}
+
+function renderAll(){
+  const el=document.getElementById('allCards');
+  let h='';
+  for(const[k,v]of Object.entries(topics)){
+    const tc=cards.filter(c=>c.tp.includes(k));
+    h+=`<div class="topic-section" data-topic="${k}">
+      <div class="topic-header"><div class="topic-dot" style="background:${v.color}"></div><h2>${v.icon} ${v.name}</h2><span class="tc">${tc.length} 张</span></div>
+      <div class="cards-grid">${tc.map(c=>renderCard(c)).join('')}</div>
+    </div>`;
+  }
+  el.innerHTML=h;
+}
+
+let curTopic='all';
+function filterTopic(t){
+  curTopic=t;
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector(`.topic-btn[data-topic="${t}"]`).classList.add('active');
+  document.querySelectorAll('.topic-section').forEach(s=>{
+    s.style.display=(t==='all'||s.dataset.topic===t)?'':'none';
+  });
+  document.getElementById('matchSection').classList.remove('show');
+  document.getElementById('resultCount').classList.remove('show');
+  document.getElementById('searchInput').value='';
+  document.querySelectorAll('.ci').forEach(c=>c.classList.remove('hidden'));
+}
+
+function doSearch(){
+  const q=document.getElementById('searchInput').value.trim().toLowerCase();
+  if(!q){
+    document.querySelectorAll('.ci').forEach(c=>c.classList.remove('hidden'));
+    document.getElementById('resultCount').classList.remove('show');
+    document.getElementById('matchSection').classList.remove('show');
+    return;
+  }
+  const terms=q.split(/\s+/).filter(Boolean);
+  let count=0;
+  document.querySelectorAll('.ci').forEach(el=>{
+    const card=cards.find(c=>c.id===el.dataset.id);
+    if(!card)return;
+    const hay=(card.t+' '+card.c+' '+card.tg.join(' ')+' '+card.kw+' '+card.bn).toLowerCase();
+    const match=terms.some(t=>hay.includes(t));
+    if(match){el.classList.remove('hidden');count++}else{el.classList.add('hidden')}
+  });
+  const rc=document.getElementById('resultCount');
+  rc.textContent=`搜索"${q}"找到 ${count} 张卡片`;
+  rc.classList.add('show');
+  document.getElementById('matchSection').classList.remove('show');
+  document.querySelectorAll('.topic-section').forEach(s=>s.style.display='');
+  curTopic='all';
+  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
+  document.querySelector('.topic-btn[data-topic="all"]').classList.add('active');
+}
+
+function doMatch(){
+  const q=document.getElementById('questionInput').value.trim();
+  if(!q)return;
+  const ql=q.toLowerCase();
+  const scored=[];
+  cards.forEach(card=>{
+    let score=0;
+    for(const[pat,ids]of Object.entries(qMap)){
+      if(new RegExp(pat,'i').test(ql)){
+        if(ids.includes(card.id))score+=10;
+      }
+    }
+    const hay=(card.t+' '+card.c+' '+card.tg.join(' ')+' '+card.kw+' '+card.bn).toLowerCase();
+    const terms=ql.split(/[\s\uff0c\u3002\uff1f\uff01\u3001,.\?!]+/).filter(t=>t.length>=2);
+    terms.forEach(t=>{if(hay.includes(t))score+=3});
+    [...ql].filter(ch=>/[\u4e00-\u9fff]/.test(ch)).forEach(ch=>{if(hay.includes(ch))score+=1});
+    if(score>0)scored.push({card,score});
+  });
+  scored.sort((a,b)=>b.score-a.score);
+  const top=scored.slice(0,12);
+  const ms=document.getElementById('matchSection');
+  const mc=document.getElementById('matchCount');
+  const mg=document.getElementById('matchGrid');
+  if(!top.length){
+    ms.classList.add('show');mc.textContent='- 未找到匹配，试试换个描述';mg.innerHTML='';return;
+  }
+  ms.classList.add('show');
+  mc.textContent=`- ${top.length} 张相关卡片`;
+  mg.innerHTML=top.map(({card,score})=>renderCard(card,score)).join('');
+  ms.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+document.addEventListener('DOMContentLoaded',()=>{
+  renderAll();
+  document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});
+  document.getElementById('questionInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doMatch()}});
+});
 </script>
 </body>
 </html>

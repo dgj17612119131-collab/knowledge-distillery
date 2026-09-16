@@ -70,7 +70,7 @@ a{color:var(--accent);text-decoration:none}
 
 /* Cards */
 .cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
-.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
 .card.hidden{display:none}
 
 /* Card Header */
@@ -247,7 +247,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="c"><div class="cards">
 
 <!-- CARD 1 -->
-<div class="card" data-p="p1" data-s="ka,bz,cr,lf">
+<div class="card" id="card-1" data-p="p1" data-s="ka,bz,cr,lf">
 <div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">不战而屈人之兵</div><div class="cs">上兵伐谋 · 其下攻城</div><div class="ctags"><span class="tag ts">战略哲学</span><span class="tag tt">KA</span><span class="tag tt">商业</span><span class="tag tt">职业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>战争本身是失败。<strong>真正的胜利是不需要通过战斗就能达成的胜利。</strong></p></div>
@@ -300,11 +300,11 @@ a{color:var(--accent);text-decoration:none}
   </div>
 </div>
 <div class="s"><div class="st">行动清单</div><ul class="al"><li>审视当前竞争，判断你在四层手段的哪一层</li><li>列出你的"势"，评估能否让对手不战而退</li><li>准备"战斗"前先问"有没有不打就赢的方案"</li></ul></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(4)">→ 以正合以奇胜</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(4)">→ 以正合以奇胜</a><a class="rt" href="game-theory.html#card-3">博弈论 · 囚徒困境</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></div>
 </div></div>
 
 <!-- CARD 2 -->
-<div class="card" data-p="p2" data-s="ka,bz,cr">
+<div class="card" id="card-2" data-p="p2" data-s="ka,bz,cr">
 <div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">先胜后战</div><div class="cs">胜兵先胜而后求战 · 败兵先战而后求胜</div><div class="ctags"><span class="tag ts">决策逻辑</span><span class="tag tt">KA</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胜利不是打仗打出来的，是<strong>开战前就创造了必胜条件</strong>。打仗只是"收割"。</p></div>
@@ -354,11 +354,11 @@ a{color:var(--accent);text-decoration:none}
   </div>
 </div>
 <div class="s"><div class="st">行动清单</div><ul class="al"><li>列"先胜清单"：需哪些条件具备？</li><li>逐项检查：已具备/可创造/需等待？</li><li>核心条件不具备→练习说"现在不是时候"</li></ul></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜（张力）</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜（张力）</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
 </div></div>
 
 <!-- CARD 3 -->
-<div class="card" data-p="p3" data-s="ka,mg,bz,cr">
+<div class="card" id="card-3" data-p="p3" data-s="ka,mg,bz,cr">
 <div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">五事七计</div><div class="cs">庙算 · 多算胜，少算不胜</div><div class="ctags"><span class="tag ts">系统评估</span><span class="tag tt">KA</span><span class="tag tt">管理</span><span class="tag tt">商业</span><span class="tag tt">职业</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>开战前用系统化维度<strong>对比双方实力</strong>。赢面大打，赢面小不打。不是勇气问题，是数学。</p></div>
@@ -406,11 +406,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">竞品对标=七计商业版。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(5)">→ 致人</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(5)">→ 致人</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a></div></div>
 </div></div>
 
 <!-- CARD 4 -->
-<div class="card" data-p="p4" data-s="ka,mg,bz,lf">
+<div class="card" id="card-4" data-p="p4" data-s="ka,mg,bz,lf">
 <div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">以正合，以奇胜</div><div class="cs">奇正相生，如循环之无端</div><div class="ctags"><span class="tag ts">资源配置</span><span class="tag tt">KA</span><span class="tag tt">管理</span><span class="tag tt">商业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>"正"（基本面）稳住局面，"奇"（额外投入）取得胜利。<strong>没"正"打底=赌博，只有"正"没"奇"=消耗战。</strong></p></div>
@@ -454,11 +454,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>生活</div><div class="stx">"正"=规律作息；"奇"=旅行/跨界。<strong>光规律无聊，光刺激失控。</strong></div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a><a class="rt" href="game-theory.html#card-8">博弈论 · 混合策略</a><a class="rt" href="fp.html#card-7">第一性原理 · 非连续性与第二曲线</a></div></div>
 </div></div>
 
 <!-- CARD 5 -->
-<div class="card" data-p="p5" data-s="ka,mg,cr,bz">
+<div class="card" id="card-5" data-p="p5" data-s="ka,mg,cr,bz">
 <div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">致人而不致于人</div><div class="cs">善战者，致人而不致于人</div><div class="ctags"><span class="tag ts">主动权</span><span class="tag tt">KA</span><span class="tag tt">管理</span><span class="tag tt">职业</span><span class="tag tt">商业</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p><strong>让对手跟你节奏走（致人），不是你被牵着走（致于人）。</strong>主动权=可选战场、时间、方式。</p></div>
@@ -500,11 +500,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">你定义价格锚点vs跟着竞品定价。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(1)">→ 不战</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(1)">→ 不战</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="mao.html#card-1">毛选 · 积极防御</a></div></div>
 </div></div>
 
 <!-- CARD 6 -->
-<div class="card" data-p="p6" data-s="ka,bz,cr,lf">
+<div class="card" id="card-6" data-p="p6" data-s="ka,bz,cr,lf">
 <div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">兵贵胜，不贵久</div><div class="cs">兵闻拙速 · 未睹巧之久也</div><div class="ctags"><span class="tag ts">节奏控制</span><span class="tag tt">KA</span><span class="tag tt">商业</span><span class="tag tt">职业</span><span class="tag tt">生活</span></div></div><div class="conf"><div class="dot dg"></div>有据</div></div>
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p><strong>贵在速战速决。</strong>每天烧钱，拖越久成本越高。宁可"笨拙地快"，不要"精巧地慢"。</p></div>
@@ -541,7 +541,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>生活</div><div class="stx">小决定"拙速"，重大决定"先胜"。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战（张力）</a><a class="rt" href="javascript:scrollCard(4)">→ 正奇</a></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战（张力）</a><a class="rt" href="javascript:scrollCard(4)">→ 正奇</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="game-theory.html#card-10">博弈论 · 无名氏定理</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a></div></div>
 </div></div>
 
 </div><!-- end cards -->
