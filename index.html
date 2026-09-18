@@ -83,6 +83,36 @@ a{color:var(--accent);text-decoration:none}
 .match-count{font-size:13px;color:var(--t4);font-weight:400}
 .match-grid{display:grid;grid-template-columns:1fr;gap:10px}
 
+/* Four-Section Solution */
+.sol-box{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;margin-bottom:12px}
+.sol-header{background:linear-gradient(135deg,var(--accent),#5856D6);color:#fff;padding:16px 20px;font-size:17px;font-weight:700;letter-spacing:-.01em}
+.sol-sec{padding:16px 20px;border-bottom:1px solid var(--border)}
+.sol-sec:last-child{border-bottom:none}
+.sol-sec h3{font-size:14px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.sol-sec h3 .num{display:inline-flex;width:22px;height:22px;border-radius:50%;align-items:center;justify-content:center;font-size:12px;color:#fff;flex-shrink:0}
+.sol-diag h3 .num{background:var(--blue)}
+.sol-methods h3 .num{background:var(--violet)}
+.sol-steps h3 .num{background:var(--orange)}
+.sol-risks h3 .num{background:var(--red)}
+.sol-diag{background:rgba(0,122,255,.04)}
+.sol-methods{background:rgba(175,82,222,.04)}
+.sol-steps{background:rgba(255,149,0,.04)}
+.sol-risks{background:rgba(255,59,48,.04)}
+.sol-diag p{font-size:14px;color:var(--t2);line-height:1.7}
+.sol-method{display:flex;align-items:flex-start;gap:10px;padding:8px 0;border-bottom:1px dashed var(--border)}
+.sol-method:last-child{border-bottom:none}
+.sol-method .m-name{font-size:14px;font-weight:600;color:var(--accent);flex-shrink:0;min-width:110px}
+.sol-method .m-desc{font-size:13px;color:var(--t2);line-height:1.6}
+.sol-method .m-desc .m-book{color:var(--t4);font-size:12px}
+.sol-step{display:flex;gap:10px;padding:8px 0;align-items:flex-start}
+.sol-step .s-n{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:1px}
+.sol-step .s-t{font-size:14px;color:var(--t2);line-height:1.6}
+.sol-step .s-t .s-src{color:var(--t4);font-size:12px;margin-left:4px}
+.sol-risk{display:flex;gap:8px;padding:6px 0;font-size:13px;color:var(--t2);line-height:1.6;align-items:flex-start}
+.sol-risk::before{content:"⚠";flex-shrink:0;color:var(--red);font-size:14px}
+.sol-fallback-tip{font-size:13px;color:var(--t4);padding:8px 0;line-height:1.6}
+
+
 /* Topic Nav */
 .topic-nav{display:flex;gap:6px;overflow-x:auto;padding-bottom:6px;margin-bottom:24px;-webkit-overflow-scrolling:touch;scrollbar-width:none}
 .topic-nav::-webkit-scrollbar{display:none}
@@ -392,10 +422,230 @@ function doSearch(){
   document.querySelector('.topic-btn[data-topic="all"]').classList.add('active');
 }
 
+/* ===== 四段式解决方案模板 ===== */
+const SOLUTIONS=[
+{id:"salary",title:"如何谈薪资 / 谈判要资源",kw:["谈薪","薪资","工资","涨薪","加薪","谈判","谈资源","要资源","砍价","议价"],
+ diagnosis:"谈判的本质是讨价还价博弈：谁更有耐心、谁有Plan B（选择权），谁就掌握主动权。你不是在\"要\"，而是在分配合作剩余。",
+ methods:[
+  {n:"讨价还价",b:"博弈论",w:"Rubinstein模型：耐心是谈判权力。你越不急于达成，议价能力越强",l:"game-theory.html#card-16"},
+  {n:"致人而不致于人",b:"孙子兵法",w:"选择权=主动权。手里有Plan B（另一个offer/备选供应商），你就有走掉的底气",l:"sunzi.html#card-5"},
+  {n:"先胜后战",b:"孙子兵法",w:"先让自己不可替代（业绩数据、独有能力），再上谈判桌",l:"sunzi.html#card-2"}
+ ],
+ steps:[
+  {a:"盘点你的Plan B：是否有备选offer/备选方案？没有就先创造（投简历/找备选供应商）",s:"致人而不致于人"},
+  {a:"准备数据弹药：你的贡献量化（业绩/项目成果/稀缺性），让对方无法拒绝",s:"先胜后战"},
+  {a:"让对方先报价：先出价者暴露底牌，后出价者掌握调整空间",s:"讨价还价"},
+  {a:"报出锚点后沉默：不要急着让步，每一轮让步幅度递减，传递\"快到极限\"的信号",s:"讨价还价"}
+ ],
+ risks:["如果你确实没有Plan B且对方知情，这套策略失效——先去创造选择权","情绪化谈判会毁掉耐心优势——谈判桌上永远保持\"可以走\"的冷静","如果对方是流程化的HR（无议价空间），博弈策略无效，此时应改为争取其他维度（职级/股权/转岗机会）"]},
+
+{id:"job",title:"该不该跳槽 / 换方向",kw:["跳槽","换工作","离职","裸辞","offer","职业选择","要不要走","转行"],
+ diagnosis:"跳槽决策的本质是五维评估：不是\"这里不好\"就该走，而是\"新机会在关键维度上是否显著优于现状\"。裸辞=先战而后求胜。",
+ methods:[
+  {n:"五事七计",b:"孙子兵法",w:"道天地将法五维对比新旧机会：目标认同/行业趋势/岗位资源/上级/制度",l:"sunzi.html#card-3"},
+  {n:"先胜后战",b:"孙子兵法",w:"有offer在手再谈离职，先为不可胜",l:"sunzi.html#card-2"},
+  {n:"第二曲线",b:"第一性原理",w:"第一曲线见顶前启动新曲线——别等被迫离开才想下一步",l:"fp.html#card-7"}
+ ],
+ steps:[
+  {a:"用五事七计打分：现状 vs 新机会，逐项1-10分对比（道/天/地/将/法）",s:"五事七计"},
+  {a:"若新机会≥3项领先才认真考虑；若只在薪资一项领先，警惕\"为钱跳坑\"",s:"五事七计"},
+  {a:"骑驴找马：先拿offer再谈离职，保持选择权",s:"先胜后战"},
+  {a:"离职前用最小成本验证新方向（找业内人士聊/试做小项目），不靠想象决策",s:"第二曲线"}
+ ],
+ risks:["五事七计依赖信息准确——对新公司的\"道/将\"评估最容易失真（面试时都是最好的一面）","如果现状已到身心健康的红线，不要机械等待\"先胜\"——保命优先","频繁跳槽损害声誉（重复博弈视角：HR会看到你的履历模式）"]},
+
+{id:"pricewar",title:"如何应对价格战 / 恶性竞争",kw:["价格战","补贴","降价","恶性竞争","竞品","抢市场","打不过","竞争"],
+ diagnosis:"价格战是典型的囚徒困境：跟进=双输，不跟进=短期失血。真正的问题是判断对手补贴是战略投入还是虚张声势，以及找到对手\"伐不动\"的维度。",
+ methods:[
+  {n:"囚徒困境",b:"博弈论",w:"识别双输结构，避免情绪化跟进",l:"game-theory.html#card-3"},
+  {n:"不战而屈人之兵",b:"孙子兵法",w:"价格战是\"攻城\"（最下策），先找伐谋路径：供应链/体验/复购体系",l:"sunzi.html#card-1"},
+  {n:"调查研究",b:"毛泽东选集",w:"先搞清对手补贴的力度/时长/资金来源，再谈应对",l:"mao.html#card-4"},
+  {n:"兵贵胜不贵久",b:"孙子兵法",w:"若必须短期回应，设止损线，拒绝无限消耗",l:"sunzi.html#card-6"}
+ ],
+ steps:[
+  {a:"调查三件事：对手补贴力度、持续时间、钱从哪来（品牌方自掏？平台补？）",s:"调查研究"},
+  {a:"判断对手主要矛盾：抢份额？清库存？造势？短期行为就不跟进，等它结束",s:"矛盾论"},
+  {a:"把补贴预算投到对手伐不动的地方：供应链成本、门店体验、会员复购",s:"不战而屈人之兵"},
+  {a:"若必须回应：定点小额反击（1-2个核心商圈）+ 2周止损线，守不住就说明不是补贴问题",s:"兵贵胜不贵久"}
+ ],
+ risks:["对手资本远强于你且铁了心烧钱换市场时，\"不跟进\"会持续失血——此时该找平台资源而非自己扛","行业格局未定的早期，价格战可能是\"谁先怂谁出局\"，不适用","如果你无法获取对手成本数据，判断会失真"]},
+
+{id:"freerider",title:"团队有人搭便车怎么办",kw:["搭便车","偷懒","摸鱼","不出力","团队","激励","考核","KPI","分工"],
+ diagnosis:"搭便车是团队版的囚徒困境：每个人都在等别人多干活。本质是激励机制缺陷，不是人品问题——好人被坏机制教坏。",
+ methods:[
+  {n:"囚徒困境",b:"博弈论",w:"识别搭便车的博弈结构：偷懒是占优策略，除非改变收益",l:"game-theory.html#card-3"},
+  {n:"机制设计",b:"博弈论",w:"设计激励相容的规则：让\"不偷懒\"成为占优策略",l:"game-theory.html#card-15"},
+  {n:"反对自由主义",b:"毛泽东选集",w:"11种腐蚀组织的行为：明知不对少说为佳、背后议论不摆桌面",l:"mao.html#card-16"},
+  {n:"党委会工作方法",b:"毛泽东选集",w:"问题摆到桌面上，事先通知，集体讨论",l:"mao.html#card-17"}
+ ],
+ steps:[
+  {a:"先诊断：搭便车是因为\"不会做\"还是\"不愿做\"？前者是能力问题（培训/带教），后者才是机制问题",s:"囚徒困境"},
+  {a:"重新设计激励：个人贡献可度量+团队绩效挂钩，让偷懒有明确代价",s:"机制设计"},
+  {a:"公开摆桌面：一对一沟通+会上对齐分工，明确每个人的产出标准",s:"党委会工作方法"},
+  {a:"用重复博弈的力量：明确传达\"长期合作中，偷懒者会被边缘化\"的信号",s:"重复博弈"}
+ ],
+ risks:["度量个人贡献本身有成本——过度度量会挫伤主动性和创新","如果搭便车者是老板的亲信，机制设计会失效——此时是政治问题不是机制问题","小团队（<5人）中度量体系性价比低，直接面对面沟通更有效"]},
+
+{id:"xfunc",title:"跨部门协作扯皮怎么办",kw:["跨部门","扯皮","推诿","协作","配合","甩锅","沟通","部门墙"],
+ diagnosis:"跨部门扯皮的本质是廉价交谈问题：双方利益不一致时，语言沟通无法传递可信信息。根源通常是目标不一致+规则缺失。",
+ methods:[
+  {n:"廉价交谈",b:"博弈论",w:"利益不一致时沟通无效——先对齐利益，再谈协作",l:"game-theory.html#card-19"},
+  {n:"党委会工作方法",b:"毛泽东选集",w:"问题摆桌面、事先通知、形成书面决议",l:"mao.html#card-17"},
+  {n:"群众路线",b:"毛泽东选集",w:"从对方团队收集真实诉求，提炼共识再推回执行",l:"mao.html#card-12"}
+ ],
+ steps:[
+  {a:"先识别双方的真实利益：对方部门KPI是什么？扯皮对谁有利？",s:"廉价交谈"},
+  {a:"把问题摆到桌面上：组织正式会议，事先发议程，会上形成书面决议+责任人+时间点",s:"党委会工作方法"},
+  {a:"找共同上级对齐目标：如果双方目标本质冲突，请上级拍板优先级",s:"群众路线"},
+  {a:"建立规则而非靠人情：明确协作流程/SLA，下次不扯皮",s:"机制设计"}
+ ],
+ risks:["如果根源是组织设计缺陷（两个部门的KPI天然冲突），个体努力只能缓解无法根治","频繁升级到上级会消耗你的政治资本——先自己谈，谈不动再升级","书面决议若无人跟进=废纸，必须指定唯一责任人"]},
+
+{id:"newmarket",title:"要不要进入新市场 / 新赛道",kw:["新市场","进入","扩张","新业务","赛道","开店","区域","下沉"],
+ diagnosis:"进入新市场的本质是五事七计的Go/No-Go评估：不是\"市场有空间\"就该进，而是\"你在关键维度上是否领先\"。多数失败源于调研不足和优势错配。",
+ methods:[
+  {n:"调查研究",b:"毛泽东选集",w:"没有调查没有发言权——亲自走访目标市场，不靠报告决策",l:"mao.html#card-4"},
+  {n:"五事七计",b:"孙子兵法",w:"道天地将法五维自评vs对手，得算多者胜",l:"sunzi.html#card-3"},
+  {n:"白痴指数",b:"第一性原理",w:"拆解目标市场的成本结构，找重构空间",l:"fp.html#card-5"}
+ ],
+ steps:[
+  {a:"实地走访：目标市场的用户/竞品/供应商，至少解剖1-2个典型（麻雀）",s:"调查研究"},
+  {a:"五事打分：你的道天地将法在目标市场各几分？对手几分？≥3项领先才进",s:"五事七计"},
+  {a:"算白痴指数：目标市场现有玩家的成本结构有没有\"泡沫环节\"可重构？",s:"白痴指数"},
+  {a:"小规模验证：选1个最小可验证的点进入（1家店/1个产品），跑通再放大",s:"实践认识"}
+ ],
+ risks:["调研再充分也无法消除不确定性——进入决策永远是概率决策，别追求100%把握","五事七计中\"天\"（时机）权重最高——市场很好但时机不对照样死","沉没成本会绑架你：进入后要定期重估，别因为\"已经投入了\"而硬撑"]},
+
+{id:"stop",title:"项目该不该继续投入 / 止损",kw:["止损","放弃","继续投入","项目","亏损","该不该","撑","坚持"],
+ diagnosis:"止损决策的本质是日成本核算：不是\"项目还有希望吗\"，而是\"每天在烧什么、烧到什么时候你承受不起\"。最危险的是用\"再给点时间\"代替止损。",
+ methods:[
+  {n:"兵贵胜不贵久",b:"孙子兵法",w:"战争有日成本，久则钝兵挫锐——设止损线，到线就走",l:"sunzi.html#card-6"},
+  {n:"实践认识",b:"毛泽东选集",w:"计划→执行→检验→修正：连续3次修正仍不成立，方向本身有问题",l:"mao.html#card-5"},
+  {n:"第二曲线",b:"第一性原理",w:"判断这个项目是第一曲线（该养）还是已见顶（该切换）",l:"fp.html#card-7"}
+ ],
+ steps:[
+  {a:"算日成本：这个项目每天消耗什么（钱/人力/注意力/机会成本）？写下来",s:"兵贵胜不贵久"},
+  {a:"定止损线：按日成本算出\"最多再撑多久\"，写下一个明确日期",s:"兵贵胜不贵久"},
+  {a:"回顾迭代记录：过去3次\"修正后重试\"的结果如何？连续失败=方向问题，不是执行问题",s:"实践认识"},
+  {a:"到止损线就执行退出：把退出写成流程（怎么退/损失多少/谁负责），避免\"再给一周\"",s:"兵贵胜不贵久"}
+ ],
+ risks:["止损线定了但没人执行=白定——需要指定\"止损执行人\"（最好是旁观者）","品牌建设类项目不适用速胜逻辑——它需要时间沉淀，止损线要放宽","\"日成本\"容易漏算机会成本——算上\"这钱投别处能赚多少\""]},
+
+{id:"promo",title:"如何获得晋升 / 职业成长",kw:["晋升","升职","成长","提拔","发展","职业规划","涨薪","进步"],
+ diagnosis:"晋升的本质是信号博弈：老板无法完全观察你的能力，你需要发送\"可信信号\"。可信信号=高成本+高区分度（做出了别人做不出的成绩）。",
+ methods:[
+  {n:"信号博弈",b:"博弈论",w:"发送高成本信号：学历/项目成果/独有能力，让老板低成本识别你",l:"game-theory.html#card-13"},
+  {n:"集中兵力",b:"毛泽东选集",w:"伤其十指不如断其一指——聚焦1-2件大事做穿，而非样样平庸",l:"mao.html#card-2"},
+  {n:"刻意练习",b:"第一性原理",w:"核心算法×大量重复：找到关键技能刻意训练",l:"fp.html#card-9"}
+ ],
+ steps:[
+  {a:"识别晋升的\"信号标准\"：这个岗位的晋升评审看重什么？（问老板/看晋升者的共同特征）",s:"信号博弈"},
+  {a:"集中资源打1-2个标杆项目：做成\"别人提到你的名字就想到的成果\"",s:"集中兵力"},
+  {a:"把成果变成可见信号：汇报/分享/文档化，让决策者低成本看到",s:"信号博弈"},
+  {a:"刻意练习关键技能：每周固定时间训练核心能力，建立复利",s:"刻意练习"}
+ ],
+ risks:["只发信号不干实事（表演式工作）短期有效长期反噬——信号成本必须真实","在论资排辈的组织里，信号博弈弱于关系博弈——先判断组织类型","过度聚焦单一项目有风险：项目失败=信号崩塌，需要分散1-2个次重点"]},
+
+{id:"strongrival",title:"竞争对手太强怎么办",kw:["对手强","竞品强","巨头","打不过","垄断","强敌","碾压"],
+ diagnosis:"面对强敌的核心是强弱转换规律：力量小的同人民（用户）联系的强，力量大的脱离用户的弱。你不需要全面战胜它，只需要在它\"伐不动\"的局部形成优势。",
+ methods:[
+  {n:"积极防御",b:"毛泽东选集",w:"弱势方先退让保存实力，等对手疲劳犯错再反击",l:"mao.html#card-1"},
+  {n:"集中优势兵力",b:"毛泽东选集",w:"在关键战场配置压倒性资源，宁断一指不伤十指",l:"mao.html#card-2"},
+  {n:"混合策略",b:"博弈论",w:"让对手无法预测你的动作，避免被针对",l:"game-theory.html#card-8"}
+ ],
+ steps:[
+  {a:"五事七计找对手的弱点：巨头通常在\"地\"（本地化）和\"法\"（决策速度）上弱于你",s:"五事七计"},
+  {a:"战略退却：放弃与对手正面硬刚的战场（如价格/规模），保存实力",s:"积极防御"},
+  {a:"集中兵力打1个细分：选对手\"不值得打\"的利基市场，投3倍资源做穿",s:"集中优势兵力"},
+  {a:"保持不可预测：多产品线/多渠道并行，让对手无法全面封锁",s:"混合策略"}
+ ],
+ risks:["退却≠放弃：如果你退到无路可退还不反击，退却就变成了溃败","细分市场太小会饿死——利基选择必须验证市场规模","对手若用资本直接收购你所在品类，博弈策略失效（此时考虑被收购或合作）"]},
+
+{id:"bigdec",title:"如何做重大决策",kw:["重大决策","决策","选择困难","纠结","犹豫","怎么办","怎么选"],
+ diagnosis:"重大决策的错误率来自用归纳法处理非连续问题。正确的做法：拆到第一性原理（不可违反的基本事实），再用演绎法推导。",
+ methods:[
+  {n:"第一性原理",b:"第一性原理",w:"追问5个为什么，找到不可省略/删除/违反的基本命题",l:"fp.html#card-1"},
+  {n:"矛盾论",b:"毛泽东选集",w:"找主要矛盾：解决了它其他问题松动的那个",l:"mao.html#card-8"},
+  {n:"期望效用",b:"博弈论",w:"量化各选项的期望效用，结合你的风险态度选择",l:"game-theory.html#card-7"}
+ ],
+ steps:[
+  {a:"用5 Whys追问决策的本质：这个决策真正决定的是什么？（如买房≠买房子，=锁定生活方式）",s:"第一性原理"},
+  {a:"找主要矛盾：列出所有考量因素，问\"哪个因素解决了，其他都松动\"",s:"矛盾论"},
+  {a:"列出选项的期望效用：各选项的收益×概率，明确自己是风险规避还是偏好",s:"期望效用"},
+  {a:"做最小验证：决策可逆的部分先试（先租后买/先兼职后全职）",s:"实践认识"}
+ ],
+ risks:["5 Whys可能过度追问导致分析瘫痪——追问到\"再往下不影响决策\"为止","期望效用依赖概率估计准确，而人对小概率事件的估计偏差极大","重大决策中情绪权重远高于理性——冷静期（24小时）后再确认"]},
+
+{id:"influence",title:"如何建立个人影响力 / 声誉",kw:["影响力","声誉","个人品牌","信任","口碑","存在感","人脉"],
+ diagnosis:"声誉是重复博弈的产物：好声誉让陌生人愿意与你合作。建立影响力的核心是持续发送\"可信承诺+兑现记录\"。",
+ methods:[
+  {n:"声誉",b:"博弈论",w:"好声誉带来长期收益——长期关系中人们更愿意与有声誉者合作",l:"game-theory.html#card-20"},
+  {n:"为人民服务",b:"毛泽东选集",w:"价值观驱动：为他人创造价值，开放接受批评",l:"mao.html#card-15"},
+  {n:"致人而不致于人",b:"孙子兵法",w:"先提框架=掌握主导权：主动输出观点而非被动响应",l:"sunzi.html#card-5"}
+ ],
+ steps:[
+  {a:"选定声誉赛道：1个你希望\"被记住\"的标签（如\"懂餐饮KA的数据人\"）",s:"集中兵力"},
+  {a:"持续兑现小承诺：说到做到，哪怕小事——声誉靠积累不靠事件",s:"声誉"},
+  {a:"主动输出：写复盘/做分享/在会议上先提方案，建立\"有观点\"的认知",s:"致人而不致于人"},
+  {a:"开放接受批评：有人指出问题就改，\"为他人利益坚持好的改正错的\"",s:"为人民服务"}
+ ],
+ risks:["声誉积累慢、崩塌快——一次重大失信可能毁掉多年积累","只输出不兑现=表演型声誉，长期必被识破","在流动性强的组织中，声誉贴现率低（人走茶凉），长期主义策略收益打折"]},
+
+{id:"setback",title:"遇到挫折 / 失败怎么办",kw:["挫折","失败","受挫","打击","低谷","难受","崩溃","坚持不下去"],
+ diagnosis:"失败有二重性：坏事中包含好事的种子。关键不是消除失败，而是创造条件让失败向学习转化——用实践认识的循环把失败变成认识升级。",
+ methods:[
+  {n:"矛盾分析",b:"毛泽东选集",w:"坏事可以变好事：失败中找胜利的种子，创造条件让它转化",l:"mao.html#card-3"},
+  {n:"实践认识",b:"毛泽东选集",w:"失败是认识升级的必经之路：从失败中提取修正后的假设",l:"mao.html#card-5"},
+  {n:"愚公移山",b:"毛泽东选集",w:"信念+坚持+动员：把大目标分解为可持续的小行动",l:"mao.html#card-13"}
+ ],
+ steps:[
+  {a:"做失败复盘：写下\"我以为会发生什么 vs 实际发生什么\"，找出错误假设",s:"实践认识"},
+  {a:"二重性分析：这次失败中包含什么好事的种子？（暴露了问题/认识了人/排除了选项）",s:"矛盾分析"},
+  {a:"修正假设后小步重启：用最小成本验证修正后的方向，不急着翻盘",s:"实践认识"},
+  {a:"把目标分解：如果目标太大，拆成\"每天都能推进一点\"的小行动",s:"愚公移山"}
+ ],
+ risks:["\"坏事变好事\"不是阿Q精神——需要主动创造条件，不是自我安慰","情绪创伤期不宜立即复盘——先处理情绪，再分析认知","连续失败要警惕方向性错误：3次修正仍失败，考虑换方向而非更努力"]}
+];
+
+function renderSolution(sol){
+  const m=sol.methods.map(x=>`<div class="sol-method"><div class="m-name">${x.n}</div><div class="m-desc">${x.w}<br><span class="m-book">📚 ${x.b} · <a href="${x.l}">查看卡片</a></span></div></div>`).join('');
+  const s=sol.steps.map((x,i)=>`<div class="sol-step"><div class="s-n">${i+1}</div><div class="s-t">${x.a}<span class="s-src">— ${x.s}</span></div></div>`).join('');
+  const r=sol.risks.map(x=>`<div class="sol-risk">${x}</div>`).join('');
+  return `<div class="sol-box">
+    <div class="sol-header">🎯 解决方案：${sol.title}</div>
+    <div class="sol-sec sol-diag"><h3><span class="num">①</span>问题诊断</h3><p>${sol.diagnosis}</p></div>
+    <div class="sol-sec sol-methods"><h3><span class="num">②</span>适用方法论</h3>${m}</div>
+    <div class="sol-sec sol-steps"><h3><span class="num">③</span>行动步骤</h3>${s}</div>
+    <div class="sol-sec sol-risks"><h3><span class="num">④</span>风险提示</h3>${r}</div>
+  </div>`;
+}
+
 function doMatch(){
   const q=document.getElementById('questionInput').value.trim();
   if(!q)return;
   const ql=q.toLowerCase();
+  const ms=document.getElementById('matchSection');
+  const mc=document.getElementById('matchCount');
+  const mg=document.getElementById('matchGrid');
+
+  // 优先匹配四段式解决方案模板
+  let bestSol=null,bestScore=0;
+  SOLUTIONS.forEach(sol=>{
+    let score=0;
+    sol.kw.forEach(k=>{if(ql.includes(k))score+=3});
+    [...ql].filter(ch=>/[\u4e00-\u9fff]/.test(ch)).forEach(ch=>{sol.kw.forEach(k=>{if(k.includes(ch))score+=0.5})});
+    if(score>bestScore){bestScore=score;bestSol=sol}
+  });
+
+  if(bestSol && bestScore>=2){
+    ms.classList.add('show');
+    mc.textContent='';
+    mg.innerHTML=renderSolution(bestSol)+`<div class="sol-fallback-tip">💡 需要更定制化的方案？在QoderWork中对我说"用知识库帮我解决：<b>${q}</b>"，我会做深度推理。</div>`;
+    ms.scrollIntoView({behavior:'smooth',block:'start'});
+    return;
+  }
+
+  // 回退：卡片列表匹配
   const scored=[];
   cards.forEach(card=>{
     let score=0;
@@ -412,9 +662,6 @@ function doMatch(){
   });
   scored.sort((a,b)=>b.score-a.score);
   const top=scored.slice(0,12);
-  const ms=document.getElementById('matchSection');
-  const mc=document.getElementById('matchCount');
-  const mg=document.getElementById('matchGrid');
   if(!top.length){
     ms.classList.add('show');mc.textContent='- 未找到匹配，试试换个描述';mg.innerHTML='';return;
   }
