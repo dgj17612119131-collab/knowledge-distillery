@@ -1,4 +1,4 @@
-const CACHE_NAME = 'knowledge-v4';
+const CACHE_NAME = 'knowledge-v5';
 const ASSETS = [
   '/',
   '/index.html',
@@ -25,16 +25,15 @@ self.addEventListener('activate', e => {
 });
 
 self.addEventListener('fetch', e => {
+  // 网络优先策略：有网时总是先尝试网络，拿不到再回退缓存
+  // 这样每次刷新都能拿到最新版本，离线时才用缓存
   e.respondWith(
-    caches.match(e.request).then(cached => {
-      const fetchPromise = fetch(e.request).then(response => {
-        if (response && response.status === 200) {
-          const clone = response.clone();
-          caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
-        }
-        return response;
-      }).catch(() => cached);
-      return cached || fetchPromise;
-    })
+    fetch(e.request).then(response => {
+      if (response && response.status === 200) {
+        const clone = response.clone();
+        caches.open(CACHE_NAME).then(cache => cache.put(e.request, clone));
+      }
+      return response;
+    }).catch(() => caches.match(e.request))
   );
 });
