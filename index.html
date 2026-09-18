@@ -623,6 +623,8 @@ function renderSolution(sol){
 function doMatch(){
   const q=document.getElementById('questionInput').value.trim();
   if(!q)return;
+  // 保存问题到URL hash，页面重载后可从hash恢复方案
+  try{history.replaceState(null,'','#q='+encodeURIComponent(q))}catch(e){}
   const ql=q.toLowerCase();
   const ms=document.getElementById('matchSection');
   const mc=document.getElementById('matchCount');
@@ -675,6 +677,15 @@ document.addEventListener('DOMContentLoaded',()=>{
   renderAll();
   document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});
   document.getElementById('questionInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doMatch()}});
+  // 从URL hash恢复之前的问题和方案（返回书库/刷新页面后方案不丢）
+  const hm=location.hash.match(/#q=(.+)/);
+  if(hm){
+    try{
+      const savedQ=decodeURIComponent(hm[1]);
+      document.getElementById('questionInput').value=savedQ;
+      doMatch();
+    }catch(e){}
+  }
 });
 </script>
 </body>
