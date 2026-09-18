@@ -360,7 +360,7 @@ const qMap={
 function renderCard(c,score){
   const sc=score!==undefined?`<span class="ci-score">${score}</span>`:'';
   const tags=c.tg.slice(0,3).map(t=>`<span class="tag tag-b">${t}</span>`).join('');
-  return `<a class="ci" data-book="${c.bk}" data-id="${c.id}" href="${c.f}">
+  return `<a class="ci" data-book="${c.bk}" data-id="${c.id}" href="${c.f}" target="_blank" rel="noopener">
     <div class="ci-head"><span class="ci-num">${c.n}</span><span class="ci-title">${c.t}</span>${sc}</div>
     <div class="ci-book">${c.bn}</div>
     <div class="ci-concept">${c.c}</div>
@@ -608,7 +608,7 @@ const SOLUTIONS=[
 ];
 
 function renderSolution(sol){
-  const m=sol.methods.map(x=>`<div class="sol-method"><div class="m-name">${x.n}</div><div class="m-desc">${x.w}<br><span class="m-book">📚 ${x.b} · <a href="${x.l}">查看卡片</a></span></div></div>`).join('');
+  const m=sol.methods.map(x=>`<div class="sol-method"><div class="m-name">${x.n}</div><div class="m-desc">${x.w}<br><span class="m-book">📚 ${x.b} · <a href="${x.l}" target="_blank" rel="noopener">查看卡片</a></span></div></div>`).join('');
   const s=sol.steps.map((x,i)=>`<div class="sol-step"><div class="s-n">${i+1}</div><div class="s-t">${x.a}<span class="s-src">— ${x.s}</span></div></div>`).join('');
   const r=sol.risks.map(x=>`<div class="sol-risk">${x}</div>`).join('');
   return `<div class="sol-box">
