@@ -199,10 +199,10 @@ a{color:var(--accent);text-decoration:none}
 <div class="hero">
   <div class="hero-icon">📖</div>
   <h1>知识蒸馏工坊</h1>
-  <div class="hero-sub">4本经典 · 56张决策卡片 · 从竞争策略到创新突破的思维工具箱</div>
+  <div class="hero-sub">5本经典 · 68张决策卡片 · 从竞争策略到创新突破到中国式处世的思维工具箱</div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-n">4</div><div class="stat-l">本书</div></div>
-    <div class="stat"><div class="stat-n">56</div><div class="stat-l">卡片</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">本书</div></div>
+    <div class="stat"><div class="stat-n">68</div><div class="stat-l">卡片</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">主题</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景</div></div>
   </div>
@@ -229,6 +229,11 @@ a{color:var(--accent);text-decoration:none}
     <div class="book-title">博弈论</div>
     <div class="book-author">纳什 → 现代应用</div>
     <div class="book-count">22 张卡片</div>
+  </a>
+  <a class="book" href="qingci.html">
+    <div class="book-title">青瓷</div>
+    <div class="book-author">浮石 · 处世与关系智慧</div>
+    <div class="book-count">12 张卡片</div>
   </a>
 </div>
 
@@ -266,7 +271,7 @@ a{color:var(--accent);text-decoration:none}
 
 <!-- Topic Nav -->
 <div class="topic-nav">
-  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 56</button>
+  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 68</button>
   <button class="topic-btn" data-topic="compete" onclick="filterTopic('compete')">⚔️ 竞争策略</button>
   <button class="topic-btn" data-topic="decision" onclick="filterTopic('decision')">🧠 决策方法</button>
   <button class="topic-btn" data-topic="system" onclick="filterTopic('system')">🌐 系统思维</button>
@@ -277,7 +282,7 @@ a{color:var(--accent);text-decoration:none}
 <!-- Cards Container -->
 <div id="allCards"></div>
 
-<div class="footer">知识蒸馏工坊 · 2026 · 4本经典 · 56张决策卡片</div>
+<div class="footer">知识蒸馏工坊 · 2026 · 5本经典 · 68张决策卡片</div>
 </div>
 
 <script>
@@ -341,7 +346,20 @@ const cards=[
 {id:"g19",n:19,t:"廉价交谈",bk:"gt",bn:"博弈论",c:"无成本沟通。利益一致时空口说白话可传递信息；利益不一致则不能。",tg:["沟通机制","商业","管理"],tp:["org"],f:"game-theory.html",kw:"廉价交谈 沟通 利益一致 信任 顾问 员工 固定薪资 绩效 可信"},
 {id:"g20",n:20,t:"声誉",bk:"gt",bn:"博弈论",c:"长期关系中建立的信誉。好声誉带来长期收益。",tg:["信誉机制","全场景"],tp:["org","compete"],f:"game-theory.html",kw:"声誉 信誉 长期 品牌 电商 好评 连锁 个人品牌 口碑"},
 {id:"g21",n:21,t:"核心与沙普利值",bk:"gt",bn:"博弈论",c:"合作收益的两种分配方法：核心强调稳定性，沙普利值强调公平性。",tg:["分配机制","商业","管理"],tp:["org"],f:"game-theory.html",kw:"核心 沙普利值 分配 稳定 公平 边际贡献 合资 利润 分红"},
-{id:"g22",n:22,t:"边界与应用总结",bk:"gt",bn:"博弈论",c:"博弈论假设理性人、收益已知、信息明确。现实中这些假设可能不成立。",tg:["边界总结","全场景"],tp:["system","decision"],f:"game-theory.html",kw:"边界 局限 行为博弈 不完全契约 理性 假设 适用范围"}
+{id:"g22",n:22,t:"边界与应用总结",bk:"gt",bn:"博弈论",c:"博弈论假设理性人、收益已知、信息明确。现实中这些假设可能不成立。",tg:["边界总结","全场景"],tp:["system","decision"],f:"game-theory.html",kw:"边界 局限 行为博弈 不完全契约 理性 假设 适用范围"},
+// 青瓷
+{id:"q1",n:1,t:"关系是养出来的",bk:"qc",bn:"青瓷",c:"关系是账户：平时持续存入，急时才有得取。用时才想起是透支。",tg:["关系哲学","商业","为人"],tp:["org","decision"],f:"qingci.html",kw:"关系 养 储蓄 长期 人情 存款 平时 维系 客户 复购 人脉 账户"},
+{id:"q2",n:2,t:"青瓷哲学：留余地",bk:"qc",bn:"青瓷",c:"有裂纹才真，留余地才活。太完美反而假，凡事留三分。",tg:["分寸","为人","管理"],tp:["system","decision"],f:"qingci.html",kw:"青瓷 裂纹 残缺 余地 留白 完美 分寸 弹性 容错 示弱 真实"},
+{id:"q3",n:3,t:"做局者思维",bk:"qc",bn:"青瓷",c:"最高级的角色是搭台的人——连接各方、造场、掌握信息与位置。",tg:["战略位置","商业","管理"],tp:["system","compete"],f:"qingci.html",kw:"做局 搭台 中间人 撮合 连接 结构洞 信息 位置 庄家 平台 组局"},
+{id:"q4",n:4,t:"花看半开 酒饮微醺",bk:"qc",bn:"青瓷",c:"做到八九分就收，留一分给天给人给变化。把事做尽是取祸之道。",tg:["分寸感","为人","管理"],tp:["decision","system"],f:"qingci.html",kw:"半开 微醺 分寸 留余地 不做绝 克制 收手 让 满则溢 度"},
+{id:"q5",n:5,t:"先做朋友再做生意",bk:"qc",bn:"青瓷",c:"关系先于交易，把生意化进交情里。先谈交情再谈买卖。",tg:["商业","谈判"],tp:["compete","org"],f:"qingci.html",kw:"朋友 生意 交情 关系 信任 交易 客户 铺垫 自己人 顺序"},
+{id:"q6",n:6,t:"看破不说破",bk:"qc",bn:"青瓷",c:"心里门儿清，嘴上留一线。给人留面子=给自己留后路。",tg:["面子","管理","为人"],tp:["org","decision"],f:"qingci.html",kw:"看破 不说破 面子 体面 台阶 洞察 分寸 当众 护面子 糊涂"},
+{id:"q7",n:7,t:"说三分留七分",bk:"qc",bn:"青瓷",c:"含蓄表达，话不说满。进可攻退可守，让对方补全。",tg:["语言艺术","谈判"],tp:["decision","compete"],f:"qingci.html",kw:"含蓄 弦外之音 点到为止 留白 暗示 说三分 弹性 收 高语境"},
+{id:"q8",n:8,t:"听话听音",bk:"qc",bn:"青瓷",c:"听懂没说出口的那半句。改天吧=不，模糊=拒绝，强调=缺什么。",tg:["倾听","谈判","管理"],tp:["decision","org"],f:"qingci.html",kw:"听话听音 言外之意 潜台词 改天 推脱 暗示 回避 字面 高语境 拒绝"},
+{id:"q9",n:9,t:"借嘴说话",bk:"qc",bn:"青瓷",c:"不方便自己说的，借第三方/故事/共识的嘴替你说，不得罪人。",tg:["语言艺术","管理"],tp:["org","decision"],f:"qingci.html",kw:"借嘴 传话 借他人之口 故事 背后夸 第三方 共识 表态 不得罪 中间人"},
+{id:"q10",n:10,t:"提要求：把我要说成为您",bk:"qc",bn:"青瓷",c:"用对方的利益包装自己的诉求，让帮你=帮他自己。",tg:["说话方式","谈判","商业"],tp:["compete","decision"],f:"qingci.html",kw:"提要求 求人 利益 为您 共赢 说服 谈判 资源 诉求 换位 好处"},
+{id:"q11",n:11,t:"拒绝：只关门不堵路",bk:"qc",bn:"青瓷",c:"拒的是事不伤的是人，还留下次的口子。给台阶、给替代。",tg:["说话方式","为人","管理"],tp:["org","decision"],f:"qingci.html",kw:"拒绝 说不 台阶 留余地 替代 对事不对人 边界 面子 不结仇 委婉"},
+{id:"q12",n:12,t:"赞美要夸到点子上",bk:"qc",bn:"青瓷",c:"夸细节、夸背后、夸不容易。让人被看见，比夸天赋更戳心。",tg:["说话方式","管理","为人"],tp:["org","decision"],f:"qingci.html",kw:"赞美 夸奖 背后夸 具体 细节 努力 不容易 被看见 认可 带团队"}
 ];
 
 const topics={
@@ -713,7 +731,7 @@ function deepSolve(){
   const top=scored.slice(0,8);
   const cardList=top.length
     ? top.map(({card},i)=>`${i+1}. ${card.bn}·${card.t} — ${card.c}`).join('\n')
-    : '（未命中特定卡片，请从全部56张中自行选取最相关的2-4张）';
+    : '（未命中特定卡片，请从全部68张中自行选取最相关的2-4张）';
   const prompt=
 `请用「知识库问题求解器（深度版）」帮我分析下面这个问题，严格按五段式输出，反套话、落到我的具体处境。
 
