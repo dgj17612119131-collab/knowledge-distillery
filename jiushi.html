@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>遥远的救世主 · 文化属性与规律的智慧</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#7C3AED;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#B488F8;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.ov p strong{color:var(--text)}
+.src-note{background:var(--fill);border-radius:var(--r-sm);padding:12px 14px;margin:12px 8px;font-size:13px;color:var(--t3);line-height:1.6}
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
+.card.hidden{display:none}
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(124,58,237,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+.cb{padding:0 20px 24px}
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+.ot{background:var(--fill);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:15px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}
+.ot-i strong{color:var(--text)}
+.deep{background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}
+.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}
+.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}
+.ft2 strong{color:var(--text)}
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}
+.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+.al{list-style:none}
+.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}
+.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(124,58,237,.1);color:var(--accent)}
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(124,58,237,.1);color:var(--accent)}
+.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--accent);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--accent)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+@media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-inner">
+<a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2L2 10l8 8"/></svg>书库</a>
+<div class="nav-title">遥远的救世主</div>
+</div></div>
+<div class="c">
+
+<div class="hero">
+<h1>遥远的救世主</h1>
+<div class="hero-sub">豆豆 · 文化属性、规律与觉悟（《天道》原著）</div>
+<div class="hero-meta"><span>12 张卡片</span><span>· 4 大维度</span><span>· 文化属性 / 认知决策 / 商战博弈 / 处世境界</span></div>
+</div>
+
+<div class="ov">
+<h2>蒸馏说明</h2>
+<p>《遥远的救世主》借一个音响商战与扶贫的故事，讲的是一套<strong>关于"规律"与"觉悟"的处世哲学</strong>。它的内核不是情节，而是丁元英身上那种"按客观规律办事、不等不靠、看破文化属性"的活法。本次蒸馏<strong>不取剧情</strong>，只提炼可迁移到决策、商业、认知、修身的思维方法，按四个维度组织。</p>
+<div class="src-note"><strong>来源与诚实标注：</strong>本卡片基于对《遥远的救世主》全书思想的整体理解与公开书评/语录整理提炼，<strong>非逐节原文提取</strong>（电子版受反爬限制未能全文抓取）。"文化属性""强势文化/弱势文化""见路不走""实事求是"等是书中的核心概念；卡片观点为方法论提炼，个别措辞非原书逐字。人物与情节仅作例证背景。</div>
+</div>
+
+<div class="fb"><div class="fb-inner">
+<div class="frow"><span class="flbl">维度</span>
+<button class="fbtn on" data-t="p" data-f="all">全部</button>
+<button class="fbtn" data-t="p" data-f="p1">🧬 文化属性与规律</button>
+<button class="fbtn" data-t="p" data-f="p2">🔍 认知与决策</button>
+<button class="fbtn" data-t="p" data-f="p3">⚔️ 商战与博弈</button>
+<button class="fbtn" data-t="p" data-f="p4">🧘 处世与境界</button>
+</div>
+<div class="frow"><span class="flbl">场景</span>
+<button class="fbtn on" data-t="s" data-f="all">全部</button>
+<button class="fbtn" data-t="s" data-f="bz">💰 商业</button>
+<button class="fbtn" data-t="s" data-f="mg">👥 管理</button>
+<button class="fbtn" data-t="s" data-f="cr">🗣 竞争</button>
+<button class="fbtn" data-t="s" data-f="lf">🌱 成长</button>
+</div>
+<div class="fc" id="vc">12 张</div>
+</div></div>
+
+<div class="cards">
+<div class="card" id="card-1" data-p="p1" data-s="lf,bz,mg">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">文化属性决定命运</div><div class="cs">强势文化遵循规律 · 弱势文化依赖"靠"</div><div class="ctags"><span class="tag ts">文化属性与规律</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>决定一个人、一个群体命运的，不是钱或资源，而是<strong>文化属性</strong>——深植于骨子里的思维底色。强势文化的内核是"按事物规律办事、自立"；弱势文化的内核是"靠"：靠父母、靠单位、靠贵人、靠救世主。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">强</div><div class="ft2"><strong>强势文化＝以规律为师</strong>：不指望谁来救，自己研究条件、按客观规律行动，把命运握在自己手里。</div></div><div class="fs2"><div class="fn2">弱</div><div class="ft2"><strong>弱势文化＝以期待为食</strong>：习惯把希望寄托在外部力量（清天大老爷、贵人多关照），等、靠、要，一旦没人救就怨天尤人。</div></div><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>关键不在穷富，在属性</strong>：有钱人也可能满脑子弱势文化（指望关系、指望政策庇护）；穷人也可能有强势文化内核（自立、研究规律）。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>文化属性是一套"默认操作系统"，它决定了你遇到问题的第一反应：是"我能做什么改变条件"，还是"谁会来帮我"。系统不变，换多少外部机会都会以同样的方式失败——所以扶贫先扶的应是这套属性，而非钱。</p><div class="insight"><strong>深层洞见：</strong>自我审视的利器：当你抱怨"没有背景、没人带、平台不行"时，警惕这正是弱势文化在说话。<strong>强势文化不否认外部条件，但永远把"我能主导的部分"作为行动起点</strong>。改变命运，从换掉"等救世主"的操作系统开始。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">遇到难题先问"我能创造/改变哪些条件"，而不是"谁能帮我"。把每一次求助都变成"我做了X、还差Y"，而非空手要答案。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">带团队别当"救世主"事事兜底——那会养出弱势文化的下属。给方法、给条件、给责任，让他们自己按规律成事。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 世上没有救世主</a><a class="rt" href="javascript:scrollCard(3)">→ 实事求是按规律办事</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山（靠自己）</a></div></div>
+</div></div>
+
+<div class="card" id="card-2" data-p="p1" data-s="lf,bz">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">世上没有救世主</div><div class="cs">能救你的只有你自己 · 救世主是"遥远的"</div><div class="ctags"><span class="tag ts">文化属性与规律</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>书名即主旨：<strong>救世主是"遥远的"</strong>——它存在，但指望不上。真正能救一个人的，只有他自己觉醒、自己按规律去干。把改变命运的希望寄托在某个"高人/贵人/救世主"身上，本身就是弱势文化。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">悖</div><div class="ft2"><strong>扶贫的悖论</strong>：丁元英给王庙村设计了一条活路，但村民若自己不拼、不改变思维，再好的局也救不了他们。别人给的"道"，自己不"走"等于零。</div></div><div class="fs2"><div class="fn2">远</div><div class="ft2"><strong>为什么"遥远"</strong>：把希望放在外部救世主，等于把主动权交出。它或许存在，但永远够不着——因为救的本质是自救。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这不是否定帮助的价值，而是点明因果的起点：外因通过内因起作用。资源、机会、贵人都只是条件，真正决定结果的是主体是否觉醒并行动。等救世主的人，把结果系在了自己不控制的地方。</p><div class="insight"><strong>深层洞见：</strong>警惕一种隐蔽的懒惰：<strong>到处寻"高人"、求"秘籍"、拜"名师"，却不去做该做的事</strong>。求法本身可能成了不行动的借口。真正的敬重规律，是放下对救世主的幻想，从今天能改的条件下手。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">当你想"等一个机会/等一个人拉我一把"时，先做一件今天就能推进的事。把"等救"转成"自救的最小动作"。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">别指望靠一个大客户、一笔融资、一位大佬翻身。先把自身能力和产品结构做到"不给机会也能活"，机会来了才接得住。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 文化属性</a><a class="rt" href="javascript:scrollCard(9)">→ 杀富济贫的悖论</a><a class="rt" href="fp.html#card-1">第一性原理 · 回到基点</a></div></div>
+</div></div>
+
+<div class="card" id="card-3" data-p="p1" data-s="bz,mg,lf">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">实事求是 · 按客观规律办事</div><div class="cs">不唯心、不唯书、只唯实</div><div class="ctags"><span class="tag ts">文化属性与规律</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>丁元英一切行动的底层是<strong>实事求是</strong>：从当下的真实条件出发，按事物本来的规律推演，而不是从愿望、经验、教条、面子出发。规律不以人的意志为转移——顺应它则成，违背它则败。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">实</div><div class="ft2"><strong>先摸清事实</strong>：条件、成本、人心、竞争格局，一是一二是二，不自欺、不美化。</div></div><div class="fs2"><div class="fn2">律</div><div class="ft2"><strong>再找规律</strong>：这件事按它本来的逻辑该怎么走？什么条件导致什么结果？</div></div><div class="fs2"><div class="fn2">弃</div><div class="ft2"><strong>放下我执</strong>：不因为"我希望""别人都这样""书上说"而扭曲判断。让事实说话。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>多数人不是不懂道理，而是被"愿望、情绪、经验、面子"污染了判断，看不清事实、不愿认规律。实事求是看似朴素，实则是最难的——它要求你臣服于客观，而不是让世界臣服于你。</p><div class="insight"><strong>深层洞见：</strong>"按规律办事"的反面是"按意愿办事"。商业里太多失败源于"我觉得用户会喜欢""我投入这么多该有回报"。<strong>把"我认为"换成"事实是什么、规律指向哪"</strong>，决策质量立刻上一个台阶。这也是全书"觉悟"的落点。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">做决策前先列"我已确认的事实"和"我只是希望的假设"两栏。凡进入"假设"栏的，先去验证再下注，别当事实用。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">汇报和复盘只认数据与事实，不认态度与苦劳。营造"说真话不被罚"的环境，否则你收到的全是美化过的假事实。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 见路不走</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a></div></div>
+</div></div>
+
+<div class="card" id="card-4" data-p="p2" data-s="bz,lf,cr">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">见路不走</div><div class="cs">不照经验、不照教条 · 按当下条件走没有路的路</div><div class="ctags"><span class="tag ts">认知与决策</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>"见路不走"是全书最烧脑也最核心的方法论：<strong>看见别人走过的路，不盲从；看见书上写的路，不照搬</strong>。它不是不走寻常路标新立异，而是不被"经验主义/本本主义"绑架，只从"我此刻的真实条件"出发，该走哪条走哪条——哪怕那是一条没人走过的路。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">非</div><div class="ft2"><strong>不是"反着走"</strong>：为不同而不同，仍是被人家的路牵着（只是取反）。见路不走是"不看别人走没走，只看我的条件支持不支持"。</div></div><div class="fs2"><div class="fn2">条</div><div class="ft2"><strong>唯条件论</strong>：别人的成功是别人条件的果。你的条件不同，照抄那条路，等于要别人的果却缺别人的因。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是对"归纳法陷阱"和"教条主义"的双重破局（呼应第一性原理）：行业惯例、成功学、别人的案例，本质都是"过去/别处有效"的归纳，隐含假设"我的条件也一样"。见路不走要求回到"实事求是"——从当下条件独立推演。</p><div class="insight"><strong>深层洞见：</strong>实操口诀：<strong>遇到"别人都这么干/书上这么写/以前都这样"时，停下来问"我的条件和他一样吗？"</strong>一样就借鉴，不一样就自己推。它难在要顶住"别人都走这条路，我不走是不是错了"的群体压力。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">对标竞品时，别照抄它的打法。先比条件（资金/团队/用户结构/供应链），条件不同则同一条路对你可能致命。学它的"为什么"，不抄它的"做什么"。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">别人考研/跳槽/创业成功的路，不构成你该走的理由。只问"以我的条件和目标，最优解是什么"，哪怕答案和所有人不同。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 实事求是</a><a class="rt" href="fp.html#card-2">第一性原理 · 演绎vs归纳</a><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a></div></div>
+</div></div>
+
+<div class="card" id="card-5" data-p="p2" data-s="bz,mg,lf">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">条件论 · 因果律</div><div class="cs">想改结果，先改条件 · 不抱侥幸</div><div class="ctags"><span class="tag ts">认知与决策</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>任何结果都是一组条件的必然产物。<strong>与其盯着想要的结果发愁或祈祷，不如倒推：这个结果需要哪些条件？哪些我已具备、哪些缺失、缺失的怎么造？</strong>条件齐了果自然来，条件不齐再想要也没用。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">倒</div><div class="ft2"><strong>从果倒推因</strong>：把"我要做成X"翻译成"做成X必须满足A、B、C条件"。</div></div><div class="fs2"><div class="fn2">查</div><div class="ft2"><strong>盘点条件</strong>：A有、B差一点、C完全没有——把模糊的焦虑变成清晰的条件清单。</div></div><div class="fs2"><div class="fn2">造</div><div class="ft2"><strong>补条件或换目标</strong>：能造的去造，造不了的就承认"现在成不了"，别硬干也别空想。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是把"愿望思维"改造成"工程思维"。侥幸心的本质是"希望条件不具备也能有好结果"——这违背因果。条件论让人诚实：成与不成，取决于你是否凑齐了条件，而非你多想要、多努力感动了自己。</p><div class="insight"><strong>深层洞见：</strong>面对难题的定心丸：<strong>不焦虑"能不能成"，只研究"缺什么条件"</strong>。焦虑来自不可控，而条件清单把一切变成可控项。缺的条件补不上，就坦然调整目标——这也是"实事求是"的落地。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">定目标后强制写"达成所需条件清单"：要多少流量、什么转化率、几个关键人、哪些资源。逐条打勾，缺项即风险项，提前暴露。</div></div><div class="si"><div class="slbl"><span class="ic"></span>管理</div><div class="stx">下属说"我尽力了但没做成"，追问"当时缺哪个条件？为什么没提前报？"把复盘从追责变成补条件。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 实事求是</a><a class="rt" href="sunzi.html#card-2">孙子 · 先胜后战</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a></div></div>
+</div></div>
+
+<div class="card" id="card-6" data-p="p2" data-s="lf,bz,cr">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">认知差距决定胜负</div><div class="cs">同一件事 · 不同认知看到不同世界</div><div class="ctags"><span class="tag ts">认知与决策</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>乐圣为什么"看不懂"格律诗怎么打它的？王庙村人为什么抓不住眼前的机会？——<strong>人与人之间真正的差距是认知，不是资源。</strong>你只能在你认知范围内的世界里做选择，看不见的东西，对你不存在。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">屏</div><div class="ft2"><strong>认知是过滤器</strong>：同样的信息，认知不到的人视而不见。叶晓明、刘冰不是没遇到机会，是没那个"看见"的能力。</div></div><div class="fs2"><div class="fn2">局</div><div class="ft2"><strong>输在看不全</strong>：丁元英赢在他能看到对手看不到的条件与后果链条；对手输在只看到眼前，看不到三步之后。</div></div><div class="fs2"><div class="fn2">破</div><div class="ft2"><strong>提升认知=扩大可选集</strong>：读书、见高人、复盘、按规律推演，本质都是在拓宽"能看见的世界"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>竞争的本质常是认知维度的碾压：高维的人把低维的人当"透明"，而低维的人连自己被降维了都不知道。所以真正的护城河不是资源，是你比别人多"看见"的那一层规律与条件。</p><div class="insight"><strong>深层洞见：</strong>两个自省：一是<strong>当你嘲笑别人"这么明显的机会都抓不住"时，想想你此刻也正对某些机会视而不见</strong>；二是遇到反复失败，先怀疑是不是认知盲区，而非运气或努力。破认知天花板，比埋头苦干更值钱。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">每次重大失败后，专门写一段"当时我看不见什么"。认知盲区是复利式的——补上一块，后面很多决策同时受益。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">判断一个机会别人为何没做：是它真没价值，还是多数人认知/条件够不着？后者往往是超额收益的来源。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 见路不走</a><a class="rt" href="javascript:scrollCard(8)">→ 布局者思维</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a></div></div>
+</div></div>
+
+<div class="card" id="card-7" data-p="p3" data-s="bz,cr">
+<div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">弱势破强势的设计</div><div class="cs">把强者拖进你定的规则里打</div><div class="ctags"><span class="tag ts">商战与博弈</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>格律诗以农户+合作社的极低成本结构，把行业巨头乐圣拖进一个"它越正规越吃亏"的战场。<strong>弱势方硬碰强者的主场必输，聪明做法是重新定义游戏规则，让对手的优势变成负担。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">换</div><div class="ft2"><strong>换赛道/换规则</strong>：不在对手擅长的维度（品牌、规模、渠道）比，另设一个它结构上跟不起的维度（如把生产下沉到农户，成本打到对手无法企及）。</div></div><div class="fs2"><div class="fn2">绑</div><div class="ft2"><strong>让对手骑虎难下</strong>：用低价/新模式逼对手跟进，但它的组织成本、法律、形象又不允许它跟——优势反成枷锁。</div></div><div class="fs2"><div class="fn2">实</div><div class="ft2"><strong>底层是真规律</strong>：不是阴谋，而是把"成本结构决定价格底线"这条规律用到极致。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"机制设计/结构洞"的商战版（呼应博弈论）：不靠比对手更强，而靠设计一个让对手的最优解恰好对你有利的局面。胜负在开局的结构设计里就定了，打只是把已定的结果走一遍。</p><div class="insight"><strong>深层洞见：</strong>以弱胜强的关键不是更拼命，而是<strong>找到那个"我天然占优、对手结构上跟不动"的位置</strong>。但也别忘了卡9的另一面：把对手逼到墙角，会招来规则外的反扑——设计时要把对方的报复也算进去。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">面对巨头，别正面拼它最强的资源。找一个它"跟了伤品牌/组织，不跟丢市场"的两难结构切入，逼它在你定的规则里被动。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">竞争前先问：这个战场是比谁更强，还是比谁的结构更占优？能改规则就别硬拼。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 布局者思维</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="sunzi.html#card-4">孙子 · 以正合以奇胜</a></div></div>
+</div></div>
+
+<div class="card" id="card-8" data-p="p3" data-s="bz,cr,mg">
+<div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">布局者思维 · 算到最后一步</div><div class="cs">逆向推演对手反应 · 让每一步都是必然</div><div class="ctags"><span class="tag ts">商战与博弈</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>丁元英设计格律诗这盘棋，是<strong>从对手的反应往回推</strong>：我出这步，乐圣会怎么应？它应了之后我又怎么走？把整条博弈树推到终局，再倒着落第一子。看似冒险，实则每一步都在推演之内。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">终</div><div class="ft2"><strong>先想清楚终局</strong>：我要的结果是什么？对手最可能的应对是什么？</div></div><div class="fs2"><div class="fn2">逆</div><div class="ft2"><strong>从后往前倒推</strong>：要那个终局，倒数第二步必须发生什么？再往前……直到今天这一步。</div></div><div class="fs2"><div class="fn2">备</div><div class="ft2"><strong>把对手反应当常量</strong>：不赌对手犯错，而是假设对手做它的最优反应，我依然能赢——这才叫算到了。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"逆向归纳"的实战版：排除不可信的威胁与侥幸，只依赖"对手理性反应下依然成立"的路线。布局者不预测偶然，只设计必然——让对手的每一步"聪明选择"都恰好走进你预设的局。</p><div class="insight"><strong>深层洞见：</strong>多数人是"走一步看一步"（正向、被动），高手是"看十步走一步"（逆向、主动）。落子前先问：<strong>如果对手按对他最有利的方式反应，我这步还成立吗？</strong>成立才走。别把计划建立在"对手会失误"上。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">重要决策（定价/发布/谈判）前，画一张博弈树：我×对手，各2-3步，标出对手每步的最优反应，从终局倒推今天该怎么落子。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">推新政策前，先站在被管者角度推演他们会怎么规避，把反制算进设计里，而不是事后打补丁。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 弱势破强势</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计（庙算）</a></div></div>
+</div></div>
+
+<div class="card" id="card-9" data-p="p3" data-s="bz,lf,mg">
+<div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">杀富济贫的悖论与代价</div><div class="cs">赢了规则 · 但有些账要还</div><div class="ctags"><span class="tag ts">商战与博弈</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>丁元英用极致的规律设计打赢了乐圣，却引发一系列反噬：同行的恨、法律的边界、叶晓明们的崩溃、芮小丹之问的拷问。<strong>把"按规律办事"推到极致，会撞上"人心、道义、规则之外"的另一套账。</strong>本书最诚实的地方，是不回避这场胜利的代价。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">赢</div><div class="ft2"><strong>规则内你赢了</strong>：成本、法律、博弈都算到了，商业上无懈可击。</div></div><div class="fs2"><div class="fn2">债</div><div class="ft2"><strong>规则外有代价</strong>：把对手逼到绝路会招来非理性反扑；"劫富"未必"济贫"（村民仍可能因自身文化属性而起不来）；赢家也背上道德与关系成本。</div></div><div class="fs2"><div class="fn2">问</div><div class="ft2"><strong>该不该做，不只看能不能赢</strong>：合规律 ≠ 合道义。高手要同时算"技术账"和"人心账"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是对"纯理性/纯规律"思维的一次自我拷问：世界不只有可计算的因果，还有不可计算的人心、道义、报应。把对手当纯变量推演，会低估它狗急跳墙的概率，也会高估"我赢了就该如此"的正当性。</p><div class="insight"><strong>深层洞见：</strong>决策时补一问：<strong>"就算我赢了，代价是什么？值不值？有没有不把人逼到墙角的走法？"</strong>留一线给对手，既是青瓷说的"留余地"，也是给自己留退路——赶尽杀绝的赢，常常是下一场输的开始。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">打赢价格战/抢到客户后，评估是否结下死仇、是否踩了灰色边界。赢得漂亮、留有余地，比赢得干净更重要。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">别把"我是对的/我赢了"当成伤害别人的许可证。道理上赢、关系上输，是常见的双输。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 弱势破强势</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开（不做绝）</a><a class="rt" href="sunzi.html#card-1">孙子 · 不战而屈人之兵</a></div></div>
+</div></div>
+
+<div class="card" id="card-10" data-p="p4" data-s="lf,mg">
+<div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">不解释 · 不辩 · 随缘</div><div class="cs">懂你的人不必解释 · 不懂你的人不必解释</div><div class="ctags"><span class="tag ts">处世与境界</span><span class="tag tt">为人</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>丁元英被人误解、被议论，几乎从不辩解。<strong>他的分寸是：按规律做自己认为对的事，至于别人怎么看、怎么评价，那是别人的因果，不劳他去纠正。</strong>不解释不是理亏，是把精力和体面都留着。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">止</div><div class="ft2"><strong>解释的边界</strong>：对愿意懂你的人，适度沟通；对成见已深的人，解释只会变成争辩，越描越黑。</div></div><div class="fs2"><div class="fn2">静</div><div class="ft2"><strong>不辩＝不被牵动</strong>：一争辩，你就把评判权交给了对方。不辩，是守住自己的中心。</div></div><div class="fs2"><div class="fn2">随</div><div class="ft2"><strong>随缘不攀缘</strong>：该来的来，该走的走，不强求认同、不讨好、不解释。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>争辩的动机往往是"我需要你认可我"——这恰恰是弱势文化（靠外部确认自我）。不解释的底气，来自"我按规律做，结果会说话，不需要此刻说服谁"。这是内心自足的外在表现。</p><div class="insight"><strong>深层洞见：</strong>不是所有事都值得解释。区分两类：<strong>涉及事实澄清、合作基础的，要说清楚；涉及观点、立场、误解你为人的，笑笑就好。</strong>省下争辩的力气，去做让结果替你说话的事。这也呼应青瓷的"看破不说破"。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">被人误解时先问：澄清它有用吗？有用就一次性讲清事实；没用（对方只是要赢你/有偏见）就放下，去做该做的事。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">面对非议和噪音，用结果和长期记录回应，而不是逐条自证清白——后者会把你拖进无休止的解释内耗。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 强者的孤独与自洽</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务（闻过则喜）</a></div></div>
+</div></div>
+
+<div class="card" id="card-11" data-p="p4" data-s="lf,bz">
+<div class="ch"><div class="cnum">11</div><div class="ctg"><div class="ct">强者的孤独与自洽</div><div class="cs">不求认同 · 只求对</div><div class="ctags"><span class="tag ts">处世与境界</span><span class="tag tt">成长</span><span class="tag tt">为人</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>按规律活、不随大流，代价是<strong>孤独</strong>——多数人不理解你，甚至孤立你。丁元英的活法揭示：真正的独立，是能承受"我是对的，但没人认同"，并且不因此动摇、不回头去求认同。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">隔</div><div class="ft2"><strong>认知高一层，注定少同行</strong>：你看到的条件和规律，别人看不到，你的选择在别人眼里就成了"怪"。</div></div><div class="fs2"><div class="fn2">定</div><div class="ft2"><strong>自洽＝内在标准稳定</strong>：用"是否符合规律/是否我问心无愧"评价自己，而不是"别人满不满意"。</div></div><div class="fs2"><div class="fn2">耐</div><div class="ft2"><strong>把孤独当成本接受</strong>：想要独立判断的收益，就得付不合群的代价，两者一体。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人的从众本能极强，因为"和别人不一样"会触发被群体排斥的恐惧。能扛住这种恐惧、坚持按规律走，是强势文化在个体身上的最高体现——它不靠群体认同来确认自己。</p><div class="insight"><strong>深层洞见：</strong>自检：你最近一次放弃正确判断，是因为"它不对"，还是因为"别人都反对/怕不合群"？<strong>把"对不对"和"有没有人认同"分开评估</strong>。前者靠规律和事实，后者是社交需求——别让社交需求伪装成理性判断。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">当你因坚持某个判断而显得格格不入时，做一次冷检验：这个判断经得起事实和规律的推敲吗？经得起，就接受这份孤独。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">贝索斯式的"长期被误解"：真正对的方向，早期往往共识度低。区分"我错了"和"我超前"，靠的是条件推演而非当下掌声。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 不解释随缘</a><a class="rt" href="javascript:scrollCard(6)">→ 认知差距</a><a class="rt" href="qingci.html#card-2">青瓷 · 有裂纹才真（不完美自洽）</a></div></div>
+</div></div>
+
+<div class="card" id="card-12" data-p="p4" data-s="lf,mg">
+<div class="ch"><div class="cnum">12</div><div class="ctg"><div class="ct">觉悟与自在</div><div class="cs">看破执着 · 如实观照 · 心无挂碍</div><div class="ctags"><span class="tag ts">处世与境界</span><span class="tag tt">成长</span><span class="tag tt">为人</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>全书的佛学底色落在"觉悟"二字：<strong>看清事物本来的样子（如实观照），不被贪嗔痴和"我以为"绑架，从而获得内心的自在。</strong>丁元英的从容，不是因为他拥有更多，而是因为他执着更少、看得更清。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">观</div><div class="ft2"><strong>如实观照</strong>：先看清事实与规律，再行动；不被愿望、恐惧、面子扭曲所见。</div></div><div class="fs2"><div class="fn2">破</div><div class="ft2"><strong>破执着</strong>：对结果、对他人评价、对"必须如此"的执念松手。尽人事，听天命。</div></div><div class="fs2"><div class="fn2">在</div><div class="ft2"><strong>自在</strong>：按规律做了该做的，结果如何都不拧巴——这是觉悟者真正的自由。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>很多痛苦和错误决策，源于"事情必须按我想要的样子发展"的执念。觉悟不是消极认命，而是"我全力创造条件，但对结果不偏执"——把可控的（行动）做到位，对不可控的（结果、他人）放手，心就定了。</p><div class="insight"><strong>深层洞见：</strong>这与卡3"实事求是"是一体两面：向外，按规律办事；向内，放下我执。二者合起来就是全书的"天道"——<strong>尊重客观规律地做事，同时不被自己的贪、嗔、痴牵着走。</strong>清醒地努力，坦然地接受。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">焦虑时分辨：我难受是因为"没尽力"还是"结果不如我愿"？前者去补条件，后者练习放下——很多苦是把不可控当成了必须。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">决策时把"我面子上想要什么"和"事实上该怎么做"分开，别让自我（ego）替你做判断。</div></div</div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 实事求是</a><a class="rt" href="javascript:scrollCard(11)">→ 强者的孤独与自洽</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界（不神话）</a></div></div>
+</div></div>
+
+<div class="tens-sec">
+<h2>原则间的张力</h2>
+<p>《遥远的救世主》的思想内部也有真实的张力——丁元英式的"觉悟"，恰恰要在这些矛盾之间落地。</p>
+<div class="tc"><div class="tc-t">按规律办事 vs 人心道义</div><div class="tc-vs"><span class="vs-tag va">理性推演</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">情感与道义</span></div><div class="tc-res">把规律算到极致，会撞上不可计算的人心与报应（卡9）。调和：<strong>技术账要算，人心账也要算</strong>。合规律不等于合道义；真正的高手既看得清因果，也留得下余地与慈悲。</div></div>
+<div class="tc"><div class="tc-t">不解释随缘 vs 该说就说</div><div class="tc-vs"><span class="vs-tag va">守住中心</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">沟通协作</span></div><div class="tc-res">不辩是修养，但团队、合作里该澄清的不澄清会变成内耗。调和：<strong>涉及事实与协作基础的，说清楚；涉及评价你为人的，不解释。</strong>随缘不等于失职。</div></div>
+<div class="tc"><div class="tc-t">自救自立 vs 借助外力</div><div class="tc-vs"><span class="vs-tag va">没有救世主</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">善借资源</span></div><div class="tc-res">批判"等靠要"，但格律诗本身也靠了丁元英的布局。调和：<strong>借力可以，但主体必须是自己</strong>——你主导、你成长、你按规律行动，外力是条件不是拐杖。别把"求助"活成"依赖"。</div></div>
+</div>
+
+<div class="disc">
+<strong>来源声明：</strong>本卡片基于对《遥远的救世主》（豆豆 著，《天道》原著）全书思想的整体理解与公开书评、流传语录整理提炼，<strong>非逐节原文提取</strong>（电子版受反爬限制未能全文抓取）。"文化属性""强势文化/弱势文化""见路不走""实事求是"等为书中核心概念；各卡片观点为方法论提炼，措辞未必与原书逐字一致。人物（丁元英、芮小丹等）与情节仅作例证背景。
+</div>
+<div class="footer">知识蒸馏工坊 · 遥远的救世主 · 12 张卡片 · 四大维度</div>
+</div>
+
+<div class="tabbar">
+<div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+<div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll('.fbtn[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v+' 张';
+})});
+function scrollCard(n){const t=document.getElementById('card-'+n);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>

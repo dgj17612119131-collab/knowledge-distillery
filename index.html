@@ -199,10 +199,10 @@ a{color:var(--accent);text-decoration:none}
 <div class="hero">
   <div class="hero-icon">📖</div>
   <h1>知识蒸馏工坊</h1>
-  <div class="hero-sub">5本经典 · 68张决策卡片 · 从竞争策略到创新突破到中国式处世的思维工具箱</div>
+  <div class="hero-sub">6本经典 · 80张决策卡片 · 从竞争策略到创新突破到中国式处世与认知规律的思维工具箱</div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-n">5</div><div class="stat-l">本书</div></div>
-    <div class="stat"><div class="stat-n">68</div><div class="stat-l">卡片</div></div>
+    <div class="stat"><div class="stat-n">6</div><div class="stat-l">本书</div></div>
+    <div class="stat"><div class="stat-n">80</div><div class="stat-l">卡片</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">主题</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景</div></div>
   </div>
@@ -233,6 +233,11 @@ a{color:var(--accent);text-decoration:none}
   <a class="book" href="qingci.html">
     <div class="book-title">青瓷</div>
     <div class="book-author">浮石 · 处世与关系智慧</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
+  <a class="book" href="jiushi.html">
+    <div class="book-title">遥远的救世主</div>
+    <div class="book-author">豆豆 · 文化属性与规律</div>
     <div class="book-count">12 张卡片</div>
   </a>
 </div>
@@ -271,7 +276,7 @@ a{color:var(--accent);text-decoration:none}
 
 <!-- Topic Nav -->
 <div class="topic-nav">
-  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 68</button>
+  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 80</button>
   <button class="topic-btn" data-topic="compete" onclick="filterTopic('compete')">⚔️ 竞争策略</button>
   <button class="topic-btn" data-topic="decision" onclick="filterTopic('decision')">🧠 决策方法</button>
   <button class="topic-btn" data-topic="system" onclick="filterTopic('system')">🌐 系统思维</button>
@@ -282,7 +287,7 @@ a{color:var(--accent);text-decoration:none}
 <!-- Cards Container -->
 <div id="allCards"></div>
 
-<div class="footer">知识蒸馏工坊 · 2026 · 5本经典 · 68张决策卡片</div>
+<div class="footer">知识蒸馏工坊 · 2026 · 6本经典 · 80张决策卡片</div>
 </div>
 
 <script>
@@ -359,7 +364,20 @@ const cards=[
 {id:"q9",n:9,t:"借嘴说话",bk:"qc",bn:"青瓷",c:"不方便自己说的，借第三方/故事/共识的嘴替你说，不得罪人。",tg:["语言艺术","管理"],tp:["org","decision"],f:"qingci.html",kw:"借嘴 传话 借他人之口 故事 背后夸 第三方 共识 表态 不得罪 中间人"},
 {id:"q10",n:10,t:"提要求：把我要说成为您",bk:"qc",bn:"青瓷",c:"用对方的利益包装自己的诉求，让帮你=帮他自己。",tg:["说话方式","谈判","商业"],tp:["compete","decision"],f:"qingci.html",kw:"提要求 求人 利益 为您 共赢 说服 谈判 资源 诉求 换位 好处"},
 {id:"q11",n:11,t:"拒绝：只关门不堵路",bk:"qc",bn:"青瓷",c:"拒的是事不伤的是人，还留下次的口子。给台阶、给替代。",tg:["说话方式","为人","管理"],tp:["org","decision"],f:"qingci.html",kw:"拒绝 说不 台阶 留余地 替代 对事不对人 边界 面子 不结仇 委婉"},
-{id:"q12",n:12,t:"赞美要夸到点子上",bk:"qc",bn:"青瓷",c:"夸细节、夸背后、夸不容易。让人被看见，比夸天赋更戳心。",tg:["说话方式","管理","为人"],tp:["org","decision"],f:"qingci.html",kw:"赞美 夸奖 背后夸 具体 细节 努力 不容易 被看见 认可 带团队"}
+{id:"q12",n:12,t:"赞美要夸到点子上",bk:"qc",bn:"青瓷",c:"夸细节、夸背后、夸不容易。让人被看见，比夸天赋更戳心。",tg:["说话方式","管理","为人"],tp:["org","decision"],f:"qingci.html",kw:"赞美 夸奖 背后夸 具体 细节 努力 不容易 被看见 认可 带团队"},
+// 遥远的救世主
+{id:"j1",n:1,t:"文化属性决定命运",bk:"js",bn:"遥远的救世主",c:"决定命运的是文化属性：强势文化遵循规律自立，弱势文化等靠要。",tg:["核心思想","成长","商业"],tp:["system","decision"],f:"jiushi.html",kw:"文化属性 强势文化 弱势文化 靠 自立 规律 命运 操作系统 思维底色 扶贫"},
+{id:"j2",n:2,t:"世上没有救世主",bk:"js",bn:"遥远的救世主",c:"能救你的只有你自己。把希望寄托在贵人/救世主身上，本身就是弱势文化。",tg:["核心思想","成长"],tp:["decision","system"],f:"jiushi.html",kw:"救世主 自救 觉醒 等靠要 自立 主动 条件 行动 不指望 外因内因"},
+{id:"j3",n:3,t:"实事求是按规律办事",bk:"js",bn:"遥远的救世主",c:"从真实条件出发按客观规律推演，不唯心、不唯书、不唯面子，只唯实。",tg:["方法论","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"实事求是 规律 客观 事实 条件 唯实 不扭曲 判断 因果 天道"},
+{id:"j4",n:4,t:"见路不走",bk:"js",bn:"遥远的救世主",c:"不照经验不照教条，按当下条件走没有路的路。不是反着走，是只看条件。",tg:["思维方法","商业","成长"],tp:["decision","innovate"],f:"jiushi.html",kw:"见路不走 经验主义 本本主义 教条 条件 独立推演 不从众 实事求是 惯例"},
+{id:"j5",n:5,t:"条件论·因果律",bk:"js",bn:"遥远的救世主",c:"想改结果先改条件。倒推结果所需条件，能造就造，造不了就调整目标。",tg:["决策方法","商业","管理"],tp:["decision","system"],f:"jiushi.html",kw:"条件 因果 倒推 侥幸 清单 可控 工程思维 目标 焦虑 尽人事"},
+{id:"j6",n:6,t:"认知差距决定胜负",bk:"js",bn:"遥远的救世主",c:"人只能在自己认知内做选择。看不见的机会与风险，对你不存在。",tg:["认知","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"认知 差距 看不见 盲区 世界 维度 护城河 复盘 提升认知 信息"},
+{id:"j7",n:7,t:"弱势破强势的设计",bk:"js",bn:"遥远的救世主",c:"把强者拖进你定的规则里打。换赛道，让对手的优势变成负担。",tg:["商战","竞争"],tp:["compete","innovate"],f:"jiushi.html",kw:"弱势 强势 规则 赛道 结构 成本 格律诗 乐圣 以弱胜强 两难 机制"},
+{id:"j8",n:8,t:"布局者思维·算到最后一步",bk:"js",bn:"遥远的救世主",c:"从对手反应往回推，把博弈树推到终局再落第一子。不赌对手失误。",tg:["战略","商业","竞争"],tp:["compete","decision"],f:"jiushi.html",kw:"布局 逆向 推演 博弈树 终局 对手反应 倒推 必然 算 设计"},
+{id:"j9",n:9,t:"杀富济贫的悖论与代价",bk:"js",bn:"遥远的救世主",c:"赢了规则不等于赢了。合规律未必合道义，要同时算技术账和人心账。",tg:["伦理","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"代价 悖论 道义 人心 反噬 报应 余地 慈悲 边界 值不值 赢"},
+{id:"j10",n:10,t:"不解释·不辩·随缘",bk:"js",bn:"遥远的救世主",c:"懂你的人不必解释，不懂你的人不必解释。守住中心，不被评价牵动。",tg:["处世","为人"],tp:["org","decision"],f:"jiushi.html",kw:"不解释 不辩 随缘 体面 认同 自足 误解 沟通 内耗 结果说话"},
+{id:"j11",n:11,t:"强者的孤独与自洽",bk:"js",bn:"遥远的救世主",c:"能承受'我是对的但没人认同'而不回头求认同。把对错和认同等分开。",tg:["境界","成长"],tp:["decision","system"],f:"jiushi.html",kw:"孤独 自洽 独立 从众 认同 内在标准 坚持 被误解 超前 定力"},
+{id:"j12",n:12,t:"觉悟与自在",bk:"js",bn:"遥远的救世主",c:"如实观照、破执着、心无挂碍。尽力创造条件，对结果不偏执。",tg:["境界","为人"],tp:["system","decision"],f:"jiushi.html",kw:"觉悟 自在 执着 观照 贪嗔痴 我执 放下 尽人事听天命 清醒 坦然 ego"}
 ];
 
 const topics={
@@ -731,7 +749,7 @@ function deepSolve(){
   const top=scored.slice(0,8);
   const cardList=top.length
     ? top.map(({card},i)=>`${i+1}. ${card.bn}·${card.t} — ${card.c}`).join('\n')
-    : '（未命中特定卡片，请从全部68张中自行选取最相关的2-4张）';
+    : '（未命中特定卡片，请从全部80张中自行选取最相关的2-4张）';
   const prompt=
 `请用「知识库问题求解器（深度版）」帮我分析下面这个问题，严格按五段式输出，反套话、落到我的具体处境。
 
