@@ -73,6 +73,14 @@ a{color:var(--accent);text-decoration:none}
 .question-btn{padding:10px 20px;border-radius:var(--r-md);border:none;background:var(--orange);color:#fff;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s;white-space:nowrap}
 .question-btn:hover{opacity:.85}
 .search-hint{font-size:11px;color:var(--t4);margin-top:8px}
+.q-btns{display:flex;gap:8px;flex-shrink:0}
+.deep-btn{background:#5856D6}
+.deep-box{margin-top:12px;border:1.5px solid #5856D6;border-radius:var(--r-md);overflow:hidden;background:var(--bg)}
+.deep-box-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;background:rgba(88,86,214,.1);font-size:13px;font-weight:600;color:#5856D6}
+.copy-btn{padding:6px 16px;border-radius:var(--r-sm);border:none;background:#5856D6;color:#fff;font-size:13px;font-weight:600;cursor:pointer;font-family:inherit;transition:opacity .15s}
+.copy-btn:hover{opacity:.85}
+.deep-prompt{width:100%;box-sizing:border-box;border:none;outline:none;padding:14px;font-size:13px;line-height:1.7;font-family:inherit;color:var(--text);background:var(--bg);resize:vertical;min-height:220px;max-height:420px}
+.deep-tip{font-size:11px;color:var(--t4);padding:10px 14px;background:var(--fill);line-height:1.6}
 .result-count{font-size:13px;color:var(--t2);margin-bottom:16px;padding:8px 14px;background:var(--fill);border-radius:var(--r-sm);display:none;font-weight:500}
 .result-count.show{display:block}
 
@@ -177,6 +185,8 @@ a{color:var(--accent);text-decoration:none}
   .hero h1{font-size:24px}
   .search-row,.question-row{flex-direction:column}
   .search-btn,.question-btn{width:100%}
+  .q-btns{width:100%}
+  .q-btns .question-btn{flex:1}
   .hero-stats{flex-wrap:wrap}
   .stat{min-width:25%}
 }
@@ -232,9 +242,17 @@ a{color:var(--accent);text-decoration:none}
   <div class="search-label" style="margin-top:4px">💡 问题匹配</div>
   <div class="question-row">
     <textarea class="question-input" id="questionInput" placeholder="描述你的问题（如：如何谈薪资？团队冲突怎么办？）"></textarea>
-    <button class="question-btn" onclick="doMatch()">匹配</button>
+    <div class="q-btns">
+      <button class="question-btn" onclick="doMatch()">匹配</button>
+      <button class="question-btn deep-btn" onclick="deepSolve()">🧠 深度求解</button>
+    </div>
   </div>
-  <div class="search-hint">搜索范围：标题、核心概念、标签 · 问题匹配基于语义关键词分析</div>
+  <div class="search-hint">搜索范围：标题、核心概念、标签 · 匹配=离线速查 · 深度求解=生成提示词，复制到 QoderWork 对话里跑五段式深度方案</div>
+  <div class="deep-box" id="deepBox" style="display:none">
+    <div class="deep-box-head">🧠 深度求解提示词（已带上你命中的卡片）<button class="copy-btn" id="copyBtn" onclick="copyDeep()">复制</button></div>
+    <textarea class="deep-prompt" id="deepPrompt" readonly></textarea>
+    <div class="deep-tip">用法：点上面「复制」→ 打开 QoderWork 对话框粘贴发送 → 我用 knowledge-problem-solver 深度版给你跑「⓪澄清 ①根因 ②方法论讲透 ③具体行动 ④对抗检验」五段方案。信息不足时我会先反问你。</div>
+  </div>
 </div>
 
 <!-- Result Count -->
@@ -672,6 +690,63 @@ function doMatch(){
   mg.innerHTML=top.map(({card,score})=>renderCard(card,score)).join('');
   ms.scrollIntoView({behavior:'smooth',block:'start'});
 }
+
+function deepSolve(){
+  const q=document.getElementById('questionInput').value.trim();
+  if(!q){document.getElementById('questionInput').focus();return;}
+  try{history.replaceState(null,'','#q='+encodeURIComponent(q))}catch(e){}
+  const ql=q.toLowerCase();
+  // 与 doMatch 回退路径同款打分，取 top 8 卡片
+  const scored=[];
+  cards.forEach(card=>{
+    let score=0;
+    for(const[pat,ids]of Object.entries(qMap)){
+      if(new RegExp(pat,'i').test(ql)){if(ids.includes(card.id))score+=10;}
+    }
+    const hay=(card.t+' '+card.c+' '+card.tg.join(' ')+' '+card.kw+' '+card.bn).toLowerCase();
+    const terms=ql.split(/[\s，。？！、,.\?!]+/).filter(t=>t.length>=2);
+    terms.forEach(t=>{if(hay.includes(t))score+=3});
+    [...ql].filter(ch=>/[\u4e00-\u9fff]/.test(ch)).forEach(ch=>{if(hay.includes(ch))score+=1});
+    if(score>0)scored.push({card,score});
+  });
+  scored.sort((a,b)=>b.score-a.score);
+  const top=scored.slice(0,8);
+  const cardList=top.length
+    ? top.map(({card},i)=>`${i+1}. ${card.bn}·${card.t} — ${card.c}`).join('\n')
+    : '（未命中特定卡片，请从全部56张中自行选取最相关的2-4张）';
+  const prompt=
+`请用「知识库问题求解器（深度版）」帮我分析下面这个问题，严格按五段式输出，反套话、落到我的具体处境。
+
+【我的问题】
+${q}
+
+【我的知识库中命中的方法论卡片（优先从中选2-4张，也可补充）】
+${cardList}
+
+【输出要求（五段式，逐段达标）】
+⓪ 问题重述与澄清：一句话复述你理解的问题本质让我确认；若信息不足以做出"落到我处境"的推理，先反问我1-3个最关键的问题再作答；补的假设标【假设】，缺口标【待确认】。
+① 根因诊断：用5 Whys把症状挖到至少第3层根因；区分真问题vs伪问题；抓主要矛盾；判断这是连续环境(可用经验/归纳)还是非连续拐点(须从第一性演绎)；给出可检验的"什么算解决了"。
+② 适用方法论：选2-4张卡片，每张讲透三层——机制(为什么会成立)、映射(为什么恰好对得上我的具体情况，接到我的事实上)、边界(在我这场景哪里会失效)；说明卡片之间的张力与调和；并解释"为什么是这几张、不是别的"。
+③ 具体行动步骤：3-6步，每步写"做什么→怎么做(具体到动作/话术/数字)→用哪张卡→判断这步做对了的信号→这步失败怎么办"；标注先后依赖和关键决策点；给出今天就能做的最小第一步。
+④ 对抗性检验：这套方案依赖哪些前提、哪个不成立就崩；最可能栽在哪一步、为什么；出现什么可观察的早期预警信号该停/该调；谁会因为这套动作反制、我忽略了哪些利益相关者；反过来做会怎样、最坏情况的PlanB/止损线。诚实说明把握多大、哪里没底，不保证一定有效。
+
+硬性自检：任何一句话如果换到别的问题上也成立，就是空话，删掉重写。`;
+  document.getElementById('deepPrompt').value=prompt;
+  const box=document.getElementById('deepBox');
+  box.style.display='block';
+  box.scrollIntoView({behavior:'smooth',block:'start'});
+}
+
+function copyDeep(){
+  const ta=document.getElementById('deepPrompt');
+  const btn=document.getElementById('copyBtn');
+  ta.select();ta.setSelectionRange(0,99999);
+  let ok=false;
+  try{ok=document.execCommand('copy')}catch(e){}
+  if(!ok&&navigator.clipboard){navigator.clipboard.writeText(ta.value).then(()=>flash(btn)).catch(()=>flash(btn));return;}
+  flash(btn);
+}
+function flash(btn){const o=btn.textContent;btn.textContent='已复制✓';setTimeout(()=>btn.textContent=o,1500);}
 
 document.addEventListener('DOMContentLoaded',()=>{
   renderAll();
