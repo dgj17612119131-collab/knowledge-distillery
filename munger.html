@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>穷查理宝典 · 多元思维模型与逆向思考</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#7C3AED;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#B488F8;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.ov p strong{color:var(--text)}
+.src-note{background:var(--fill);border-radius:var(--r-sm);padding:12px 14px;margin:12px 8px;font-size:13px;color:var(--t3);line-height:1.6}
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
+.card.hidden{display:none}
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(124,58,237,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+.cb{padding:0 20px 24px}
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+.ot{background:var(--fill);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:15px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}
+.ot-i strong{color:var(--text)}
+.deep{background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}
+.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}
+.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}
+.ft2 strong{color:var(--text)}
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}
+.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+.al{list-style:none}
+.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}
+.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(124,58,237,.1);color:var(--accent)}
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(124,58,237,.1);color:var(--accent)}
+.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--accent);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--accent)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+@media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-inner">
+<a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2L2 10l8 8"/></svg>书库</a>
+<div class="nav-title">穷查理宝典</div>
+</div></div>
+<div class="c">
+
+<div class="hero">
+<h1>穷查理宝典</h1>
+<div class="hero-sub">查理·芒格 · 多元思维模型、逆向思考与决策纪律</div>
+<div class="hero-meta"><span>12 张卡片</span><span>· 4 大维度</span><span>· 思维格栅 / 逆向排除 / 决策纪律 / 人生认知</span></div>
+</div>
+
+<div class="ov">
+<h2>蒸馏说明</h2>
+<p>《穷查理宝典》是查理·芒格几十年的演讲、问答与思想汇编。它真正的价值不在投资业绩，而在<strong>一套可迁移的思考操作系统</strong>：用多学科思维格栅看世界、反过来想、守住能力圈、克制人性偏误。本次蒸馏<strong>不复述生平轶事</strong>，只提炼能落到决策、投资、认知、人生的方法论，按四个维度组织，并把"第一性原理"那本书里引用芒格的"多元思维模型"展开成一个完整体系。</p>
+<div class="src-note"><strong>来源与诚实标注：</strong>本卡片基于对《穷查理宝典》（Charlie Munger 演讲与思想汇编）全书思想的整体理解与公开书评整理提炼，<strong>非逐字原文提取</strong>；"多元思维模型""lollapalooza""反过来想""能力圈/太难篮子"等为书中核心概念，措辞未必与原书逐字一致。</div>
+</div>
+
+<div class="fb"><div class="fb-inner">
+<div class="frow"><span class="flbl">维度</span>
+<button class="fbtn on" data-t="p" data-f="all">全部</button>
+<button class="fbtn" data-t="p" data-f="p1">🧩 思维格栅</button>
+<button class="fbtn" data-t="p" data-f="p2">🔄 逆向与排除</button>
+<button class="fbtn" data-t="p" data-f="p3">⚖️ 决策纪律</button>
+<button class="fbtn" data-t="p" data-f="p4">🌿 人生与认知</button>
+</div>
+<div class="frow"><span class="flbl">场景</span>
+<button class="fbtn on" data-t="s" data-f="all">全部</button>
+<button class="fbtn" data-t="s" data-f="bz">💰 商业</button>
+<button class="fbtn" data-t="s" data-f="lf">🌱 成长</button>
+<button class="fbtn" data-t="s" data-f="mg">👥 管理</button>
+<button class="fbtn" data-t="s" data-f="cr">🗣 竞争</button>
+</div>
+<div class="fc" id="vc">12 张</div>
+</div></div>
+
+<div class="cards">
+<div class="card" id="card-1" data-p="p1" data-s="bz,lf">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">多元思维模型：手里不能只有一把锤子</div><div class="cs">跨学科掌握 80/90 个重要模型 · 织成思维格栅</div><div class="ctags"><span class="tag ts">思维格栅</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>现实的问题不属于任何单一学科，可教育却把知识切成一座座孤岛。芒格的核心主张是在头脑里装一个<strong>"思维格栅"(latticework)</strong>：从数学、物理、生物、心理、经济、工程这些学科里，掌握那 <strong>80 到 90 个真正重要的模型</strong>，让每一个判断都同时经过多个模型的审视。"手里拿着锤子的人，看什么都像钉子。"——单一视角不是专业，是危险的自我强化偏见。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">格</div><div class="ft2"><strong>单模型＝单点视角</strong>：只用一个学科的框架，你会不自觉把所有问题都往它上面套。多个模型织成网状，才能相互校验、逼近真实。</div></div><div class="fs2"><div class="fn2">重</div><div class="ft2"><strong>只取"大道理"</strong>：不必精通所有学科，只要掌握每科少数最普适的模型——复利、临界质量、进化、机会成本、贝叶斯、人类误判心理——数量不多却覆盖面极广。</div></div><div class="fs2"><div class="fn2">网</div><div class="ft2"><strong>同时调用</strong>：遇到问题要从格栅里同时调出好几个模型交叉看，而不是抄最顺手的那一把锤子。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>认知分工把人训练成"专科医生"：每个学科用自己的语言描述世界，于是每个人都只会在自己的井里思考。跨学科模型把不同约束（经济账、心理账、物理极限、概率）叠到同一个决策上，逼出全局判断，而不是局部最优。</p><div class="insight"><strong>深层洞见：</strong>门槛不是"知道很多模型"，而是"<strong>在同一个决策上强制调用多个模型</strong>"。日常练法：任何重要判断，先写下至少三个不同学科的模型各会怎么说，再综合。你对一个结论越"理所当然"、越想不通别人怎么会反对，越该警惕——那往往是你只用了一把锤子。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">评估一个新活动或品类扩张，别只看 GMV 和 ROI（经济模型）。同时用心理学（用户为什么占便宜）、机会成本（资源投这里就投不了别处）、临界质量（补贴密度要过阈值才自持）三四个模型交叉审视，再看结论稳不稳。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">选岗位/赛道时，别只用"薪资高"这一把锤子。同时用复利（能力能否累积）、比较优势（我在哪相对别人更强）、规模效应三个模型检验，多个都说好才下重注。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a><a class="rt" href="javascript:scrollCard(3)">→ 模型要挂到现实上</a><a class="rt" href="javascript:scrollCard(2)">→ lollapalooza 效应</a></div></div>
+</div></div>
+
+<div class="card" id="card-2" data-p="p1" data-s="bz,cr,mg">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">lollapalooza 效应：多种倾向同向叠加</div><div class="cs">两个以上心理倾向朝同一方向发力 · 产生极端的非线性结果</div><div class="ctags"><span class="tag ts">思维格栅</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>这是芒格自造的词。单独的某个心理偏差，顶多让你小幅跑偏；但当<strong>好几个偏差朝同一个方向同时施压，结果不是简单相加，而是相互放大、指数级爆发</strong>——这就是 lollapalooza。极端的市场泡沫、群体狂热、从众踩踏、竞价失控，几乎都是多股心理力量同向叠加的产物。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">叠</div><div class="ft2"><strong>典型组合</strong>：社会认同＋权威＋稀缺＋避免不一致性同时作用，一个理性人也能在毫无逻辑的场合坚定站队、疯狂追高。</div></div><div class="fs2"><div class="fn2">非</div><div class="ft2"><strong>非线性</strong>：效果不是 1+1=2，而是 1+1=10。判断风险要盯"几股力是不是同向"，而不是单独看每股力有多弱。</div></div><div class="fs2"><div class="fn2">双</div><div class="ft2"><strong>双向都致命</strong>：同向叠加能造上涨泡沫，也能造恐慌与踩踏——两个方向的极端都是它。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人对单一偏差的防御其实挺成熟（知道"别从众"），难的是多重偏差协同发力时的"共振"。芒格强调要专门研究这些叠加情形，因为极端结果几乎都发生在这里。看懂共振，你才能在狂热里不成为燃料、在恐慌里不被裹挟。</p><div class="insight"><strong>深层洞见：</strong>任何时候你心里冒出"<strong>大家都这么想、证据又这么多、现在不做就来不及了</strong>"——这往往是好几股偏差同向发力的信号，是危险，而不是安全。越是"顺理成章、天衣无缝"的共识时刻，越要停下来做逆向检查（卡4）。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">行业集体跟风（所有人都在做直播/都在堆某个功能）时，警惕"社会认同＋害怕落伍"的叠加。别人都往里冲的赛道，很可能正是一个即将破裂的 lollapalooza，而不是安全区。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">大促、限时秒杀、爆款榜单，本质是在主动制造"稀缺＋社会认同＋权威"的同向叠加。用它是设计机制、撬动转化；被它是失去判断——先看清自己站在哪一侧。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 多元思维模型</a><a class="rt" href="javascript:scrollCard(4)">→ 反过来想</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a></div></div>
+</div></div>
+
+<div class="card" id="card-3" data-p="p1" data-s="bz,lf">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">模型要挂到"现实"上：多维度交叉验证</div><div class="cs">让每个模型对应真实经验 · 用多个独立信源检验同一结论</div><div class="ctags"><span class="tag ts">思维格栅</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>光有几个时髦模型、能背名词，等于没有。芒格要求把每个抽象模型<strong>牢牢"挂"在具体经验和现实证据上</strong>；并且对任何重要判断，用几个不同来源、不同模型去<strong>交叉验证</strong>——只有多个"独立"的证据都指向同一结论，才算数。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">挂</div><div class="ft2"><strong>挂经验</strong>：每学一个模型，配一个自己亲历的真实案例。挂不上经验的模型是空词，关键时刻根本调不出来。</div></div><div class="fs2"><div class="fn2">交</div><div class="ft2"><strong>交叉验证</strong>：结论要有多个"独立"支点，不能全来自同一个前提、同一个数据源、同一群人。</div></div><div class="fs2"><div class="fn2">反</div><div class="ft2"><strong>主动找反例</strong>：去找能推翻它的现实证据；只要有一个模型或信源强烈反对，就标红复核。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>单一证据链最脆弱：它可能整条都建立在同一个错误假设上。多源交叉＝让不同前提彼此"审计"。这与第一性原理"回到基本事实再独立推演"一致，也呼应《遥远的救世主》的"实事求是"——让现实说话，而不是让你漂亮的模型说话。</p><div class="insight"><strong>深层洞见：</strong>判断一个决策成不成熟，看它经不经得起"换个角度再问一遍"。落地前逼自己回答："<strong>如果只看用户实际行为数据 / 只看竞品真实动作 / 只听一线同事反馈——这三个独立视角，是不是都支持我？</strong>"三个都说支持，才敢下手；只要有一个说不，就当红灯。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">判断"某活动有效"，别只用自己后台的转化数据（单一、且可能被刷/被口径污染）。交叉外部数据、对照组、一线 BD 反馈三个独立来源，三者都说好，才把预算加码。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">评估一个职业机会，别只听招聘方（天然有偏的信源）。交叉在职者、已离职者、行业真实数据三个独立视角，再决定要不要跳。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 多元思维模型</a><a class="rt" href="javascript:scrollCard(6)">→ 证伪与开放</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+</div></div>
+
+<div class="card" id="card-4" data-p="p2" data-s="bz,lf,cr">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">反过来想 Always invert</div><div class="cs">想知道在哪成功很难 · 想知道在哪失败却容易——先避开那里</div><div class="ctags"><span class="tag ts">逆向与排除</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格最出名的思维习惯，借自数学家雅可比的一句话："<strong>反过来想，总是反过来想。</strong>"很多正面攻不动的问题，从反面一击即中。不问"怎么让生意做大"，而问"<strong>什么会搞垮这门生意</strong>"，然后一条条根除；不问"怎么幸福"，而问"什么必然让人痛苦"，然后避开。想清楚在哪会死，就知道该往哪躲。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">易</div><div class="ft2"><strong>反面更易</strong>："如何避免失败"通常比"如何取得成功"更具体、更可执行、更不依赖运气。</div></div><div class="fs2"><div class="fn2">死</div><div class="ft2"><strong>先列死法</strong>：想要好结果，先穷举会让它彻底失败的原因（丢信任、现金流断裂、核心人才流失、踩合规红线），再逐条上防线。</div></div><div class="fs2"><div class="fn2">单</div><div class="ft2"><strong>逆向清单</strong>：芒格的投资靠"避免愚蠢清单"运行——先排除必死项，剩下的才谈优化。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人天生擅长"避免损失"胜于"构想收益"。逆向思考顺着这个本能，把它用到极致。它与"第一性原理"的演绎、"遥远救世主"的见路不走同属一系：不为成功找借口，先为失败设边界。守住下限，比追逐上限更可靠。</p><div class="insight"><strong>深层洞见：</strong>拿到任何目标，先做一次"事前验尸"——<strong>假设这件事一年后彻底失败了，最可能的三个原因是什么？</strong>把它们写下来，当成今天的排除项。想清楚"怎么必然把它搞砸"，比幻想"怎么一定能成"更能保护你。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">上活动前先逆向列"这个活动会怎么把品牌和利润搞砸"：亏损性补贴、羊毛党薅穿、履约崩盘、价格体系打穿。先设护栏和止损线，再谈增长，而不是反过来。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">想要"晋升/把项目做成"，反过来问"什么行为一定会让我失去机会"：不兑现承诺、只报喜不报忧、关键节点掉链子。避开这几个，比堆表现更有用。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 太难篮子</a><a class="rt" href="javascript:scrollCard(8)">→ 不犯蠢优先</a><a class="rt" href="fanruique.html#card-9">反脆弱 · 减法优先</a></div></div>
+</div></div>
+
+<div class="card" id="card-5" data-p="p2" data-s="bz,lf">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">能力圈 ＋ 太难篮子</div><div class="cs">不懂的、复杂的、超出能力的 · 直接扔进"太难"那一堆</div><div class="ctags"><span class="tag ts">逆向与排除</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格和巴菲特把机会分三堆："可以"、"不能"、"<strong>太难</strong>"。绝大多数东西应该丢进"太难"——不是因为它们不重要，而是因为<strong>不在你能力圈内，你没有优势去判断，硬上就是赌</strong>。真正赢的人不是什么都懂，而是极清楚地知道自己的边界在哪，只在圈内下重注。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">边</div><div class="ft2"><strong>圈不必大，边界要清</strong>：能力圈可以很小，但你必须知道墙在哪。清楚地知道"我不知道"，比知道很多更值钱。</div></div><div class="fs2"><div class="fn2">难</div><div class="ft2"><strong>太难≠不重要</strong>：扔进"太难"是纪律，不是贬低。看不懂底层因果链的机会，再诱人也不碰。</div></div><div class="fs2"><div class="fn2">深</div><div class="ft2"><strong>圈内深耕</strong>：在少数你真懂的领域建立优势、反复用，把复利攒在自己能持续参与的地方。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>认知偏差让人把"熟悉"当"懂"、把"听来的信心"当"自己的判断"。能力圈＋太难篮子是一种"主动弃权机制"：它把问题从"我该不该下注"变成"我有没有资格下注"。没有信息或理解优势的下注，期望值往往是负的——赢一次靠运气，长期必被均值回归收走。</p><div class="insight"><strong>深层洞见：</strong>给自己建一个"太难篮子"。任何决策先问两个问题：①我能不能用第一层因果把它讲清楚、并预判主要变量怎么动？②相比对手，我在这件事上有什么<strong>真信息/真能力的优势</strong>？两个里有一个答"不能"，就诚实归入太难，别硬撑——放弃不是损失，乱下注才是。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">面对一个"风口但看不懂怎么赚钱"的项目，承认"太难"、不追，本身就是一种胜利。把资源集中在你真懂的品类、用户结构和供给逻辑上下重注，而不是每个热点都蹭一点。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">选赛道时先自问："我是真懂，还是只是听着时髦？"在能持续积累、且你有判断优势的领域深耕，比到处追热点更接近复利。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 反过来想</a><a class="rt" href="javascript:scrollCard(7)">→ 耐心＋决断</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+</div></div>
+
+<div class="card" id="card-6" data-p="p2" data-s="lf,cr">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">证伪与开放：攻击自己最热爱的信念</div><div class="cs">主动推翻自己最珍视的观点 · 别让立场绑架判断</div><div class="ctags"><span class="tag ts">逆向与排除</span><span class="tag tt">成长</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格把主动证伪当纪律：一旦你拥有一个观点，就要<strong>刻意去找反面证据</strong>；越是自己最热爱的信念，越要最先攻击它——因为它最可能正是你的盲点。死守旧观点的代价是复利式的：一个错误的核心假设会污染后续所有推演。敢推翻自己，是判断力的最高体现。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">逆</div><div class="ft2"><strong>反本能</strong>：人天然只收集支持自己的证据（确认偏误），所以要故意安排动作去找反对它的证据。</div></div><div class="fs2"><div class="fn2">场</div><div class="ft2"><strong>剥离立场</strong>：一旦观点变成"我的立场/我的面子"，你会为它辩护而非检验它。把"我错了"当成本，而不是当失败。</div></div><div class="fs2"><div class="fn2">钢</div><div class="ft2"><strong>钢人对手</strong>：要用对手观点的最佳版本去驳它，驳倒被丑化的"稻草人"毫无意义。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>判断质量的天花板，是"你能不能推翻自己"。一个错误前提会在决策链里滚雪球，越到后面修正成本越高。开放证伪让你尽早、以最小代价纠错，也是避免被 lollapalooza 式集体狂热裹挟的解药——因为你会主动去戳破那个"太顺理成章"的共识。</p><div class="insight"><strong>深层洞见：</strong>把"打脸"重新定义为赚钱。每次你主动推翻昨天的自己，就是提前避开了一个更大的错误。团队里，谁最先说出"我可能错了""这个数据不支持我们"，应该被奖励而不是被轻视——否则你收到的将永远是"你想听的答案"。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">定期挑一个自己坚持了很久的判断，专门列"反对它的证据"。发现自己错了就公开更正——纠错速度本身就是一种竞争力。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">面对不利结论（竞品数据打脸自己方案）时，本能是找理由开脱，纪律是承认并调整。谁能更早接受现实，谁就能更快转向。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 交叉验证</a><a class="rt" href="javascript:scrollCard(4)">→ 反过来想</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+</div></div>
+
+<div class="card" id="card-7" data-p="p3" data-s="bz,cr">
+<div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">耐心 ＋ 决断：等好球，然后重仓</div><div class="cs">平时极度耐心什么都不做 · 机会真来了极度果断下重注</div><div class="ctags"><span class="tag ts">决策纪律</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格的机会观极端两极化：<strong>大部分时间按兵不动、什么都不干</strong>，像狙击手一样等那颗"肥球"(fat pitch)；可当真正罕见、你又有优势的机会出现时，就<strong>敢于下重注</strong>——"一生中值得真正下注的机会屈指可数，当它敲响门，必须狠狠抓住。"平庸的人频繁出手、到处分散，芒格式的人长期空仓、集中致命一击。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">耐</div><div class="ft2"><strong>耐心</strong>：没优势/看不懂就干脆不动（接卡5）。空等不是浪费，是保存弹药、避免被一堆平庸机会消耗掉。</div></div><div class="fs2"><div class="fn2">断</div><div class="ft2"><strong>决断</strong>：机会来临时，靠平时的格栅＋验证迅速判断，然后集中、下重注，而不是"什么都试一点"。</div></div><div class="fs2"><div class="fn2">稀</div><div class="ft2"><strong>稀缺认知</strong>：真正的好机会少之又少，所以每一次出现都要动重仓的勇气；过度分散，本质是对"没有真洞见"的补偿。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这看似矛盾（极度保守 vs 极度激进），其实是同一枚硬币：正因为平时严格筛掉了所有"太难"和"没优势"，才让每一次出手都是高确信、高优势的下注，值得集中。凯利公式的精神也是这个——只有当你手里有真实优势时，才敢按大比例押注。</p><div class="insight"><strong>深层洞见：</strong>多数人恰恰活反了——对平庸机会过度热情、频繁出手，对真正的大机会反而犹豫、轻描淡写。刻意练这两个极端：学会对 80% 的"还不错"坚决说不，学会对那 1% 的"确实有优势＋看得懂＋盘子够大"敢压上重注。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">预算和人力平时要沉住气不乱撒，别撒胡椒面；遇到确定性高的战略窗口（某品类的结构性机会、关键品牌的深度合作）时集中 All in，把弹药留给真正值得的大仗。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">别每个对手的动作都想跟、每个功能都想抄。忍住"随手回应"的冲动，只在能拉开差距的关键战役上全力投入，其余时间专注把自己的地基做厚。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 能力圈/太难篮子</a><a class="rt" href="javascript:scrollCard(1)">→ 多元模型帮你判断</a><a class="rt" href="javascript:scrollCard(8)">→ 不犯蠢优先</a></div></div>
+</div></div>
+
+<div class="card" id="card-8" data-p="p3" data-s="bz,lf,mg">
+<div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">不犯蠢优先于求聪明</div><div class="cs">长期赢的人不是绝顶聪明 · 而是系统性地避免愚蠢</div><div class="ctags"><span class="tag ts">决策纪律</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格反复说："我不靠聪明赚钱，我靠的是<strong>知道自己有多蠢，然后避开那些会让我栽跟头的地方</strong>。"追求做对天才级的决策很难、且极依赖运气；而持续避免低级、致命的错误（过度杠杆、欺诈、盲目从众、无视风险）门槛低、可复制、能长期复利。别求每一步都惊艳，先求别把牌打崩。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">反</div><div class="ft2"><strong>反向赢</strong>：不必每局都聪明，只要少送致命失误，长局里自然会胜出——赢在"活到最后"，不在"跑得最快"。</div></div><div class="fs2"><div class="fn2">单</div><div class="ft2"><strong>蠢事清单</strong>：把"我知道会害我的东西"写死成清单（赌杠杆、为短期利益撒谎、随大流进不了解的市场），逐条回避。</div></div><div class="fs2"><div class="fn2">死</div><div class="ft2"><strong>避免永久性伤害</strong>：一次爆仓、一次失信可以清零之前所有成绩——第一优先级永远是"别出局"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>收益是波动的，错误是复利式的：一个归零的决策抹掉前面所有努力（这正是反脆弱"遍历性/别被一次不可逆击穿"的思想）。芒格把风险控制置于收益之上，本质是"先确保能一直留在牌桌上"——留在桌上的时间越长，好运气和复利才有机会发生。</p><div class="insight"><strong>深层洞见：</strong>想"变聪明"很难，想"少做蠢事"可控得多。每季度不求做出惊世决策，只求把"已知的坑"再删掉一个。真正的长期优势往往是"熬"出来的：别人栽在你我都看得到的明显错误上，你只要避开，时间就替你赢了。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">别为了短期 GMV 好看去做伤品牌、打穿价格体系、虚假补贴的动作——这些是"确定的蠢事"。把"不做会害死这门生意的事"排在"把它做大"之前，先守住下限。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">组织的多数灾难来自反复出现的低级错误（信息不透明、报喜不报忧、关键岗位用人失察）。建一套"防蠢机制"，比追求某个"神仙方案"稳得多。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 反过来想</a><a class="rt" href="javascript:scrollCard(9)">→ 激励与偏误</a><a class="rt" href="fanruique.html#card-9">反脆弱 · 减法优先</a></div></div>
+</div></div>
+
+<div class="card" id="card-9" data-p="p3" data-s="mg,bz,cr">
+<div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">激励与偏误：看穿"奖励机制导致的偏见"</div><div class="cs">别问人怎么想 · 先问他被什么奖励 · 激励会扭曲认知本身</div><div class="ctags"><span class="tag ts">决策纪律</span><span class="tag tt">管理</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格名言："给我看激励，我就能看出结果。"最危险的偏差不是无知，而是<strong>"激励造成的偏见"</strong>——人会真诚地相信对自己有利的那套说法。再叠加"<strong>避免不一致性倾向</strong>"（人抗拒改变已有的承诺、习惯和结论），只要制度激励错了，行为必然跟着错，而且当事人还觉得自己很理性。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">励</div><div class="ft2"><strong>先看激励</strong>：遇到反常行为别急着说"他不理性/他坏"，先画出他的 KPI 和奖惩——行为几乎总能被激励解释。</div></div><div class="fs2"><div class="fn2">信</div><div class="ft2"><strong>激励造信念</strong>：靠某个结论吃饭的人，很难客观评估这个结论（卖方永远看好、按单量提成就不管质量）。</div></div><div class="fs2"><div class="fn2">一</div><div class="ft2"><strong>一致性锁定</strong>：一旦公开承诺或定了规则，人会为"保持一致"不惜自我欺骗——警惕"我们一直是这么做的"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这对应《影响力》里的"承诺和一致""权威"等心理武器，也是芒格"人类误判心理学"清单里最实用的一条。做管理、谈判、看市场，本质都是先看懂"钱和考核指向哪、谁被锁在旧结论里"，而不是听别人嘴上怎么说。</p><div class="insight"><strong>深层洞见：</strong>做机制设计时，假设每个参与者都会精妙地利用规则里的漏洞为自己谋利——这不是愤世嫉俗，是诚实。定 KPI 前必问一句："<strong>这个激励，会不会让人为了数字好看而损害我真正想要的东西？</strong>"（唯 GMV→刷单冲量，唯转化率→牺牲体验。）</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">考核只压单量/GMV，就会长出"羊毛党式冲量"。设计考核时把激励对齐长期价值（复购、毛利、体验），并主动堵掉"损害大局的捷径"，让人不靠歪路也能拿高分。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">判断外部信息（供应商说好、顾问说行）时，先扣掉他的立场红利——他的结论里，有多少是事实，有多少是被激励推着说的？</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ lollapalooza</a><a class="rt" href="javascript:scrollCard(8)">→ 不犯蠢优先</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a></div></div>
+</div></div>
+
+<div class="card" id="card-10" data-p="p4" data-s="lf,mg,bz">
+<div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">诚实与声誉是复利资产</div><div class="cs">声誉是最贵的资产 · 一次失信可能抹掉几十年的积累</div><div class="ctags"><span class="tag ts">人生与认知</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格把诚信当<strong>投资决策</strong>，而不是道德装饰：即便撒谎在某些场合能占到便宜，长期看，把"可信赖"变成你唯一的策略才是最赚钱的。声誉是一种<strong>复利资产</strong>——靠长年一致的行为一点点攒起来，毁掉却只需一件事。守住底线，本质是把未来的机会成本降到最低。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">复</div><div class="ft2"><strong>复利视角</strong>：信任越攒越厚，带来越来越好的机会、更低的交易成本——别人敢跟你做长期、做更大的单。</div></div><div class="fs2"><div class="fn2">零</div><div class="ft2"><strong>一次归零</strong>：欺诈、失约、占便宜的污点，会让对手和伙伴从此给你加"风险溢价"，或干脆不再与你合作。</div></div><div class="fs2"><div class="fn2">一</div><div class="ft2"><strong>唯一策略</strong>：不是"多数时候诚实"，而是把诚实设为不可协商的默认——留了例外，就总有例外被人找到。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>长期博弈里，"可信"本身就是巨大的战略优势（呼应《遥远的救世主》《青瓷》的"留余地"）。它降低别人对你的防备，放大你能调动的资源。芒格式的算账是：短期占便宜是一次性收益，毁声誉是所有未来机会的永久税——这笔账永远不划算。</p><div class="insight"><strong>深层洞见：</strong>把目标定成"我要成为那种绝不需要别人担心我耍花招的人"。凡事先问一句："<strong>如果这件事被全行业知道，我还睡得着吗？</strong>"睡得着再做。信誉是你最贵的护城河，别用几十年的复利去换一次性的蝇头小利。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">与商家、品牌、合作伙伴，宁可短期少赚，也别在承诺、结算、数据口径上含糊。"可信赖"是让你拿到更多、更大、更长期合作的隐形筹码。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">个人品牌＝别人在你不在场时如何评价你。兑现每一个小承诺、出错主动认账，把"靠谱"当成可复利的资产一点点攒。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 不犯蠢优先</a><a class="rt" href="javascript:scrollCard(12)">→ 面对失败的韧性</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+</div></div>
+
+<div class="card" id="card-11" data-p="p4" data-s="lf,bz">
+<div class="ch"><div class="cnum">11</div><div class="ctg"><div class="ct">终身学习：每天比昨天聪明一点点</div><div class="cs">知识的复利 · 带着问题日拱一卒 · 终点自然远超同行</div><div class="ctags"><span class="tag ts">人生与认知</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格："我这辈子遇到的聪明人，没有一个不每天阅读的——一个都没有。"他的标准动作是：<strong>每天睡觉前，比醒来时聪明一点点</strong>。知识不是线性累积，而是复利——今天的模型让明天的学习更快、更便宜，几十年下来别人根本追不上。他把自己活成一座"移动的图书馆"，随时被一个好问题点亮。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">复</div><div class="ft2"><strong>复利式学习</strong>：已有模型是"钩子"，新知识能挂上去，学一件等于巩固一片；空白头脑则每学一样都得从零开始。</div></div><div class="fs2"><div class="fn2">问</div><div class="ft2"><strong>问题导向</strong>：带着真实问题去读、去找答案，效率比漫无目的刷信息高一个数量级。</div></div><div class="fs2"><div class="fn2">跨</div><div class="ft2"><strong>跨科啃硬书</strong>：主动读自己不懂领域的经典（心理、生物、历史、数学），持续喂给卡1的格栅。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"知识复利"对"能力圈"（卡5）的关键补充：能力圈不是天生固定的，而是靠每天积累慢慢扩大的。坚持学习的人，"太难篮子"会逐渐缩小——曾经的"太难"会变成圈内的机会；而机会窗口（卡7的耐心所等的东西），往往只撞见早已做好准备的人。</p><div class="insight"><strong>深层洞见：</strong>别高估一天的突击，别低估十年的日拱一卒。与其季度性地"下狠心啃一本大书"，不如定一个<strong>最小可持续动作</strong>：每天固定 20–30 分钟读点真难但有用的东西。让学习像复利一样，靠的是不断供、而不是偶发的猛冲。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">给自己定"每日一读＋一记"：读一点跨学科内容，用一句话把它挂到某个已有模型或工作场景上，让思维格栅每天长大一点点。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">长期竞争里，护城河之一是"你的团队比对手学得快"。把个人的日拱一卒变成组织共读、复盘的习惯，就是让能力圈的扩张速度超过行业变化速度。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 多元思维模型</a><a class="rt" href="javascript:scrollCard(5)">→ 能力圈</a><a class="rt" href="javascript:scrollCard(7)">→ 耐心＋决断</a></div></div>
+</div></div>
+
+<div class="card" id="card-12" data-p="p4" data-s="lf,bz">
+<div class="ch"><div class="cnum">12</div><div class="ctg"><div class="ct">面对失败的韧性：把挫败当教育</div><div class="cs">不怨天尤人 · 每次都从自己的失败里榨出教训 · 挫败是学费</div><div class="ctags"><span class="tag ts">人生与认知</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>芒格一生有真实重创（亲人离世、婚变、事业低谷），他的态度却是："我这一生活下来的关键之一，就是<strong>不太在意自己的破事</strong>。"面对失败：不怨天、不尤人、不沉溺自怜，而是冷静地把每一次挫败当成一次昂贵的教育，<strong>从自己的错误里（而不是别人的说教里）提取教训</strong>，然后继续往前走。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">担</div><div class="ft2"><strong>自己承担</strong>：失败先归因到自己可改变的部分（呼应"世上没有救世主"）；怨天尤人＝把主动权交回给别人。</div></div><div class="fs2"><div class="fn2">榨</div><div class="ft2"><strong>提取教训</strong>：每次栽跟头后专门复盘"我当时看不见什么/违反了哪条纪律"，绝不白交这笔学费。</div></div><div class="fs2"><div class="fn2">前</div><div class="ft2"><strong>向前不反刍</strong>：把情绪和事实分开——情绪自己消化，只把可迁移的经验留给系统，不反复咀嚼痛苦。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>韧性不是"不会受伤"，而是"把损失转化成认知"。这与反脆弱一脉相承：只要不致命，可控的小失败反而让人变强，因为它暴露了盲点、修正了模型，成了格栅的养料。怨天尤人则相反——它把每一次失败都白白扔掉，于是同样的坑会二次、三次地付费。</p><div class="insight"><strong>深层洞见：</strong>判断一个人的潜力，看他怎么处理失败。把失败读成"证明我不行"的人会退缩；把失败读成"这笔学费必须赚回来"的人会加速。给自己立一条铁律：<strong>允许失败，但不允许"什么都没学到的失败"。</strong></div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">每次项目/投资失利，写两行——"事实到底是什么、我下次具体改哪个动作"。情绪留给自己消化，教训写进做事的系统。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">一个活动或策略失败后，先复盘"我违反了哪条已知纪律"，再决定要不要投下一枪。别让同一类错误在业务里连续付两次学费。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 证伪与开放</a><a class="rt" href="javascript:scrollCard(10)">→ 诚实与声誉</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+</div></div>
+
+<div class="tens-sec">
+<h2>原则间的张力</h2>
+<p>芒格的思想内部同样有真实张力——好的决策，恰恰要在这些矛盾之间动态取舍，而不是死守任何一条。</p>
+<div class="tc"><div class="tc-t">多元模型（广）vs 专注深度（窄）</div><div class="tc-vs"><span class="vs-tag va">跨学科格栅</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">单点精通</span></div><div class="tc-res">既要博采众科的模型，又要在少数领域建立真优势（卡5），看似矛盾。调和：<strong>广度用来"看得全、不出错"，深度用来"敢下重注"</strong>。用跨学科格栅做筛选和风险校验，把火力聚焦到你确有优势的一两个领域——两者是"侦察兵与主攻手"的分工。</div></div>
+<div class="tc"><div class="tc-t">重仓决断（进攻）vs 能力圈保守（防守）</div><div class="tc-vs"><span class="vs-tag va">机会来了狠狠抓住</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">绝大多数扔进"太难"</span></div><div class="tc-res">一边要长期空仓、极度挑剔，一边又要在关键时刻敢压重注。调和：<strong>保守用在"筛选"，激进用在"出手"</strong>。因为平时把 99% 的机会都归入了"太难"，才让那 1% 的下注配得上重仓——不是频繁地赌，而是极稀少地、极确定地下注。</div></div>
+<div class="tc"><div class="tc-t">避免愚蠢（防守）vs 抓住机会（进攻）</div><div class="tc-vs"><span class="vs-tag va">先别出局</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">再谈赢</span></div><div class="tc-res">"不犯蠢优先"听起来保守甚至消极，但它与"抓肥球"并不冲突。调和：<strong>防守是入场券，进攻是收益来源</strong>——先靠避免致命错误确保你长期留在牌桌上，才有资格等到并抓住那几次能改变全局的机会。删掉已知坑（防守），是为了给真机会腾出下重注的胆量和额度（进攻）。</div></div>
+</div>
+
+<div class="disc">
+<strong>来源声明：</strong>本卡片基于对《穷查理宝典》(Charlie Munger 演讲与思想汇编)全书思想的整体理解与公开书评整理提炼，<strong>非逐字原文提取</strong>；"多元思维模型""lollapalooza""反过来想""能力圈/太难篮子"等为书中核心概念，措辞未必与原书逐字一致。
+</div>
+<div class="footer">知识蒸馏工坊 · 穷查理宝典 · 12 张卡片 · 四大维度</div>
+</div>
+
+<div class="tabbar">
+<div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+<div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll('.fbtn[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v+' 张';
+})});
+function scrollCard(n){const t=document.getElementById('card-'+n);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>

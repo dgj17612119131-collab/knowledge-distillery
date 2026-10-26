@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>掌控谈话 · FBI谈判实战术</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#7C3AED;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#B488F8;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.ov p strong{color:var(--text)}
+.src-note{background:var(--fill);border-radius:var(--r-sm);padding:12px 14px;margin:12px 8px;font-size:13px;color:var(--t3);line-height:1.6}
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
+.card.hidden{display:none}
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(124,58,237,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+.cb{padding:0 20px 24px}
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+.ot{background:var(--fill);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:15px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}
+.ot-i strong{color:var(--text)}
+.deep{background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}
+.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}
+.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}
+.ft2 strong{color:var(--text)}
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}
+.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+.al{list-style:none}
+.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}
+.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(124,58,237,.1);color:var(--accent)}
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(124,58,237,.1);color:var(--accent)}
+.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--accent);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--accent)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+@media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-inner">
+<a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2L2 10l8 8"/></svg>书库</a>
+<div class="nav-title">掌控谈话</div>
+</div></div>
+<div class="c">
+
+<div class="hero">
+<h1>掌控谈话</h1>
+<div class="hero-sub">克里斯·沃斯（Chris Voss）· FBI前首席人质谈判专家 · Never Split the Difference</div>
+<div class="hero-meta"><span>12 张卡片</span><span>· 4 大维度</span><span>· 心态准备 / 战术共情 / 掌控节奏 / 争取价值</span></div>
+</div>
+
+<div class="ov">
+<h2>蒸馏说明</h2>
+<p>《掌控谈话》来自 FBI 前首席人质谈判专家克里斯·沃斯。它<strong>反对"理性人、分蛋糕、争取双赢"的传统谈判课</strong>，把谈判还原成一件更朴素也更 harder 的事：<strong>人先于逻辑，情绪才是主场</strong>。全书的方法——战术同理心、标注、镜像、校准问题、让对方说"不"、挖黑天鹅——本质是一套<strong>可迁移的话术与战术工具箱</strong>。</p>
+<p>本次蒸馏<strong>不取人质案例的剧情</strong>，只把这套工具箱拆成能直接用在<strong>谈判、沟通、BD、资源博弈、谈薪、补贴谈判</strong>里的卡片，按四个维度组织：心态与准备 / 战术共情 / 掌控节奏 / 争取价值。</p>
+<div class="src-note"><strong>来源与诚实标注：</strong>本卡片基于对《掌控谈话》(Chris Voss 著)全书谈判方法论的整体理解与公开书评整理提炼，<strong>非逐字原文提取</strong>；"战术同理心""校准问题""标注""镜像"等为书中核心概念，措辞未必与原书逐字一致。</div>
+</div>
+
+<div class="fb"><div class="fb-inner">
+<div class="frow"><span class="flbl">维度</span>
+<button class="fbtn on" data-t="p" data-f="all">全部</button>
+<button class="fbtn" data-t="p" data-f="p1">🧭 心态与准备</button>
+<button class="fbtn" data-t="p" data-f="p2">🤝 战术共情</button>
+<button class="fbtn" data-t="p" data-f="p3">🎼 掌控节奏</button>
+<button class="fbtn" data-t="p" data-f="p4">💎 争取价值</button>
+</div>
+<div class="frow"><span class="flbl">场景</span>
+<button class="fbtn on" data-t="s" data-f="all">全部</button>
+<button class="fbtn" data-t="s" data-f="cr">🗣 谈判</button>
+<button class="fbtn" data-t="s" data-f="bz">💰 商业</button>
+<button class="fbtn" data-t="s" data-f="mg">👥 管理</button>
+<button class="fbtn" data-t="s" data-f="lf">🌱 成长</button>
+</div>
+<div class="fc" id="vc">12 张</div>
+</div></div>
+
+<div class="cards">
+<div class="card" id="card-1" data-p="p1" data-s="cr,bz,lf">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">谈判是"发现游戏"，不是"分蛋糕"</div><div class="cs">别默认对方是理性人 · 情绪与认知偏差才是主场</div><div class="ctags"><span class="tag ts">心态与准备</span><span class="tag tt">谈判</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>传统谈判课教你"理性出价、分割利益、争取最优"。沃斯的经验恰恰相反：谈判首先是<strong>发现对方到底在玩什么游戏</strong>——他们的恐惧、面子、内部交代、非理性坚持。人是情绪动物，<strong>先看清那盘被情绪驱动的棋，才谈得动数字</strong>。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">破</div><div class="ft2"><strong>拆掉"理性人"假设</strong>：别指望对方按经济利益最大化行动。他可能为面子、为向老板交差、为"别担责任"而死磕一个不划算的条件。</div></div><div class="fs2"><div class="fn2">看</div><div class="ft2"><strong>先问"这是什么游戏"</strong>：他是真被授权来谈，还是在演给上级看？他在保护自己什么？他最怕什么发生？</div></div><div class="fs2"><div class="fn2">应</div><div class="ft2"><strong>把策略建在"人会非理性"上</strong>：不是"对方应该懂道理"，而是"对方会带着KPI和脸色进来"，为这个现实做预案。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>博弈论把对手建模成"理性最优反应者"；现实中的对手却揣着考核口径、背过的锅、上级的态度进来。把这些"非理性因素"当噪声删掉，等于删掉了谈判里最关键的变量——你以为在算账，其实在跟一个怕丢脸的人较劲。</p><div class="insight"><strong>深层洞见：</strong>上桌前别只准备"我的底线和目标价"，花同样力气准备<strong>"对方在跟谁交差、他最怕什么、什么会让他没面子"</strong>。补贴博弈里，品牌方运营要向老板证明"这单没白谈"——你要做的不是压垮他，是给他一个能回去交差的赢法。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">开场别急着摆条件，先用两三句摸出对方是"决策者"还是"传话者"。传话者的游戏是"不出错、好交差"，你的方案要替他备好交差的话。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">遇到"讲不通"的人，先别断定他蠢或坏。换个问句："在他眼里什么才算合理？"——很多僵局是两套道理在撞，不是一个人不讲理。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 摸清对方的现实与诉求</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="yingxiangli.html#card-9">影响力 · 把戏和实质分开</a></div></div>
+</div></div>
+
+<div class="card" id="card-2" data-p="p1" data-s="lf,mg,cr">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">先管理自己的情绪，再进入高风险对话</div><div class="cs">稳住自己 · 才有资格谈改变别人</div><div class="ctags"><span class="tag ts">心态与准备</span><span class="tag tt">成长</span><span class="tag tt">管理</span><span class="tag tt">谈判</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>高风险对话里，最先失控的往往不是对方，而是你自己——心跳加速、想反驳、想赢回面子。<strong>在你稳得住自己之前，别指望改变别人。</strong>情绪一崩，后面所有话术全部失灵。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">察</div><div class="ft2"><strong>先给自己"标注"</strong>：心里默念"我现在很急／很生气／怕输"。承认它，它就没那么容易劫持你。</div></div><div class="fs2"><div class="fn2">缓</div><div class="ft2"><strong>生理先行</strong>：深呼吸、放慢语速、喝口水——先让交感神经降温，再让脑子在线。</div></div><div class="fs2"><div class="fn2">隔</div><div class="ft2"><strong>把"我"和"事"分开</strong>：对方的拒绝不是对你这个人的否定，只是他立场里的一个动作，不值得你上头。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人在感到威胁时会进入"战或逃"模式，负责理性的前额叶掉线。你越"想赢"，越容易说出逼对方设防的话；对方一设防，你又更想赢——螺旋升级，双输收场。谈判者最贵的能力，是<strong>带着情绪但不被情绪开车</strong>。</p><div class="insight"><strong>深层洞见：</strong>给自己设一条"红线动作"：<strong>一旦感到上头，只做两件事——提问或复述，绝不做陈述和反驳。</strong>把"我要赢你"的冲动，换成"我先搞懂你"的动作。你稳，对方才会稳；你急，全场都急。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方抛出羞辱性报价或翻旧账时，别当场回击。停三秒，标注一句"听起来这单让你们很不舒服"，把火泄掉再谈事。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">被下属顶撞、被同事甩锅时，先处理自己的情绪再回邮件。带着怒气的即时回复，第二天多半要撤回。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 沉默与降调</a><a class="rt" href="javascript:scrollCard(5)">→ 标注 Labeling</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开（分寸）</a></div></div>
+</div></div>
+
+<div class="card" id="card-3" data-p="p1" data-s="bz,cr,mg">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">准备：把对方的"现实"和"诉求"分开摸清</div><div class="cs">他绕不过的墙 · 和他嘴上要的那个数</div><div class="ctags"><span class="tag ts">心态与准备</span><span class="tag tt">商业</span><span class="tag tt">谈判</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>上桌前把两条线分清：<strong>对方的"现实"（他真实的处境、约束、权限、时间节点）</strong> vs <strong>对方的"立场/诉求"（他嘴上开出的那个数）</strong>。把二者混为一谈，你会去猛攻一个假目标，而真正卡住交易的约束你压根没碰。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">实</div><div class="ft2"><strong>摸清现实</strong>：他的预算上限、考核口径、上级态度、deadline、在跟谁比价——这些是他绕不过的墙，也是你能不能成的地基。</div></div><div class="fs2"><div class="fn2">诉</div><div class="ft2"><strong>分离立场</strong>："必须给我30%补贴"是立场；背后可能是"我要向老板证明我谈到了东西"的真实诉求。</div></div><div class="fs2"><div class="fn2">差</div><div class="ft2"><strong>找落差</strong>：现实与立场之间那道缝，就是你的操作空间——满足诉求，不必照单全收立场。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人质谈判的第一手情报永远关于劫持者的<strong>处境</strong>（他能不能活着走出去），而不是他开口的价码。BD 谈判同理：你搞不清品牌方的决策链、预算池和真实约束，报价就是在猜谜；猜错了还以为是对方不讲理。</p><div class="insight"><strong>深层洞见：</strong>准备清单强制分两栏：<strong>"我确认的对方现实"（注明来源与可信度）</strong> 和 <strong>"我只是以为/希望的假设"</strong>。凡是落在"假设"栏的，先验证再下注——这正是《遥远的救世主》说的"把事实和假设分开，别把假设当事实用"。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">JBP 谈判前，先画一张"对方决策地图"：谁是拍板人、谁卡预算、谁要交差、各自怕什么。对着地图谈，别对着他报的那个价谈。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方坚持"这个数没得谈"，别急着顶。先问"这个数是怎么定下来的？"——答案会暴露他的现实约束，那里才是可动的地方。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a></div></div>
+</div></div>
+
+<div class="card" id="card-4" data-p="p2" data-s="cr,mg,bz">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">战术同理心：用对方的框架理解世界</div><div class="cs">Tactical Empathy · 不是"我人好"，是有目的的理解</div><div class="ctags"><span class="tag ts">战术共情</span><span class="tag tt">谈判</span><span class="tag tt">管理</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>战术同理心不是"我同情你、我是好人"，而是<strong>系统性地搞清楚对方怎么看这个世界，并且让他知道你看懂了</strong>。它的目的很硬核：拿信息、建信任、卸掉对方防御。<strong>理解是手段，掌控是结果。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">框</div><div class="ft2"><strong>钻进对方的框</strong>：先别用"这很合理／不合理"评判，还原他的逻辑——在他眼里什么才是真的、什么才重要。</div></div><div class="fs2"><div class="fn2">证</div><div class="ft2"><strong>让他"被看见"</strong>：光你懂没用，要用话说出来，让他确认"你确实理解我的处境"。</div></div><div class="fs2"><div class="fn2">用</div><div class="ft2"><strong>服务于信息</strong>：同理心是探针，目标是让对方透露他真正在意什么、担心什么、能让步什么。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人只有在觉得"被理解"的时候，才会放下戒备、说出真实约束。硬碰硬只换来对方的官方口径。这是《影响力》里"喜好／相似"的进攻版——但方向是主动的：<strong>不是你讨对方喜欢，是你用理解撬开对方。</strong></p><div class="insight"><strong>深层洞见：</strong>别把同理心当成软弱或绕弯子。<strong>它是你拿情报的最短路径。</strong>JBP 谈判里，先准确复述品牌方的 KPI 压力和总部指标，他才会告诉你真实的预算池和能让渡的底线——你越早懂他，他越早交底。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">准备三段"对方视角的复述"（他眼里的这次合作是什么、他要防什么），开场或僵持时讲出来，看对方从"对抗"切到"解释"。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">推行不受欢迎的政策前，先站在被管者角度说清"你们会怎么看这件事"，被理解了才推得动；只讲公司立场会激起阳奉阴违。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 标注 Labeling</a><a class="rt" href="yingxiangli.html#card-6">影响力 · 喜好</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a></div></div>
+</div></div>
+
+<div class="card" id="card-5" data-p="p2" data-s="cr,mg,lf">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">标注 Labeling：给情绪命名</div><div class="cs">"你看起来对这事很在意" · 命名即降温或强化</div><div class="ctags"><span class="tag ts">战术共情</span><span class="tag tt">谈判</span><span class="tag tt">管理</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>用中性、描述性的话语<strong>给对方此刻的情绪或顾虑贴个名字</strong>——"你看起来对这件事很在意""听起来你担心这个决定不好交代"。<strong>给情绪命名，负面情绪会降温，正面情绪会被放大。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">句</div><div class="ft2"><strong>三个起手式</strong>："你似乎觉得…""听起来…""给我感觉…"——只描述对方，不评判、不说"你别激动"。</div></div><div class="fs2"><div class="fn2">冷</div><div class="ft2"><strong>负面标注→降温</strong>：把对方的愤怒、顾虑、不信任说出来，说破即消散一半。</div></div><div class="fs2"><div class="fn2">暖</div><div class="ft2"><strong>正面标注→强化</strong>：对方显出诚意时说"你很想把这单做成"，会把这份合作意愿放大。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>神经科学上，把情绪用语言标出（affect labeling）会降低杏仁核活跃度，让人从"情绪模式"回到"思考模式"。你说出他的感受，他觉得被看见，防御自然下降——<strong>标注是"战术同理心"的最小可执行单元。</strong></p><div class="insight"><strong>深层洞见：</strong>标注完要<strong>闭嘴</strong>，等对方接话——那是留白，不是自言自语。补贴博弈里遇到品牌方发火，先标一句"这件事让您觉得我们不够重视你们品牌"，火气往往当场降下来，因为他要说的被你替他说了。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方含糊推脱"这个嘛……再说吧"，标注"听起来你对这个方案还有些顾虑"——把没说出口的犹豫逼成说出口的异议，你才能处理。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">对自己也用标注：焦虑时说"我现在的感受是怕搞砸"。命名之后，情绪从"裹着你"变成"被你观察"，行动力回来了。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 战术同理心</a><a class="rt" href="javascript:scrollCard(2)">→ 先管理自己情绪</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a></div></div>
+</div></div>
+
+<div class="card" id="card-6" data-p="p2" data-s="cr,mg">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">镜像 Mirroring：重复最后 1-3 个词</div><div class="cs">低成本高回报的"话头诱导器"</div><div class="ctags"><span class="tag ts">战术共情</span><span class="tag tt">谈判</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>温和地<strong>重复对方刚说的最后 1-3 个词</strong>（或最有信息量的那个词），然后停顿。这会近乎催眠地诱导对方不自觉地展开、解释、补充——<strong>你几乎什么都没做，情报却流了过来。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">复</div><div class="ft2"><strong>只重复词，不重复意思</strong>："……三个月账期？"用疑问或平静的语气抛出，像把球轻轻推回去。</div></div><div class="fs2"><div class="fn2">停</div><div class="ft2"><strong>停下来，别急着接</strong>：镜像之后必须留沉默，把话头交还给对方，让他填。</div></div><div class="fs2"><div class="fn2">挖</div><div class="ft2"><strong>用在信息稀薄处</strong>：对方给含糊回答、或你以为"有戏但不确定"时最有用——逼他多说一句。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人天然厌恶对话中的空白，会主动去填补；而重复对方的词又制造"你在认真听"的安全感，于是对方放松警惕继续说。<strong>很多关键信息，就藏在对方"忍不住多解释的那一句"里。</strong></p><div class="insight"><strong>深层洞见：</strong>BD 首次拜访别急着摊开方案 PPT。对方说"我们今年重点想拉新客"，你镜像一句"……拉新客？"，他会顺手把真实痛点、现有渠道、盘子里的预算都补出来——你还没提问，情报已到账。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方报出一个数，先镜像这个数字再沉默，不要马上还价——他大概率会补一句"当然这个还可以聊"或透露定价理由。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">下属汇报含糊或避重就轻时，重复他末尾的关键词＋停顿，比连环追问更让他自己把真实情况说出来。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 沉默的力量</a><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a></div></div>
+</div></div>
+
+<div class="card" id="card-7" data-p="p2" data-s="mg,cr,bz">
+<div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">校准问题：把难题变成对方的任务</div><div class="cs">Calibrated Questions · "我们该怎么做？""什么让你这么说？"</div><div class="ctags"><span class="tag ts">战术共情</span><span class="tag tt">管理</span><span class="tag tt">谈判</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>用<strong>以"如何/什么"(How/What) 开头的开放式问题</strong>，礼貌地把难题踢回给对方，让他替你想办法——"我们要怎么做才能做到呢？""什么让你这么说？""这对你意味着什么？"<strong>避免那些一个"不"就能打发的封闭问题。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">开</div><div class="ft2"><strong>用"怎么/什么"，不用"是不是"</strong>："能不能加补贴"给对方一个"不"的出口；"我们怎么做才能让补贴到位"逼他给方案。</div></div><div class="fs2"><div class="fn2">软</div><div class="ft2"><strong>"如何"是体面地说不</strong>：说"我做不到"会僵住；说"我们要怎么才能做到 X 呢"把矛盾交给对方去解。</div></div><div class="fs2"><div class="fn2">让</div><div class="ft2"><strong>让对方替你解题</strong>：他一旦开始为你想办法，就心理上从"对手"变成了"协作者"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>命令或直接拒绝触发对抗；一个好问题把对方从"防守者"变成"解答者"。你在表面"交出控制权"的同时，<strong>悄悄设定了讨论的方向</strong>——问题问什么，你们就谈什么。这是最柔软的掌控。</p><div class="insight"><strong>深层洞见：</strong>记住那句万能收尾——<strong>"我要怎么做才能答应你呢？(How am I supposed to do that?)"</strong> 对方开价离谱时用它，既不认错也不硬顶，把压力优雅地送回。谈薪时："以这个薪酬包的结构，我怎么向我太太交代我接了？"——把"太低了"变成"你来想想怎么补"。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">资源谈判里对方要价高，别砍价也别答应，问"我们要怎么做才能把这个 ROI 算平呢？"——让他帮你把方案改成可持续的样子。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">别再下"你必须做到"的指令，改问"要做成这件事，你需要我提供什么、我们该从哪下手？"团队被问会开始自己负责。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 摸清现实与诉求</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></div>
+</div></div>
+
+<div class="card" id="card-8" data-p="p3" data-s="cr,bz,mg">
+<div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">说"不"才是开始</div><div class="cs">"不"保护谈判者 · 让对方重获安全感</div><div class="ctags"><span class="tag ts">掌控节奏</span><span class="tag tt">谈判</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>别再追着要"是"了。<strong>"不"才是谈判真正的起点</strong>——能说不，让人重获掌控感和安全感，才敢说真话。主动把对方引向"不"（"是不是现在完全不是推进的时候？"），远比他碍于情面假意答应强得多。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">安</div><div class="ft2"><strong>"不"给人安全感</strong>：只有觉得自己没被推着走，人才会松口说真实想法。</div></div><div class="fs2"><div class="fn2">引</div><div class="ft2"><strong>用话术邀请"不"</strong>："现在是你们完全不想推进的时候吗？""是不是这个方案哪里不对？"——对方答"不是/不对"，反而暴露真实需求。</div></div><div class="fs2"><div class="fn2">听</div><div class="ft2"><strong>把"不"当信息</strong>：拒绝的理由里，藏着对方真正的顾虑和可改的条件。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>逼人说"是"，是为了缓解销售/谈判者自己的焦虑；对方往往给一个敷衍的是，随后反悔、拖延、找理由退出。<strong>允许对方说不，才是把关系从"推销—抵抗"转成"一起排查问题"。</strong>先拿到一个真"不"，比拿到一百个假"是"值钱。</p><div class="insight"><strong>深层洞见：</strong>商家或品牌方说"这个补贴力度我没兴趣"——别慌、别急着加码。追问一句<strong>"是哪一点让您觉得没兴趣？"</strong>他的"不"里，正是你下一步能具体修改的条件；他的"是"里什么都没有。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">开场用"今天是不是不方便谈这个？"这种邀请式否定，对方一句"没有没有，你说"，反而打开了话匣子。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">客户拖着不签，别反复问"您考虑得怎么样了？"改问"是不是这个方案有哪里不合适？"——引出一个具体异议，你才有得谈。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 别逼人说"是"</a><a class="rt" href="javascript:scrollCard(7)">→ 校准问题</a><a class="rt" href="qingci.html#card-11">青瓷 · 拒绝只关门不堵路</a></div></div>
+</div></div>
+
+<div class="card" id="card-9" data-p="p3" data-s="cr,mg">
+<div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">沉默与"深夜电台 DJ 嗓音"</div><div class="cs">慢下来 · 降调 · 停顿 · 制造安全感</div><div class="ctags"><span class="tag ts">掌控节奏</span><span class="tag tt">谈判</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>三个节奏杠杆：<strong>慢下来、降调、停顿</strong>。用"深夜电台 DJ"那种低沉、缓慢、平静的嗓音说话，制造安全感与掌控感；说完关键的一句就沉默，<strong>让空白替你说下一句。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">沉</div><div class="ft2"><strong>嗓音降调放慢</strong>：激动高亢＝示弱与焦虑；低沉平缓＝权威与镇定。</div></div><div class="fs2"><div class="fn2">顿</div><div class="ft2"><strong>关键句后停住</strong>：报完价、问完校准问题后闭嘴等——谁先扛不住打破沉默，谁先让。</div></div><div class="fs2"><div class="fn2">留</div><div class="ft2"><strong>别填满每一秒</strong>：沉默给对方思考时间，也压住你想用话掩饰的不安。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>急促、高亢、话密会传递焦虑，并传染给对方引发对抗；低沉缓慢传递"我稳、我掌控、我不急"。而沉默造成的空白，对方会不自觉地补充信息或做出让步来填补——<strong>你什么都不用说，就能钓出他的下一步。</strong></p><div class="insight"><strong>深层洞见：</strong>记一条肌肉记忆：<strong>说完最重要的一句，然后心里数三秒。</strong>价格谈僵时，DJ 嗓音＋一句"我们怎么做才能都过得去呢"＋长久的沉默，往往把球逼到对方脚下。你越不怕冷场，越显得你没退路——而对方最怕的就是你没退路。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">被问到"到底能不能降"，别急着答。放慢、降调："我很想促成这单……"然后停顿，让对方去接那份沉默。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">谈话里说完要求后停住，不要立刻补"当然你们也难"去缓和。留白会把决定权压回对方，比解释十句更有力。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 镜像</a><a class="rt" href="javascript:scrollCard(2)">→ 先管理情绪</a><a class="rt" href="yingxiangli.html#card-1">影响力 · 固定行为模式</a></div></div>
+</div></div>
+
+<div class="card" id="card-10" data-p="p3" data-s="cr,mg,bz">
+<div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">别逼人说"是"：假顺从的陷阱</div><div class="cs">"是"必须和"怎么做"绑定 · 否则只是客气或敷衍</div><div class="ctags"><span class="tag ts">掌控节奏</span><span class="tag tt">谈判</span><span class="tag tt">管理</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>"是"有三种：真正的承诺、礼貌的敷衍、被逼出来的<strong>假顺从</strong>。追着要"是"（"对吧？""是不是该这么做？"）只会钓到假顺从——答应得爽快，回去不执行。<strong>"是"如果不跟"如何(怎么做)"绑定，就一文不值。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>分清三种"是"</strong>：点头的是、客套的是、还是真愿意掏钱掏资源的是。多数销售只练到"钓到第一种"。</div></div><div class="fs2"><div class="fn2">止</div><div class="ft2"><strong>停止"诱供式"提问</strong>：一连串"是不是／对不对／你说好不好"是危险信号，说明对方只想结束对话。</div></div><div class="fs2"><div class="fn2">验</div><div class="ft2"><strong>用"不"和"如何"验证</strong>：逼出对方的"不"和具体"怎么做"，比拿到一个"是"可靠得多。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>为了逃离被追问的压力，人会顺口答应（销售里的"yes ladder"）。这种"是"没有成本，事后必然反悔、拖延、找补。<strong>真正的承诺，来自对方先说完"不"、再说清"怎么做"之后。</strong></p><div class="insight"><strong>深层洞见：</strong>谈完品牌方满口答应下季度加码——别急着庆祝、更别急着签。补一句校准问题：<strong>"我们具体怎么做，才能把这笔预算真正批下来？"</strong>答不出落地路径的"是"，就是假顺从。你要的是他嘴里说出的"下一步动作"，不是他脸上的笑。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">把"您觉得可以吗？"换成"这里有没有您完全行不通的地方？"——先扫干净假顺从，剩下的"可以"才算数。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">口头答应合作后，用"落地要谁签字、分几步、什么时候"把承诺钉死。能拆出动作的才是真"是"。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 说不才是开始</a><a class="rt" href="javascript:scrollCard(7)">→ 校准问题</a><a class="rt" href="yingxiangli.html#card-4">影响力 · 承诺和一致</a></div></div>
+</div></div>
+
+<div class="card" id="card-11" data-p="p4" data-s="bz,cr">
+<div class="ch"><div class="cnum">11</div><div class="ctg"><div class="ct">锚定与让步：设置参照，让步要小且慢</div><div class="cs">数字靠参照说话 · 折中当对方的台阶</div><div class="ctags"><span class="tag ts">争取价值</span><span class="tag tt">商业</span><span class="tag tt">谈判</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>谈判里的数字全靠<strong>参照点</strong>说话。要么先抛一个夸张但站得住的锚，把对方预期整个拉偏；要么坚决不先报价、逼对方先锚定。轮到你让步时：<strong>幅度越来越小、节奏越来越慢、每次都要理由</strong>，让对方感觉"已经榨到最后一滴"。僵持时，用"折中"当对方体面收场的台阶。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">锚</div><div class="ft2"><strong>设定参照</strong>：一个极端但合理的第一报价，会拉高/拉低之后整段区间的中枢。</div></div><div class="fs2"><div class="fn2">让</div><div class="ft2"><strong>让步要小且慢</strong>：每次都让得比上次少，传递"见底了"；大方快速的让步＝明说"还有得谈"。</div></div><div class="fs2"><div class="fn2">台</div><div class="ft2"><strong>用"折中"给台阶</strong>：对方僵住下不来台时，提"各退一步"给他体面；但也别轻易被对方用"公平/对半"道德绑架。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人对价格的判断是相对的（《影响力》的对比原理就是锚定的祖宗）。你的让步序列本身在"说话"——越来越小的让步暗示底线逼近，对方会更努力凑近你；一上来就大让，只会把预期推得更远。</p><div class="insight"><strong>深层洞见：</strong>报价前先想清楚两件事：<strong>谁先动第一个数、我能不能用一个夸张锚把它拉开。</strong>而每次让步都要配一个"理由＋情绪标注"（"这个价我真的要咬牙回去争取了"）才显得可信。不劳而获的让步，只会喂大对方的胃口。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴博弈里，先声夺人抛一个对你有利但能自圆其说的"行业基准/对照组数据"当锚；之后每次加码都给得越来越少、越来越勉强。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">谈薪时别一次性报出可接受区间。用一个偏高的锚定对方想象，之后每次让步都要交换条件（签字费/期权/职级），别白让。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="yingxiangli.html#card-2">影响力 · 对比原理（锚定祖宗）</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a></div></div>
+</div></div>
+
+<div class="card" id="card-12" data-p="p4" data-s="bz,cr,lf">
+<div class="ch"><div class="cnum">12</div><div class="ctg"><div class="ct">黑天鹅信息：找到你不知道的那条关键信息</div><div class="cs">谁先挖到隐藏信息 · 谁重定义整场谈判</div><div class="ctags"><span class="tag ts">争取价值</span><span class="tag tt">商业</span><span class="tag tt">谈判</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>每场谈判都藏着 1-2 个<strong>"黑天鹅"——你不知道、一旦知道就彻底改变局面和对方世界观的信息。</strong>你的任务不是重复已知，而是用好奇心（镜像、标注、校准问题）把这条隐藏信息钓出来。<strong>谁先挖到黑天鹅，谁重定义谈判。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">设</div><div class="ft2"><strong>假设一定有隐藏信息</strong>：对方的真实动机、内部竞争、时间压力、私人顾虑——总有一条你还没掌握。</div></div><div class="fs2"><div class="fn2">探</div><div class="ft2"><strong>用同理心工具撬</strong>：镜像＋标注＋校准问题，目的不是说服，是"让他说出我不知道的那件事"。</div></div><div class="fs2"><div class="fn2">转</div><div class="ft2"><strong>拿到就重定义局面</strong>：新信息能把对方的"绝对不可能"变成"其实可以谈"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>谈判僵局常常源于<strong>信息不对称，而非利益不可调和</strong>。你以为的"死线／红线／不可能"，可能只是对方摆出的立场。一旦挖出真实约束，很多"绝对"其实是可以绕的。（呼应博弈论的不完全信息博弈：掌握私人信息的一方改变均衡。）</p><div class="insight"><strong>深层洞见：</strong>别急着当推销员，先当侦探。品牌方死活不给独家——镜像＋标注＋提问之后，真相可能是"总部刚因为排他条款被曝光过"。<strong>这条黑天鹅一改，整个合作框架就该重设</strong>——从"要独家"变成"给足首发势能但不锁死"。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">每次谈判后补一行"今天才知道的、关于对方的一件事"。攒下来就是你的黑天鹅库——下轮报价、续约、JBP 都会用到。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">跟重要的人争执不下时，先别捍卫立场，问自己"关于他/这件事，还有什么是我不知道的？"往往僵局只是缺一条信息。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 准备摸清现实</a><a class="rt" href="javascript:scrollCard(6)">→ 镜像</a><a class="rt" href="game-theory.html#card-11">博弈论 · 不完全信息博弈</a></div></div>
+</div></div>
+
+<div class="tens-sec">
+<h2>原则间的张力</h2>
+<p>《掌控谈话》的方法内部也有真实的张力——这些"柔性工具"，恰恰要在矛盾之间落地才不会走偏。</p>
+<div class="tc"><div class="tc-t">共情理解 vs 争取价值</div><div class="tc-vs"><span class="vs-tag va">柔性连接</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">硬朗要价</span></div><div class="tc-res">一路共情容易谈成"好人",忘了自己要什么；只盯着价值又卸不掉对方防御。调和：<strong>战术同理心是争取价值的手段，不是目的</strong>——先连接、后改变，理解对方是为了更准地拿到自己要的东西。</div></div>
+<div class="tc"><div class="tc-t">操控话术 vs 真诚待人</div><div class="tc-vs"><span class="vs-tag va">技巧套路</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">真诚透明</span></div><div class="tc-res">镜像、标注、校准问题看着像"套路",会不会伤人、会不会失去信任？调和：<strong>看动机和结果。</strong>用来一起找到双方都能接受的结果，是真诚；用来骗对方签亏本合同，是操纵。同一段话术，动机决定性质。</div></div>
+<div class="tc"><div class="tc-t">态度强硬 vs 姿态柔软（柔性坚持）</div><div class="tc-vs"><span class="vs-tag va">守住底线</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">情绪平稳</span></div><div class="tc-res">谈判到底要硬还是要软？调和：<strong>对人软、对事硬。</strong>嗓音低、情绪稳、给对方留足面子（软）；底线不松、用"如何"把难题稳稳推回（硬）。真正难缠的对手，不是拍桌子的，是笑着不退让的。</div></div>
+</div>
+
+<div class="disc">
+<strong>来源声明：</strong>本卡片基于对《掌控谈话》(Chris Voss 著)全书谈判方法论的整体理解与公开书评整理提炼，<strong>非逐字原文提取</strong>；"战术同理心""校准问题""标注""镜像"等为书中核心概念，措辞未必与原书逐字一致。场景映射中的补贴博弈、JBP、谈薪等为我方向谈判的应用演绎，非原书案例。
+</div>
+<div class="footer">知识蒸馏工坊 · 掌控谈话 · 12 张卡片 · 四大维度</div>
+</div>
+
+<div class="tabbar">
+<div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+<div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll('.fbtn[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v+' 张';
+})});
+function scrollCard(n){const t=document.getElementById('card-'+n);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>

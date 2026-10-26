@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>自私的基因 · 复制子与进化的博弈</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#7C3AED;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#B488F8;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.ov p strong{color:var(--text)}
+.src-note{background:var(--fill);border-radius:var(--r-sm);padding:12px 14px;margin:12px 8px;font-size:13px;color:var(--t3);line-height:1.6}
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
+.card.hidden{display:none}
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(124,58,237,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+.cb{padding:0 20px 24px}
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+.ot{background:var(--fill);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:15px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}
+.ot-i strong{color:var(--text)}
+.deep{background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}
+.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}
+.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}
+.ft2 strong{color:var(--text)}
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}
+.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+.al{list-style:none}
+.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}
+.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(124,58,237,.1);color:var(--accent)}
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(124,58,237,.1);color:var(--accent)}
+.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--accent);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--accent)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+@media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-inner">
+<a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2L2 10l8 8"/></svg>书库</a>
+<div class="nav-title">自私的基因</div>
+</div></div>
+<div class="c">
+
+<div class="hero">
+<h1>自私的基因</h1>
+<div class="hero-sub">道金斯 · 复制子视角与演化博弈的生物学根基</div>
+<div class="hero-meta"><span>12 张卡片</span><span>· 4 大维度</span><span>· 视角转换 / 合作的进化 / 竞争结构 / 模因文化</span></div>
+</div>
+
+<div class="ov">
+<h2>蒸馏说明</h2>
+<p>《自私的基因》表面讲生物演化，内核是一套<strong>关于"复制子、合作与信号"的博弈思维</strong>：把选择的基本单位从个体换成基因，许多看似无解的利他、惯例、炫耀与传播，突然都有了冷峻统一的解释。它是博弈论中演化博弈(ESS)、信号博弈、声誉与机制设计的生物学根基。本次蒸馏<strong>不复述生物科普</strong>，只提炼可迁移到竞争、合作、组织、认知、进化的思维模型，按四个维度组织，落到商业竞争与生态协作场景。</p>
+<div class="src-note"><strong>来源与诚实标注：</strong>本卡片基于对《自私的基因》(Richard Dawkins 著)全书思想的整体理解与公开书评整理提炼，<strong>非逐字原文提取</strong>；"复制子""进化稳定策略ESS""互惠利他""模因meme"等为书中核心概念，措辞未必与原书逐字一致。</div>
+</div>
+
+<div class="fb"><div class="fb-inner">
+<div class="frow"><span class="flbl">维度</span>
+<button class="fbtn on" data-t="p" data-f="all">全部</button>
+<button class="fbtn" data-t="p" data-f="p1">🧬 视角转换</button>
+<button class="fbtn" data-t="p" data-f="p2">🤝 合作的进化</button>
+<button class="fbtn" data-t="p" data-f="p3">⚔️ 竞争结构</button>
+<button class="fbtn" data-t="p" data-f="p4">🧠 模因与文化</button>
+</div>
+<div class="frow"><span class="flbl">场景</span>
+<button class="fbtn on" data-t="s" data-f="all">全部</button>
+<button class="fbtn" data-t="s" data-f="bz">💰 商业</button>
+<button class="fbtn" data-t="s" data-f="cr">🗣 竞争</button>
+<button class="fbtn" data-t="s" data-f="mg">👥 管理</button>
+<button class="fbtn" data-t="s" data-f="lf">🌱 成长</button>
+</div>
+<div class="fc" id="vc">12 张</div>
+</div></div>
+
+<div class="cards">
+<div class="card" id="card-1" data-p="p1" data-s="lf,bz">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">选择的基本单位是基因</div><div class="cs">别问谁受益 · 问什么在被复制</div><div class="ctags"><span class="tag ts">视角转换</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>自然选择真正筛选的，不是个体、物种或群体，而是<strong>基因——能复制、能变异、能在不同载体间留存下来的信息单位</strong>。想读懂一个系统的演化，别看"谁看起来在受益"，要看"什么东西在被复制、被留存"。个体会死，基因长存。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">单</div><div class="ft2"><strong>找对复制子</strong>：竞争的最小单位是"可复制、可变异、可遗传"的东西，不是会生灭的个体。单位放错，因果链就断。</div></div><div class="fs2"><div class="fn2">象</div><div class="ft2"><strong>受益者≠被选中者</strong>：一个行为让个体或群体"看起来"受益，往往只是底层复制子自私留存后长出的表象。</div></div><div class="fs2"><div class="fn2">问</div><div class="ft2"><strong>追问"什么在复制"</strong>：面对反复出现的现象，先问它靠什么自我复制、被一遍遍传下来——那才是真正被优化的对象。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>"群体优势"无法稳定遗传：一个利他的个体，很容易被同群体里的搭便车者侵蚀掉；只有在复制子层面，"做得好→留下更多拷贝"这条因果链才真正闭合。把选择单位放对，进化才第一次有了统一的解释力。</p><div class="insight"><strong>深层洞见：</strong>迁移到商业：<strong>别只盯着"谁赚了钱"，要问"什么模式在被复制"</strong>。一个品牌或打法能横扫市场，不是因为它对谁好，而是它的结构能被低成本地一遍遍复制——门店SOP、爆款模板、投放模型。找到那个"被复制的单位"，才看懂扩张的真正引擎。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">复盘一家连锁品牌的爆发，别停在"老板有情怀"。拆出可复制的最小单元——选品结构 + 选址公式 + 话术模板——它才是增长的复制子。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">判断一个方法论值不值得投入：问它能不能在你不在场时，被别人照着复制出来。不可复制的努力，只是个人英雄主义。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 生存机器</a><a class="rt" href="javascript:scrollCard(10)">→ 模因meme</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈(ESS)</a></div></div>
+</div></div>
+
+<div class="card" id="card-2" data-p="p1" data-s="bz,mg,cr">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">生存机器：身体是基因的载具</div><div class="cs">理解载体利益 vs 复制子利益</div><div class="ctags"><span class="tag ts">视角转换</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>个体（身体、组织、公司）是基因建造并驾驶的"生存机器"——是复制子用来在世界里存活的<strong>载体</strong>。一旦分清"载体"与"乘客（复制子）"，就能解释大量"载体为乘客做出反直觉牺牲"的现象：工蜂蜇人即死、员工 burnout、公司烧钱换规模。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">载</div><div class="ft2"><strong>分清载体与目标</strong>：身体/公司是载具，服务于"复制留存"这条深层逻辑，而非载具自身的舒适。</div></div><div class="fs2"><div class="fn2">益</div><div class="ft2"><strong>载体利益≠复制子利益</strong>：有时复制子会驱动载体做出对自身"看似不利"的选择——因为它优化的是拷贝数，不是载体福祉。</div></div><div class="fs2"><div class="fn2">察</div><div class="ft2"><strong>看行为不看口号</strong>：想知道一个系统真正为谁服务，别看它说什么，看它的资源最终流向哪条复制回路。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>演化不关心个体幸福，只关心拷贝数量。凡是能提高复制成功率的举动，即使损害载体也在所不惜。所谓"自私"，指的是复制子层面被优化，而不是个体层面的贪欲——两者常被混为一谈，才生出那么多误读。</p><div class="insight"><strong>深层洞见：</strong>组织里最常见的错位：<strong>老板谈"平台愿景"（复制子利益），员工拿的是"工资与稳定"（载体利益）</strong>。两者不完全一致时，制度必须显式对齐，否则你会把口号当成共识。判断一家公司到底信什么，看它把钱和晋升给了哪种行为——资源流向，才是它的真实信仰。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">设计激励前先问：这条激励在强化哪条复制回路？你要团队复制的到底是当期 GMV，还是长期用户价值？考核什么，组织就长出什么。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">竞对做出"赔本"动作时别急着说它傻——先判断它是在保护载体（单店利润），还是在保护复制子（用户习惯、网络效应）。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 谁在复制</a><a class="rt" href="javascript:scrollCard(6)">→ 昂贵信号</a><a class="rt" href="javascript:scrollCard(9)">→ 代际冲突</a></div></div>
+</div></div>
+
+<div class="card" id="card-3" data-p="p1" data-s="lf,bz,mg">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">视角转换的力量</div><div class="cs">换个复制子单位 · 利他突然可解释</div><div class="ctags"><span class="tag ts">视角转换</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>同一批现象，把"选择的单位"从个体换成基因，许多看似无法解释的利他、牺牲、合作，瞬间有了冷峻而统一的解释。<strong>视角不是装饰，视角决定你能看见哪些因果。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">换</div><div class="ft2"><strong>主动切换解释单位</strong>：个体层面读不懂的行为，试着用"复制子收益"重读一遍，异常常常自解。</div></div><div class="fs2"><div class="fn2">通</div><div class="ft2"><strong>一个假设解释一片现象</strong>：基因视角把利他、亲子冲突、工蜂献身收进同一本账，省掉一堆特例。</div></div><div class="fs2"><div class="fn2">警</div><div class="ft2"><strong>好解释≠唯一解释</strong>：视角的威力也带来滥用风险——别把一切人类行为都简单还原成"基因的算计"。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>科学进步常常不是新增事实，而是换了"记账单位"：从"物体受力"到"能量守恒"，从"个体善恶"到"复制子留存"。换了单位，原本孤立的例外变成了同一规律的实例——解释力陡增，认知负担反降。</p><div class="insight"><strong>深层洞见：</strong>给运营者的元技能：<strong>当你被一个"反常行为"卡住（对手为何不赚钱还硬打、同事为何做对己无利的帮忙），第一反应应是"我是不是站错了分析单位"</strong>。换一个单位重看，异常往往自己消解——这比拼命搜集更多信息更省力。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">平台为何大额补贴商家、看似"亏本"？换到"用户习惯与交易入口"这个复制单位，补贴就是在为未来复制流量护城河。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">读一家公司、一个人，别只看单次行为的善恶，看它长期的资源流向——单位找对了，动机自然浮现。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 谁在复制</a><a class="rt" href="javascript:scrollCard(4)">→ 互惠利他</a><a class="rt" href="javascript:scrollCard(11)">→ 传播力≠真实性</a></div></div>
+</div></div>
+
+<div class="card" id="card-4" data-p="p2" data-s="bz,mg,cr">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">互惠利他：合作源于重复相遇</div><div class="cs">重复 + 可识别 + 记得住 · 不是善良</div><div class="ctags"><span class="tag ts">合作的进化</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>自然界与职场里稳定的合作，很少靠"好心"，而靠一套可计算的机制：<strong>双方会反复相遇、能识别彼此、能记住对方上次是否合作</strong>。满足这三条，"帮助非亲非故者"就能被选择保留。善良不是前提，长期关系才是。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">遇</div><div class="ft2"><strong>重复博弈</strong>：一次性的世界里背叛最优；一旦预期"还要再见"，合作才有了未来的折现价值。</div></div><div class="fs2"><div class="fn2">认</div><div class="ft2"><strong>可识别个体</strong>：必须记得"谁帮过谁"，声誉与互惠才落得了地。匿名会让利他迅速崩塌。</div></div><div class="fs2"><div class="fn2">还</div><div class="ft2"><strong>以牙还牙</strong>：先合作，随后模仿对方上一步——简单、可复制、既能回报善也能惩罚骗。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>互惠的本质是"用今天的成本，换未来被帮的概率"。当未来足够重要、对手能被识别和记忆时，一个"愿意回报"的策略在群体里就能抵御纯自私者的入侵——它不需要善意，只需要结构与记忆。</p><div class="insight"><strong>深层洞见：</strong>想让 KA 商家、骑手跟你坐在同一张桌上配合，<strong>先制造"还要再见"的结构</strong>：长期账期、续约、可追溯的履约记录、跨品类曝光。合作不靠感动，靠把一次性博弈改造成无限次重复博弈。反过来，在匿名、一锤子买卖的场子里，别指望对方为你多做任何事。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">跨部门协作推不动时，把项目绑进双方的重复互动（共享 KPI、联合复盘），让"这次帮你=下次有人帮我"变得可见、可算。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">面对竞对价格战，先判断这是"一次性抢客"还是"长期共处同一市场"。只有后者，才可能达成默契的停火。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 进化稳定策略</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈(ESS)</a><a class="rt" href="javascript:scrollCard(6)">→ 昂贵信号</a></div></div>
+</div></div>
+
+<div class="card" id="card-5" data-p="p2" data-s="bz,cr,mg">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">进化稳定策略 ESS</div><div class="cs">一旦被采用 · 少数变异无法入侵</div><div class="ctags"><span class="tag ts">合作的进化</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>当一个策略在全群体被普遍采用后，任何"少数派新玩法"都占不到便宜、无法扩散——它就是<strong>进化稳定策略(ESS)</strong>。行业惯例、默认规格、通用话术之所以牢固，不是因为它们最好，而是因为它们已经是 ESS：<strong>偏离它，先吃亏。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">稳</div><div class="ft2"><strong>稳定≠最优</strong>：ESS 只要求"入侵不了"，不要求"全局最好"。劣质惯例同样能把自己锁死。</div></div><div class="fs2"><div class="fn2">锁</div><div class="ft2"><strong>偏离先受罚</strong>：当大家都用 A，单个用 B 往往收益更低（不合群、不兼容），B 传不开。</div></div><div class="fs2"><div class="fn2">破</div><div class="ft2"><strong>破局靠临界质量</strong>：单个异端难翻盘，需要一批关键玩家在同一时刻切换到另一个稳定点。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>ESS 是纳什均衡在"群体扩散"语境下的强化版本。它解释了为什么"大家都这么做"本身就是强大的稳定力量——不是靠理性说服，而是靠<strong>落单者被系统性地惩罚</strong>。稳定与优劣，是两回事。</p><div class="insight"><strong>深层洞见：</strong>先识别你所在行业的 ESS，再决定遵守还是撬动。定价带、页面结构、大促节奏、"必须参加的活动"很多都是 ESS：不遵守就先丢流量。真正能破 ESS 的，不是聪明地单独违反，而是<strong>让足够多的关键玩家同一时刻一起违反，把系统推到另一个稳定点</strong>（比如把补贴混战升级成平台统一规则）。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">新玩法推不动时问一句：它面对的是"更优但没形成临界质量"，还是"根本没有可替换的稳定对手"？前者要拉同批商家一起切，后者要先改底层规则。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">对手守旧不等于它蠢，可能是它被困在一个 ESS 里出不来。你的机会是提供一条"跟随成本足够低、能形成群体切换"的迁出路径。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 互惠利他</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈(ESS)</a><a class="rt" href="javascript:scrollCard(10)">→ 模因meme</a></div></div>
+</div></div>
+
+<div class="card" id="card-6" data-p="p2" data-s="bz,cr">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">欺骗与反欺骗的军备竞赛</div><div class="cs">信号必须昂贵 · 才可信</div><div class="ctags"><span class="tag ts">合作的进化</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>只要合作里可能出现骗子，选择就会偏爱"能揭穿谎言的信号"。可信的信号必须<strong>造假成本高昂</strong>——孔雀的尾、真金白银的质保、可追溯的长期声誉。低成本的话谁都能喊，喊了也没有信息量。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">军</div><div class="ft2"><strong>军备竞赛</strong>：一旦某种信号能区分真假，骗子就来模仿它；于是信号被迫变得更贵、更难仿。</div></div><div class="fs2"><div class="fn2">贵</div><div class="ft2"><strong>贵 = 可信</strong>：能被廉价伪造的信号会被淘汰；耗钱、耗时、耗声誉而难伪造的才留得下。</div></div><div class="fs2"><div class="fn2">读</div><div class="ft2"><strong>看它押了什么</strong>：判断诚意别看它说什么，看它敢押上多少不可回收的成本。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"信号博弈"的生物学版本（分离均衡）：只有当高质量者发信号的成本，低于低质量者模仿的成本时，信号才携带真实信息。否则所有人发同一个信号，等于没发。</p><div class="insight"><strong>深层洞见：</strong>品牌承诺的可信度 = 违约代价。"假一赔十""长期质保""公开可追溯的履约记录"之所以有效，正因它们让想骗的人付出高成本。你要对客户、商家释放诚意，<strong>别堆形容词，给一个"造假对你更贵"的结构</strong>：独家承诺、沉没投入、可被没收的押金。让谎言在经济上不划算，比要求对方诚实可靠得多。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">争取 KA 商家信任，一句"我保证给你流量"不如拿出可退的违约条款、真实历史数据、独家资源的占用——把成本押上桌，信号才可信。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">对手喊"我们品质更好"是廉价信号；它敢公开第三方检测、召回承诺才是昂贵信号。评估对手，只看后者。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 炫耀成本</a><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a><a class="rt" href="javascript:scrollCard(5)">→ 进化稳定策略</a></div></div>
+</div></div>
+
+<div class="card" id="card-7" data-p="p3" data-s="bz,cr,mg">
+<div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">亲缘选择 rB>C</div><div class="cs">帮"像自己的" · 同赛道同源的盟友</div><div class="ctags"><span class="tag ts">竞争结构</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>Hamilton 规则：当受益者与你的基因相关度 r、带来的收益 B、付出的成本 C 满足 <strong>rB>C</strong> 时，"利他"就被选择。生物会优先帮血缘近的个体；引申到社会，人会优先帮"同源、同类、像自己"的对象——圈子、宗门、校友。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">r</div><div class="ft2"><strong>相关度</strong>：你和对方共享多少"底层复制物"——血缘、同源背景、同一套方法论或文化。</div></div><div class="fs2"><div class="fn2">B</div><div class="ft2"><strong>收益成本比</strong>：帮助的价值除以代价；r 高时，小成本帮大忙也划得来。</div></div><div class="fs2"><div class="fn2">拟</div><div class="ft2"><strong>拟亲缘</strong>：组织用"一家人""战友情""校友"制造拟血缘，让 rB>C 在陌生人之间也成立。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>基因的"利益"会外溢到携带相同拷贝的其他个体身上。帮亲属不是道德选择，而是同一份复制物在别处存活的算计。理解了这条，就明白为什么"圈子/同学会/同门"能产生近乎本能的互助。</p><div class="insight"><strong>深层洞见：</strong>生态竞争里，资源永远向"看起来跟自己同源"的对象倾斜——同一孵化体系的店、同一个 KA 团队出来的商家、同一种打法。<strong>要么你把自己嵌进对方的"拟亲缘"网络，要么就接受自己排在资源分配的队尾。</strong>这不是黑幕，是选择单位的必然结果。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">争取平台/品牌方资源，先找到"同源锚点"（共同经历、同一体系、共享方法论），把 r 做大，再谈 B/C 就顺理成章。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队凝聚力靠制造拟血缘：共同目标、共同对手、内部称呼、仪式。r 上不去，协作就只能靠钱硬撑。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 生存机器</a><a class="rt" href="javascript:scrollCard(4)">→ 互惠利他</a><a class="rt" href="javascript:scrollCard(9)">→ 代际冲突</a></div></div>
+</div></div>
+
+<div class="card" id="card-8" data-p="p3" data-s="bz,cr">
+<div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">炫耀成本：孔雀尾巴=高成本信号</div><div class="cs">品牌砸广告背后的累赘原则</div><div class="ctags"><span class="tag ts">竞争结构</span><span class="tag tt">商业</span><span class="tag tt">竞争</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>孔雀累赘的大尾巴不是审美，是<strong>累赘原则(handicap)</strong>：正因为它又重、又费能量、又招天敌，才证明"我背着这玩意儿还活得好"。这是一种用自毁式开销传递质量的投资——品牌砸重金广告，是同一条逻辑。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">费</div><div class="ft2"><strong>越无用的开销越可信</strong>：烧掉的钱、花掉的时间无法被弱者模仿，反倒成了实力的硬证明。</div></div><div class="fs2"><div class="fn2">竞</div><div class="ft2"><strong>性内竞争</strong>：同一阵营内部为争夺"被选中"而军备竞赛，把整场信号成本不断推高。</div></div><div class="fs2"><div class="fn2">衡</div><div class="ft2"><strong>成本与收益平衡</strong>：尾巴过长会被吃掉；信号烧过头会压垮自己，要留出止损线。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>一个信号可信，当且仅当伪造它对低质量者而言成本高到不划算。巨额广告、豪华旗舰店、"亏本也要做"的长期承诺——它们的作用不是告知功能，而是向市场展示"我烧得起"，抬高对手的进入门槛。</p><div class="insight"><strong>深层洞见：</strong>品牌"高举高打"很多时候是昂贵的孔雀尾巴：它买的不是这条广告的直接转化，而是发出"我有足够规模/资金/信心"的信号，让弱者不敢跟。但要防"尾巴过长"——<strong>当烧钱信号不再带来配对（用户、合作），它就只是能量泄漏</strong>。区分战略性亏损（筑壁垒）与纯虚荣（烧给自看）。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">决定要不要重投品牌广告时，问它是在释放"烧得起"的进入壁垒信号，还是只是自嗨。前者压制对手模仿，后者是净漏损。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">对手开旗舰店、冠名大综艺，先解读为"高成本信号"而非"即时 ROI"，判断它是在抢定位还是已透支。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 昂贵信号</a><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a><a class="rt" href="javascript:scrollCard(11)">→ 传播力≠真实性</a></div></div>
+</div></div>
+
+<div class="card" id="card-9" data-p="p3" data-s="mg,bz">
+<div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">代际冲突与资源分配</div><div class="cs">平台 / 商家 / 骑手 / 用户的四方博弈</div><div class="ctags"><span class="tag ts">竞争结构</span><span class="tag tt">管理</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>基因视角揭示了亲本与后代、同胞之间围绕资源的隐性博弈：每个复制子都想为自己多争一份投入，出资方要最优分配。映射到商业生态：<strong>平台、商家、骑手、用户四方各有各的"自私函数"，冲突是结构性的、常态的，不是意外。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">异</div><div class="ft2"><strong>利益不同源</strong>：同一场交易，平台要规模、商家要利润、骑手要单价、用户要便宜——四本账天然打架。</div></div><div class="fs2"><div class="fn2">争</div><div class="ft2"><strong>分配即博弈</strong>：补贴、抽佣、配送费的每一次调整，都是四方争夺留存资源的落点。</div></div><div class="fs2"><div class="fn2">齐</div><div class="ft2"><strong>机制对齐</strong>：好规则让各方自私行为恰好汇聚到系统想要的结果（激励相容）。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>演化里的亲子冲突源于：后代想要比亲本愿意给的更多（因为它 100% 携带自己，而亲本只与它共享 50%）。同理，生态各方对"这笔钱该怎么分"有天然分歧，谁都不会自动为整体最优让步。</p><div class="insight"><strong>深层洞见：</strong>做 KA 运营，别假设"大家好就是大家好"。任何政策（涨佣、改补贴、调配送）都会在不同复制子之间重新分配利益，<strong>必然有人反弹</strong>。设计时按"每一方会如何为自身最优而规避、套利"来推演，而不是按善意预期。把冲突当常量纳入机制，而不是当意外事后救火。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">推一条新规则前，列一张"平台/商家/骑手/用户各拿到什么、被拿走什么"的表，预判谁会在哪个环节规避。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴退坡为什么总翻车？因为它触碰的是四方分配平衡。要么同步给替代价值，要么把切换做成渐进的临界质量（呼应 ESS）。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 亲缘选择</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈(ESS)</a><a class="rt" href="javascript:scrollCard(12)">→ 人类可以反抗复制子</a></div></div>
+</div></div>
+
+<div class="card" id="card-10" data-p="p4" data-s="bz,lf">
+<div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">模因 meme：文化也会复制竞争</div><div class="cs">爆款 / 梗 / 方法论的传播规律</div><div class="ctags"><span class="tag ts">模因与文化</span><span class="tag tt">商业</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>道金斯造"meme(模因)"这个词：观念、曲调、口号、方法论、梗，都是文化里的复制子——<strong>它们在人心之间复制、变异、彼此竞争注意力，遵循与基因同构的选择逻辑</strong>。流行的未必是好或真，而是"善于复制"。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">复</div><div class="ft2"><strong>可复制</strong>：能被记忆、被转述、被模仿的单位才谈得上模因；记不住的就传不开。</div></div><div class="fs2"><div class="fn2">变</div><div class="ft2"><strong>会变异</strong>：每次传播都被传话者改写，衍生出变体，"易传播者"被留下。</div></div><div class="fs2"><div class="fn2">竞</div><div class="ft2"><strong>抢注意力</strong>：模因在有限的人心带宽里竞争，传播力就是它的适合度。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>文化演化同样是"复制 + 变异 + 差异留存"三件套。一个方法论或梗能否扩散，取决于它对人类认知偏好的适配度（好记、好笑、好转发、情绪唤起），而非它的真实价值。爆款，本质是一场模因竞争的胜出者。</p><div class="insight"><strong>深层洞见：</strong>做内容、做方法论沉淀、做品牌话术，要同时当"模因工程师"：<strong>把信息削成高可复制的形状</strong>（短句、画面、情绪钩子、可套用模板），再观察哪个变体在用户嘴里自己长开了。别只追求"讲得对"，要追求"传得开"——但守住卡11的伦理红线。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">一句 slogan、一个活动名能否出圈，看它符不符合模因复制条件：是否可复用、有梗、易二创。设计物料时，主动留"可被用户改写的接口"。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">学一套方法论，先问它凭什么流行——真有效，还是会讲故事。把"值得传播"和"确实有效"分开评估，避免被营销型知识收割。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 谁在复制</a><a class="rt" href="javascript:scrollCard(11)">→ 传播力≠真实性</a><a class="rt" href="yingxiangli.html#card-5">影响力 · 社会认同</a></div></div>
+</div></div>
+
+<div class="card" id="card-11" data-p="p4" data-s="lf,bz">
+<div class="ch"><div class="cnum">11</div><div class="ctg"><div class="ct">传播力 ≠ 真实性</div><div class="cs">会病毒式传播的 · 未必是对的</div><div class="ctags"><span class="tag ts">模因与文化</span><span class="tag tt">成长</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>决定一个观点扩散广度的，是它的"可复制性"（情绪、简单、契合偏见），而不是它的"真假"。会病毒式传播的故事，往往是"讲得顺"而非"讲得对"。<strong>这是把模因视角反过来用于防御。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">钩</div><div class="ft2"><strong>传播靠钩子</strong>：恐惧、愤怒、爽感、身份认同，是让模因易传播的认知糖精，与真假无关。</div></div><div class="fs2"><div class="fn2">真</div><div class="ft2"><strong>真≠火</strong>：一个精确但复杂的真相，传播力常常输给一个简单但错位的说法。</div></div><div class="fs2"><div class="fn2">防</div><div class="ft2"><strong>反病毒自检</strong>：一个说法越"让人忍不住转发"，越要先核实它的证据链再信。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>注意力市场按"复制成功率"选择模因，与"真实性"几乎正交。很多流行误解（某某趋势、某某归因）之所以难纠，是因为错误版本比正确版本更好记、更好转。</p><div class="insight"><strong>深层洞见：</strong>KA 运营天天被"行业爆款叙事""竞品神话"轰炸。训练一个反射：<strong>凡是"听起来太顺、太解气、太符合我原本判断"的结论，先按下转发欲，去查它的原始数据与反例。</strong>社会认同（大家都说它对）是最强的传播放大器，也是最强的失真器。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">面对"全网都在吹/都在黑"的定论，把它当作模因热度指标，而非事实指标；热度越高，越要单独去看一手证据。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">做传播时也要守线：别为了出圈故意放大情绪、制造假对立——短期赢流量，长期毁信任（呼应昂贵信号）。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 模因meme</a><a class="rt" href="yingxiangli.html#card-5">影响力 · 社会认同</a><a class="rt" href="javascript:scrollCard(8)">→ 炫耀成本</a></div></div>
+</div></div>
+
+<div class="card" id="card-12" data-p="p4" data-s="lf,mg">
+<div class="ch"><div class="cnum">12</div><div class="ctg"><div class="ct">人类可以反抗复制子</div><div class="cs">理性与觉悟 · 唯一能逆基因逆模因的物种</div><div class="ctags"><span class="tag ts">模因与文化</span><span class="tag tt">成长</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>全书落点是一句反高潮却极有力的话：<strong>人，是唯一能反叛"自私复制子"的物种。</strong>基因与模因让我们倾向于自私、短视、护短、盲从，但人能凭借理解与觉悟，选择违背这些默认设置。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">觉</div><div class="ft2"><strong>先看见默认设置</strong>：承认自私、亲缘偏袒、互惠、传播偏好，是写进底层的"出厂参数"。</div></div><div class="fs2"><div class="fn2">反</div><div class="ft2"><strong>用理性覆盖本能</strong>：看清某个冲动只是复制子在说话，就能选择不按它行动。</div></div><div class="fs2"><div class="fn2">设</div><div class="ft2"><strong>主动设计</strong>：既然能反抗，就能反向设计制度与文化，让长期价值赢过短期自私。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>一旦人能识别复制子的算盘，就不再是它的纯粹载体。理解"为什么我会偏袒圈内人、为什么会忍不住转发"，既给了你偏袒、转发的自由，也给了你不偏袒、不转发的自由——这是觉悟，不是否定人性。</p><div class="insight"><strong>深层洞见：</strong>这本书的冷峻解释（一切都能算到基因头上），最容易被误用成"所以自私天经地义"。恰恰相反——<strong>看清机制的目的，是不再被它绑架</strong>。组织层面，好制度就是"承认人带着自私复制子，再用机制把自私引向公益"；个人层面，觉悟就是这 12 张表末尾的出口：你可以不服从出厂设置。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">每当本能要"偏袒自己人、忍不住转发情绪"，做一次觉察：这是复制子在推我，还是我真正想做的？看见，即自由。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">别指望人人大公无私，也别假定人人自私；设计制度让"为自己好"与"为系统好"尽量同向，用机制而非说教对齐。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 视角转换</a><a class="rt" href="jiushi.html#card-12">遥远的救世主 · 觉悟</a><a class="rt" href="javascript:scrollCard(9)">→ 代际冲突</a></div></div>
+</div></div>
+
+<div class="tens-sec">
+<h2>原则间的张力</h2>
+<p>《自私的基因》的思想内部也有真实的张力——它的冷峻解释，恰恰要在这些矛盾之间落地，才不至于滑向宿命论。</p>
+<div class="tc"><div class="tc-t">基因视角的冷酷解释 vs 人的道德能动性</div><div class="tc-vs"><span class="vs-tag va">一切皆复制子算计</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">人能反抗本能</span></div><div class="tc-res">把行为还原到复制子，容易滑向"自私天经地义"的宿命论。调和：<strong>解释机制 ≠ 认可行为</strong>。看清自私的底层逻辑，恰恰是为了不再被它绑架——人的尊严正在于卡12那句"可以反叛复制子"。</div></div>
+<div class="tc"><div class="tc-t">合作源于自私 vs 真利他存在吗</div><div class="tc-vs"><span class="vs-tag va">互惠与亲缘的冷账本</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">无私善意的余地</span></div><div class="tc-res">互惠利他、亲缘选择把合作都算成了自私的果。调和：<strong>动机可以自私，但结果能促成真实的互助</strong>。不必证伪善意，只需理解善意在什么结构下才稳定——把一次性博弈改成重复博弈，比呼唤良心更能催生合作。</div></div>
+<div class="tc"><div class="tc-t">模因传播力 vs 真实性</div><div class="tc-vs"><span class="vs-tag va">会火不等于对</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">做传播必须用好传播</span></div><div class="tc-res">作为消费者要警惕病毒叙事（卡11），作为生产者又必须设计高复制性内容（卡10）。调和：<strong>用"可复制的形状"装"真实的内容"</strong>——把真相削得好记好传，而不是把谎言传得更远。守住这条线，传播力才不反噬信任。</div></div>
+</div>
+
+<div class="disc">
+<strong>来源声明：</strong>本卡片基于对《自私的基因》(Richard Dawkins 著)全书思想的整体理解与公开书评整理提炼，<strong>非逐字原文提取</strong>；"复制子""进化稳定策略ESS""互惠利他""模因meme"等为书中核心概念，措辞未必与原书逐字一致。"生存机器""亲缘选择 rB>C""累赘原则""Hamilton 规则"等为书中相关理论的通行表述，卡片观点为可迁移到商业竞争与生态协作的方法论提炼。
+</div>
+<div class="footer">知识蒸馏工坊 · 自私的基因 · 12 张卡片 · 四大维度</div>
+</div>
+
+<div class="tabbar">
+<div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+<div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll('.fbtn[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v+' 张';
+})});
+function scrollCard(n){const t=document.getElementById('card-'+n);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>
