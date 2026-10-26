@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>影响力 · 说服心理学与防御术</title>
+<style>
+:root{
+  --bg:#F2F2F7;--surface:rgba(255,255,255,.78);--surface-solid:#FFF;
+  --border:rgba(60,60,67,.1);--fill:rgba(120,120,128,.08);
+  --text:#1C1C1E;--t2:#3C3C43;--t3:#8E8E93;--t4:#AEAEB2;
+  --accent:#7C3AED;--red:#FF3B30;--orange:#FF9500;--green:#34C759;--purple:#AF52DE;--teal:#5AC8FA;
+  --r-sm:10px;--r-md:14px;--r-lg:20px;
+  --shadow:0 1px 3px rgba(0,0,0,.06),0 4px 12px rgba(0,0,0,.04);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.08);
+  --safe-b:env(safe-area-inset-bottom,0px);
+}
+@media(prefers-color-scheme:dark){:root{
+  --bg:#000;--surface:rgba(28,28,30,.78);--surface-solid:#1C1C1E;
+  --border:rgba(84,84,88,.35);--fill:rgba(120,120,128,.16);
+  --text:#F5F5F7;--t2:#EBEBF5;--t3:#8E8E93;--t4:#636366;
+  --accent:#B488F8;
+  --shadow:0 1px 3px rgba(0,0,0,.2),0 4px 12px rgba(0,0,0,.15);
+  --shadow-lg:0 8px 32px rgba(0,0,0,.25);
+}}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{font-size:16px;scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","SF Pro Text","Helvetica Neue","PingFang SC",sans-serif;background:var(--bg);color:var(--text);line-height:1.5;min-height:100vh;padding-bottom:calc(80px + var(--safe-b))}
+a{color:var(--accent);text-decoration:none}
+.nav{position:sticky;top:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border)}
+.nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
+.nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;min-width:44px;min-height:44px}
+.nav-back svg{width:12px;height:20px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.c{max-width:680px;margin:0 auto;padding:0 16px}
+.hero{padding:32px 0 24px;text-align:center}
+.hero h1{font-size:28px;font-weight:700;letter-spacing:-.03em;line-height:1.2}
+.hero-sub{font-size:15px;color:var(--t3);margin-top:6px}
+.hero-meta{display:flex;justify-content:center;gap:16px;margin-top:12px;font-size:13px;color:var(--t4);flex-wrap:wrap}
+.legend{display:flex;justify-content:center;gap:14px;margin-top:12px;font-size:12px;color:var(--t3);flex-wrap:wrap}
+.legend-i{display:flex;align-items:center;gap:4px}
+.dot{width:7px;height:7px;border-radius:50%}.dg{background:var(--green)}.do{background:var(--orange)}
+.ov{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:20px;margin-bottom:24px;position:relative;overflow:hidden}
+.ov::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--accent)}
+.ov h2{font-size:17px;font-weight:600;margin-bottom:10px;padding-left:8px}
+.ov p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px;padding-left:8px}
+.ov p strong{color:var(--text)}
+.src-note{background:var(--fill);border-radius:var(--r-sm);padding:12px 14px;margin:12px 8px;font-size:13px;color:var(--t3);line-height:1.6}
+.fb{position:sticky;top:52px;z-index:150;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-bottom:.5px solid var(--border);padding:10px 16px}
+.fb-inner{max-width:680px;margin:0 auto}
+.frow{display:flex;gap:6px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:6px}
+.frow::-webkit-scrollbar{display:none}
+.frow:last-child{padding-bottom:0}
+.flbl{font-size:12px;color:var(--t4);font-weight:600;flex-shrink:0;padding:6px 0;min-width:32px}
+.fbtn{padding:6px 14px;border-radius:20px;border:none;background:var(--fill);color:var(--t3);font-size:13px;font-weight:500;cursor:pointer;white-space:nowrap;flex-shrink:0;transition:all .15s;min-height:32px;font-family:inherit}
+.fbtn.on{background:var(--accent);color:#fff;font-weight:600}
+.fc{font-size:12px;color:var(--t4);text-align:right;padding:4px 0}
+.cards{display:flex;flex-direction:column;gap:20px;padding-top:20px}
+.card{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);overflow:hidden;transition:box-shadow .2s;scroll-margin-top:150px}
+.card.hidden{display:none}
+.ch{padding:20px 20px 14px;display:flex;align-items:flex-start;gap:14px}
+.cnum{background:var(--accent);color:#fff;font-weight:700;font-size:14px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ctg{flex:1;min-width:0}
+.ct{font-size:20px;font-weight:700;letter-spacing:-.02em;line-height:1.25}
+.cs{font-size:13px;color:var(--t3);margin-top:3px}
+.ctags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.tag{font-size:11px;font-weight:600;padding:3px 8px;border-radius:6px}
+.ts{background:rgba(124,58,237,.1);color:var(--accent)}
+.tt{background:rgba(175,82,222,.1);color:var(--purple)}
+.conf{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--t3);flex-shrink:0}
+.cb{padding:0 20px 24px}
+.s{margin-bottom:24px}.s:last-child{margin-bottom:0}
+.st{font-size:12px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.08em;margin-bottom:10px;padding-bottom:6px;border-bottom:.5px solid var(--border)}
+.s p{font-size:15px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.s strong{color:var(--text)}
+.ot{background:var(--fill);border-left:3px solid var(--accent);padding:14px 16px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0}
+.ot-q{font-size:15px;color:var(--text);font-weight:600;line-height:1.5;margin-bottom:4px}
+.ot-s{font-size:12px;color:var(--t4);margin-bottom:8px}
+.ot-i{font-size:14px;color:var(--t2);line-height:1.55}
+.ot-i strong{color:var(--text)}
+.deep{background:rgba(124,58,237,.04);border:1px solid rgba(124,58,237,.12);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.deep h4{color:var(--accent);font-size:15px;font-weight:600;margin-bottom:8px}
+.deep p{font-size:14px;color:var(--t2);line-height:1.6;margin-bottom:8px}
+.deep strong{color:var(--text)}
+.insight{background:var(--surface-solid);border-left:3px solid var(--accent);padding:10px 14px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:10px 0;font-size:14px;color:var(--text);line-height:1.6}
+.cases{background:rgba(90,200,250,.06);border:1px solid rgba(90,200,250,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.cases h4{color:#0891B2;font-size:15px;font-weight:600;margin-bottom:12px}
+.ci{margin-bottom:14px;padding-bottom:14px;border-bottom:.5px solid var(--border)}
+.ci:last-child{margin-bottom:0;padding-bottom:0;border-bottom:none}
+.cn{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px}
+.cd{font-size:14px;color:var(--t2);line-height:1.6}
+.csrc{font-size:12px;color:var(--t4);margin-top:4px;font-style:italic}
+.flow{background:rgba(255,149,0,.06);border:1px solid rgba(255,149,0,.15);border-radius:var(--r-md);padding:18px;margin:12px 0}
+.flow h4{color:var(--orange);font-size:15px;font-weight:600;margin-bottom:14px}
+.fs{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fsn{background:var(--orange);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.fst{font-size:14px;color:var(--t2);line-height:1.6}
+.fst strong{color:var(--text)}
+.fsg{background:var(--surface-solid);border-left:3px solid var(--teal);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:#0891B2;line-height:1.5}
+.fsg b{color:#0891B2}
+.ftr{background:var(--surface-solid);border-left:3px solid var(--red);padding:8px 12px;border-radius:0 var(--r-sm) var(--r-sm) 0;margin:8px 0;font-size:13px;color:var(--red);line-height:1.5}
+.ftr b{color:var(--red)}
+.fbox{background:var(--fill);border-radius:var(--r-md);padding:16px;margin:10px 0}
+.fbox h4{font-size:15px;font-weight:600;margin-bottom:10px}
+.fs2{display:flex;gap:10px;margin-bottom:10px;align-items:flex-start}
+.fn2{background:var(--accent);color:#fff;font-weight:700;font-size:12px;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.ft2{font-size:14px;color:var(--t2);line-height:1.6}
+.ft2 strong{color:var(--text)}
+.bnd{background:rgba(255,59,48,.04);border:1px solid rgba(255,59,48,.12);border-radius:var(--r-md);padding:14px 16px;margin:10px 0}
+.bnd h4{color:var(--red);font-size:14px;font-weight:600;margin-bottom:6px}
+.bnd p{font-size:14px;color:var(--t2);line-height:1.6}
+.sg{display:flex;flex-direction:column;gap:8px}
+.si{background:var(--fill);border-radius:var(--r-md);padding:14px 16px}
+.slbl{font-size:13px;font-weight:600;color:var(--text);margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.slbl .ic{font-size:16px}
+.stx{font-size:14px;color:var(--t2);line-height:1.6}
+.al{list-style:none}
+.al li{padding:8px 0 8px 24px;position:relative;font-size:14px;color:var(--t2);border-bottom:.5px solid var(--border);line-height:1.6;min-height:44px;display:flex;align-items:center}
+.al li:last-child{border-bottom:none}
+.al li::before{content:"→";position:absolute;left:0;color:var(--accent);font-weight:700;font-size:16px}
+.cr{display:flex;gap:6px;flex-wrap:wrap}
+.rt{padding:6px 12px;border-radius:8px;font-size:13px;background:var(--fill);color:var(--t2);border:none;cursor:pointer;min-height:36px;display:inline-flex;align-items:center;text-decoration:none;font-family:inherit}
+.rt:active{background:rgba(124,58,237,.1);color:var(--accent)}
+.tens-sec{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.tens-sec>h2{font-size:22px;font-weight:700;margin-bottom:6px;text-align:center;letter-spacing:-.02em}
+.tens-sec>p{text-align:center;font-size:14px;color:var(--t3);margin-bottom:20px;padding:0 20px}
+.tc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);border-left:4px solid var(--accent);padding:18px 20px;margin-bottom:12px}
+.tc-t{font-size:16px;font-weight:600;margin-bottom:8px}
+.tc-vs{display:flex;gap:6px;align-items:center;margin-bottom:10px;font-size:13px;flex-wrap:wrap}
+.vs-tag{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:600}
+.va{background:rgba(124,58,237,.1);color:var(--accent)}
+.vb{background:rgba(255,149,0,.1);color:var(--orange)}
+.tc-ess{font-size:14px;color:var(--accent);margin-bottom:10px;font-weight:500;line-height:1.5}
+.tc-res{background:var(--fill);border-radius:var(--r-sm);padding:14px;font-size:14px;color:var(--t2);line-height:1.6}
+.tc-res strong{color:var(--text)}
+.pano{margin-top:36px;padding-top:28px;border-top:.5px solid var(--border)}
+.pano>h2{font-size:22px;font-weight:700;margin-bottom:18px;text-align:center;letter-spacing:-.02em}
+.pc{background:var(--surface-solid);border-radius:var(--r-lg);box-shadow:var(--shadow);padding:18px 20px;margin-bottom:10px}
+.pc h3{font-size:15px;font-weight:600;margin-bottom:10px;padding-bottom:8px;border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:6px}
+.pc h3 .ic{font-size:18px}
+.pl{display:flex;align-items:center;padding:10px 0;border-bottom:.5px solid var(--border);font-size:14px;color:var(--text);line-height:1.5;min-height:44px;gap:8px;text-decoration:none}
+.pl:last-child{border-bottom:none}
+.pl:active{opacity:.6}
+.pr{color:var(--accent);font-size:12px;font-weight:600;flex-shrink:0}
+.pl-arrow{color:var(--t4);font-size:16px;font-weight:300;margin-left:auto;flex-shrink:0}
+.disc{background:var(--fill);border-radius:var(--r-lg);padding:18px 20px;margin:28px 0;font-size:13px;color:var(--t3);line-height:1.6}
+.disc strong{color:var(--accent)}
+.footer{text-align:center;padding:20px 0;color:var(--t4);font-size:12px}
+.tabbar{position:fixed;bottom:0;left:0;right:0;z-index:200;backdrop-filter:saturate(180%) blur(20px);-webkit-backdrop-filter:saturate(180%) blur(20px);background:var(--surface);border-top:.5px solid var(--border);padding:6px 0 calc(6px + var(--safe-b));display:flex;justify-content:space-around;max-width:680px;margin:0 auto}
+@media(min-width:681px){.tabbar{left:50%;transform:translateX(-50%);border-radius:var(--r-lg) var(--r-lg) 0 0}}
+.tab{text-align:center;padding:4px 12px;color:var(--accent);cursor:pointer;min-width:60px}
+.tab-icon{font-size:20px;margin-bottom:2px}
+.tab-label{font-size:10px;font-weight:500}
+.tab-inactive{color:var(--t4)}
+@media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+</style>
+</head>
+<body>
+<div class="nav"><div class="nav-inner">
+<a class="nav-back" href="index.html"><svg viewBox="0 0 12 20" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M10 2L2 10l8 8"/></svg>书库</a>
+<div class="nav-title">影响力</div>
+</div></div>
+<div class="c">
+
+<div class="hero">
+<h1>影响力</h1>
+<div class="hero-sub">罗伯特·西奥迪尼 · 说服的心理学机制与防御术</div>
+<div class="hero-meta"><span>12 张卡片</span><span>· 3 层结构</span><span>· 底层机制 / 六大武器 / 防御与应用</span></div>
+</div>
+
+<div class="ov">
+<h2>蒸馏说明</h2>
+<p>《影响力》回答一个极其实用的问题：<strong>为什么人会答应别人？答应之后为什么会反悔？</strong>西奥迪尼用三十年潜入销售、广告、募捐、骗局的现场，提炼出六大「自动触发」的心理武器。它是谈判（博弈论）、关系（青瓷）、认知（救世主）三本书的心理学底层。</p>
+<div class="src-note"><strong>来源与诚实标注：</strong>章节结构已对照原书核验（经典版：影响力的武器 + 互惠 / 承诺和一致 / 社会认同 / 喜好 / 权威 / 短缺 共七部分；新版「联盟」章未纳入）。卡片基于对全书思想与经典实验（米尔格拉姆服从实验、烟雾房间实验、饼干罐实验等）的整体理解提炼，<strong>非逐字原文提取</strong>；所引案例为书中著名例证的转述。</div>
+</div>
+
+<div class="fb"><div class="fb-inner">
+<div class="frow"><span class="flbl">层次</span>
+<button class="fbtn on" data-t="p" data-f="all">全部</button>
+<button class="fbtn" data-t="p" data-f="p1">⚙️ 底层机制</button>
+<button class="fbtn" data-t="p" data-f="p2">🗡 六大武器</button>
+<button class="fbtn" data-t="p" data-f="p3">🛡 防御与应用</button>
+</div>
+<div class="frow"><span class="flbl">场景</span>
+<button class="fbtn on" data-t="s" data-f="all">全部</button>
+<button class="fbtn" data-t="s" data-f="bz">💰 商业营销</button>
+<button class="fbtn" data-t="s" data-f="cr">🗣 谈判说服</button>
+<button class="fbtn" data-t="s" data-f="mg">👥 管理</button>
+<button class="fbtn" data-t="s" data-f="lf">🌱 决策自保</button>
+</div>
+<div class="fc" id="vc">12 张</div>
+</div></div>
+
+<div class="cards">
+
+<div class="card" id="card-1" data-p="p1" data-s="cr,lf">
+<div class="ch"><div class="cnum">1</div><div class="ctg"><div class="ct">固定行为模式：按下按钮，咔哒一声就响</div><div class="cs">触发特征 → 自动响应 · 捷径是效率也是漏洞</div><div class="ctags"><span class="tag ts">底层机制</span><span class="tag tt">谈判</span><span class="tag tt">自保</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>人和动物一样，脑子里装满了「咔哒，嗡」的自动反应：遇到某个<strong>触发特征</strong>，整套行为程序不经思考就播放。说服高手不改变你的想法，只<strong>伪造触发器</strong>——让你自己的惯性替你完成说服。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">特</div><div class="ft2"><strong>特征而非全貌</strong>：火鸡妈妈靠「叽叽」声而非幼崽全貌触发哺育；红点就能让小火鸡疯狂啄击。人同理：销量数字触发「该买」，白大褂触发「该信」。</div></div><div class="fs2"><div class="fn2">速</div><div class="ft2"><strong>捷径是必需品</strong>：信息爆炸时代不可能事事深思，自动模式让我们高效生存——这也是它无法被关掉的原因。</div></div><div class="fs2"><div class="fn2">隙</div><div class="ft2"><strong>三个让捷径最易被劫持的情境</strong>：时间紧迫、不确定、信息过载。你的用户在直播间里恰好三者全占。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>进化把「多数时候正确」的启发式写进了我们基因，代价是「少数时候被精确利用」。西奥迪尼的洞见：被利用的不是无知，<strong>恰恰是日常让你受益的那些聪明捷径</strong>。</p><div class="insight"><strong>深层洞见：</strong>成年人最危险的错觉是「我不会上当」。自动反应发生在意识介入之前——等你开始思考，决定已经做了一半。防御的第一步不是更聪明，而是<strong>知道自己何时处在「捷径易感状态」</strong>：赶时间、心虚、信息轰炸时，慢一拍就是赢。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">活动页的每个元素都在按按钮：倒计时（短缺）、销量飘条（认同）、专家推荐（权威）。设计时问：我触发的行为，用户冷静时也会做吗？</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>自保</div><div class="stx">重大决定避开三个状态：快截止时、极度疲劳时、被一堆人同时催时。这三个时刻做的决定，事后反悔率最高。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 对比原理</a><a class="rt" href="jiushi.html#card-6">遥远的救世主 · 认知差距</a><a class="rt" href="fp.html#card-2">第一性原理 · 演绎vs归纳</a></div></div>
+</div></div>
+
+<div class="card" id="card-2" data-p="p1" data-s="bz,cr">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">对比原理：感受是相对的</div><div class="cs">先给你的决定后给你的 · 锚定的祖宗</div><div class="ctags"><span class="tag ts">底层机制</span><span class="tag tt">商业</span><span class="tag tt">谈判</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>人感知不了绝对值，只能感知<strong>差异</strong>。先展示一个更差的/更贵的，再给出真正要卖的，后者在对比中被显著放大。这是所有锚定、报价顺序、货架陈列的心理学祖宗。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">例</div><div class="ft2"><strong>房产中介的经典招数</strong>：先带你看一套又贵又破的「垫房」，下一套普通房子立刻显得物有所值——不是房子变了，是参照系变了。</div></div><div class="fs2"><div class="fn2">序</div><div class="ft2"><strong>顺序即操纵</strong>：先大后小，小的显得小（拒门再退）；先小后大，大的显得大（登门槛）。同一组数字，先后顺序决定接受度。</div></div><div class="fs2"><div class="fn2">锚</div><div class="ft2"><strong>划线原价、「原价299限时99」</strong>：那个299不是价格，是对比器。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>知觉系统靠差异工作（从重量到温度到社会比较都是韦伯定律的地盘），所以「锚」不是障眼法，而是直接改写了你的感受器。更隐蔽的是：对比效应<strong>当事人完全无察觉</strong>——被影响的人真诚地觉得「这房子不错」。</p><div class="insight"><strong>深层洞见：</strong>两个用途，一体两面。<strong>用</strong>——想让报价好谈，先抛一个更大的；想让方案显轻，先讲更重的替代。<strong>防</strong>——评估任何「划算」，把对比物拿掉只问绝对值：「没有299的原价，99我还是觉得便宜吗？」</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">报资源需求先说「理想配置」（5人2月），对方为难时退到「最低可行」（2人3周）——退让显得通情达理，实际要的就是后者。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">菜单把最贵的放最前不是卖它，是给后面所有菜定「贵贱坐标系」。JBP报价同理：先呈现全案价，再给分期版。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 互惠（拒绝-退让）</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a></div></div>
+</div></div>
+
+<div class="card" id="card-3" data-p="p2" data-s="bz,cr,lf">
+<div class="ch"><div class="cnum">3</div><div class="ctg"><div class="ct">互惠：先给的人掌握主动权</div><div class="cs">受了恩惠 · 欠债的人由你决定何时还</div><div class="ctags"><span class="tag ts">六大武器</span><span class="tag tt">商业</span><span class="tag tt">谈判</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>「拿人手短」是全世界最通用的心理债务。给予会制造亏欠感；而<strong>亏欠感的大小和归还方式，由给予者设定</strong>。免费试用、样品、白皮书、「顺手帮个忙」，都是互惠的商业化。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">先</div><div class="ft2"><strong>先给，且给得主动</strong>：不请自来的好处最伤人——它连「要不要接受」的选择权都不给你，债务已经成立。</div></div><div class="fs2"><div class="fn2">让</div><div class="ft2"><strong>拒绝-退让（door-in-the-face）</strong>：先提大请求（必被拒）→ 退到小请求。大→小的「让步」本身是一种给予，对方觉得该回报，小请求接受率翻倍。</div></div><div class="fs2"><div class="fn2">重</div><div class="ft2"><strong>不对称回报</strong>：归还的往往比借的重——餐后一颗薄荷糖能让小费涨3%。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>互惠是文明的地基（没有它就没有合作），所以它的执行是<strong>前意识</strong>的：哪怕你明确不喜欢对方、哪怕好处是你不请自取的，亏欠感照样生效。实验里被强塞礼物的被试，回报力度一点不少。</p><div class="insight"><strong>深层洞见：</strong>攻防都在「给」字上。<strong>攻</strong>：BD拜访别空手——带一份对方没要的竞品分析，比请吃饭便宜且债务更深。<strong>防</strong>：把「恩惠」和「请求」拆开评估——「如果没有这份免费样品，我还会买吗？」答案是不会，就把样品退回去。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">拉新逻辑全链是互惠：首单1分购（给）→ 注册（还）→ 会员日券（再给）→ 复购（再还）。设计时记住：第一下必须真的给到，假样品只造反感不造债务。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">品牌方先「让步」给你独家资源位，再「顺势」要JBP预算——识别法：看他的让步是不是本来就要给你的，还是真成本。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="qingci.html#card-1">青瓷 · 关系是养出来的</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="javascript:scrollCard(2)">→ 对比（拒绝-退让）</a></div></div>
+</div></div>
+
+<div class="card" id="card-4" data-p="p2" data-s="bz,mg,lf">
+<div class="ch"><div class="cnum">4</div><div class="ctg"><div class="ct">承诺和一致：小承诺锁死大身份</div><div class="cs">一旦表态 · 人就变成自己言论的奴隶</div><div class="ctags"><span class="tag ts">六大武器</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>人极度渴望显得前后一致——因为一致省力（不用重新思考）、社会评价高（靠谱）。所以<strong>让对方先做一个小的、主动的、公开的承诺，后续大行为会自己跟上来</strong>。这就是登门槛技术。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">三</div><div class="ft2"><strong>扎根的承诺三条件</strong>：主动（不是被塞的）、公开（别人知道）、费力（有成本）。再加一条：书写下来效力倍增。</div></div><div class="fs2"><div class="fn2">份</div><div class="ft2"><strong>身份化承诺</strong>：「你是注重健康的人」→ 之后健康产品的转化率完全不同。把行为承诺升级为自我形象，一致性就从「这件事」扩展到「这个人」。</div></div><div class="fs2"><div class="fn2">环</div><div class="ft2"><strong>承诺升级</strong>：已投入越多越难回头（打款后追加、上线后加预算），这是承诺+损失厌恶的复合毒饵。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>机制是认知失调：行为与态度不一致会难受，人宁可修改态度来迁就行为。所以「先让人做小事」比「先说服」有效——<strong>行为塑造信念，而不是反过来</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御钥匙是西奥迪尼的名句：<strong>「如果回到当初，知道了现在知道的，我还会做同样的选择吗？」</strong>凡是「骑虎难下」的直觉出现，就是被自己的旧承诺绑架的信号。反过来说服别人：让他自己说出理由，比你替他找理由强十倍。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">签到、集章、连续任务、「立个flag」——留存玩法全是承诺一致的应用：先让用户免费承诺「明天还来」，连续7天后流失成本陡增。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">要执行力，让下属公开自己定目标并写下，而不是你布置。主动承诺的达成率显著高于被动接受。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-11">遥远的救世主 · 强者自洽</a><a class="rt" href="game-theory.html#card-20">博弈论 · 声誉</a><a class="rt" href="qingci.html#card-12">青瓷 · 赞美（贴标签）</a></div></div>
+</div></div>
+
+<div class="card" id="card-5" data-p="p2" data-s="bz,lf">
+<div class="ch"><div class="cnum">5</div><div class="ctg"><div class="ct">社会认同：不确定时，看别人</div><div class="cs">尤其模仿「和我们相似」的人 · 销量榜单好评的祖宗</div><div class="ctags"><span class="tag ts">六大武器</span><span class="tag tt">商业</span><span class="tag tt">自保</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>当人拿不准时，判断「正确做法」的最快方式就是看别人怎么做——而且<strong>越是相似的人，示范力越强</strong>。销量、榜单、好评、「你的同事都在用」，全是社会认同的工业化产品。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">似</div><div class="ft2"><strong>相似性放大认同</strong>：广告用「和你一样的普通人」而非明星来演示行为，转化更高——「他跟我一样，他能我也能」。</div></div><div class="fs2"><div class="fn2">众</div><div class="ft2"><strong>数量即证据</strong>：「已有10万人下单」不是信息，是压力。多人在场还导致旁观者效应：每个人都看别人不动，结果谁都不动（求救要指名道姓）。</div></div><div class="fs2"><div class="fn2">伪</div><div class="ft2"><strong>错误认同最危险</strong>：虚假好评、雇排队、水军——被制造的「多数」直接污染整个决策系统。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>社会认同本质是贝叶斯捷径：别人（尤其相似者）的行为是「该行为有利」的证据。它多数时候确实高效——灾难在于<strong>它自我强化</strong>：每个人都从别人的（同样从别人那里学来的）行为取证据，泡沫就这么吹起来。</p><div class="insight"><strong>深层洞见：</strong>识别被制造的认同：问「这些『别人』是谁？和我真相似吗？他们的行为有独立信息吗，还是也在抄？」——信息瀑布里，第一个人是真信息，后面全是回声。<strong>反共识时刻往往才是真机会</strong>。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">「附近3公里已售2000+」比任何文案都硬。但注意：认同要用真的——刷出来的销量是定时炸弹，平台反作弊和用户口碑双杀。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>自保</div><div class="stx">看到「大家都在买/都在卷」，先查源头：这个「大家」有多少是独立决策，多少是互相抄？爆款排队越久越要冷静。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-1">遥远的救世主 · 文化属性</a><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新（反共识）</a><a class="rt" href="game-theory.html#card-12">博弈论 · 贝叶斯博弈</a></div></div>
+</div></div>
+
+<div class="card" id="card-6" data-p="p2" data-s="cr,bz,mg">
+<div class="ch"><div class="cnum">6</div><div class="ctg"><div class="ct">喜好：我们只对喜欢的人说不</div><div class="cs">相似、赞美、熟悉、同盟 · 四台发动机</div><div class="ctags"><span class="tag ts">六大武器</span><span class="tag tt">谈判</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>「伸手不打笑脸人」的完整科学版：人几乎无法拒绝<strong>自己喜欢的人</strong>的请求。而喜好可以被系统制造——四台发动机：相似、赞美、接触（熟悉）、同盟（共同敌人/共同目标）。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">似</div><div class="ft2"><strong>相似</strong>：销售受训「找共同点」——老乡、校友、同款爱好、甚至模仿你的姿势和用词。最廉价也最有效。</div></div><div class="fs2"><div class="fn2">赞</div><div class="ft2"><strong>赞美</strong>：哪怕明知你有求于我，赞美照样起效——人对「夸我」的反应不经过动机审查。</div></div><div class="fs2"><div class="fn2">熟</div><div class="ft2"><strong>接触与同盟</strong>：反复见面产生好感（曝光效应）；一起对抗过共同敌人产生的战友情最硬。</div></div><div class="fs2"><div class="fn2">联</div><div class="ft2"><strong>关联</strong>：品牌花大钱把自己和美人、英雄、成功时刻放同一画面——光环会传染。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>喜好的防御难点：它<strong>在意识层面被合理化了</strong>——「我买是因为他专业」，其实是「因为聊得投缘」。特百惠聚会是教科书：主人（朋友）+ 演示（熟悉）+ 赞美 + 相似（都是邻居），四层喜好叠加，邻居们抢着买单。</p><div class="insight"><strong>深层洞见：</strong>核心防御只有一条：<strong>把人和事分开</strong>——「如果这个请求是我不喜欢的人提的，我还会答应吗？」反过来做生意：先经营「自己人感」再谈单（青瓷「先做朋友再做生意」的心理学原理版）。共同敌人是最快的拉近器。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对面BD跟你称兄道弟、疯狂找共同点、夸你专业——享受归享受，把决策拉回条款本身。你的好感是他的KPI。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">跨团队撕扯时，制造一个「共同的外部挑战」（竞对、大促目标）比开十次协调会有用——同盟直接生产喜好。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a><a class="rt" href="qingci.html#card-12">青瓷 · 赞美</a><a class="rt" href="game-theory.html#card-18">博弈论 · 合作博弈</a></div></div>
+</div></div>
+
+<div class="card" id="card-7" data-p="p2" data-s="cr,mg,lf">
+<div class="ch"><div class="cnum">7</div><div class="ctg"><div class="ct">权威：服从的不是专家，是专家的样子</div><div class="cs">头衔、衣服、排场 · 三个触发器</div><div class="ctags"><span class="tag ts">六大武器</span><span class="tag tt">谈判</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>米尔格拉姆实验的恐怖结论：普通人在穿白大褂的「权威」指令下，65%对「学生」施加了标注450伏的「电击」。<strong>人服从的往往不是真权威，而是权威的符号</strong>——头衔、着装、行头。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">衔</div><div class="ft2"><strong>头衔自带光环</strong>：「博士」「总监」「官方认证」会外溢到此人的一切言论，包括与专业无关的。</div></div><div class="fs2"><div class="fn2">服</div><div class="ft2"><strong>制服触发服从</strong>：实验中换套西装的人在街头被服从的比率大增；白大褂、工牌、正装是廉价服从开关。</div></div><div class="fs2"><div class="fn2">借</div><div class="ft2"><strong>借权威说话</strong>：说服时引用专家/数据，等于借来对方大脑里那个「权威=对」的开关。</div></div><div class="fs2"><div class="fn2">露</div><div class="ft2"><strong>权威先示弱</strong>：先承认一个小缺点（「我们价格不是最低的」）建立可信度，随后的主张全部加分。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>服从权威在多数场景是理性的（医生的话确实该听），所以这个开关关不掉。漏洞在于：<strong>符号与实质可以分离</strong>——骗子只需要复制符号。</p><div class="insight"><strong>深层洞见：</strong>两问防身：<strong>「这个权威是这个领域的真专家吗？」</strong>（头衔相关性）<strong>「他在这个场合会说实话吗？」</strong>（利益独立性）——专家推荐自己代言的产品时，光环要打折。用权威时：引用要可溯源、领域要对口，假权威被拆穿时反噬最重。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方抬出「我们VP/总部」压你——先验证这是真决策权威还是借来的符号。对等抬权威（「这个量级需要我方业务负责人确认」）常常让节奏回到正轨。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">详情页放检测报告、获奖、专家背书——配合「先示弱」技巧：坦白一个真实小短板，后面的强主张可信度翻倍。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a><a class="rt" href="fp.html#card-1">第一性原理 · 不唯权威</a><a class="rt" href="jiushi.html#card-12">遥远的救世主 · 觉悟</a></div></div>
+</div></div>
+
+<div class="card" id="card-8" data-p="p2" data-s="bz,cr,lf">
+<div class="ch"><div class="cnum">8</div><div class="ctg"><div class="ct">短缺：越得不到越想要</div><div class="cs">损失厌恶 + 心理逆反 · 稀缺是放大器不是估值</div><div class="ctags"><span class="tag ts">六大武器</span><span class="tag tt">商业</span><span class="tag tt">谈判</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>「物以稀为贵」不是估值规律，是<strong>情绪规律</strong>：获得自由被限制时，人会为夺回自由而抬高该物的价值。限量、限时、竞价、独家授权，全是短缺的工业形态。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">量</div><div class="ft2"><strong>供应稀缺</strong>：数量限制（最后3件）与时间限制（今晚截止）。新出现的短缺比一贯短缺更有效力。</div></div><div class="fs2"><div class="fn2">争</div><div class="ft2"><strong>竞争稀缺最猛</strong>：人人抢的东西价值被自动调高——哄抢、竞价、饥饿营销的内核。限量版+排队=双重触发。</div></div><div class="fs2"><div class="fn2">禁</div><div class="ft2"><strong>逆反</strong>：「不推荐/内部版/独家」——限制接触本身制造欲望（罗密欧与朱丽叶效应：阻力放大渴望）。</div></div><div class="fs2"><div class="fn2">理</div><div class="ft2"><strong>稀缺+理由</strong>：给出限制理由（「每人限购2份因为库存有限」）说服力最强——理性外衣裹着情绪钩子。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>底层是损失厌恶：即将失去的东西比已得到的估值高（饼干罐实验：同一块饼干，罐里剩2块时被评得更美味）。稀缺同时抢占注意力通道——你只盯着「会不会得不到」，忘了评估「我到底要不要」。</p><div class="insight"><strong>深层洞见：</strong>防御信号极其身体化：<strong>察觉自己在「心跳加速地抢」</strong>——那种生理唤起是短缺被触发的铁证。此时问：我是想要这块饼干，还是想要赢过旁边抢饼干的人？两者价格应该一样。用出来则是大促武器库：倒计时、库存条、最后N席——但虚假短缺（永远的最后一天）是信誉透支，重复博弈必还。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">秒杀=短缺+竞争+时间三重奏。给品牌的独家联名、限量城市款，本质是卖「别人得不到」。红线：限量必须真限量。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">「这个资源位只剩这个季度」——先验证稀缺真假（平台档期表），真稀缺要快决策，假稀缺是压力战术。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="game-theory.html#card-14">博弈论 · 拍卖理论</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开（留白的另一面）</a><a class="rt" href="javascript:scrollCard(2)">→ 对比（价值参照系）</a></div></div>
+</div></div>
+
+<div class="card" id="card-9" data-p="p3" data-s="lf,cr">
+<div class="ch"><div class="cnum">9</div><div class="ctg"><div class="ct">防御总纲：把戏和实质分开</div><div class="cs">识别触发器 → 暂停自动反应 → 只回应实质</div><div class="ctags"><span class="tag ts">防御与应用</span><span class="tag tt">自保</span><span class="tag tt">谈判</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>六大武器共同的防御结构不是「识破每个骗局」，而是<strong>一个通用动作：把触发器和请求本身拆开</strong>。「没有这份礼物/这个排名/这个倒计时，我还会答应吗？」——会，就答应；不会，就拒绝，且不必愧疚。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">识</div><div class="ft2"><strong>第一层：识别</strong>——感到突然的亏欠（互惠）、不想丢脸（承诺）、心痒想抢（短缺）、莫名亲切（喜好）、不敢质疑（权威）、随大流安心（认同），六大信号对号入座。</div></div><div class="fs2"><div class="fn2">停</div><div class="ft2"><strong>第二层：暂停</strong>——所有武器都怕延迟。「我明天答复你」是成本最低的反制，把理性叫醒。</div></div><div class="fs2"><div class="fn2">拆</div><div class="ft2"><strong>第三层：拆</strong>——把戏剥离后看裸请求。接受「没有戏法的实质」，拒绝「没有实质的戏法」。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>防御的深层悖论：捷径不能全关（关了活不了），只能<strong>装一个开关</strong>——在高利害决策上强制手动模式，日常小事继续自动。把决策分级，是比「保持警惕」可持续得多的策略。</p><div class="insight"><strong>深层洞见：</strong>最实用的一条：<strong>把「被操纵感」本身当数据</strong>。当你意识到对方在对你用技巧（先给小样、先夸后求），这个意识本身就是暂停键——西奥迪尼说，把戏一旦被看穿，对同一个人只能再用一次。所以防御的终点不是愤怒，是记账。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>自保</div><div class="stx">给个人决策定一条硬规则：凡「今天必须定」的大额决定，一律过夜再答。一年里因此错过的「机会」，事后看几乎全不是机会。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">被组合拳打中时（礼物+恭维+限时三连），点破其中一环即可降温：「这个位置确实好，不过我得回去跟团队确认节奏。」</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-12">遥远的救世主 · 觉悟与自在</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a><a class="rt" href="javascript:scrollCard(1)">→ 固定行为模式</a></div></div>
+</div></div>
+
+<div class="card" id="card-10" data-p="p3" data-s="mg,bz,lf">
+<div class="ch"><div class="cnum">10</div><div class="ctg"><div class="ct">伦理边界：影响与操纵的分水岭</div><div class="cs">真触发器是影响 · 假触发器是操纵</div><div class="ctags"><span class="tag ts">防御与应用</span><span class="tag tt">管理</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>同一套武器，两种职业：咨询师和骗子用的是同一个心理学工具箱。分界线不在技巧，在<strong>触发器是否真实</strong>——真稀缺、真销量、真专家，是影响；假原价、刷好评、包装头衔，是操纵。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">真</div><div class="ft2"><strong>真实性测试</strong>：你调用的每个心理触发器，背后的事实经得起公开检验吗？「限量500份」——真做了500份吗？</div></div><div class="fs2"><div class="fn2">逆</div><div class="ft2"><strong>可逆性测试</strong>：对方完全知道你的手法后，还会感谢你吗？会——影响；不会——操纵。</div></div><div class="fs2"><div class="fn2">久</div><div class="ft2"><strong>时间测试</strong>：这个手法在重复博弈里可持续吗？操纵是透支信任的短期套利，在长期关系（平台生意、KA合作）里必亏。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这不是道德洁癖，是博弈论结论：一次性博弈里操纵可能占优（囚徒困境），<strong>重复博弈里声誉让诚实变成最优策略</strong>（无名氏定理）。选「真触发器」，本质是选择把自己放在哪种博弈里——想长期吃饭桌，就别赚一次性博弈的钱。</p><div class="insight"><strong>深层洞见：</strong>做营销最容易滑向的灰色地带：永远的最后一天、常年五折的原价、自买自夸的榜单。它们短期有效、长期致命——用户不是傻子，只是暂时被触发。<strong>把「我们不玩假的」当卖点</strong>，在信任稀缺的市场里，这本身就是差异化武器。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">审核活动文案时加一道「真实性三问」：原价真实吗？限量真实吗？销量来源真实吗？踩线的活动，数据越好越要警惕。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>自保</div><div class="stx">对自己的说服风格也做可逆测试：如果对方知道我刚才是「设计过的」，关系是升温还是崩塌？崩塌的就是操纵。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="game-theory.html#card-20">博弈论 · 声誉</a><a class="rt" href="game-theory.html#card-10">博弈论 · 无名氏定理</a><a class="rt" href="jiushi.html#card-9">遥远的救世主 · 杀富济贫的代价</a></div></div>
+</div></div>
+
+<div class="card" id="card-11" data-p="p3" data-s="bz,mg">
+<div class="ch"><div class="cnum">11</div><div class="ctg"><div class="ct">运营组合拳：一次活动激活六个按钮</div><div class="cs">lollapalooza · 多触发器同向叠加</div><div class="ctags"><span class="tag ts">防御与应用</span><span class="tag tt">商业</span><span class="tag tt">管理</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>单一武器效果有限，<strong>多原则同向叠加时产生 lollapalooza 效应</strong>——一次成熟的大促同时按六个按钮：锚定原价（对比）+ 限量秒杀（短缺）+ 销量飘条（认同）+ 达人带货（权威+喜好）+ 首单礼包（互惠）+ 签到任务（承诺）。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">设</div><div class="ft2"><strong>活动设计六要素清单</strong>：给什么（互惠）、让人先做什么小承诺（承诺）、展示谁在做（认同）、谁在背书（权威）、谁在推荐（喜好）、什么时候截止（短缺）。缺一个就补，多一个检查真实性。</div></div><div class="fs2"><div class="fn2">审</div><div class="ft2"><strong>反向审计</strong>：看竞对/品牌方的方案，同样拆六要素——他们的预算花在哪几个按钮上，意图就在哪。</div></div><div class="fs2"><div class="fn2">配</div><div class="ft2"><strong>按漏斗配武器</strong>：拉新用互惠+认同，转化用短缺+权威，留存用承诺，复购用喜好（私域人设）。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>组合拳之所以有效是心理学机制的<strong>乘法</strong>：每个武器都自带「绕过审查」属性，叠加时用户没有识别窗口——单看倒计时可疑，但倒计时+销量+达人+礼包同时出现，「所有证据都指向该买」，理性根本没被叫醒。</p><div class="insight"><strong>深层洞见：</strong>用组合拳前先过卡10的伦理闸门：六个按钮必须六个真触发器。同时记住救世主的警告：把用户当变量的极致设计会赢数据、输信任——<strong>组合拳的上限是活动ROI，下限是人设崩塌</strong>。真正的高手用组合拳放大真价值，而不是包装假价值。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">复盘一场成功的闪购：把GMV增量按六要素归因，下次只保留真实且有效的按钮，砍掉透支信任的（如假原价）。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">给品牌方提案JBP资源包时自查：我们给的是真稀缺（确实只剩的档期）还是话术稀缺？前者建立权威，后者烧声誉。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型（lollapalooza）</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者思维</a><a class="rt" href="javascript:scrollCard(10)">→ 伦理边界</a></div></div>
+</div></div>
+
+<div class="card" id="card-12" data-p="p3" data-s="lf,mg">
+<div class="ch"><div class="cnum">12</div><div class="ctg"><div class="ct">决策主权：别活成别人的武器</div><div class="cs">影响力知识的最终用途是向内</div><div class="ctags"><span class="tag ts">防御与应用</span><span class="tag tt">自保</span><span class="tag tt">成长</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>学《影响力》最吊诡的结局是：你越懂触发器，越发现自己每天都在被别人按按钮。这本书的终极用途不是话术库，而是<strong>决策主权</strong>——从「容易被影响的反应者」，变成「看清规律后主动选择的人」。</p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">级</div><div class="ft2"><strong>决策分级</strong>：小事交给捷径（午饭吃什么不值得反操纵），大事强制手动（合同、跳槽、大额消费）。给决策设「警惕预算」，而不是全副武装。</div></div><div class="fs2"><div class="fn2">源</div><div class="ft2"><strong>信息源独立</strong>：销量、榜单、专家都可能是制造的。重大判断至少找一个与说服者无利益关系的独立信源。</div></div><div class="fs2"><div class="fn2">录</div><div class="ft2"><strong>复盘被俘记录</strong>：记下每次「事后觉得被套路」的触发器类型，三个月后你会看到自己的固定弱点——每个人的按钮不一样。</div></div></div></div>
+<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这与《遥远的救世主》闭环了：文化属性的强弱，落到日常就是<strong>你的决策是「被触发」的还是「被选择」的</strong>。等靠要的人等着被给（互惠陷阱）、被带（认同陷阱）、被安排（权威陷阱）；强势文化的人研究规律、自己按规律选——哪怕选的是一样的东西，主权在自己手里。</p><div class="insight"><strong>深层洞见：</strong>一句话收束全书：影响力规律像重力——<strong>不因你否认而消失，只因你了解而可预测</strong>。懂它的人，对外可以不操纵地影响，对内可以不后悔地决策。两者之中，后者才是你花时间学它的理由。</div></div></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>自保</div><div class="stx">本周做一件小事：挑一个最近「冲动答应」的请求，用六武器反推它按了你哪个钮。这就是你的专属防御清单第一条。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队复盘被套路时，禁止说「他们太狡猾」，必须说「我们哪个按钮被按了」——把羞辱变成机制。</div></div></div></div>
+<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-1">遥远的救世主 · 文化属性</a><a class="rt" href="javascript:scrollCard(9)">→ 防御总纲</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化（自己定公理）</a></div></div>
+</div></div>
+
+</div><!-- end cards -->
+
+<div class="tens-sec">
+<h2>原则间的张力</h2>
+<p>《影响力》内部有三对真实张力，拿捏它们才是这门学问的成熟形态。</p>
+<div class="tc"><div class="tc-t">用 vs 防</div><div class="tc-vs"><span class="vs-tag va">武器库</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">防御术</span></div><div class="tc-res">同一份知识，做营销的人在学「怎么按按钮」，做决策的人在学「怎么不被按」。调和：<strong>先学防，再学用</strong>——没建立防御就用武器的人，迟早被自己的武器伤到（信誉反噬）。</div></div>
+<div class="tc"><div class="tc-t">有效 vs 真实</div><div class="tc-vs"><span class="vs-tag va">假短缺也有效</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">长期主义</span></div><div class="tc-res">假触发器短期同样有效，这才是真正的诱惑。调和：用重复博弈视角定价——<strong>一次性博弈里假按钮赚钱，长期博弈里真按钮赚信任</strong>。你的生意属于哪种，决定你配用哪种。</div></div>
+<div class="tc"><div class="tc-t">看透 vs 世故</div><div class="tc-vs"><span class="vs-tag va">识别一切套路</span><span style="color:var(--accent);font-weight:700">⚡</span><span class="vs-tag vb">还能愉快交易</span></div><div class="tc-res">看穿所有按钮后容易滑向犬儒：「全是套路，不必真诚」。调和：识别把戏不等于否认善意——<strong>真的专家、真的限量、真的朋友推荐都存在</strong>。防御的目标是过滤假触发器，不是关闭所有反应，否则你连朋友的真诚邀请都会「识别」掉。</div></div>
+</div>
+
+<div class="disc">
+<strong>来源声明：</strong>章节结构对照原书核验（经典版七部分：影响力的武器/互惠/承诺和一致/社会认同/喜好/权威/短缺；新版「联盟」章未纳入）。卡片基于对全书思想与经典实验（米尔格拉姆服从实验、烟雾房间实验、饼干罐实验、特百惠聚会等）的整体理解提炼，<strong>非逐字原文提取</strong>；案例为书中著名例证的转述，措辞未必与原书逐字一致。
+</div>
+<div class="footer">知识蒸馏工坊 · 影响力 · 12 张卡片 · 机制/武器/防御三层</div>
+</div>
+
+<div class="tabbar">
+<div class="tab" onclick="window.scrollTo({top:0,behavior:'smooth'})"><div class="tab-icon">📋</div><div class="tab-label">卡片</div></div>
+<div class="tab tab-inactive" onclick="document.querySelector('.tens-sec').scrollIntoView({behavior:'smooth'})"><div class="tab-icon">⚡</div><div class="tab-label">张力</div></div>
+</div>
+
+<script>
+const cards=document.querySelectorAll('.card');const vc=document.getElementById('vc');let ap='all',as='all';
+document.querySelectorAll('.fbtn').forEach(b=>{b.addEventListener('click',()=>{
+  const t=b.dataset.t,f=b.dataset.f;
+  document.querySelectorAll('.fbtn[data-t="'+t+'"]').forEach(x=>x.classList.remove('on'));
+  b.classList.add('on');if(t==='p')ap=f;if(t==='s')as=f;
+  let v=0;cards.forEach(c=>{const pm=ap==='all'||c.dataset.p===ap;const sm=as==='all'||c.dataset.s.split(',').includes(as);if(pm&&sm){c.classList.remove('hidden');v++}else c.classList.add('hidden')});
+  vc.textContent=v+' 张';
+})});
+function scrollCard(n){const t=document.getElementById('card-'+n);if(t){t.scrollIntoView({behavior:'smooth',block:'start'});t.style.boxShadow='var(--shadow-lg)';setTimeout(()=>t.style.boxShadow='',2000)}}
+if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js')}
+</script>
+</body>
+</html>

@@ -199,10 +199,10 @@ a{color:var(--accent);text-decoration:none}
 <div class="hero">
   <div class="hero-icon">📖</div>
   <h1>知识蒸馏工坊</h1>
-  <div class="hero-sub">6本经典 · 80张决策卡片 · 从竞争策略到创新突破到中国式处世与认知规律的思维工具箱</div>
+  <div class="hero-sub">7本经典 · 92张决策卡片 · 从竞争策略到创新突破到中国式处世与说服心理学的思维工具箱</div>
   <div class="hero-stats">
-    <div class="stat"><div class="stat-n">6</div><div class="stat-l">本书</div></div>
-    <div class="stat"><div class="stat-n">80</div><div class="stat-l">卡片</div></div>
+    <div class="stat"><div class="stat-n">7</div><div class="stat-l">本书</div></div>
+    <div class="stat"><div class="stat-n">92</div><div class="stat-l">卡片</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">主题</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景</div></div>
   </div>
@@ -238,6 +238,11 @@ a{color:var(--accent);text-decoration:none}
   <a class="book" href="jiushi.html">
     <div class="book-title">遥远的救世主</div>
     <div class="book-author">豆豆 · 文化属性与规律</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
+  <a class="book" href="yingxiangli.html">
+    <div class="book-title">影响力</div>
+    <div class="book-author">西奥迪尼 · 说服心理学</div>
     <div class="book-count">12 张卡片</div>
   </a>
 </div>
@@ -276,7 +281,7 @@ a{color:var(--accent);text-decoration:none}
 
 <!-- Topic Nav -->
 <div class="topic-nav">
-  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 80</button>
+  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 92</button>
   <button class="topic-btn" data-topic="compete" onclick="filterTopic('compete')">⚔️ 竞争策略</button>
   <button class="topic-btn" data-topic="decision" onclick="filterTopic('decision')">🧠 决策方法</button>
   <button class="topic-btn" data-topic="system" onclick="filterTopic('system')">🌐 系统思维</button>
@@ -287,7 +292,7 @@ a{color:var(--accent);text-decoration:none}
 <!-- Cards Container -->
 <div id="allCards"></div>
 
-<div class="footer">知识蒸馏工坊 · 2026 · 6本经典 · 80张决策卡片</div>
+<div class="footer">知识蒸馏工坊 · 2026 · 7本经典 · 92张决策卡片</div>
 </div>
 
 <script>
@@ -377,7 +382,20 @@ const cards=[
 {id:"j9",n:9,t:"杀富济贫的悖论与代价",bk:"js",bn:"遥远的救世主",c:"赢了规则不等于赢了。合规律未必合道义，要同时算技术账和人心账。",tg:["伦理","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"代价 悖论 道义 人心 反噬 报应 余地 慈悲 边界 值不值 赢"},
 {id:"j10",n:10,t:"不解释·不辩·随缘",bk:"js",bn:"遥远的救世主",c:"懂你的人不必解释，不懂你的人不必解释。守住中心，不被评价牵动。",tg:["处世","为人"],tp:["org","decision"],f:"jiushi.html",kw:"不解释 不辩 随缘 体面 认同 自足 误解 沟通 内耗 结果说话"},
 {id:"j11",n:11,t:"强者的孤独与自洽",bk:"js",bn:"遥远的救世主",c:"能承受'我是对的但没人认同'而不回头求认同。把对错和认同等分开。",tg:["境界","成长"],tp:["decision","system"],f:"jiushi.html",kw:"孤独 自洽 独立 从众 认同 内在标准 坚持 被误解 超前 定力"},
-{id:"j12",n:12,t:"觉悟与自在",bk:"js",bn:"遥远的救世主",c:"如实观照、破执着、心无挂碍。尽力创造条件，对结果不偏执。",tg:["境界","为人"],tp:["system","decision"],f:"jiushi.html",kw:"觉悟 自在 执着 观照 贪嗔痴 我执 放下 尽人事听天命 清醒 坦然 ego"}
+{id:"j12",n:12,t:"觉悟与自在",bk:"js",bn:"遥远的救世主",c:"如实观照、破执着、心无挂碍。尽力创造条件，对结果不偏执。",tg:["境界","为人"],tp:["system","decision"],f:"jiushi.html",kw:"觉悟 自在 执着 观照 贪嗔痴 我执 放下 尽人事听天命 清醒 坦然 ego"},
+// 影响力
+{id:"y1",n:1,t:"固定行为模式",bk:"yx",bn:"影响力",c:"触发特征→自动响应。捷径是效率也是漏洞，高手伪造触发器让你自己的惯性说服你。",tg:["底层机制","谈判","自保"],tp:["decision","system"],f:"yingxiangli.html",kw:"固定行为 咔哒 触发 捷径 自动 时间压力 不确定 信息过载 火鸡 红点"},
+{id:"y2",n:2,t:"对比原理",bk:"yx",bn:"影响力",c:"感受是相对的：先给你的决定后给你的。锚定、报价顺序、划线原价的祖宗。",tg:["底层机制","商业","谈判"],tp:["decision","compete"],f:"yingxiangli.html",kw:"对比 锚定 原价 参照 顺序 垫房 先大后小 先小后大 韦伯 划算"},
+{id:"y3",n:3,t:"互惠",bk:"yx",bn:"影响力",c:"先给的人掌握主动权：亏欠感由给予者设定。免费样品、拒绝-退让、不请自来的好处。",tg:["武器","商业","谈判"],tp:["compete","org"],f:"yingxiangli.html",kw:"互惠 亏欠 先给 免费试用 样品 拒绝退让 门把 让步 回报 薄荷糖"},
+{id:"y4",n:4,t:"承诺和一致",bk:"yx",bn:"影响力",c:"小承诺锁死大身份：主动公开费力的承诺会自我绑定。登门槛、贴标签、签到玩法。",tg:["武器","商业","管理"],tp:["org","decision"],f:"yingxiangli.html",kw:"承诺 一致 登门槛 签到 目标 公开 身份 标签 骑虎难下 失调"},
+{id:"y5",n:5,t:"社会认同",bk:"yx",bn:"影响力",c:"不确定时看别人，尤其相似的人。销量榜单好评是工业产品；假认同污染决策系统。",tg:["武器","商业","自保"],tp:["decision","system"],f:"yingxiangli.html",kw:"社会认同 从众 销量 榜单 好评 相似 旁观者 信息瀑布 水军 反共识"},
+{id:"y6",n:6,t:"喜好",bk:"yx",bn:"影响力",c:"无法拒绝喜欢的人：相似、赞美、熟悉、同盟四台发动机。把人和事分开是防御关键。",tg:["武器","谈判","管理"],tp:["org","compete"],f:"yingxiangli.html",kw:"喜好 相似 赞美 熟悉 同盟 曝光 特百惠 人设 共同敌人 光环"},
+{id:"y7",n:7,t:"权威",bk:"yx",bn:"影响力",c:"服从的不是专家是专家的样子：头衔、制服、行头三触发器。两问：真专家？说实话？",tg:["武器","谈判","管理"],tp:["decision","org"],f:"yingxiangli.html",kw:"权威 头衔 制服 白大褂 米尔格拉姆 背书 专家 符号 示弱 借势"},
+{id:"y8",n:8,t:"短缺",bk:"yx",bn:"影响力",c:"越得不到越想要：损失厌恶+心理逆反。限量限时竞价是放大器，心跳加速地抢是触发铁证。",tg:["武器","商业","谈判"],tp:["compete","decision"],f:"yingxiangli.html",kw:"短缺 稀缺 限量 限时 秒杀 倒计时 竞价 逆反 损失厌恶 饥饿营销"},
+{id:"y9",n:9,t:"防御总纲",bk:"yx",bn:"影响力",c:"把戏和实质分开：识别→暂停→拆。所有武器都怕延迟，被操纵感本身是数据。",tg:["防御","自保","谈判"],tp:["decision","system"],f:"yingxiangli.html",kw:"防御 识别 暂停 拆开 明天答复 决策分级 裸请求 记账 信号"},
+{id:"y10",n:10,t:"伦理边界",bk:"yx",bn:"影响力",c:"真触发器是影响，假触发器是操纵。三测试：真实性、可逆性、重复博弈可持续性。",tg:["伦理","管理","商业"],tp:["org","decision"],f:"yingxiangli.html",kw:"伦理 操纵 真实 可逆 长期 声誉 假原价 刷单 不玩假的 信任"},
+{id:"y11",n:11,t:"运营组合拳",bk:"yx",bn:"影响力",c:"一次活动按六个按钮（lollapalooza）：六要素清单设计+反向审计，按漏斗配武器。",tg:["应用","商业","管理"],tp:["innovate","system"],f:"yingxiangli.html",kw:"组合拳 lollapalooza 六要素 活动设计 拉新 转化 留存 归因 审计 JBP"},
+{id:"y12",n:12,t:"决策主权",bk:"yx",bn:"影响力",c:"终极用途是向内：别活成别人的武器。决策分级、信息源独立、复盘自己的固定按钮。",tg:["应用","自保","成长"],tp:["decision","system"],f:"yingxiangli.html",kw:"决策主权 分级 独立信源 复盘 被俘 弱点 重力 可预测 选择"}
 ];
 
 const topics={
@@ -749,7 +767,7 @@ function deepSolve(){
   const top=scored.slice(0,8);
   const cardList=top.length
     ? top.map(({card},i)=>`${i+1}. ${card.bn}·${card.t} — ${card.c}`).join('\n')
-    : '（未命中特定卡片，请从全部80张中自行选取最相关的2-4张）';
+    : '（未命中特定卡片，请从全部92张中自行选取最相关的2-4张）';
   const prompt=
 `请用「知识库问题求解器（深度版）」帮我分析下面这个问题，严格按五段式输出，反套话、落到我的具体处境。
 
