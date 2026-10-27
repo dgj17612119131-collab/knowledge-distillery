@@ -37,7 +37,7 @@ a{color:var(--accent);text-decoration:none}
 .nav-inner{max-width:680px;margin:0 auto;display:flex;align-items:center;height:52px;padding:0 16px}
 .nav-back{color:var(--accent);font-size:17px;display:flex;align-items:center;gap:4px;margin-right:12px;min-width:44px;min-height:44px}
 .nav-back svg{width:12px;height:20px}
-.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;text-align:center;margin-right:56px}
+.nav-title{font-size:17px;font-weight:600;letter-spacing:-.02em;flex:1;}
 @media(max-width:400px){.nav-title{font-size:15px}}
 
 /* Container */
@@ -283,6 +283,15 @@ body{
 .nav-back,.nav-title{letter-spacing:.02em}
 .nav-title{font-family:var(--serif)}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+
+/* ============ 顶栏左对齐 · 去掉居中补偿补丁 ============ */
+.nav-inner{gap:0}
+.nav-back{min-width:0;gap:1px;font-size:15px;color:var(--ink-3)}
+.nav-back svg{width:9px;height:15px;stroke-width:2.2}
+.nav-title{flex:1 1 auto;min-width:0;margin-right:0;text-align:left;
+  font-family:var(--serif);font-size:15.5px;font-weight:600;letter-spacing:.02em;
+  color:var(--text);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav-title::before{content:"\00B7";margin:0 8px 0 7px;color:var(--t4);font-weight:400}
 </style>
 <!-- v2-fold-done -->
 </head>
