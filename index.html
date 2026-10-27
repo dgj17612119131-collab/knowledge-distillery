@@ -99,15 +99,15 @@ a{color:inherit;text-decoration:none}
 
 /* 书目行 */
 .row{
-  display:flex;align-items:baseline;gap:10px;padding:14px 2px;border-bottom:.5px solid var(--line);
+  display:flex;align-items:center;gap:10px;padding:14px 2px;border-bottom:.5px solid var(--line);
   transition:padding-left .18s;
 }
 .sec .row:last-child{border-bottom:none}
 .row:active{padding-left:8px}
-.src{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--ink-3);align-self:center}
+.src{width:5px;height:5px;border-radius:50%;flex-shrink:0;background:var(--ink-3)}
 .src.orig{background:var(--seal)}
 .row-name{font-family:var(--serif);font-size:17px;font-weight:600;letter-spacing:.02em;flex-shrink:0}
-.row-dots{flex:1;border-bottom:1px dotted var(--line-2);transform:translateY(-4px);min-width:12px}
+.row-dots{flex:1;border-bottom:1px dotted var(--line-2);min-width:12px;height:1px;align-self:center}
 .row-by{font-size:11.5px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:44%}
 .row-n{font-family:var(--serif);font-size:15px;font-weight:600;color:var(--seal);white-space:nowrap}
 .row-n small{font-size:10px;color:var(--ink-3);font-family:var(--sans);font-weight:400;margin-left:1px}
