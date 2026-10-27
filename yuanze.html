@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧把"看清真实"放在一切方法论之首：<strong>先求真的透明才有价值，否则透明只是把没验证的判断当众广播</strong>。核心动作是给每句话标注"认识论档位"——这是可复核的事实、有因果的推断，还是纯粹的愿望。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>分清四种话语</strong>：事实（后台可查）、推断（有因果链）、观点（偏好）、愿望（我希望）。日常判断最大的污染源，是把"愿望"偷偷标成了"事实"。</div></div><div class="fs2"><div class="fn2">谱</div><div class="ft2"><strong>观点是置信度光谱</strong>，不是二元对/错：从"我确定（有同类成功记录＋讲得清因果）"到"我不确定，但这是可验证的假设"——后者同样宝贵，因为它指明了下一步该测什么。</div></div><div class="fs2"><div class="fn2">序</div><div class="ft2"><strong>求真在透明之前</strong>：先对自己诚实（敢承认不知道），再对团队透明（公开置信度）。跳过求真直接透明，只会得到一个"人人敢说话、说的全是没验证的猜测"的组织。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>决策质量取决于判断质量，判断质量取决于你对"自己知道什么、不知道什么"的诚实度。人脑默认把"重复说过的、希望它是真的"东西标记为事实（可得性＋动机性推理）。极度求真是刻意对抗这套默认设置。</p><div class="insight"><strong>深层洞见：</strong>KA 最隐蔽的错误，是把"我觉得这个品牌会配合我加码补贴"当既定事实写进方案。给自己立条硬规矩：<strong>任何进入决策的判断，先标证据强度</strong>——是后台可查的数字，还是我的推测。推测要么标为待验证，要么先验证再上桌。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>决策质量取决于判断质量，判断质量取决于你对"自己知道什么、不知道什么"的诚实度。人脑默认把"重复说过的、希望它是真的"东西标记为事实（可得性＋动机性推理）。极度求真是刻意对抗这套默认设置。</p><div class="insight"><strong>深层洞见：</strong>KA 最隐蔽的错误，是把"我觉得这个品牌会配合我加码补贴"当既定事实写进方案。给自己立条硬规矩：<strong>任何进入决策的判断，先标证据强度</strong>——是后台可查的数字，还是我的推测。推测要么标为待验证，要么先验证再上桌。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">竞品分析时分两栏写：竞对单均补贴 3.2 元（可查口径）是事实；我猜它在冲规模、下月会收补贴——是推断。别让第二栏伪装成第一栏混进结论。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">复盘会上要求每句结论自带"数据／案例／个人感觉"三选一标签，逼团队暴露真实置信度，而不是表演确定。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">每周记一条"我这周把什么误当成了事实"。认识论纪律是可以练的肌肉，越练越难自欺。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a><a class="rt" href="javascript:scrollCard(3)">→ 可信度加权</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a><a class="rt" href="javascript:scrollCard(3)">→ 可信度加权</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="lf,mg,bz">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧的进化公式：<strong>痛苦 + 反思 = 进步</strong>。被否决、丢单、判断被打脸带来的难受，不是要立刻逃避或麻痹的警报，而是"你的某个错误模型撞上了现实"的定位信号。公式里真正的乘数是"反思"——没有反思，痛只是痛，同样的坑下次再摔一遍。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">停</div><div class="ft2"><strong>先别逃也别扛</strong>：痛的时候不急着反驳、不自我安慰，识别"我被刺痛＝这里有个我没看见的东西"。</div></div><div class="fs2"><div class="fn2">挖</div><div class="ft2"><strong>追根因，分两类错误</strong>：是事实判断错了（信息／认知），还是流程缺了（没设检查点、没问该问的人）。前者补认知，后者改机制。</div></div><div class="fs2"><div class="fn2">则</div><div class="ft2"><strong>写成一条可复用原则</strong>："下次遇到 X 就 Y"，进决策库。这样一次痛苦兑换成永久免疫力。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人靠"情绪回避"运转，痛会让人倾向否认、甩锅、快速翻篇。达利欧把痛苦重新定义为数据：<strong>越想躲的地方，越可能藏着最有价值的盲区</strong>。反直觉，但复利极高。</p><div class="insight"><strong>深层洞见：</strong>区分两种痛——<strong>"成长的痛"（能力边界被撞到）要迎上去；"警告的痛"（在越界、在不该赌）要停下</strong>。KA 里被品牌方当场拒绝、投产比崩盘、方案被主管打回，是最便宜的进化素材；若只是"换个品牌再试"，等于花钱买教训、又把教训退还了。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人靠"情绪回避"运转，痛会让人倾向否认、甩锅、快速翻篇。达利欧把痛苦重新定义为数据：<strong>越想躲的地方，越可能藏着最有价值的盲区</strong>。反直觉，但复利极高。</p><div class="insight"><strong>深层洞见：</strong>区分两种痛——<strong>"成长的痛"（能力边界被撞到）要迎上去；"警告的痛"（在越界、在不该赌）要停下</strong>。KA 里被品牌方当场拒绝、投产比崩盘、方案被主管打回，是最便宜的进化素材；若只是"换个品牌再试"，等于花钱买教训、又把教训退还了。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">每次谈判破裂后强制写三行：我误判了什么、哪个假设错了、下次同类先验证什么。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队丢大单时，把复盘导向"机制缺了什么"而非"谁的锅"，否则大家只学会隐藏痛苦、报喜不报忧。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 决策做成算法</a><a class="rt" href="jiushi.html#card-6">遥远的救世主 · 认知差距</a><a class="rt" href="mao.html#card-15">毛选 · 闻过则喜</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 决策做成算法</a><a class="rt" href="jiushi.html#card-6">遥远的救世主 · 认知差距</a><a class="rt" href="mao.html#card-15">毛选 · 闻过则喜</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="mg,bz,cr">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>面对分歧，既不"一人一票"（民主，让外行也等权），也不"领导拍板"（独裁，一个人的盲区说了算）。达利欧的第三条路：<strong>按可信度加权</strong>。可信度有两条硬门槛——① 在此类问题上多次成功过；② 能讲清为什么（因果逻辑）。两条都满足的人，票重更高。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">录</div><div class="ft2"><strong>数记录</strong>：这个人在"这类判断"上历史成功率如何，做过几次、成过几次。（有记录无逻辑＝可能只是运气）</div></div><div class="fs2"><div class="fn2">辑</div><div class="ft2"><strong>听逻辑</strong>：能不能把因果讲清楚、能不能说出"在什么条件下我会错"。（有逻辑无记录＝纸上谈兵）</div></div><div class="fs2"><div class="fn2">权</div><div class="ft2"><strong>定权重</strong>：两门槛兼备者高权重；只占一条的降权；纯职级、纯音量不给权重。且权重是领域特定的——谈判上的可信 ≠ 数据上的可信。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>职级、嗓门、自信度都只是"说服力"的伪装，与"判断准确性"相关性很弱。用可信度加权，本质是把决策市场从"政治博弈"改造成"战绩博弈"，压掉组织里的讨好与权威偏误。</p><div class="insight"><strong>深层洞见：</strong>防两个滑坡：一是把"某领域的可信"错当成"处处可信"（光环效应，正是影响力里的权威偏误）；二是用"可信度加权"包装"我的判断最高"。<strong>给一个人加权，必须能说清"加权在哪个具体问题上"</strong>。跨团队评审某品牌补贴方案时，问的不是"谁官大"，而是"谁去年在同类品牌把补贴 ROI 做正过、且说得清为什么"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>职级、嗓门、自信度都只是"说服力"的伪装，与"判断准确性"相关性很弱。用可信度加权，本质是把决策市场从"政治博弈"改造成"战绩博弈"，压掉组织里的讨好与权威偏误。</p><div class="insight"><strong>深层洞见：</strong>防两个滑坡：一是把"某领域的可信"错当成"处处可信"（光环效应，正是影响力里的权威偏误）；二是用"可信度加权"包装"我的判断最高"。<strong>给一个人加权，必须能说清"加权在哪个具体问题上"</strong>。跨团队评审某品牌补贴方案时，问的不是"谁官大"，而是"谁去年在同类品牌把补贴 ROI 做正过、且说得清为什么"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">争论不下时，点名"这块做过且讲得清逻辑的一两个人先说"，其余人先听，而不是全员举手或等领导定调。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">判断竞对动向时，给"多次预测准过竞对动作的同事"更高权重，而非给嗓门最大的那个。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 创意择优</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a><a class="rt" href="javascript:scrollCard(1)">→ 极度求真</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 创意择优</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a><a class="rt" href="javascript:scrollCard(1)">→ 极度求真</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="bz,mg,ka">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧要求把重复出现的决策，从"每次现场拍脑袋"提炼成<strong>命名的原则 + 可执行的算法</strong>。原则是"当出现 X，通常做 Y，因为 Z"；算法是把原则写成一步步 if-then／打分表，人或系统照着跑即可。你不必每次从零判断，判断质量还能被检验、迭代、交接。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">重</div><div class="ft2"><strong>识别重复</strong>：这类问题今年遇到第几次了（补贴要不要跟、品牌方压价怎么应、新店标尺不达标怎么办）？第二次出现就该考虑沉淀成原则。</div></div><div class="fs2"><div class="fn2">写</div><div class="ft2"><strong>写成原则</strong>："当__条件，做__，因为__"。三要素齐全才算原则，缺"因为"的是口号。</div></div><div class="fs2"><div class="fn2">码</div><div class="ft2"><strong>编码成算法</strong>：落成清单／打分表／决策树——如补贴跟投的准入条件、金额上限、退出阈值。可跑、可复核、可交接。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人的工作记忆与状态极不稳定，同样的问题在不同精力、情绪下会得到不同答案。算法把"判断"外化成稳定流程，既降低出错，又让错误可定位——是原则错了，还是执行错了？这也是把个人经验变成团队资产的唯一方式。</p><div class="insight"><strong>深层洞见：</strong>警惕"伪原则"——"要抓住核心矛盾""以客户为中心"，放之四海皆准、什么情形都成立，因此不指导任何具体动作。<strong>检验标准：拿它去判一个你还没决定的真实 case，若能直接给出倾向，才是真原则</strong>。它得能回答"下一条这个 X 品牌到底该不该跟投 3 元补贴"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人的工作记忆与状态极不稳定，同样的问题在不同精力、情绪下会得到不同答案。算法把"判断"外化成稳定流程，既降低出错，又让错误可定位——是原则错了，还是执行错了？这也是把个人经验变成团队资产的唯一方式。</p><div class="insight"><strong>深层洞见：</strong>警惕"伪原则"——"要抓住核心矛盾""以客户为中心"，放之四海皆准、什么情形都成立，因此不指导任何具体动作。<strong>检验标准：拿它去判一个你还没决定的真实 case，若能直接给出倾向，才是真原则</strong>。它得能回答"下一条这个 X 品牌到底该不该跟投 3 元补贴"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">把"什么时候该跟竞对补贴、跟多少、何时撤"写成一张打分表（份额缺口／单均差／客群重合度），BD 不再凭手感拍。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>运营</div><div class="stx">高频动作（工单、活动提报、商户审核）先列"触发条件→动作→检查点"，再考虑半自动化，把重复从人力里剥出来。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 痛苦+反思</a><a class="rt" href="javascript:scrollCard(6)">→ 期望值下注</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 痛苦+反思</a><a class="rt" href="javascript:scrollCard(6)">→ 期望值下注</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="bz,mg,ka">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧把"做成一件事"固定成五步：<strong>①清晰的目标 ②识别问题、不与问题妥协 ③准确诊断根因 ④设计方案 ⑤坚定执行</strong>。纪律在于"五步各归其位、顺序不可乱"。多数失败是把"目标"和"方案"混了（还没定目标就想招），或跳过了"诊断"（直接对症抓药）。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">1</div><div class="ft2"><strong>目标</strong>：你想要什么？把它和"你想要它的那个方案"分开。目标要能被反证，不是"提升品牌影响力"这种模糊词。</div></div><div class="fs2"><div class="fn2">2</div><div class="ft2"><strong>问题</strong>：挡住目标的现实障碍是什么？如实列出，别因为难受就跳过某个问题。</div></div><div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>诊断</strong>：追到根因，区分"症状"和"病根"，多问几次为什么。诊断错，后面全错。</div></div><div class="fs2"><div class="fn2">4</div><div class="ft2"><strong>方案</strong>：此时才谈"怎么做"——先穷举有哪些路径，再选。</div></div><div class="fs2"><div class="fn2">5</div><div class="ft2"><strong>执行</strong>：把方案变成责任人＋里程碑＋检查点，坚决推进。设计与执行是两回事。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>大脑天然爱跳步——从"不爽的现状"直接冲到"我觉得该这么干"。五步流强制你在动手前先补上"目标是什么、根因是什么"，把一个容易跑偏的过程变成可检查的清单。</p><div class="insight"><strong>深层洞见：</strong>五步里最常被跳过、回报最高的是<strong>"诊断"</strong>。KA 典型病根 vs 症状："这个品牌 GMV 下滑"是症状；"头部单品长期断货／竞对它门口开了新店／我方补贴被它吃成了常态价"才是可干预的根因。诊断错，你会用正确的药治错病。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>大脑天然爱跳步——从"不爽的现状"直接冲到"我觉得该这么干"。五步流强制你在动手前先补上"目标是什么、根因是什么"，把一个容易跑偏的过程变成可检查的清单。</p><div class="insight"><strong>深层洞见：</strong>五步里最常被跳过、回报最高的是<strong>"诊断"</strong>。KA 典型病根 vs 症状："这个品牌 GMV 下滑"是症状；"头部单品长期断货／竞对它门口开了新店／我方补贴被它吃成了常态价"才是可干预的根因。诊断错，你会用正确的药治错病。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">接手一个下滑品牌，严格按五步走一遍并写下来，重点在诊断步——先归因，再动手，别一上来就砸补贴。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队汇报别只给"问题＋方案"，必须补"目标"和"诊断"两栏，否则你无法判断它的方案对不对。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 原则算法</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计（庙算）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 原则算法</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计（庙算）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="bz,cr,ka">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>面对不确定性，达利欧不求"这次一定猜对"，而求<strong>长期做期望值为正的赌注</strong>。一个决定的好坏，不取决于这一次的结果，而取决于下注时的概率 × 收益是否为正。要敢在胜率不是 100% 时下手，也要接受"做了正确决策仍可能输掉这一局"。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">化</div><div class="ft2"><strong>量化</strong>：别问"会不会成"，问"成的概率多大 × 赢了值多少 − 输的概率 × 输多少"。哪怕粗估，也强迫你把模糊直觉变成数字。</div></div><div class="fs2"><div class="fn2">多</div><div class="ft2"><strong>看大数</strong>：单次结果噪声极大，要评估"重复一百次这种决策"的均值，避免用一次成败论英雄（结果偏误）。</div></div><div class="fs2"><div class="fn2">注</div><div class="ft2"><strong>定下注大小</strong>：期望值为正还不够，要看值多少、输得起多少。优势大且下行可控时才加码（凯利式思维）。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人天然追求"确定感"，会回避那些"大概率对但可能翻车"的机会，也会因一次翻车就否定整个方法。期望值思维把<strong>决策与结果解耦</strong>——你只能控制下注质量，控制不了单次骰子。这是把运气从能力评价里剔除的唯一办法。</p><div class="insight"><strong>深层洞见：</strong>KA 做补贴／资源投放正是概率游戏。押某品牌能借活动起量，不该因"这次没起"就骂自己蠢，而该复盘"下注时我估的转化率、竞对反应是否合理"。反过来，一个"这次赚了"但期望值其实为负的赌注，要警惕别把它当经验重复。<strong>区分"好决定"和"好结果"。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人天然追求"确定感"，会回避那些"大概率对但可能翻车"的机会，也会因一次翻车就否定整个方法。期望值思维把<strong>决策与结果解耦</strong>——你只能控制下注质量，控制不了单次骰子。这是把运气从能力评价里剔除的唯一办法。</p><div class="insight"><strong>深层洞见：</strong>KA 做补贴／资源投放正是概率游戏。押某品牌能借活动起量，不该因"这次没起"就骂自己蠢，而该复盘"下注时我估的转化率、竞对反应是否合理"。反过来，一个"这次赚了"但期望值其实为负的赌注，要警惕别把它当经验重复。<strong>区分"好决定"和"好结果"。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">决定要不要给某品牌破格补贴前，写三行：胜率高／中／低三种情形各自的 ROI，选期望值最高、且输得起的那档。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">与竞对抢同一品牌，别赌"它一定不跟价"，评估它跟价概率 × 我方利润受损，算期望值再定进攻强度。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a><a class="rt" href="game-theory.html#card-12">博弈论 · 贝叶斯博弈</a><a class="rt" href="javascript:scrollCard(4)">→ 原则算法</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a><a class="rt" href="game-theory.html#card-12">博弈论 · 贝叶斯博弈</a><a class="rt" href="javascript:scrollCard(4)">→ 原则算法</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="mg,cr,lf">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧理想的组织运转方式是<strong>创意择优（idea meritocracy）</strong>：让最好的想法胜出，而非让职位最高或声音最大的人胜出。它靠两个引擎——① 极度透明地把真实想法摆上桌（分歧公开）；② 有意义的博弈（反驳时带着"我可能错"的求真姿态，而不是"我要赢你"的辩论姿态）。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">摆</div><div class="ft2"><strong>把分歧摆上台面</strong>：不同假设公开摊开，而不是会后各说各的。隐藏的异议是最贵的成本。</div></div><div class="fs2"><div class="fn2">搏</div><div class="ft2"><strong>为"哪个判断更可能对"而争</strong>，不为"谁的面子/胜负"而争；允许被说服，是能力不是软弱。</div></div><div class="fs2"><div class="fn2">裁</div><div class="ft2"><strong>用可信度加权／数据裁决</strong>（接卡3）定 go-forward；决策一旦拍板，全员执行，即使当初投了反对票。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>组织最大的浪费是"大家私下都觉得方案有问题，会上却没人说"——因为说真话有风险。透明＋有意义博弈，把说真话的社交成本降下来，把"最懂的人的信息"逼到桌面，对抗的是"表面和谐、背后拆台"的集体沉默。</p><div class="insight"><strong>深层洞见：</strong>两个反直觉要求：争的时候把 ego 留在门外（<strong>被反驳 ≠ 被否定</strong>）；决策后即使反对过也要全力执行（disagree and commit）。KA 跨部门撕资源时最缺这两条：把"这个方案哪里会翻车"摆到台面上吵清楚，好过事后互相甩锅。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>组织最大的浪费是"大家私下都觉得方案有问题，会上却没人说"——因为说真话有风险。透明＋有意义博弈，把说真话的社交成本降下来，把"最懂的人的信息"逼到桌面，对抗的是"表面和谐、背后拆台"的集体沉默。</p><div class="insight"><strong>深层洞见：</strong>两个反直觉要求：争的时候把 ego 留在门外（<strong>被反驳 ≠ 被否定</strong>）；决策后即使反对过也要全力执行（disagree and commit）。KA 跨部门撕资源时最缺这两条：把"这个方案哪里会翻车"摆到台面上吵清楚，好过事后互相甩锅。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">方案评审设条规矩：每人必须先说"这个方案我看到的最大风险"，再谈支持意见——让反对的声音先落地。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">练被反驳时的第一反应：对方说得有道理时，是"哦对，我漏了 X"，而不是本能找补。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 可信度加权</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者思维</a><a class="rt" href="game-theory.html#card-19">博弈论 · 廉价交谈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 可信度加权</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者思维</a><a class="rt" href="game-theory.html#card-19">博弈论 · 廉价交谈</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="mg,bz,ka">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧把组织看成一台<strong>机器</strong>：由"文化"（运行规则）＋"人"（执行部件）组成，产出"结果"。你既是机器的设计者、又在机器里运转。看到不满意的结果时，别只盯"这次谁没干好"，要往上看一层：是哪条文化规则、哪类人的配置，让这台机器<strong>必然</strong>产出这个结果。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">身</div><div class="ft2"><strong>抽身</strong>：从"球员"切到"设计者"视角，俯瞰整台机器怎么转，而非陷在单个任务里救火。</div></div><div class="fs2"><div class="fn2">产</div><div class="ft2"><strong>读产出</strong>：结果是机器的体检报告。反复出现的同类结果（某类品牌总谈崩、补贴总超支）＝系统性问题，不是偶发。</div></div><div class="fs2"><div class="fn2">改</div><div class="ft2"><strong>改机器</strong>：修文化（规则、激励、透明度）或修人（放对位置），而不是修这一次的结果。改机器，未来千百个结果同时改善。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>多数管理者在"结果层"灭火（催进度、骂执行），但同样的火会再烧——因为产出结果的机器没变。机器视角逼你把一次救火换成一次系统升级，杠杆率完全不同。</p><div class="insight"><strong>深层洞见：</strong>关键判断——这是"人的问题"还是"机器的问题"？如果<strong>换个人还是同样的结果，就是机器（规则／激励）的问题，改人没用</strong>。你管辖的品牌组合，"个别品牌谈崩"是人的问题，"凡是某类品牌都谈崩"就是选品／资源分配这台机器的设计问题。别用战术勤奋掩盖机器设计缺陷。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>多数管理者在"结果层"灭火（催进度、骂执行），但同样的火会再烧——因为产出结果的机器没变。机器视角逼你把一次救火换成一次系统升级，杠杆率完全不同。</p><div class="insight"><strong>深层洞见：</strong>关键判断——这是"人的问题"还是"机器的问题"？如果<strong>换个人还是同样的结果，就是机器（规则／激励）的问题，改人没用</strong>。你管辖的品牌组合，"个别品牌谈崩"是人的问题，"凡是某类品牌都谈崩"就是选品／资源分配这台机器的设计问题。别用战术勤奋掩盖机器设计缺陷。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队连续两次错过某类商户续约，别归因"大家不上心"，去检查是不是"提醒机制／客户分级"这台机器缺了齿轮。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>运营</div><div class="stx">把自己每天重复的动作看作机器的输出，凡重复 3 次以上的，问"能不能改造机器（流程／工具）让它不再需要我手动做"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 识人雷达图</a><a class="rt" href="javascript:scrollCard(4)">→ 原则算法</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 识人雷达图</a><a class="rt" href="javascript:scrollCard(4)">→ 原则算法</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="mg,lf,cr">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧用人像配机器零件：每个人是一组可测量的属性（创造力、分析力、果断、同理心、执行力……）的<strong>雷达图</strong>，没有全能的人。管理者的活是把"对属性的人"放到"需要这组属性的位置"，而不是要求一个人补齐所有短板。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">画</div><div class="ft2"><strong>画雷达</strong>：评估人时拆成几个具体维度打分，而不是笼统"这人靠谱／不靠谱"。</div></div><div class="fs2"><div class="fn2">对</div><div class="ft2"><strong>对岗位</strong>：先明确这个岗最需要哪 2-3 个峰值维度（BD 谈判＝抗压＋洞察对方利益；数据分析＝严谨＋抽因）。</div></div><div class="fs2"><div class="fn2">配</div><div class="ft2"><strong>配而非改</strong>：把峰值用在刀刃上，短板靠协作或机制补，别指望把钝刀磨成快刀。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>组织里大量痛苦来自"错配"——让一个高同理心但低果断的人去做强硬砍价的谈判，然后怪他不行。属性没有绝对好坏，只有在特定岗位上的匹配度。雷达图思维把用人从道德评价（好人／坏人）转成工程匹配。</p><div class="insight"><strong>深层洞见：</strong>这套也要用在<strong>识己</strong>：你对某类 KA 任务的反复抵触，可能是你的雷达图在该维度天然凹陷——与其硬啃，不如找互补搭档、或用算法把这部分判断外包出去。识人的另一面是"看穿别人的招式"：谈判对手是哪型人格、会被什么触发，正接影响力里的固定行为模式。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>组织里大量痛苦来自"错配"——让一个高同理心但低果断的人去做强硬砍价的谈判，然后怪他不行。属性没有绝对好坏，只有在特定岗位上的匹配度。雷达图思维把用人从道德评价（好人／坏人）转成工程匹配。</p><div class="insight"><strong>深层洞见：</strong>这套也要用在<strong>识己</strong>：你对某类 KA 任务的反复抵触，可能是你的雷达图在该维度天然凹陷——与其硬啃，不如找互补搭档、或用算法把这部分判断外包出去。识人的另一面是"看穿别人的招式"：谈判对手是哪型人格、会被什么触发，正接影响力里的固定行为模式。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">分派任务前先写"这活最吃哪两个能力"，再对照团队雷达图点人，而不是谁闲着就给谁。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">摸谈判对手的属性画像——他是分析型（吃数据）还是关系型（吃面子）——用他听得进的方式出牌。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="yingxiangli.html#card-1">影响力 · 固定行为模式</a><a class="rt" href="javascript:scrollCard(8)">→ 机器视角</a><a class="rt" href="javascript:scrollCard(10)">→ 自我觉察盲区</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="yingxiangli.html#card-1">影响力 · 固定行为模式</a><a class="rt" href="javascript:scrollCard(8)">→ 机器视角</a><a class="rt" href="javascript:scrollCard(10)">→ 自我觉察盲区</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="lf,mg">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧强调，每个人都有自己意识不到的<strong>盲区</strong>（认知盲区＋情绪盲区），而且越聪明、越资深的人，盲区越大且越隐蔽。修炼的第一步是承认"我一定有看不见的东西"，并主动建机制（可信的人反馈、复盘、测一测）把盲区照出来。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">认</div><div class="ft2"><strong>承认必有盲区</strong>：先接受"我的判断一定有我没考虑到的角度"——这不是谦虚的客套，是事实。</div></div><div class="fs2"><div class="fn2">痕</div><div class="ft2"><strong>靠痕迹反推</strong>：盲区不直接可见，看它留下的痕迹——反复出现却总归因于外界的失败、别人常说但你不服的那句"你总是……"。</div></div><div class="fs2"><div class="fn2">镜</div><div class="ft2"><strong>装镜子</strong>：找一个敢说真话且可信的人当"盲区探测器"，用复盘和数据而非自我感觉来校准。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人脑会把"自洽的故事"当成"真实的图景"——一旦形成解释，就选择性接收支持它的证据（确认偏误）。盲区之所以是盲区，正因为它是"你看不见自己看不见"的递归。所以单靠内省很难照出来，必须靠外部反馈这面镜子。</p><div class="insight"><strong>深层洞见：</strong>对 KA 运营最致命的盲区常是<strong>"归因外化"</strong>：品牌没做起来，默认是"对方不配合／资源不够／政策变了"，从不查"是不是我一开始就判断错这个品牌的基本盘"。每次把失败全归到外部，就是盲区正在工作的信号。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人脑会把"自洽的故事"当成"真实的图景"——一旦形成解释，就选择性接收支持它的证据（确认偏误）。盲区之所以是盲区，正因为它是"你看不见自己看不见"的递归。所以单靠内省很难照出来，必须靠外部反馈这面镜子。</p><div class="insight"><strong>深层洞见：</strong>对 KA 运营最致命的盲区常是<strong>"归因外化"</strong>：品牌没做起来，默认是"对方不配合／资源不够／政策变了"，从不查"是不是我一开始就判断错这个品牌的基本盘"。每次把失败全归到外部，就是盲区正在工作的信号。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">收集"别人反复提醒我、我却反驳"的那句话——它多半正指着你的盲区。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">重要决策前设一个"魔鬼代言人"角色，专门攻击你的假设，把盲区在落地前照出来。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 极度开明</a><a class="rt" href="jiushi.html#card-6">遥远的救世主 · 认知差距</a><a class="rt" href="game-theory.html#card-11">博弈论 · 不完全信息博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 极度开明</a><a class="rt" href="jiushi.html#card-6">遥远的救世主 · 认知差距</a><a class="rt" href="game-theory.html#card-11">博弈论 · 不完全信息博弈</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="lf,cr,mg">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧区分两种自负盲区：一种是"不知道自己不知道"（缺某个知识），另一种更隐蔽——<strong>"不知道自己不知道'我可能是错的'"</strong>，即把主观确信当成客观事实。极度开明（radical open-mindedness）不是性格温和，而是主动、真诚地去寻找"证明我错了"的证据，因为尽早被证伪，远比带着错误信念去下注便宜。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">层</div><div class="ft2"><strong>分两层</strong>：区分"我有一个观点"和"我确定它是对的"。真正的自信是"我知道我可能错，但我能验证／承担"。</div></div><div class="fs2"><div class="fn2">反</div><div class="ft2"><strong>求反证</strong>：与其找人同意你，不如问"要发生什么，会说明我是错的？"然后去看有没有发生。</div></div><div class="fs2"><div class="fn2">奇</div><div class="ft2"><strong>好奇优先</strong>：遇到反对，第一反应从"反驳他"换成"他看到了我没看到的什么？"——把异议当信息，而非攻击。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>决策失败的根源不是"信息少"，而是"带着一个自以为确定的错误模型行动"。极度开明是对抗确认偏误的主动疫苗：你消灭不了盲区，但可以用"被证伪的意愿"把盲区造成的损失压到最低。</p><div class="insight"><strong>深层洞见：</strong>这与卡1"观点光谱"配套——<strong>开明不是没主见（那是把一切等权），而是"我有明确倾向，同时对被说服保持开放"</strong>。KA 谈判里最强的对手往往不是嗓门大的，而是那个不断试探你底线、愿意承认自己判断有偏差并据此调整的人——因为他信息更新得比你快。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>决策失败的根源不是"信息少"，而是"带着一个自以为确定的错误模型行动"。极度开明是对抗确认偏误的主动疫苗：你消灭不了盲区，但可以用"被证伪的意愿"把盲区造成的损失压到最低。</p><div class="insight"><strong>深层洞见：</strong>这与卡1"观点光谱"配套——<strong>开明不是没主见（那是把一切等权），而是"我有明确倾向，同时对被说服保持开放"</strong>。KA 谈判里最强的对手往往不是嗓门大的，而是那个不断试探你底线、愿意承认自己判断有偏差并据此调整的人——因为他信息更新得比你快。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">做重要判断前，专门列"三条能证明我错的事实"，然后去查——查证成本远低于判断落地后返工的成本。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">与竞对抢单前，先假设"我掌握的关于它的信息是错的／过时的"，主动找反例，别在一张错误地图上打仗。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 极度求真</a><a class="rt" href="javascript:scrollCard(10)">→ 自我觉察</a><a class="rt" href="jiushi.html#card-12">遥远的救世主 · 觉悟与自在</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 极度求真</a><a class="rt" href="javascript:scrollCard(10)">→ 自我觉察</a><a class="rt" href="jiushi.html#card-12">遥远的救世主 · 觉悟与自在</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="lf,mg,ka">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>达利欧区分两种责任姿态：一种是"为他人／流程负责"——我做完了我该做的部分，出问题是别人的责任；另一种是<strong>对结果负责（极端所有权）</strong>——无论卡在哪个环节，我都把最终结果当成自己的责任，主动打通，而不是等别人补位。后者是"创造结果的人"与"走流程的人"的分水岭。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">界</div><div class="ft2"><strong>越过边界</strong>：当结果依赖别人掉链子时，"这不归我管"是弱者思维。真正的负责者会问"为了结果，我还能做什么"。</div></div><div class="fs2"><div class="fn2">主</div><div class="ft2"><strong>找到 owner</strong>：若某环节无人负责，去成为那个负责人，或把它显式指派到人——别让责任悬空在灰色地带。</div></div><div class="fs2"><div class="fn2">助</div><div class="ft2"><strong>结果导向地求助</strong>：求助不是甩锅，而是"我为结果负责、需要你的 X"。区别在于你是为推进结果，还是为把责任转移出去。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>组织里最容易掉落的，正是"人人有责＝人人无责"的灰色地带。极端所有权把每个灰色地带都认领下来，人因此从"流程执行者"升级为"结果创造者"——这也是可信度和被重用的来源。它和《遥远的救世主》"没有救世主"呼应：主动权永远握在自己手里。</p><div class="insight"><strong>深层洞见：</strong>极端所有权 ≠ 什么都自己干、越界替别人拍板。它的本质是"对结果的责任心"，而非"对过程的接管权"。KA 里两种表述的差别很直白："品牌方没给数据我也没办法"（为他人负责）vs "数据没到位我先用后台口径估一版并去催，因为这个活动 ROI 我来兜"（对结果负责）。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>组织里最容易掉落的，正是"人人有责＝人人无责"的灰色地带。极端所有权把每个灰色地带都认领下来，人因此从"流程执行者"升级为"结果创造者"——这也是可信度和被重用的来源。它和《遥远的救世主》"没有救世主"呼应：主动权永远握在自己手里。</p><div class="insight"><strong>深层洞见：</strong>极端所有权 ≠ 什么都自己干、越界替别人拍板。它的本质是"对结果的责任心"，而非"对过程的接管权"。KA 里两种表述的差别很直白："品牌方没给数据我也没办法"（为他人负责）vs "数据没到位我先用后台口径估一版并去催，因为这个活动 ROI 我来兜"（对结果负责）。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">遇事先问"这件事的最终结果，我能不能把它当成自己的 KPI 来兜"？能，就主动去打通卡点。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>运营</div><div class="stx">跨部门推活动、链条卡在别人那不动时，把"我负责推动到位"当默认，而不是发封邮件就算交差。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-2">遥远的救世主 · 世上没有救世主</a><a class="rt" href="javascript:scrollCard(8)">→ 机器视角</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山（靠自己）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="jiushi.html#card-2">遥远的救世主 · 世上没有救世主</a><a class="rt" href="javascript:scrollCard(8)">→ 机器视角</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山（靠自己）</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>城市、品牌、组织、增长飞轮，都是"系统"。要看清任何一个系统，别急着看表面数字，先拆出它的<strong>三件套</strong>：<strong>要素</strong>（看得见的零件，如门店、骑手、预算）、<strong>连接</strong>（把零件串起来的规则与信息流，如补贴怎么分、数据谁能看到）、<strong>功能/目标</strong>（这个系统实际在追求什么）。梅多斯的反直觉洞见：<strong>要素最显眼却最不重要，连接比要素重要，而功能/目标最隐蔽、却最决定系统的走向。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">素</div><div class="ft2"><strong>要素＝零件，最容易看见也最容易被误当成全部</strong>：换个供应商、多开几家店只是换要素，系统行为常常纹丝不动——因为连接和目标没变。</div></div><div class="fs2"><div class="fn2">连</div><div class="ft2"><strong>连接＝规则与信息流，决定要素如何互动</strong>：同一批门店，"按 GMV 分补贴"和"按新客分补贴"，会长出完全不同的行为。改连接往往比改要素更省力、更有效。</div></div><div class="fs2"><div class="fn2">功</div><div class="ft2"><strong>功能/目标＝系统的真实意图，从行为反推、别听口号</strong>：一个品牌嘴上说"用户体验第一"，若所有决策都在冲单量，那它的真实目标就是单量。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>多数人在"要素层"下力气（加人、加钱、加店），因为那最直观；但系统行为主要由<strong>连接结构和目标</strong>决定。目标一变，要素和连接会自行重组——这也是为什么"换个考核口径"比"再招一批人"更能改变一个团队。</p><div class="insight"><strong>深层洞见：</strong>接手任何一块业务（一个城市群、一个品牌），先用三件套体检：<strong>要素是什么？连接（钱和数据按什么规则流动）是什么？系统真正在追的目标是什么？</strong>三者对齐了再动手，否则你只是在换零件，转圈不出结果。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>多数人在"要素层"下力气（加人、加钱、加店），因为那最直观；但系统行为主要由<strong>连接结构和目标</strong>决定。目标一变，要素和连接会自行重组——这也是为什么"换个考核口径"比"再招一批人"更能改变一个团队。</p><div class="insight"><strong>深层洞见：</strong>接手任何一块业务（一个城市群、一个品牌），先用三件套体检：<strong>要素是什么？连接（钱和数据按什么规则流动）是什么？系统真正在追的目标是什么？</strong>三者对齐了再动手，否则你只是在换零件，转圈不出结果。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">复盘某城市群大盘：先列要素（门店数、骑手、预算）、连接（补贴/流量如何在城市间分配、数据流向谁）、功能（系统实际在冲 GMV 还是冲新客渗透）。目标模糊，是大多数"投了没反应"的根因。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">看一个团队别只看人头（要素）。看它的激励机制（连接）和真正的考核指标（功能）——口号和 KPI 冲突时，KPI 才是这个系统的真实目标。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 存量与流量</a><a class="rt" href="javascript:scrollCard(3)">→ 反馈回路</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 存量与流量</a><a class="rt" href="javascript:scrollCard(3)">→ 反馈回路</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="bz,mg,lf">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>任何系统都可拆成"<strong>存量</strong>"和"<strong>流量</strong>"。存量是蓄水池的水位，是有记忆、需要时间积累的量（用户池、复购活跃用户、门店数、品牌心智、账户余额）；流量是进水放水的动作，是短时速率（新增、流失、开闭店、补贴投放）。<strong>水位只由"流入−流出"的净额决定</strong>——想改变存量，光盯着水位看没用，得动流入流出的结构。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">存</div><div class="ft2"><strong>存量＝记忆与韧性</strong>：涨得慢、抗波动，是真正"攒下来"的家底。用户资产、信任、心智都是存量，靠日积月累，毁于一旦却很快。</div></div><div class="fs2"><div class="fn2">流</div><div class="ft2"><strong>流量＝瞬时与可冲</strong>：新增、下单、活动带来的爆量都是流量，能靠补贴短期拉起，但不等于存量在增值。</div></div><div class="fs2"><div class="fn2">判</div><div class="ft2"><strong>诊断法则</strong>：存量出了问题（用户池萎缩），别只补流量（再拉新），要看是不是流出（流失）在漏水——补漏常比灌水更有效、更便宜。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人的注意力天然被"流量事件"（今天涨了多少单）吸引，却忽视"存量健康"（池子净增还是净减）。而长期结果由存量决定：<strong>一个靠补贴把流量拉高、但留存一直漏的盘子，是"边灌水边破洞"，钱一停水位立刻打回原形。</strong>把流量思维和存量思维混为一谈，是经营分析最常见的错觉。</p><div class="insight"><strong>深层洞见：</strong>看任何一份业绩报表，先给每个指标贴标签：<strong>这是存量还是流量？</strong>然后追问"这个季度 GMV 的增长，是存量真的变厚（用户/门店/心智积累了），还是流量脉冲（一波补贴吹起来的）？"只有存量增长才是可带走、可复利的资产。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人的注意力天然被"流量事件"（今天涨了多少单）吸引，却忽视"存量健康"（池子净增还是净减）。而长期结果由存量决定：<strong>一个靠补贴把流量拉高、但留存一直漏的盘子，是"边灌水边破洞"，钱一停水位立刻打回原形。</strong>把流量思维和存量思维混为一谈，是经营分析最常见的错觉。</p><div class="insight"><strong>深层洞见：</strong>看任何一份业绩报表，先给每个指标贴标签：<strong>这是存量还是流量？</strong>然后追问"这个季度 GMV 的增长，是存量真的变厚（用户/门店/心智积累了），还是流量脉冲（一波补贴吹起来的）？"只有存量增长才是可带走、可复利的资产。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">把"用户"拆成存量（累计可复购的注册会员、稳定复购人群）和流量（当日新客、当日下单量）。补贴能制造流量，却常常止不住存量流失——交付指标要看"池子净增"，不只看"当日爆量"。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">能力、信任、知识都是存量，靠长期流入慢攒；一次培训、一个项目是流量。别用"我今天学了多久"（流量）替代"我沉淀了多少可调用的能力"（存量）。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 反馈回路</a><a class="rt" href="javascript:scrollCard(4)">→ 延迟</a><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 反馈回路</a><a class="rt" href="javascript:scrollCard(4)">→ 延迟</a><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="bz,mg,lf">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>存量为什么升降？因为背后有<strong>反馈回路</strong>在运作。只有两种：<strong>增强回路（R）</strong>——滚雪球，让变化自我放大（用户越多→内容/供给越丰富→体验越好→用户更多）；<strong>调节回路（B）</strong>——寻目标，像恒温器一样把系统拉向某个基准（市场饱和、运力上限、预算约束）。<strong>系统的行为，就是若干 R 与 B 叠加、看谁在当下占主导。</strong>指数增长来自 R 主导，撞墙停滞来自 B 反扑。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">R</div><div class="ft2"><strong>增强回路＝增长引擎</strong>：找到并踩住正向循环的关键连接，让"结果反哺原因"。飞轮转起来时不用猛推，但它起来时也拦不住。</div></div><div class="fs2"><div class="fn2">B</div><div class="ft2"><strong>调节回路＝天花板与恒温器</strong>：任何增长终会撞上某个 B 回路（饱和、瓶颈、监管）。B 不是敌人，它只是"以某个目标为基准"往回拉。</div></div><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>诊断口诀</strong>：增长停了，先问"是增强回路某一环断了（飞轮停转），还是调节回路在起作用（撞到真实上限）？"两者解法完全不同。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>把复杂现象还原到"两个基本齿轮"，就获得了通用诊断工具：暴涨、崩塌、停滞、震荡，都能翻译成"某个 R 被激活或被切断、某个 B 被突破或被触发"。真正的增长设计，是<strong>刻意构建一个自我强化的 R，同时提前识别并抬高会卡住它的 B。</strong></p><div class="insight"><strong>深层洞见：</strong>画增长飞轮时别只画箭头，逐环标"这环断了会怎样、哪环是限速环节"。很多"飞轮不转"不是策略错，而是<strong>某一环的连接没打通</strong>（如复购回来了，但供给没跟上）。找到最弱那一环补上，比整体加投更省钱。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>把复杂现象还原到"两个基本齿轮"，就获得了通用诊断工具：暴涨、崩塌、停滞、震荡，都能翻译成"某个 R 被激活或被切断、某个 B 被突破或被触发"。真正的增长设计，是<strong>刻意构建一个自我强化的 R，同时提前识别并抬高会卡住它的 B。</strong></p><div class="insight"><strong>深层洞见：</strong>画增长飞轮时别只画箭头，逐环标"这环断了会怎样、哪环是限速环节"。很多"飞轮不转"不是策略错，而是<strong>某一环的连接没打通</strong>（如复购回来了，但供给没跟上）。找到最弱那一环补上，比整体加投更省钱。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">拆解增长飞轮：用户→订单→商家收益→供给/优惠投入→体验→用户，是一个 R。找出其中的限速环节（往往是供给或履约），在它上面加力，飞轮才真的加速，而不是空转烧补贴。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">绩效改进本质是一个 B 回路：目标是"参考输入"，实际与目标的差距驱动动作。目标定歪，整个 B 就把团队稳定地拉向错误的地方。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 存量与流量</a><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 存量与流量</a><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="bz,cr,mg">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>系统里，<strong>原因和结果往往在时间、空间上是分开的</strong>——你今天的动作，要过一阵才反馈回来（延迟）。因为反馈来得慢，人容易<strong>反应过度</strong>：还没看到效果就加码，看到过头又猛踩刹车，于是系统"打方向过猛"，陷入反复震荡和过冲。补贴是最典型的延迟系统：今天投放，订单响应往往滞后一两周才显现。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">常</div><div class="ft2"><strong>延迟不是异常，是结构常态</strong>：任何需要积累的反应链（投放→心智→复购）都带延迟，指望"立竿见影"本身就是错觉。</div></div><div class="fs2"><div class="fn2">荡</div><div class="ft2"><strong>短视＋延迟＝震荡</strong>：看不到反馈就反复大幅调整（鞭打效应），每一次纠正都基于过时信息，越忙越乱、越调越偏。</div></div><div class="fs2"><div class="fn2">稳</div><div class="ft2"><strong>应对法则</strong>：行动前就想清楚"这步多久后见效"，设一个观察窗口；窗口没到，别叠加新动作，也别误判为"没用"而撤火。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人对"即时反馈"才调得准（像端一杯满杯水要小步移动）。当反馈延迟，我们本能地用"更大的动作"去补偿等待，结果动作的效果在延迟之后叠加爆发，酿成过量。梅多斯的忠告：<strong>对慢反馈系统，最好的操作往往是"下手轻、有耐心、按预期延迟的时间点再评估"。</strong></p><div class="insight"><strong>深层洞见：</strong>补贴、心智建设、供给升级都是"慢变量"。别用"周环比"去审判一个需要数月见效的动作——<strong>那会让你在最该坚持的时候撤火、在最该停手的时候还在猛打方向盘。</strong>给每个动作预先写清"何时、用什么指标评估它"，把延迟显式化。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人对"即时反馈"才调得准（像端一杯满杯水要小步移动）。当反馈延迟，我们本能地用"更大的动作"去补偿等待，结果动作的效果在延迟之后叠加爆发，酿成过量。梅多斯的忠告：<strong>对慢反馈系统，最好的操作往往是"下手轻、有耐心、按预期延迟的时间点再评估"。</strong></p><div class="insight"><strong>深层洞见：</strong>补贴、心智建设、供给升级都是"慢变量"。别用"周环比"去审判一个需要数月见效的动作——<strong>那会让你在最该坚持的时候撤火、在最该停手的时候还在猛打方向盘。</strong>给每个动作预先写清"何时、用什么指标评估它"，把延迟显式化。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴投放有 T+N 见效延迟。设好观察窗口，窗口内不重复加码，也别因为"这两天没动"就误判失败撤资；等真实反馈到达再决定下一步，避免震荡式打脸。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">对手刚加补贴，别当天就跟。你的用户池、心智与弹性不同，先等自己的数据确认对手动作是否真的影响了你，再定反应力度——冲动跟进常在为对方买单。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 政策抵制</a><a class="rt" href="javascript:scrollCard(6)">→ 非线性</a><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 政策抵制</a><a class="rt" href="javascript:scrollCard(6)">→ 非线性</a><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="bz,mg,cr">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>当一个外部干预与系统现有的<strong>结构和目标</strong>方向不一致时，系统会产生一股反向力量把改变拖回原状——梅多斯称之为"政策抵制"。很多政策、补贴、组织改革"推一下动一下、松手就回弹"，甚至"按下葫芦浮起瓢"。抵制<strong>不是谁故意作对，而是系统里多个调节回路（各方的利益、习惯、既有 KPI）协同作用</strong>的必然结果。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">源</div><div class="ft2"><strong>抵制的根源＝你的目标 ≠ 系统各参与方自己的目标</strong>：只要被干预者从原有结构里获得的利益没变，它就会自发回到旧均衡。</div></div><div class="fs2"><div class="fn2">陷</div><div class="ft2"><strong>陷阱＝"再加把劲"</strong>：推不动就加预算、加考核、加人力，结果你更累、抵制更强，还把症状掩盖得更久。</div></div><div class="fs2"><div class="fn2">解</div><div class="ft2"><strong>出路＝找抵制来自哪条回路，改结构而非加力</strong>：让被干预方的利益和你的目标对齐，抵制自然消失。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>系统是一组相互制衡的调节回路。你只在"表层施力"（改一个数字、发一条通知），却没有动下面那些把各方拉回旧状态的目标与信息流，那么合力永远指向原地。<strong>政策抵制是"结构在投票"——它告诉你，你的意图和系统的现行设计不匹配。</strong></p><div class="insight"><strong>深层洞见：</strong>一个信号：<strong>凡是"必须持续用力才维持得住"的改变，多半正遭遇政策抵制</strong>。这时别问"怎么再加码"，要问"系统里谁的目标和我的方向相反？它的输入/激励是什么？"把对方目标顺过来，比硬扛省十倍力气。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>系统是一组相互制衡的调节回路。你只在"表层施力"（改一个数字、发一条通知），却没有动下面那些把各方拉回旧状态的目标与信息流，那么合力永远指向原地。<strong>政策抵制是"结构在投票"——它告诉你，你的意图和系统的现行设计不匹配。</strong></p><div class="insight"><strong>深层洞见：</strong>一个信号：<strong>凡是"必须持续用力才维持得住"的改变，多半正遭遇政策抵制</strong>。这时别问"怎么再加码"，要问"系统里谁的目标和我的方向相反？它的输入/激励是什么？"把对方目标顺过来，比硬扛省十倍力气。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">同一套打法在 A 城有效、B 城失灵——先别归因于执行不力。多半是 B 城的结构（商家/用户/运力博弈）产生了抵制。找到那条反作用回路（谁的利益被这套打法损害了），改设计而非换执行人。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">新流程/新制度反复落不了地＝组织里存在 competing 调节回路（旧激励、潜规则、考核口径）。要么对齐这些回路，要么承认它推不动，别用"再强调一遍"对抗结构性抵制。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 杠杆点</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 杠杆点</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="bz,lf,mg">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>真实系统几乎都不是"多投一块钱就多一分回报"的线性关系。常见三种非线性：<strong>边际递减</strong>（越往后每一元补贴带来的增量越少）、<strong>边际递增</strong>（早期越投越顺，滚雪球）、<strong>阈值/跳变</strong>（不到某个临界点毫无起色，一旦越过突然起量）。<strong>用线性直觉去管非线性系统，是绝大多数预算错配的根源。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">减</div><div class="ft2"><strong>边际递减</strong>：过了最优补贴强度，再加就是烧钱换不来增长。关键是找出这条"拐点"在哪，别在递减深水区硬堆。</div></div><div class="fs2"><div class="fn2">阈</div><div class="ft2"><strong>阈值效应</strong>：门店密度、用户密度、供给丰富度常有"最小起量规模"，差一点点可能整个跑不起来——投在阈值下方等于打水漂。</div></div><div class="fs2"><div class="fn2">避</div><div class="ft2"><strong>避开两个坑</strong>：一是把资源摊薄到"每个城市都不够过阈值"；二是在"已过拐点"的成熟盘继续加码。钱要么给够过坎，要么在拐点前收手。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>系统里充满存量、延迟和回路，导致输出对输入的响应是弯曲的、分段的。线性外推之所以害人，是因为它假设"过去有效的边际回报会继续保持"——而非线性系统恰恰在拐点处悄悄变脸，等你察觉，钱已经烧在了错误的斜率上。</p><div class="insight"><strong>深层洞见：</strong>把"平均 ROI"换成<strong>"边际 ROI"</strong>来决策：不要再问"整体划不划算"，要问"再多加的这一档，能换回多少增量"。当一个城市的补贴边际回报跌破阈值，要么把这笔钱挪去"差一把火就能过坎"的城市，要么就此止损。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>系统里充满存量、延迟和回路，导致输出对输入的响应是弯曲的、分段的。线性外推之所以害人，是因为它假设"过去有效的边际回报会继续保持"——而非线性系统恰恰在拐点处悄悄变脸，等你察觉，钱已经烧在了错误的斜率上。</p><div class="insight"><strong>深层洞见：</strong>把"平均 ROI"换成<strong>"边际 ROI"</strong>来决策：不要再问"整体划不划算"，要问"再多加的这一档，能换回多少增量"。当一个城市的补贴边际回报跌破阈值，要么把这笔钱挪去"差一把火就能过坎"的城市，要么就此止损。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">每个城市群都有自己的"最优补贴强度"，不是越高越好。用边际 ROI 逐城扫描：把预算从递减深水区（成熟城市），挪向接近阈值的潜力城市，整体产出会非线性提升。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">技能积累有平台期和跳变：长期看不到进步可能正处"阈值下方"，加一点量未必见效；但坚持堆过临界点会突然开窍。别在最接近突破的前夜放弃。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 延迟</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a><a class="rt" href="javascript:scrollCard(2)">→ 存量与流量</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 延迟</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a><a class="rt" href="javascript:scrollCard(2)">→ 存量与流量</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="bz,mg,cr">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>当你发现<strong>同一类问题换个城市、换个品牌、换个团队就反复重演</strong>，那多半不是运气差，而是你踩进了某个"系统基模（System Archetype）"——系统陷阱的经典结构套路。梅多斯列出常见陷阱：<strong>政策抵制、公地悲剧、目标侵蚀、竞争升级、富者愈富、转嫁负担（上瘾）、规则破坏、目标错位。</strong>认出基模的价值，在于把"救火"变成"治未病"：看见结构，就能预判它下一步会怎么坑你。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">列</div><div class="ft2"><strong>高频八陷阱</strong>：政策抵制（越推越弹）、公地悲剧（共享资源被耗）、目标侵蚀（标准越降越低）、竞争升级（双方互加码双输）、富者愈富（强者通吃）、转嫁负担（上瘾于外部解药）、规则破坏（钻规则空子）、目标错位（指标对了但目标歪了）。</div></div><div class="fs2"><div class="fn2">识</div><div class="ft2"><strong>识别三问</strong>：①这事是不是"反复发生、换个场景又出现"？②是不是"好心/好招反噬了自己"？③是不是"短期缓解、长期更糟"？三问命中一个，就有基模。</div></div><div class="fs2"><div class="fn2">治</div><div class="ft2"><strong>对付基模靠改结构</strong>：每种陷阱都有对应的结构解法（见卡 8/9 与后续卡），而非靠更努力地重复旧动作。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>系统行为由结构决定，相同结构在不同内容里必然演化出相同剧情。基模就是把"结构—行为"的常见配对预先命名，让你不必每次从零试错。<strong>不懂基模的人被事件牵着救火；懂基模的人提前看出"这个盘正在滑向竞争升级/目标侵蚀"，在恶化前动手。</strong></p><div class="insight"><strong>深层洞见：</strong>把团队反复踩的坑归拢，往这八个基模上"对号入座"。一旦命名成功，解法方向就自动浮现——<strong>很多"人不行、市场不行"的抱怨，本质是没认出脚下那台正在运行的陷阱机器。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>系统行为由结构决定，相同结构在不同内容里必然演化出相同剧情。基模就是把"结构—行为"的常见配对预先命名，让你不必每次从零试错。<strong>不懂基模的人被事件牵着救火；懂基模的人提前看出"这个盘正在滑向竞争升级/目标侵蚀"，在恶化前动手。</strong></p><div class="insight"><strong>深层洞见：</strong>把团队反复踩的坑归拢，往这八个基模上"对号入座"。一旦命名成功，解法方向就自动浮现——<strong>很多"人不行、市场不行"的抱怨，本质是没认出脚下那台正在运行的陷阱机器。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">价格战是"竞争升级"基模：你降他也降、谁都不肯先收手，两家利润一起流血。认出结构就要主动设退坡机制、把战场从价格挪到别的维度，而不是"这次一定压过他"。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">长期依赖外部代理/外包解决某类问题＝"转嫁负担（上瘾）"基模：本应自建的核心能力被外部解药抑制，越来越离不开对方，问题根本从未消失。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 公地悲剧</a><a class="rt" href="javascript:scrollCard(9)">→ 目标侵蚀</a><a class="rt" href="javascript:scrollCard(5)">→ 政策抵制</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 公地悲剧</a><a class="rt" href="javascript:scrollCard(9)">→ 目标侵蚀</a><a class="rt" href="javascript:scrollCard(5)">→ 政策抵制</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="bz,mg,cr">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>当一块<strong>共享资源</strong>（平台流量大盘、品类补贴池、用户价格心智、配送运力）向所有人免费开放，每个个体"多占一点"对自己都是理性的，但当大家都这么算，<strong>共享池被耗竭、集体受损</strong>——这就是公地悲剧。它的根子不是"人坏"，而是<strong>成本没有被计入每个使用者的账上（负外部性）</strong>：捞好处归自己，代价归大家。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">因</div><div class="ft2"><strong>结构成因＝公共资源＋个体激励＋成本外溢</strong>：只要"收益私有、成本共担"，理性个体就会持续过度索取，直到资源崩溃。</div></div><div class="fs2"><div class="fn2">忌</div><div class="ft2"><strong>别靠道德说教</strong>：喊"大家要有全局观、少占点"注定失败，因为它不改结构。要改的是让外部性可见、被计价。</div></div><div class="fs2"><div class="fn2">解</div><div class="ft2"><strong>靠规则与信息流</strong>：明确准入/配额、给占用定价、公开谁用了多少（透明反馈），让每个使用单位看到自己行为的真实代价。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>公地悲剧是"个体最优 ≠ 集体最优"的结构必然后果（与博弈论囚徒困境同构）。缺的不是善意，是<strong>把集体成本回传给个体的反馈回路</strong>。一旦加上了"用多少付多少、谁用谁可见"的调节结构，理性的个体就会自发收敛到不过度索取。</p><div class="insight"><strong>深层洞见：</strong>凡是"免费、共享、无上限、无人记账"的资源，都在滑向公地悲剧。运营里要主动识别自家共享池（大促流量、补贴额度、运力高峰）会不会被"人人多薅一把"打崩，<strong>提前上锁：设总量、设配额、设可见性——而不是事后喊话。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>公地悲剧是"个体最优 ≠ 集体最优"的结构必然后果（与博弈论囚徒困境同构）。缺的不是善意，是<strong>把集体成本回传给个体的反馈回路</strong>。一旦加上了"用多少付多少、谁用谁可见"的调节结构，理性的个体就会自发收敛到不过度索取。</p><div class="insight"><strong>深层洞见：</strong>凡是"免费、共享、无上限、无人记账"的资源，都在滑向公地悲剧。运营里要主动识别自家共享池（大促流量、补贴额度、运力高峰）会不会被"人人多薅一把"打崩，<strong>提前上锁：设总量、设配额、设可见性——而不是事后喊话。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">大促时各品牌都往公域流量池砸补贴冲自家单量，个体理性、全局却把"品类价格锚"和用户心智打烂。解法：统一节奏与总量控制、错峰排期，让占用的外部成本回给参与者。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">多 BD 共用的预算包/商户资源就是公地。谁都能支取、无人背成本时必被透支。给每个使用单位配额＋透明台账，把"公家的"变成"记账的"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="game-theory.html#card-3">博弈论 · 囚徒困境</a><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="game-theory.html#card-3">博弈论 · 囚徒困境</a><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="lf,bz,mg">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>当业绩达不到目标、短期改不动现实时，人最容易做的事是<strong>悄悄把目标调低</strong>——"这次特殊情况""下个周期再说""其实现在这样也还行"。标准一次次下棘轮、只降不升，直到烂状态被当成新常态。这就是"目标侵蚀"：<strong>它不是靠提升表现来消除差距，而是靠降低期望来消灭差距。</strong>水温在升，青蛙却越来越舒服。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">制</div><div class="ft2"><strong>机制＝一个自我安慰的调节回路</strong>：把"降低后的标准"当成新目标，于是差距归零、紧迫感消失，也就再没有动力把真实表现拉上去。</div></div><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>区分"创造性策略"与"目标侵蚀"</strong>：主动把目标聚焦到可实现的新方向是智慧；无意识地被过去的差表现拖着往下让步，才是侵蚀。区别在于你是清醒选择还是被舒适感牵着退。</div></div><div class="fs2"><div class="fn2">锚</div><div class="ft2"><strong>解药＝锚定绝对标准/外部标杆</strong>：不要拿"自己上季度的烂成绩"当基准，要用行业最好水平或客观价值标准，让差距保持"疼"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>只要改进的努力受挫、反馈又带延迟，"降低期望"就是缓解焦虑最省力的路。它坏在<strong>完全无感</strong>：每次只松一点点，且立刻获得"达标了"的正反馈，于是侵蚀自我强化。等到发现时，能力和标准已经一起塌到了再也够不着高处。</p><div class="insight"><strong>深层洞见：</strong>自检一句：我最近一次"降低目标"，是因为<strong>想清楚了更高价值的取舍，还是因为"反正也达不到、干脆算了"？</strong>后者就是目标侵蚀。守住底线的方法是把标准挂在外部的客观锚上（竞对、用户真实需求），而不是挂在自己会漂移的历史表现上。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>只要改进的努力受挫、反馈又带延迟，"降低期望"就是缓解焦虑最省力的路。它坏在<strong>完全无感</strong>：每次只松一点点，且立刻获得"达标了"的正反馈，于是侵蚀自我强化。等到发现时，能力和标准已经一起塌到了再也够不着高处。</p><div class="insight"><strong>深层洞见：</strong>自检一句：我最近一次"降低目标"，是因为<strong>想清楚了更高价值的取舍，还是因为"反正也达不到、干脆算了"？</strong>后者就是目标侵蚀。守住底线的方法是把标准挂在外部的客观锚上（竞对、用户真实需求），而不是挂在自己会漂移的历史表现上。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">别用"补贴拉来的漂亮单量"下调整对"自然经营能力"的要求。一旦把依赖补贴的水位当成正常水平，团队对真实健康度（复购、单位经济模型）的标准会被悄悄侵蚀，钱一停就现原形。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">健身、学习、写作目标一降再降直到"很轻松就完成了"＝典型目标侵蚀。解药：把标准锚在客观参照（专业水平、绝对指标），而非"比昨天好一点就行"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="javascript:scrollCard(11)">→ 超越范式</a><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 杠杆点</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 系统基模</a><a class="rt" href="javascript:scrollCard(11)">→ 超越范式</a><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 杠杆点</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="bz,mg,cr">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>杠杆点＝系统结构里<strong>一个微小、连贯的调整就能引发巨大持久变化</strong>的位置。梅多斯给出杠杆的深浅排序（由低到高）：<strong>数字参数</strong>（补贴率、预算额，最低杠杆）＜缓冲存量＜流量结构＜<strong>信息流</strong>（谁能看到什么数据）＜<strong>规则/激励</strong>＜<strong>自组织</strong>（让系统自己演化）＜<strong>目标</strong>＜<strong>范式</strong>（最高）。反直觉的真相：<strong>绝大多数人一辈子在最低杠杆（反复调参数）上使劲，而真正改变命运的深杠杆常常被忽视。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">低</div><div class="ft2"><strong>调参数＝浅杠杆</strong>：把补贴从 3 元改到 3.5 元，是最低层，见效小、易被抵制、钱一停就回原状。</div></div><div class="fs2"><div class="fn2">中</div><div class="ft2"><strong>改信息流＝中等杠杆</strong>：改变"谁能及时看到什么数据"往往让行为自动纠偏——比如把某品牌的真实留存率开放给 BD 和客户，无需考核行为就变了。</div></div><div class="fs2"><div class="fn2">高</div><div class="ft2"><strong>改规则/目标/自组织＝深杠杆</strong>：动激励规则、动系统追求的目标、或干脆创造一个让解决方案自己涌现的环境，力量远超调数字。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>越靠近"系统为什么这样运转"的根源（信息、规则、目标），一个改动的涟漪就越广——它会同时重塑大量下游行为，而不是一次只影响一处。浅杠杆之所以诱人，是因为它可见、可逆、政治成本低；但正因为浅，它改变不了系统的"默认走向"。</p><div class="insight"><strong>深层洞见：</strong>做提效方案时，先给手头的招按杠杆深浅分个层：<strong>你是在调参数，还是在改信息流、改规则、改目标？</strong>如果反复调参数却始终不达标，答案往往在更深层——找到"信息没流动到位"或"目标定歪了"这类真正的支点，一个动作顶十个。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>越靠近"系统为什么这样运转"的根源（信息、规则、目标），一个改动的涟漪就越广——它会同时重塑大量下游行为，而不是一次只影响一处。浅杠杆之所以诱人，是因为它可见、可逆、政治成本低；但正因为浅，它改变不了系统的"默认走向"。</p><div class="insight"><strong>深层洞见：</strong>做提效方案时，先给手头的招按杠杆深浅分个层：<strong>你是在调参数，还是在改信息流、改规则、改目标？</strong>如果反复调参数却始终不达标，答案往往在更深层——找到"信息没流动到位"或"目标定歪了"这类真正的支点，一个动作顶十个。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">与其逐城反复微调补贴（浅杠杆），不如改变信息流（深一档）：让城市经理第一次看到跨城横向对比和用户池净增，很多低效投放会自我纠正——不是加钱，是加"看见"。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">高杠杆常是"改规则"而非"拼资源"：找到并推动一个让对手结构性跟不动的新规则/新口径（如把竞争维度从价格转到履约体验），比在旧维度堆钱划算。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 杠杆点</a><a class="rt" href="javascript:scrollCard(11)">→ 超越范式</a><a class="rt" href="javascript:scrollCard(12)">→ 与系统共舞</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 杠杆点</a><a class="rt" href="javascript:scrollCard(11)">→ 超越范式</a><a class="rt" href="javascript:scrollCard(12)">→ 与系统共舞</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="lf,bz,mg">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>改参数＜改结构＜改目标＜<strong>改范式</strong>。范式＝那个<strong>看不见的、被视为理所当然的假设体系</strong>，是整个系统从中"长出来"的心智模式（"增长=买用户""我们这行就是价格战""用户只认便宜"）。它决定了你能看见哪些选项。<strong>最高的杠杆，是"超越范式"——不固守任何单一世界观，能看见、并主动切换系统赖以生成的那套底层假设。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">笼</div><div class="ft2"><strong>范式是最隐形也最牢的笼子</strong>：你在框架内再努力，也跳不出框架本身圈定的解集。瓶颈往往不是"没做好"，而是"问题框错了"。</div></div><div class="fs2"><div class="fn2">超</div><div class="ft2"><strong>"超越"＝我有这个心智模式，但我不等于它</strong>：能对多种范式保持觉察、随时切换视角，而不是被当下这套默认假设无意识支配。</div></div><div class="fs2"><div class="fn2">换</div><div class="ft2"><strong>换范式，整个系统被重组</strong>：从"买流量"切到"经营用户资产存量"，考核、预算、动作会全部跟着改写——这是杠杆排序里的核弹。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>系统的目标、规则、结构都是某个更深处"我们认为世界如何运作"的信念的产物。信念换了，上面所有层会连锁重建。梅多斯之所以把"超越范式"列为最高杠杆，又特意提醒它<strong>最难、最易招抵制</strong>——因为范式对身处其中的人是不可见的，你会本能地把"换个看法"当作对常识的冒犯。</p><div class="insight"><strong>深层洞见：</strong>遇到"怎么使劲都突破不了"的局面，往上问一层：<strong>我正在用什么默认假设框这个问题？换一种框法，会不会出现完全不同的解集？</strong>比如别再问"怎么补得更准"，试试问"补贴这个杠杆本身，是不是把系统框错了"。识别并松动范式，是从操盘手跃迁到设计者的分水岭。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>系统的目标、规则、结构都是某个更深处"我们认为世界如何运作"的信念的产物。信念换了，上面所有层会连锁重建。梅多斯之所以把"超越范式"列为最高杠杆，又特意提醒它<strong>最难、最易招抵制</strong>——因为范式对身处其中的人是不可见的，你会本能地把"换个看法"当作对常识的冒犯。</p><div class="insight"><strong>深层洞见：</strong>遇到"怎么使劲都突破不了"的局面，往上问一层：<strong>我正在用什么默认假设框这个问题？换一种框法，会不会出现完全不同的解集？</strong>比如别再问"怎么补得更准"，试试问"补贴这个杠杆本身，是不是把系统框错了"。识别并松动范式，是从操盘手跃迁到设计者的分水岭。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">把评估范式从"单笔订单 ROI"切换到"用户存量健康与长期价值（LTV）"，看似只是换了个视角，实则会自动重组投放、选品、履约的全部优先级——这正是最高杠杆的威力。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">检视你最笃定的"常识"（我擅长X、这行就该这样）。真正限制你的，往往不是能力，而是你从没怀疑过的那条默认假设。松动它，天花板就抬高一层。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-3">第一性原理 · 公理化</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a><a class="rt" href="javascript:scrollCard(12)">→ 与系统共舞</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-3">第一性原理 · 公理化</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a><a class="rt" href="javascript:scrollCard(12)">→ 与系统共舞</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="lf,mg,bz">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>全书的落点是：<strong>复杂系统不能被一个外部控制者"设计死"和"完全掌控"，只能"与之共舞"。</strong>放下"我能预测并控制一切"的傲慢，做系统的<strong>觉知参与者</strong>——先谦卑地倾听系统的天性，小步试探、观察反馈、随势调整，把自己的意图顺着系统的节律去施加，而不是硬拧它。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">听</div><div class="ft2"><strong>先倾听，再动手</strong>：别用预设方案套系统，先观察它实际如何运转、卡在哪、想往哪去。让系统"说话"。</div></div><div class="fs2"><div class="fn2">试</div><div class="ft2"><strong>小步可逆地试探</strong>：把大动作拆成能纠错的小实验，为错误预留余地；用反馈而非意志力来导航。</div></div><div class="fs2"><div class="fn2">随</div><div class="ft2"><strong>跟随反馈、扩大学习</strong>：像跳舞配合舞伴一样，顺着系统的延迟与非线性调整节奏，追求"和系统合拍"而非"控制系统"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>系统是活的、会适应、有延迟、有抵制，任何一次性"完美控制计划"都会在它变化时失效。共舞姿态承认自己的认知有限，因此把"持续学习、快速反馈、可逆试错"内建进行动方式——这恰恰是对不确定性最稳健的应对，也呼应"志在宇宙、甘为学徒"。</p><div class="insight"><strong>深层洞见：</strong>这是给"杠杆点思维"加的谦逊保险：<strong>杠杆越高、越接近范式层，越不能靠蛮力强推，越要先做学徒再做设计者。</strong>在城市群/品牌这种复杂系统里，最靠谱的路径是"小范围先跟系统共舞一轮、摸清它的脾气，再决定把重兵压向哪个杠杆点"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>系统是活的、会适应、有延迟、有抵制，任何一次性"完美控制计划"都会在它变化时失效。共舞姿态承认自己的认知有限，因此把"持续学习、快速反馈、可逆试错"内建进行动方式——这恰恰是对不确定性最稳健的应对，也呼应"志在宇宙、甘为学徒"。</p><div class="insight"><strong>深层洞见：</strong>这是给"杠杆点思维"加的谦逊保险：<strong>杠杆越高、越接近范式层，越不能靠蛮力强推，越要先做学徒再做设计者。</strong>在城市群/品牌这种复杂系统里，最靠谱的路径是"小范围先跟系统共舞一轮、摸清它的脾气，再决定把重兵压向哪个杠杆点"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">城市群新打法：先在 1-2 个城市小步试点、观察真实反馈（延迟到了再评估），验证结构与抵制后再规模化，而不是一把全量押上——先共舞，再下重注。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">别指望一次"雷霆改革"就掌控组织。把它当活的系统：倾听旧结构为何存在、小范围试点、顺着反馈迭代。谦卑地参与，比傲慢地控制更能带来持久改变。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a><a class="rt" href="javascript:scrollCard(4)">→ 延迟</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="jiushi.html#card-5">遥远的救世主 · 条件论</a><a class="rt" href="javascript:scrollCard(4)">→ 延迟</a><a class="rt" href="javascript:scrollCard(10)">→ 高杠杆点</a></div></details></div>
 </div></div>
 </div>
 

@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 
@@ -256,7 +276,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Definition 2.1.1 A game-frame in strategic form is a list of four items (a quadruple) ⟨I, (S1, S2, …, Sn), O, f⟩ where: I = {1, 2, …, n} is a set of players (n ≥ 2). (S1, S2, …, Sn) is a list of sets, one for each player. For every Player i ∈ I, Si is the set of strategies (or possible choices) of Player i. We denote by S the Cartesian product of these sets: S = S1 × S2 × … × Sn; thus an element of S is a list s = (s1, s2, …, sn) consisting of one strategy for each player. We call S the set of strategy profiles. O is a set of outcomes. f : S → O is a function that associates with every strategy profile s an outcome f(s) ∈ O.</div><div class="ot-s">—— Bonanno《Game Theory》§2.1 · Definition 2.1.1</div><div class="ot-i"><strong>译文：</strong>战略式博弈框架是一个四元组 ⟨I, (S₁,…,Sₙ), O, f⟩：I = {1,…,n} 是参与者集合；Sᵢ 是参与者 i 的战略集；S = S₁×…×Sₙ 是战略组合集（每个参与者各出一个战略）；O 是结果集；f:S→O 把每个战略组合映射为一个结果。在此基础上再加入每个参与者对结果的偏好排序，即得到一个博弈。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a></div></details></div>
 </div></div>
 
 <!-- CARD 2 -->
@@ -266,14 +286,14 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p><strong>纳什均衡</strong>是博弈论最重要的概念。它描述了一种战略组合：每个参与者选择的战略都是对他人战略的最优反应。<strong>没有人有动机单方面偏离。</strong></p>
   <div class="ot"><div class="ot-q">战略组合 s* = (s₁*, s₂*, ..., s_n*) 是纳什均衡，当且仅当对每个参与者 i 和每个战略 s_i ∈ S_i，都有 u_i(s_i*, s_{-i}*) ≥ u_i(s_i, s_{-i}*)。</div><div class="ot-s">—— Nash (1950)</div><div class="ot-i"><strong>解读：</strong>在纳什均衡中，给定其他人的战略，没有人想改变自己的战略。这是一种"自我强化"的状态。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>纳什均衡的直觉</h4>
     <p>纳什均衡的核心直觉：<strong>如果每个人都知道别人会做什么，那么没有人会改变自己的选择。</strong>这是一种"预测的自我实现"——如果每个人都预测别人会按均衡战略行动，那么最优反应就是按均衡战略行动。</p>
     <div class="insight"><strong>深层洞见：</strong>纳什均衡不一定是"最优"的。囚徒困境中(D,D)是纳什均衡，但(C,C)对双方都更好。纳什均衡描述的是"稳定"，不是"最优"。这是博弈论最重要的发现之一：个体理性可能导致集体非理性。</div>
     <h4 style="margin-top:14px">纳什定理（1950）</h4>
     <p>任何有限博弈（有限参与者、有限战略）至少存在一个纳什均衡（可能是混合战略均衡）。这是博弈论的基石定理，保证了均衡的存在性。</p>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">囚徒困境的纳什均衡</div><div class="cd">收益矩阵中，(D,D)是纳什均衡：给定对方选D，我选D得-5，选C得-10，所以选D是最优反应。双方都选D是相互最优反应。但(C,C)→(-1,-1)对双方都更好。</div><div class="csrc">经典案例</div></div>
@@ -290,7 +310,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Definition 2.6.1 Given an ordinal game in strategic form with two players, a strategy profile s* = (s1*, s2*) ∈ S1 × S2 is a Nash equilibrium if the following two conditions are satisfied: 1. for every s1 ∈ S1, π1(s1*, s2*) ≥ π1(s1, s2*), and 2. for every s2 ∈ S2, π2(s1*, s2*) ≥ π2(s1*, s2). … "Self-enforcing agreement" interpretation: imagine that the players are able to communicate before playing the game and reach a non-binding agreement expressed as a strategy profile s; then no player will have an incentive to deviate from the agreement (if she believes that the other player will follow the agreement) if and only if s is a Nash equilibrium.</div><div class="ot-s">—— Bonanno《Game Theory》§2.6 · Definition 2.6.1</div><div class="ot-i"><strong>译文：</strong>对两人序数博弈，战略组合 s* 是纳什均衡，当且仅当给定对方战略不变，任何一方单方面更换战略都无法获得更高收益。"自我执行的协议"解读：若参与者在赛前达成的无约束协议恰好是一个纳什均衡，那么（在相信对方会遵守协议的前提下）没有人有动机偏离它——纳什均衡因而是一种自我强化的状态。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a></div></details></div>
 </div></div>
 
 <!-- CARD 3 -->
@@ -300,12 +320,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>囚徒困境展示了博弈论最深刻的悖论：<strong>个体理性导致集体非理性</strong>。每个参与者追求自身利益最大化的行为，最终导致所有人都得到更差的结果。</p>
   <div class="ot"><div class="ot-q">囚徒困境的结构：每个参与者都有优势战略（背叛），但双方都选优势战略的结果（D,D）严格劣于双方都选劣势战略的结果（C,C）。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>这是博弈论最反直觉的发现：理性人可能做出"非理性"的集体选择。这解释了为什么合作在现实中如此困难。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>囚徒困境的结构</h4>
     <p>囚徒困境的关键特征：① <strong>背叛是优势战略</strong>：无论对方选什么，背叛都比合作好；② <strong>(D,D)是纳什均衡</strong>：双方都背叛是稳定的；③ <strong>(C,C)帕累托优于(D,D)</strong>：合作对双方都更好，但无法实现。</p>
     <div class="insight"><strong>深层洞见：</strong>囚徒困境解释了为什么现实中合作如此困难——即使合作对所有人都有利，个体理性也会阻止合作。这解释了军备竞赛、价格战、公地悲剧等现象。解决囚徒困境的方法包括：重复博弈、声誉机制、强制契约、改变收益结构。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">价格战</div><div class="cd">两家公司：都选高价→各得10（合作），一方低价一方高价→低价方得15、高价方得2（背叛诱惑），都选低价→各得5（背叛结果）。双方都选低价是纳什均衡，但都选高价对双方都更好。这是现实中最常见的囚徒困境。</div><div class="csrc">推演案例</div></div>
@@ -323,7 +343,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">When a player has a strictly dominant strategy, it would be irrational for that player to choose any other strategy, since she would be guaranteed a lower payoff in every possible situation (that is, no matter what the other players do). Thus in the Prisoner's Dilemma individual rationality leads to (Extra effort, Extra effort) despite the fact that both players would be better off if they both chose Normal effort. … The Prisoner's Dilemma game is often used to illustrate a conflict between individual rationality and collective rationality: (Extra effort, Extra effort) is the individually rational profile while (Normal effort, Normal effort) would be the collectively rational one.</div><div class="ot-s">—— Bonanno《Game Theory》§2.2</div><div class="ot-i"><strong>译文：</strong>当存在严格优势战略时，选择其它任何战略都是不理性的——无论别人怎么做，收益都更低。因此在囚徒困境中，个体理性导致（加班，加班），尽管双方都选正常工作会更好。囚徒困境常被用来展示个体理性与集体理性的冲突：（加班，加班）是个体理性的组合，而（正常工作，正常工作）才是集体理性的组合。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a></div></details></div>
 </div></div>
 
 <!-- CARD 4 -->
@@ -357,7 +377,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Definition 3.1.2 A finite extensive form (or extensive-form game-frame) with perfect information consists of the following items. • A finite rooted directed tree. • A set of players I = {1, …, n} and a function that assigns one player to every decision node. • A set of actions A and a function that assigns one action to every directed edge, satisfying the restriction that no two edges out of the same node are assigned the same action. • A set of outcomes O and a function that assigns an outcome to every terminal node.</div><div class="ot-s">—— Bonanno《Game Theory》§3.1 · Definition 3.1.2</div><div class="ot-i"><strong>译文：</strong>完美信息的有限扩展式（扩展式博弈框架）由以下要素构成：一棵有限有根树；参与者集合以及把每个决策节点指派给某一位参与者的函数；行动集合以及把每个有向边指派一个行动的函数（同一节点出发的两条边不得标注相同行动）；结果集合以及把每个终端节点指派一个结果的函数。在此框架上加入每个参与者的偏好排序，即得到扩展式博弈。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a></div></details></div>
 </div></div>
 
 <!-- CARD 5 -->
@@ -367,12 +387,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>逆向归纳是求解完美信息扩展式博弈的方法。从博弈树的<strong>最后一个决策节点开始</strong>，倒推每个参与者的最优选择，一直倒推到初始节点。</p>
   <div class="ot"><div class="ot-q">逆向归纳：从博弈树的终端节点开始，在每个决策节点找出该参与者的最优行动，然后将该最优行动代入前一个决策节点，一直倒推到初始节点。得到的战略组合称为逆向归纳均衡。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>逆向归纳的核心思想：理性参与者在每个决策节点都会选择对自己最有利的行动，并且会预测后续参与者的最优反应。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>逆向归纳的直觉</h4>
     <p>逆向归纳的核心直觉：<strong>从后往前想</strong>。在每个决策点，问自己：如果博弈进行到这里，理性人会做什么选择？然后假设前面的参与者知道后面的人会这样选择，他们会做什么？</p>
     <div class="insight"><strong>深层洞见：</strong>逆向归纳揭示了"承诺问题"——如果一个参与者无法承诺未来会做什么，那么他的威胁/承诺就不可信。例如，公司B威胁"如果你进入我就反击"，但如果进入后反击对B不利，这个威胁就不可信。逆向归纳会自动排除不可信威胁。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">进入-反击博弈的逆向归纳</div><div class="cd">公司A决策（进入/不进入），公司B观察到后决策（反击/不反击）。收益：A进入+B反击→(2,1)，A进入+B不反击→(5,3)，A不进入→(0,4)。从后往前：B在A进入后选不反击（3>1），A预测B不反击，选进入（5>0）。均衡路径：A进入，B不反击。B的"反击"威胁不可信。</div><div class="csrc">经典案例</div></div>
@@ -388,7 +408,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">What should we expect the players to do in the game of Figure 3.1? Consider the following reasoning, which is called backward induction reasoning, because it starts from the end of the game and proceeds backwards towards the root: … Anticipating all of this, Player 1 realizes that, if she offers a 50-50 split then she will end up with $50,000, while if she offers a 70-30 split then she will end up with $70,000; thus, if Player 1 is rational and believes that Player 2 is rational, she will offer a 70-30 split and Player 2, being rational, will accept.</div><div class="ot-s">—— Bonanno《Game Theory》§3.1</div><div class="ot-i"><strong>译文：</strong>逆向归纳推理之所以得名，是因为它从博弈的末端开始、向根节点倒推：先确定最后一个行动者的理性选择，再让前一个行动者预期到这一点、做出自己的最优选择，如此层层回溯。若每个人都理性且相信他人理性，倒推所得即为博弈的预测——这正是"从后往前想"的求解方法。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="sunzi.html#card-6">孙子兵法 · 兵贵胜，不贵久</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="sunzi.html#card-6">孙子兵法 · 兵贵胜，不贵久</a></div></details></div>
 </div></div>
 
 <!-- CARD 6 -->
@@ -398,12 +418,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>子博弈完美均衡是逆向归纳在不完美信息博弈中的推广。它要求战略组合在<strong>每个子博弈</strong>中都是纳什均衡。</p>
   <div class="ot"><div class="ot-q">战略组合 s* 是子博弈完美均衡，当且仅当 s* 在每个子博弈中都构成纳什均衡。子博弈是从某个单节点信息集开始的子树。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>子博弈完美均衡排除了不可信威胁——如果某个威胁在子博弈中不是最优的，那么它就不是子博弈完美均衡的一部分。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>子博弈完美 vs 纳什均衡</h4>
     <p>纳什均衡只要求在整个博弈中是均衡的；子博弈完美均衡要求在每个子博弈中都是均衡的。<strong>子博弈完美均衡 ⊆ 纳什均衡</strong>——每个子博弈完美均衡都是纳什均衡，但不是每个纳什均衡都是子博弈完美均衡。</p>
     <div class="insight"><strong>深层洞见：</strong>子博弈完美均衡排除了"不可信威胁"。例如，公司B威胁"如果你进入我就同归于尽"，但如果进入后同归于尽对B也不利，这个威胁就不可信，不是子博弈完美均衡。子博弈完美均衡会自动排除这种不可信威胁。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">进入-反击博弈的子博弈完美均衡</div><div class="cd">公司A决策（进入/不进入），公司B观察到后决策（反击/不反击）。收益：A进入+B反击→(2,1)，A进入+B不反击→(5,3)，A不进入→(0,4)。子博弈：从B的决策节点开始的子树。在子博弈中，B选不反击（3>1）。整个博弈的纳什均衡有两个：(进入,不反击)和(不进入,反击)。但只有(进入,不反击)是子博弈完美均衡——因为(不进入,反击)中B的"反击"威胁不可信。</div><div class="csrc">经典案例</div></div>
@@ -418,7 +438,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">A subgame-perfect equilibrium of an extensive-form game is a Nash equilibrium of the entire game that remains a Nash equilibrium in every proper subgame. … Definition 4.4.1 Given an extensive-form game, let s be a strategy profile for the entire game. Then s is a subgame-perfect equilibrium if, for every subgame G, s|G (the restriction of s to G) is a Nash equilibrium of G. Thus, since the entire game is also a subgame, it follows that a subgame-perfect equilibrium is a Nash equilibrium of the entire game.</div><div class="ot-s">—— Bonanno《Game Theory》§4.4 · Definition 4.4.1</div><div class="ot-i"><strong>译文：</strong>扩展式博弈的子博弈完美均衡，是在整个博弈中是纳什均衡、且在每个真子博弈中仍是纳什均衡的战略组合。由于整个博弈本身也是一个子博弈，子博弈完美均衡必然是纳什均衡——它是纳什均衡的精炼，用于排除依赖"不可信威胁"的均衡。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a></div></details></div>
 </div></div>
 
 <!-- CARD 7 -->
@@ -428,13 +448,13 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>期望效用理论描述理性人在<strong>不确定性</strong>下如何做决策。核心思想：理性人最大化期望效用，而非期望收益。</p>
   <div class="ot"><div class="ot-q">期望效用：如果结果 x 以概率 p 发生，结果 y 以概率 1-p 发生，则期望效用为 EU = p·u(x) + (1-p)·u(y)，其中 u 是效用函数。</div><div class="ot-s">—— von Neumann-Morgenstern (1944)</div><div class="ot-i"><strong>解读：</strong>效用函数 u 捕捉了人对风险的态度。如果 u 是凹函数（边际效用递减），人是风险规避的；如果 u 是凸函数，人是风险偏好的；如果 u 是线性函数，人是风险中性的。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>风险态度的直觉</h4>
     <p><strong>风险规避</strong>：宁愿要确定的较小收益，不要不确定的较大期望收益。例如，宁愿要确定的50元，不要50%概率得100元、50%概率得0元（期望收益也是50元）。这对应凹效用函数。</p>
     <p><strong>风险偏好</strong>：宁愿要不确定的较大期望收益，不要确定的较小收益。例如，宁愿要50%概率得100元、50%概率得0元，不要确定的50元。这对应凸效用函数。</p>
     <div class="insight"><strong>深层洞见：</strong>期望效用理论解释了为什么人们买保险（风险规避）、买彩票（风险偏好）、投资股票（风险中性或适度风险偏好）。效用函数捕捉了人对风险的主观态度，而非客观概率。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">保险决策</div><div class="cd">车损险：保费500元，如果出险赔付5000元（概率10%）。期望赔付=500元，等于保费。如果人是风险规避的（凹效用函数），宁愿付500元保费，不要10%概率损失5000元（期望损失也是500元）。这就是保险的逻辑。</div><div class="csrc">经典案例</div></div>
@@ -450,7 +470,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Definition 5.2.1 Let O = {o1, o2, …, om} be a set of basic outcomes, L(O) the set of simple lotteries over O and ≽ a ranking of L(O). A function U : O → R, that assigns a number (called utility) to every basic outcome is said to provide an expected utility representation of the ranking ≽ if, for any two lotteries L and L′, L ≻ L′ if and only if E[U(L)] &gt; E[U(L′)], and L ∼ L′ if and only if E[U(L)] = E[U(L′)], where E[U(L)] = p1U(o1) + … + pmU(om). E[U(L)] is called the expected utility of lottery L.</div><div class="ot-s">—— Bonanno《Game Theory》§5.2 · Definition 5.2.1</div><div class="ot-i"><strong>译文：</strong>若存在效用函数 U，使"彩票 L 严格优于 L′"当且仅当 L 的期望效用 E[U(L)] &gt; E[U(L′)]（无差异情形对应相等），则称 U 为该偏好排序提供期望效用表示；E[U(L)] = p₁U(o₁)+…+pₘU(oₘ) 即彩票 L 的期望效用。冯·诺依曼—摩根斯特恩定理保证：满足期望效用公理的偏好一定存在这样的效用函数。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a><a class="rt" href="fp.html#card-1">第一性原理 · 第一性原理的定义</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-3">第一性原理 · 公理化方法</a><a class="rt" href="fp.html#card-1">第一性原理 · 第一性原理的定义</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></details></div>
 </div></div>
 
 <!-- CARD 8 -->
@@ -460,12 +480,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>混合策略是参与者以某种<strong>概率分布</strong>随机选择纯策略。例如，以50%概率选A、50%概率选B。</p>
   <div class="ot"><div class="ot-q">混合策略 σ_i 是纯策略集 S_i 上的概率分布。如果 S_i = {s₁, s₂}，则 σ_i = (p, 1-p) 表示以概率 p 选 s₁、以概率 1-p 选 s₂。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>混合策略让参与者"随机化"自己的选择，使对手无法预测自己会选什么。这在零和博弈中特别重要——如果对手知道你会选什么，他就可以针对你。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>为什么需要混合策略？</h4>
     <p>在某些博弈中，<strong>没有纯策略纳什均衡</strong>。例如，石头剪刀布：如果你总是出石头，对手就会出布；如果你总是出布，对手就会出剪刀...没有纯策略均衡。但混合策略均衡存在：每人以1/3概率出石头、1/3概率出布、1/3概率出剪刀。</p>
     <div class="insight"><strong>深层洞见：</strong>纳什定理（1950）保证每个有限博弈至少存在一个纳什均衡——但这个均衡可能是混合策略均衡，而非纯策略均衡。混合策略均衡的本质是"让对手无法预测你"。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">石头剪刀布</div><div class="cd">纯策略：{石头, 布, 剪刀}。没有纯策略纳什均衡（如果你总是出石头，对手出布；如果你总是出布，对手出剪刀...）。混合策略均衡：每人以1/3概率出石头、1/3概率出布、1/3概率出剪刀。这是唯一的纳什均衡。</div><div class="csrc">经典案例</div></div>
@@ -481,7 +501,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Definition 6.2.1 Consider a game in strategic form with cardinal payoffs and recall that Si denotes the set of strategies of Player i. From now on, we shall call Si the set of pure strategies of Player i. We assume that Si is a finite set (for every i ∈ I). A mixed strategy of Player i is a probability distribution over the set of pure strategies Si. The set of mixed strategies of Player i is denoted by Σi.</div><div class="ot-s">—— Bonanno《Game Theory》§6.2 · Definition 6.2.1</div><div class="ot-i"><strong>译文：</strong>混合策略是参与者 i 在其纯策略集 Sᵢ 上的一个概率分布；把概率 1 赋予某个纯策略的"退化"混合策略就是纯策略本身。混合策略的传统解释是"客观随机化"——参与者不亲自挑选纯策略，而是把选择交给随机装置，使对手无法预测自己的行动。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></details></div>
 </div></div>
 
 <!-- CARD 9 -->
@@ -491,13 +511,13 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>重复博弈是将同一个博弈<strong>重复进行多次</strong>。核心发现：在无限重复博弈中，参与者可以通过"触发策略"维持合作，即使单次博弈中背叛是优势战略。</p>
   <div class="ot"><div class="ot-q">重复博弈：将阶段博弈 G 重复 T 次（有限重复）或无限次（无限重复）。参与者的战略是阶段博弈战略的序列，收益是各阶段收益的贴现和。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>重复博弈的核心发现：未来阴影（future shadow）可以让理性人选择合作，即使单次博弈中背叛是优势战略。这就是"无名氏定理"的核心。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>触发策略（Trigger Strategy）</h4>
     <p><strong>冷酷策略（Grim Trigger）</strong>：第一阶段合作，之后如果对方曾经背叛过，就永远背叛；否则继续合作。</p>
     <p><strong>以牙还牙（Tit-for-Tat）</strong>：第一阶段合作，之后模仿对方上一阶段的选择。</p>
     <div class="insight"><strong>深层洞见：</strong>重复博弈揭示了"未来阴影"的力量——如果未来足够重要（贴现因子 δ 足够大），理性人会选择合作。这解释了为什么长期关系中合作更容易维持，而一次性交易中背叛更常见。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">囚徒困境的重复版本</div><div class="cd">单次囚徒困境：(D,D)是唯一纳什均衡。无限重复囚徒困境（δ足够大）：(C,C,C,C,...)可以是子博弈完美均衡——使用冷酷策略：第一阶段合作，之后如果对方曾经背叛过就永远背叛。这解释了为什么长期关系中合作更容易维持。</div><div class="csrc">经典案例</div></div>
@@ -514,7 +534,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Reinhard Selten (who shared the 1994 Nobel Memorial prize in economics with two other game theorists, John Harsanyi and John Nash) discussed a repeated version of the above entry game, which has become known as Selten's Chain Store Game. The story is as follows: A chain store is a monopolist in an industry. It owns stores in m different towns (m ≥ 2). In each town the chain store makes $5 million if left to enjoy its current monopoly position undisturbed. In each town there is a businesswoman who could enter the industry in that town… if she decides to enter, then the monopolist can either fight the entrant, leading to zero profits for both the chain store and the entrant in that town, or it can accommodate entry and share the market with the entrant, in which case both players make $2 million in that town. … Decisions are made sequentially… What happens in town t at date t becomes known to everybody.</div><div class="ot-s">—— Bonanno《Game Theory》§3.4 · Selten's Chain Store Game</div><div class="ot-i"><strong>译文：</strong>泽尔腾把"进入博弈"重复 m 期，构成著名的"连锁店博弈"：连锁店在 m 个城镇各有一家店，每个城镇各有一位企业家决定是否进入，进入后连锁店可选择反击（双方都得 0）或容纳（双方各得 200 万）；每期发生的事对所有人公开。重复结构使当期行动产生"未来影响"，这正是重复博弈区别于一次性博弈的关键。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-2">孙子兵法 · 先胜后战</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a></div></details></div>
 </div></div>
 
 <!-- CARD 10 -->
@@ -524,12 +544,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>无名氏定理描述了无限重复博弈中<strong>可能的均衡收益集</strong>。核心发现：如果未来足够重要（贴现因子 δ 足够大），任何帕累托优于纳什均衡的收益都可以是均衡收益。</p>
   <div class="ot"><div class="ot-q">无名氏定理：在无限重复博弈中，如果贴现因子 δ 足够大，则任何帕累托优于阶段博弈纳什均衡的收益向量，都可以是子博弈完美均衡的收益。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>无名氏定理的核心发现：未来阴影可以让理性人维持任何"好"的合作结果，只要未来足够重要。这解释了为什么长期关系中合作更容易维持。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>无名氏定理的直觉</h4>
     <p>无名氏定理的核心直觉：<strong>如果未来足够重要，任何好的合作结果都可以是均衡</strong>。例如，囚徒困境中(C,C)→(3,3)帕累托优于(D,D)→(1,1)。如果 δ 足够大（未来足够重要），(3,3,3,...)可以是均衡——使用冷酷策略。</p>
     <div class="insight"><strong>深层洞见：</strong>无名氏定理揭示了"合作的可能性"——只要未来足够重要，理性人就可以维持任何好的合作结果。但定理也揭示了"合作的条件"——如果未来不够重要（δ太小），合作就无法维持。这解释了为什么一次性交易中背叛更常见，而长期关系中合作更容易。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">OPEC卡特尔的维持条件</div><div class="cd">OPEC成员国协议减产以维持高油价。无名氏定理预测：如果成员国足够重视未来收益（δ足够大），减产协议可以维持；如果成员国短视（δ太小），减产协议就会崩溃。这解释了为什么OPEC有时能维持卡特尔、有时崩溃。</div><div class="csrc">推演案例</div></div>
@@ -545,7 +565,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Intuition suggests that in this game the threat by the incumbent to fight early entrants might be credible, for the following reason. The incumbent could tell Businesswoman 1 the following: "It is true that, if you enter and I fight you, I will make zero profits… However, somebody else is watching us, namely Businesswoman 2. If she sees that I have fought your entry then she might fear that I would do the same with her and decide to stay out, in which case in town 2 I would make $5 million, so that my total profits in towns 1 and 2 would be $(0 + 5) = $5 million. On the other hand, if I accommodate your entry, then she will be encouraged to enter herself and I will make $2 million in each town, for a total profit of $4 million. Hence, as you can see, it is indeed in my interest to fight you and thus you should stay out."</div><div class="ot-s">—— Bonanno《Game Theory》§3.4</div><div class="ot-i"><strong>译文：</strong>在位者的"未来阴影"论证：今天反击虽损失当期利润（0 而非 200 万），但威慑了下一期的进入者，两期总利润 500 万 &gt; 400 万。这正是无名氏定理的直觉——当未来收益足够重要时，偏离单期均衡的行为（反击威慑）可以变得理性，从而支撑起单次博弈中不可能出现的合作或威慑结果。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a><a class="rt" href="sunzi.html#card-6">孙子兵法 · 兵贵胜，不贵久</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a><a class="rt" href="sunzi.html#card-6">孙子兵法 · 兵贵胜，不贵久</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></details></div>
 </div></div>
 
 <!-- CARD 11 -->
@@ -555,13 +575,13 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>不完全信息博弈中，参与者拥有<strong>私人信息</strong>（他人不知道的信息）。核心问题：如何在信息不对称下做最优决策？</p>
   <div class="ot"><div class="ot-q">不完全信息博弈：至少有一个参与者拥有私人信息（他人不知道的信息）。参与者的类型（type）是私人信息，收益函数依赖于所有参与者的类型。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>不完全信息博弈的核心问题是"信息不对称"——一方知道另一方不知道的信息。这导致了"逆向选择"（事前信息不对称）和"道德风险"（事后信息不对称）。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>逆向选择 vs 道德风险</h4>
     <p><strong>逆向选择（Adverse Selection）</strong>：事前信息不对称。例如，二手车市场：卖家知道车的质量，买家不知道。结果是"柠檬市场"——低质量车驱逐高质量车。</p>
     <p><strong>道德风险（Moral Hazard）</strong>：事后信息不对称。例如，保险市场：投保后，投保人可能更不小心（因为损失由保险公司承担）。结果是"道德风险"——投保人行为改变导致损失增加。</p>
     <div class="insight"><strong>深层洞见：</strong>信息不对称导致了市场失灵。逆向选择让市场萎缩（只有低质量卖家愿意卖），道德风险让市场效率降低（投保人行为改变）。解决机制：信号发送（signaling）、机制设计（mechanism design）、声誉（reputation）。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">二手车市场（柠檬市场）</div><div class="cd">卖家知道车的质量，买家不知道。结果：买家只愿意支付平均质量的价格，高质量卖家不愿意卖（价格低于价值），只有低质量卖家愿意卖。结果是"柠檬市场"——只有低质量车在市场上。这就是逆向选择。</div><div class="csrc">Akerlof (1970) 经典案例</div></div>
@@ -577,7 +597,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">The expression "incomplete information" refers to situations where some of the elements of the game (e.g. the actions available to the players, the possible outcomes, the players' preferences, etc.) are not common knowledge. In such situations the knowledge and beliefs of the players about the game need to be made an integral part of the description of the situation. Pioneering work in this direction was done by John Harsanyi (1967, 1968)… Harsanyi suggested a method for converting a situation of incomplete information into an extensive game with imperfect information (this is the so-called Harsanyi transformation). … To say that there is incomplete information is to say that there is at least one player who does not quite know what game she is playing.</div><div class="ot-s">—— Bonanno《Game Theory》§14.1</div><div class="ot-i"><strong>译文：</strong>"不完全信息"指博弈的某些要素（可用行动、可能结果、参与者偏好等）不是共同知识的情形；此时参与者对博弈的认知与信念必须成为情境描述的一部分。海萨尼（1967-68）提出"海萨尼变换"，把不完全信息情形转化为不完美信息的扩展式博弈。简言之：不完全信息意味着至少有一名参与者不完全清楚自己正在玩的是哪个博弈。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></details></div>
 </div></div>
 
 <!-- CARD 12 -->
@@ -587,12 +607,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>贝叶斯博弈是不完全信息博弈的形式化表示。核心概念：<strong>贝叶斯纳什均衡</strong>——每个参与者在给定自己的类型下，选择对他人类型的最优反应（基于信念）。</p>
   <div class="ot"><div class="ot-q">贝叶斯博弈：每个参与者 i 有一个类型空间 T_i，一个信念（关于他人类型的概率分布），一个收益函数 u_i(s, t) 依赖于所有参与者的战略和类型。贝叶斯纳什均衡：每个参与者 i 在给定自己的类型 t_i 下，选择战略 s_i(t_i) 最大化期望收益（基于信念）。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>贝叶斯博弈的核心是"类型依赖的战略"——你的最优选择依赖于你的类型（私人信息），并且你对他人的类型有信念（概率分布）。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>贝叶斯纳什均衡的直觉</h4>
     <p>贝叶斯纳什均衡的核心直觉：<strong>在给定自己的类型下，选择对他人类型的最优反应</strong>。例如，拍卖中：你知道自己的估价，你对他人的估价有信念，你选择出价最大化期望收益。</p>
     <div class="insight"><strong>深层洞见：</strong>贝叶斯博弈揭示了"信息价值"——如果你知道更多信息，你可以做更优决策。这解释了为什么信息不对称下，拥有更多信息的一方有优势（例如，二手车卖家知道车的质量，可以定更高价格）。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">一级价格密封拍卖</div><div class="cd">每个竞拍者知道自己的估价 v_i，对他人的估价有信念（假设均匀分布）。贝叶斯纳什均衡：每个竞拍者出价 b_i = v_i · (n-1)/n（其中 n 是竞拍者人数）。这解释了为什么拍卖中人们会"低报"自己的真实估价。</div><div class="csrc">经典案例</div></div>
@@ -608,7 +628,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">The theory of games of incomplete information has been developed for the case of von Neumann-Morgenstern payoffs and the solution concept proposed by Harsanyi is Bayesian Nash equilibrium, which is merely Nash equilibrium of the imperfect-information game that is obtained by applying the Harsanyi transformation. … As noted in Chapter 14, the theory of "games of incomplete information" was pioneered by John Harsanyi (1967-68). … In this chapter we will explain the "type-space" approach developed by Harsanyi and show that the two approaches are equivalent.</div><div class="ot-s">—— Bonanno《Game Theory》§14.1 & Ch.16</div><div class="ot-i"><strong>译文：</strong>海萨尼为不完全信息博弈提出的解概念是"贝叶斯纳什均衡"：先施加海萨尼变换（引入"自然"抽选参与者类型、各人持有关于他人类型的概率信念），所得不完美信息博弈的纳什均衡即为贝叶斯纳什均衡。"类型空间"方法（每个参与者的类型 + 关于类型的信念）与本书的状态空间方法等价。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="fp.html#card-2">第一性原理 · 演绎法 vs 归纳法</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="fp.html#card-2">第一性原理 · 演绎法 vs 归纳法</a></div></details></div>
 </div></div>
 
 <!-- CARD 13 -->
@@ -618,12 +638,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>信号博弈是不完全信息博弈的特殊形式。核心问题：<strong>拥有私人信息的一方如何通过"信号"向不知情方传递信息？</strong></p>
   <div class="ot"><div class="ot-q">信号博弈：两阶段博弈。第一阶段：知情方（sender）选择信号 s；第二阶段：不知情方（receiver）观察到信号后选择行动 a。收益依赖于 sender 的类型、信号和行动。</div><div class="ot-s">—— Spence (1973)</div><div class="ot-i"><strong>解读：</strong>信号博弈的核心问题是"信号的可信性"——如果信号成本对不同类型不同，那么信号可以传递信息；如果信号成本对所有人都一样，信号就无法传递信息。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>信号的可信性条件</h4>
     <p>信号可信的条件：<strong>信号成本对不同类型不同</strong>。例如，教育作为能力信号：高能力者获得教育的成本低，低能力者获得教育的成本高。因此，高能力者愿意获得更高教育，低能力者不愿意。教育成为能力的可信信号。</p>
     <div class="insight"><strong>深层洞见：</strong>信号博弈揭示了"信息传递的条件"——信号必须对不同类型成本不同，才能传递信息。这解释了为什么学历、证书、品牌等可以作为质量的信号——因为它们对高质量者成本低，对低质量者成本高。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">教育作为能力信号</div><div class="cd">Spence (1973) 的经典模型：高能力者获得教育的成本低，低能力者获得教育的成本高。因此，高能力者愿意获得更高教育，低能力者不愿意。教育成为能力的可信信号。这解释了为什么学历可以作为能力的信号——即使教育本身不提高能力。</div><div class="csrc">Spence (1973) 经典案例</div></div>
@@ -639,7 +659,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Let us find conditions under which the following strategy profile is part of a separating weak sequential equilibrium: 1. The union requests a high wage in the first period. 2. The high-profit firm accepts while the low-profit firm rejects. 3. After rejection of the first-period high-wage offer the union requests a low wage and the firm accepts. That is, we want an equilibrium where the low-profit firm endures a strike to signal to the union that its expected profits are low and cannot afford to pay a high wage. The union reacts to the signal by lowering its demand. Of course, we need to worry about the fact that the high-profit firm might want to masquerade as a low-profit firm by rejecting the first-period offer (that is, by sending the same signal as the low-profit firm).</div><div class="ot-s">—— Bonanno《Game Theory》§15.1</div><div class="ot-i"><strong>译文：</strong>分离均衡：工会第一期要求高工资，高利润企业接受、低利润企业拒绝并承受罢工——用"拒绝"这个信号表明自己付不起高工资，工会随即降低要价。但必须警惕高利润企业伪装成低利润企业发出同样信号。信号能传递信息的关键，在于不同类型发送同一信号的成本不同。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <!-- CARD 14 -->
@@ -649,12 +669,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>拍卖理论研究了不同拍卖机制下参与者的<strong>最优竞价策略</strong>。核心发现：不同拍卖机制下，参与者的最优策略不同，但收益等价定理表明某些拍卖机制的期望收益相同。</p>
   <div class="ot"><div class="ot-q">拍卖机制类型：一级价格密封拍卖（最高价者得，支付自己的出价）、二级价格密封拍卖（最高价者得，支付第二高价）、英式拍卖（公开叫价，最高价者得）、荷式拍卖（降价拍卖，第一个接受者得）。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>拍卖理论的核心发现：不同拍卖机制下，参与者的最优策略不同。例如，一级价格密封拍卖中，最优出价是"低报"自己的估价；二级价格密封拍卖中，最优出价是"诚实报告"自己的估价。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>收益等价定理</h4>
     <p>收益等价定理：在独立私人估价假设下，一级价格密封拍卖、二级价格密封拍卖、英式拍卖、荷式拍卖的<strong>期望收益相同</strong>（对卖家而言）。这解释了为什么不同拍卖机制在实践中都被广泛使用。</p>
     <div class="insight"><strong>深层洞见：</strong>收益等价定理揭示了"拍卖机制的等价性"——虽然不同拍卖机制下参与者的策略不同，但卖家的期望收益相同。这解释了为什么不同拍卖机制在实践中都被广泛使用——它们对卖家来说没有本质区别。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">一级价格密封拍卖</div><div class="cd">竞拍者知道自己的估价 v_i，对他人的估价有信念（假设均匀分布）。最优出价：b_i = v_i·(n-1)/n（其中 n 是竞拍者人数）。这解释了为什么拍卖中人们会"低报"自己的真实估价——因为支付自己的出价，低报可以增加收益。</div><div class="csrc">经典案例</div></div>
@@ -670,7 +690,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">The second-price auction, or Vickrey auction, is an example of a game that has a weak dominant-strategy profile (or solution). It is a "sealed-bid" auction where bidders submit bids without knowing the bids of the other participants in the auction. The object which is auctioned is then assigned to the bidder who submits the highest bid (the winner), but the winner pays not her own bid but rather the second-highest bid, that is the highest bid among the bids that remain after removing the winner's own bid. … Theorem 2.3.1 — Vickrey, 1961. In a second-price auction, if Player i is selfish and greedy (as specified in (2.1)) then it is a weakly dominant strategy for Player i to bid her true value, that is, to choose bi = vi.</div><div class="ot-s">—— Bonanno《Game Theory》§2.3 · Theorem 2.3.1 (Vickrey, 1961)</div><div class="ot-i"><strong>译文：</strong>二级价格（维克里）拍卖是密封拍卖：投标人在不知道他人出价的情况下报价，出价最高者得标，但只支付第二高的报价。维克里定理（1961）：在二级价格拍卖中，报出自己的真实估价 bi = vi 是每个投标人的弱优势战略——诚实报价永远最优。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-5">第一性原理 · 白痴指数</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-5">第一性原理 · 白痴指数</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></details></div>
 </div></div>
 
 <!-- CARD 15 -->
@@ -680,13 +700,13 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>机制设计是"逆向博弈论"——<strong>给定目标，设计规则使参与者的均衡行为达到目标</strong>。核心问题：如何设计规则使自利的参与者做出对社会最优的行为？</p>
   <div class="ot"><div class="ot-q">机制设计：给定目标函数（如社会剩余最大化），设计机制（规则）使得参与者在贝叶斯纳什均衡下做出对社会最优的行为。核心约束：激励相容（参与者有动机诚实报告）和个体理性（参与者有动机参与）。</div><div class="ot-s">—— Hurwicz (1973), Myerson (1981)</div><div class="ot-i"><strong>解读：</strong>机制设计的核心问题是"激励相容"——如何让自利的参与者有动机做出对社会最优的行为。这解释了为什么二级价格拍卖鼓励诚实报告——因为诚实报告是最优策略。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>激励相容与个体理性</h4>
     <p><strong>激励相容（Incentive Compatibility）</strong>：参与者有动机诚实报告自己的类型。例如，二级价格拍卖中，诚实报告是最优策略。</p>
     <p><strong>个体理性（Individual Rationality）</strong>：参与者有动机参与机制（参与比不参与好）。例如，拍卖中，参与者的期望收益非负。</p>
     <div class="insight"><strong>深层洞见：</strong>机制设计揭示了"规则设计的重要性"——好的规则可以让自利的参与者做出对社会最优的行为。这解释了为什么好的制度比好的个人更重要——好的制度可以让坏人做出好的行为。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">Vickrey-Clarke-Groves (VCG) 机制</div><div class="cd">VCG机制是激励相容的机制：每个参与者支付"自己对他人造成的外部性"。结果：诚实报告是最优策略，社会剩余最大化。这解释了为什么VCG机制被广泛用于公共资源分配（如频谱拍卖）。</div><div class="csrc">Vickrey (1961), Clarke (1971), Groves (1973) 经典案例</div></div>
@@ -702,7 +722,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">The pivotal mechanism, or Clarke mechanism, is a game designed to give the participants an incentive to report their true willingness to pay. … The socially efficient decision is to carry out the project if and only if Σvi &gt; C. … Theorem 2.4.1 — Clarke, 1971. In the pivotal mechanism (under the assumed preferences) truthful revelation (that is, stating wi = vi) is a weakly dominant strategy for every Player i.</div><div class="ot-s">—— Bonanno《Game Theory》§2.4 · Theorem 2.4.1 (Clarke, 1971)</div><div class="ot-i"><strong>译文：</strong>关键（克拉克）机制是一个专门设计的博弈，目的是让参与者有激励如实报告自己的支付意愿：如实报告（wi = vi）是每个参与者的弱优势战略（克拉克定理，1971），均衡下公共项目当且仅当总价值超过成本时才实施。这正是机制设计的核心思想——用规则设计使自利者的均衡行为实现社会最优。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a></div></details></div>
 </div></div>
 
 <!-- CARD 16 -->
@@ -712,12 +732,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>讨价还价博弈研究参与者如何<strong>分配合作剩余</strong>。核心模型：Rubinstein轮流报价模型——参与者轮流提出分配方案，对方接受或拒绝。</p>
   <div class="ot"><div class="ot-q">Rubinstein模型：两参与者分配大小为1的蛋糕。轮流提出分配方案：参与者1提出 (x, 1-x)，参与者2接受或拒绝；如果拒绝，参与者2提出 (y, 1-y)，参与者1接受或拒绝...无限循环。贴现因子 δ₁, δ₂。</div><div class="ot-s">—— Rubinstein (1982)</div><div class="ot-i"><strong>解读：</strong>Rubinstein模型的核心发现：均衡分配依赖于贴现因子。如果 δ₁ = δ₂，平分；如果 δ₁ > δ₂，参与者1得更多（更有耐心）。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>Rubinstein模型的直觉</h4>
     <p>Rubinstein模型的核心直觉：<strong>耐心是谈判中的权力</strong>。更有耐心的一方（δ更大）在谈判中有优势，因为可以等待更久。这解释了为什么大公司（更有耐心）在谈判中比小公司（更急需资金）有优势。</p>
     <div class="insight"><strong>深层洞见：</strong>Rubinstein模型揭示了"耐心的价值"——在谈判中，更有耐心的一方有优势。这解释了为什么谈判中"不急于达成协议"往往是优势——因为你可以等待对方让步。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">工资谈判</div><div class="cd">员工和公司谈判工资。如果员工更有耐心（δ更大），员工得更高工资；如果公司更有耐心（δ更大），公司支付更低工资。这解释了为什么公司通常比员工更有耐心（公司有更多资源等待），所以公司通常支付低于员工能力的工资。</div><div class="csrc">推演案例</div></div>
@@ -733,7 +753,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">A buyer and a seller are bargaining over an object owned by the seller. The value of the object to the buyer is known to her but not to the seller. … The bargaining takes place over two periods. In the first period the seller makes a take-it-or-leave-it offer (i.e. names the price) and the buyer accepts or rejects. If the buyer accepts, the transaction takes place and the game ends. If the buyer rejects, then the seller makes a new take-it-or-leave-it offer and the buyer accepts or rejects. … Assume that both players discount period 2 payoffs with a discount factor δ ∈ (0, 1), that is, from the point of view of period 1, getting $x in period 2 is considered to be the same as getting $δx in period 1.</div><div class="ot-s">—— Bonanno《Game Theory》Ch.12 · Exercise 12.6</div><div class="ot-i"><strong>译文：</strong>买卖双方就卖方持有的物品讨价还价：买方对物品的估价是她的私人信息；谈判分两期，每期由卖方提出"要么接受、要么拒绝"的报价，买方接受则成交、拒绝则进入下一期。双方以贴现因子 δ 折现第二期收益——耐心程度（δ）直接决定谈判中的议价能力，这正是鲁宾斯坦讨价还价模型的核心机制。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-5">孙子兵法 · 致人而不致于人</a><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a></div></details></div>
 </div></div>
 
 <!-- CARD 17 -->
@@ -743,12 +763,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>演化博弈研究<strong>策略在群体中的演化</strong>。核心概念：演化稳定策略（ESS）——如果群体中大多数使用该策略，任何少数变异策略都无法入侵。</p>
   <div class="ot"><div class="ot-q">演化稳定策略（ESS）：策略 s* 是演化稳定的，如果 (1) s* 对 s* 是最优反应；(2) 对于任何变异策略 s ≠ s*，如果 s 对 s* 也是最优反应，则 s* 对 s 是严格优于 s 对 s 的。</div><div class="ot-s">—— Maynard Smith & Price (1973)</div><div class="ot-i"><strong>解读：</strong>ESS的核心直觉：如果大多数人都使用 s*，任何少数变异策略 s 都无法入侵。这解释了为什么某些行为在群体中稳定存在——因为它们是演化稳定的。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>ESS的直觉</h4>
     <p>ESS的核心直觉：<strong>如果大多数人都这样做，任何少数"不同做法"都无法成功</strong>。例如，如果大多数人都诚实，任何少数不诚实的人都无法成功（因为大多数人都不信任他们）。这解释了为什么诚实行为在群体中稳定存在。</p>
     <div class="insight"><strong>深层洞见：</strong>ESS揭示了"群体行为的稳定性"——如果某种行为是演化稳定的，它就会在群体中稳定存在，即使有少数人尝试不同做法。这解释了为什么某些社会规范（如诚实、合作）能够长期存在——因为它们是演化稳定的。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">鹰鸽博弈</div><div class="cd">两人争夺资源。策略：鹰（强硬）或鸽（温和）。如果都是鸽，平分；如果一鹰一鸽，鹰得全部；如果都是鹰，两败俱伤。ESS：如果大多数人是鸽，鹰可以入侵（因为鹰对鸽得更多）；如果大多数人是鹰，鸽可以入侵（因为鸽对鹰比鹰对鹰好）。所以混合策略是ESS：以某种概率选择鹰或鸽。</div><div class="csrc">Maynard Smith & Price (1973) 经典案例</div></div>
@@ -764,7 +784,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Game theory provides a formal language for the representation and analysis of interactive situations… The nature of the players varies depending on the context in which the game theoretic language is invoked: in evolutionary biology (see, for example, John Maynard Smith, 1982) players are non-thinking living organisms; in computer science players are artificial agents; in behavioral game theory players are "ordinary" human beings… Evolutionary game theory has been applied not only to the analysis of animal and insect behavior but also to studying the "most successful strategies" for tumor and cancer cells (see, for example, Gerstung et al., 2011).</div><div class="ot-s">—— Bonanno《Game Theory》Ch.1 · Introduction</div><div class="ot-i"><strong>译文：</strong>博弈论中的"参与者"因情境而异：在演化生物学中（梅纳德·史密斯，1982）参与者是不思考的活体生物，在计算机科学中是人工智能体，在行为博弈论中是普通人。演化博弈论不仅用于分析动植物与昆虫行为，还被用于研究肿瘤细胞的"最成功策略"——策略的适应度决定其在群体中的存续与扩散。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-14">毛选 · 星星之火可以燎原</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="fp.html#card-7">第一性原理 · 非连续性与第二曲线</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-14">毛选 · 星星之火可以燎原</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="fp.html#card-7">第一性原理 · 非连续性与第二曲线</a></div></details></div>
 </div></div>
 
 <!-- CARD 18 -->
@@ -774,12 +794,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>合作博弈研究<strong>联盟如何形成、如何分配合作收益</strong>。核心概念：特征函数 v(S) 表示联盟 S 可以获得的收益。</p>
   <div class="ot"><div class="ot-q">合作博弈：给定参与者集合 N 和特征函数 v: 2^N → R，v(S) 表示联盟 S 可以获得的收益。核心问题：如何分配总收益 v(N) 使得没有子联盟有动机脱离？</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>合作博弈的核心问题是"联盟稳定性"——如何分配收益使得没有子联盟有动机脱离。这解释了为什么某些联盟能够稳定存在，而某些联盟会崩溃。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>核心（Core）的直觉</h4>
     <p>核心（Core）的核心直觉：<strong>如果分配方案在核心中，没有任何子联盟有动机脱离</strong>。例如，如果分配方案 (x₁, x₂, x₃) 在核心中，那么 (x₁, x₂) ≥ v({1,2})、(x₁, x₃) ≥ v({1,3})、(x₂, x₃) ≥ v({2,3})、(x₁, x₂, x₃) = v({1,2,3})。这解释了为什么某些联盟能够稳定存在。</p>
     <div class="insight"><strong>深层洞见：</strong>核心揭示了"联盟稳定性的条件"——如果分配方案在核心中，联盟就稳定；否则，某些子联盟会脱离。这解释了为什么某些合作能够长期存在，而某些合作会崩溃——因为分配方案是否在核心中。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">手套博弈</div><div class="cd">3人：参与者1有左手手套，参与者2和3有右手手套。v({1,2}) = v({1,3}) = 1（一双），v({2,3}) = 0（两只右手），v({1,2,3}) = 1。核心：(1, 0, 0)——参与者1得全部收益，参与者2和3得0。这解释了为什么稀缺资源（左手手套）的拥有者得更多。</div><div class="csrc">经典案例</div></div>
@@ -795,7 +815,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Game theory is divided into two main branches. The first is cooperative game theory, which assumes that the players can communicate, form coalitions and sign binding agreements. Cooperative game theory has been used, for example, to analyze voting behavior and other issues in political science and related fields. We will deal exclusively with the other main branch, namely non-cooperative game theory. Non-cooperative game theory models situations where the players are either unable to communicate or are able to communicate but cannot sign binding contracts.</div><div class="ot-s">—— Bonanno《Game Theory》Ch.1 · Introduction</div><div class="ot-i"><strong>译文：</strong>博弈论分为两大分支：合作博弈理论假设参与者可以沟通、结成联盟并签署有约束力的协议（例如用于分析投票行为等政治学问题）；非合作博弈理论研究参与者无法沟通、或虽能沟通但不能签订有约束力合同的情形。Bonanno 教材专注非合作博弈——合作博弈的联盟形成与分配问题需另见专书。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-6">毛选 · 阶级分析法</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-6">毛选 · 阶级分析法</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="sunzi.html#card-1">孙子兵法 · 不战而屈人之兵</a></div></details></div>
 </div></div>
 
 <!-- CARD 19 -->
@@ -805,12 +825,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>廉价交谈是<strong>无成本的、不可验证的沟通</strong>。核心问题：在没有成本的情况下，沟通能否传递信息？</p>
   <div class="ot"><div class="ot-q">廉价交谈：参与者发送无成本、不可验证的消息。核心发现：如果发送者和接收者的利益一致，廉价交谈可以传递信息；如果利益不一致，廉价交谈无法传递信息（除非部分信息）。</div><div class="ot-s">—— Crawford & Sobel (1982)</div><div class="ot-i"><strong>解读：</strong>廉价交谈的核心发现：如果利益一致，"空口说白话"可以传递信息；如果利益不一致，"空口说白话"无法传递信息（因为发送者有动机撒谎）。这解释了为什么某些沟通有效，而某些无效。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>廉价交谈的直觉</h4>
     <p>廉价交谈的核心直觉：<strong>如果利益一致，"空口说白话"可以传递信息；如果利益不一致，"空口说白话"无法传递信息</strong>。例如，如果顾问和公司利益一致，顾问的建议可以信任；如果利益不一致（如顾问想多收费），顾问的建议不可信任。</p>
     <div class="insight"><strong>深层洞见：</strong>廉价交谈揭示了"沟通有效性的条件"——如果利益一致，沟通可以传递信息；如果利益不一致，沟通无法传递信息（除非部分信息）。这解释了为什么某些沟通有效（如朋友之间的建议），而某些无效（如销售人员的推销）。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">顾问建议</div><div class="cd">顾问和公司。如果利益一致（顾问收费固定），顾问的建议可以信任（廉价交谈有效）；如果利益不一致（顾问收费与项目规模挂钩），顾问的建议不可信任（顾问有动机夸大项目规模）。这解释了为什么固定收费顾问比按项目收费顾问更可信。</div><div class="csrc">Crawford & Sobel (1982) 经典案例</div></div>
@@ -826,7 +846,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Opinion polls of this type are worthwhile only if there are reasons to believe that the people who are interviewed will respond honestly. But will they? If I would like more parks and believe that the final tax I will have to pay is independent of the amount I state in the interview, I would have an incentive to overstate my willingness to pay, hoping to swing the decision towards building a new park. On the other hand, if I fear that the final tax will be affected by the amount I report, then I might have an incentive to understate my willingness to pay.</div><div class="ot-s">—— Bonanno《Game Theory》§2.4</div><div class="ot-i"><strong>译文：</strong>无成本的口头表态是否可信，取决于说话者的利益：若我报出的数字不影响自己最终要付的税，我就会有动机夸大支付意愿；若会影响，我就有动机低报。这正是廉价交谈的核心问题——没有成本的沟通只有在利益一致或机制约束下才能传递信息，"空口说白话"本身不足为凭。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a><a class="rt" href="mao.html#card-16">毛选 · 反对自由主义</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <!-- CARD 20 -->
@@ -836,12 +856,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>声誉是<strong>长期关系中建立的信誉</strong>。核心发现：在重复博弈中，参与者可以通过建立"好声誉"获得长期收益。</p>
   <div class="ot"><div class="ot-q">声誉模型：在重复博弈中，参与者可以通过"建立好声誉"获得长期收益。例如，卖家可以通过"不欺骗"建立好声誉，吸引更多买家。这解释了为什么长期商家比短期商家更可信。</div><div class="ot-s">—— Kreps & Wilson (1982), Milgrom & Roberts (1982)</div><div class="ot-i"><strong>解读：</strong>声誉模型的核心发现：在长期关系中，参与者有动机建立好声誉，因为好声誉可以带来长期收益。这解释了为什么长期关系中人们更诚实——因为坏声誉会损害长期利益。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>声誉的直觉</h4>
     <p>声誉的核心直觉：<strong>在长期关系中，好声誉可以带来长期收益</strong>。例如，卖家可以通过"不欺骗"建立好声誉，吸引更多买家；如果欺骗，坏声誉会损害长期利益。这解释了为什么长期商家比短期商家更诚实——因为坏声誉会损害长期利益。</p>
     <div class="insight"><strong>深层洞见：</strong>声誉模型揭示了"长期关系的价值"——在长期关系中，参与者有动机建立好声誉，因为好声誉可以带来长期收益。这解释了为什么长期关系中人们更诚实——因为坏声誉会损害长期利益。这解释了为什么"老字号"比"新店"更可信——因为老字号有好声誉。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">电商平台的声誉机制</div><div class="cd">电商平台上的卖家。如果卖家建立好声誉（好评多），吸引更多买家，得更多收益；如果卖家欺骗（差评多），坏声誉损害长期利益。这解释了为什么电商平台上的卖家重视好评——因为好声誉可以带来长期收益。</div><div class="csrc">推演案例</div></div>
@@ -857,7 +877,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">Intuition suggests that in this game the threat by the incumbent to fight early entrants might be credible, for the following reason. … Thus the backward-induction solution does not capture the "reputation" argument outlined above. … In order to capture the reputation argument described above we need to allow for some uncertainty in the mind of some of the players, as we will show in a later chapter. In a perfect-information game uncertainty is ruled out by definition.</div><div class="ot-s">—— Bonanno《Game Theory》§3.4</div><div class="ot-i"><strong>译文：</strong>直觉上"杀鸡儆猴"式的声誉威慑可能可信，但逆向归纳解无法刻画这一声誉论证；要形式化声誉效应，必须允许参与者心中存在不确定性——而完美信息博弈按定义排除了不确定性。声誉的作用在后续不完美信息章节中借助信念与类型得到正式刻画。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-15">毛选 · 为人民服务</a><a class="rt" href="mao.html#card-18">毛选 · 将革命进行到底</a><a class="rt" href="mao.html#card-13">毛选 · 愚公移山精神</a></div></details></div>
 </div></div>
 
 <!-- CARD 21 -->
@@ -867,12 +887,12 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>核心（Core）和沙普利值（Shapley Value）是合作博弈中<strong>分配合作收益的两种方法</strong>。</p>
   <div class="ot"><div class="ot-q">核心（Core）：分配方案 (x₁, x₂, ..., x_n) 在核心中，如果 (1) Σx_i = v(N)；(2) 对于任何子联盟 S，Σ_{i∈S} x_i ≥ v(S)。沙普利值：每个参与者 i 的沙普利值 φ_i = Σ_{S⊆N\{i}} [v(S∪{i}) - v(S)] · |S|!(n-|S|-1)!/n!</div><div class="ot-s">—— Shapley (1953)</div><div class="ot-i"><strong>解读：</strong>核心要求"没有子联盟有动机脱离"；沙普利值要求"每个参与者得到其边际贡献的期望"。核心强调稳定性，沙普利值强调公平性。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>核心 vs 沙普利值的直觉</h4>
     <p>核心的核心直觉：<strong>如果分配方案在核心中，没有任何子联盟有动机脱离</strong>。沙普利值的核心直觉：<strong>每个参与者得到其边际贡献的期望</strong>。例如，如果参与者1的边际贡献高，沙普利值给他更多；如果参与者1的边际贡献低，沙普利值给他更少。</p>
     <div class="insight"><strong>深层洞见：</strong>核心和沙普利值揭示了"分配的两个维度"——核心强调稳定性（没有子联盟有动机脱离），沙普利值强调公平性（每个参与者得到其边际贡献的期望）。这解释了为什么某些分配方案稳定但不公平（如核心中的某些方案），而某些公平但不稳定（如沙普利值可能不在核心中）。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">手套博弈的核心与沙普利值</div><div class="cd">3人：参与者1有左手手套，参与者2和3有右手手套。v({1,2}) = v({1,3}) = 1，v({2,3}) = 0，v({1,2,3}) = 1。核心：(1, 0, 0)。沙普利值：(1/3, 1/3, 1/3)。核心给参与者1全部收益（因为他是稀缺资源），沙普利值给三人平分（因为每人的边际贡献期望相同）。这解释了为什么核心和沙普利值给出不同分配——因为核心强调稳定性，沙普利值强调公平性。</div><div class="csrc">经典案例</div></div>
@@ -888,7 +908,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">原文摘录</div>
   <div class="ot"><div class="ot-q">The breakthrough came with John von Neumann and Oskar Morgenstern's book, Theory of Games and Economic Behavior, published in 1944. This was followed by important work by John Nash (1950-51) and Lloyd Shapley (1953). … The Nobel Memorial prize in economics was awarded to game theorists three more times: in 2005 to Robert Aumann and Thomas Schelling, in 2007 to Leonid Hurwicz, Eric Maskin and Roger Myerson and in 2012 to Lloyd Shapley and Alvin Roth. — References: "Shapley, Lloyd. A Value for n-person Games. In: H.W. Kuhn and A.W. Tucker, eds., Contributions to the Theory of Games, Volume II, 1953."</div><div class="ot-s">—— Bonanno《Game Theory》Ch.1 · Introduction & References</div><div class="ot-i"><strong>译文：</strong>本书绪论确认：继 1944 年冯·诺依曼与摩根斯特恩的奠基之作后，纳什（1950-51）与沙普利（1953）的工作奠定了博弈论的基础；沙普利与罗斯于 2012 年获诺贝尔经济学奖。书末文献列出沙普利值的原始出处：Shapley (1953)《A Value for n-person Games》。Bonanno 教材专注非合作博弈，核心与沙普利值的正式定义需回到该原始文献。</div></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="mao.html#card-6">毛选 · 阶级分析法</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="mao.html#card-6">毛选 · 阶级分析法</a><a class="rt" href="mao.html#card-17">毛选 · 党委会的工作方法</a><a class="rt" href="mao.html#card-12">毛选 · 从群众中来到群众中去</a></div></details></div>
 </div></div>
 
 <!-- CARD 22 -->
@@ -898,13 +918,13 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">核心定义</div><p>博弈论的<strong>边界与局限</strong>：博弈论假设参与者是理性的、收益函数已知、信息结构明确。现实中这些假设可能不成立。</p>
   <div class="ot"><div class="ot-q">博弈论的假设：(1) 参与者是理性的（最大化期望效用）；(2) 收益函数已知；(3) 信息结构明确。现实中这些假设可能不成立。</div><div class="ot-s">—— 标准定义</div><div class="ot-i"><strong>解读：</strong>博弈论的局限：如果参与者不是完全理性的（如行为博弈论），或者收益函数未知，或者信息结构不明确，博弈论的预测可能不准确。这解释了为什么博弈论在某些场景下预测不准确。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>博弈论的边界</h4>
     <p><strong>行为博弈论</strong>：现实中人们不是完全理性的（如损失厌恶、现状偏见）。行为博弈论研究这些非理性行为如何影响博弈结果。</p>
     <p><strong>不完全契约</strong>：现实中契约无法涵盖所有可能情况。不完全契约理论研究如何在契约不完全的情况下做最优决策。</p>
     <div class="insight"><strong>深层洞见：</strong>博弈论的局限揭示了"理论的边界"——任何理论都有假设，如果假设不成立，理论预测可能不准确。这解释了为什么博弈论在某些场景下预测不准确——因为现实比理论假设更复杂。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">应用场景总结</div>
   <div class="cases"><h4>22张卡片应用场景总结</h4>
     <div class="ci"><div class="cn">商业决策</div><div class="cd">战略式博弈（预测竞争对手反应）、纳什均衡（预测市场均衡）、囚徒困境（解决价格战）、逆向归纳（动态决策）、重复博弈（长期合作）、无名氏定理（合作条件）、不完全信息（逆向选择）、贝叶斯博弈（拍卖策略）、信号博弈（品牌建设）、拍卖理论（竞价策略）、机制设计（激励机制）、讨价还价（谈判策略）、演化博弈（行业规范）、合作博弈（合资企业）、廉价交谈（沟通有效性）、声誉（品牌建设）、核心与沙普利值（利润分配）。</div><div class="csrc">总结</div></div>
@@ -915,7 +935,7 @@ a{color:var(--accent);text-decoration:none}
 <div class="s"><div class="st">边界</div>
   <div class="bnd"><h4>何时不用博弈论</h4><p><strong>不用博弈论：</strong>如果参与者不是完全理性的（如情绪化决策）、收益函数未知、信息结构不明确。此时应使用行为博弈论、不完全契约理论等替代理论。</p></div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-10">第一性原理 · 第一性原理的边界</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-10">第一性原理 · 第一性原理的边界</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></details></div>
 </div></div>
 
 </div></div>

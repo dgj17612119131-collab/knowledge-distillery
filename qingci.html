@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>把关系当成<strong>账户</strong>：平时持续存入（关心、帮忙、给面子、分享信息），需要时才有余额可取。临时抱佛脚、用时才登门，是透支——取一次就破产。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">养</div><div class="ft2"><strong>养 = 无功利的日常投入</strong>：逢年过节的一句问候、顺手帮的小忙、看到对他有用的信息转给他。这些"当下没用"的动作才是存款。</div></div><div class="fs2"><div class="fn2">用</div><div class="ft2"><strong>用 = 有事的索取</strong>：只有"用"没有"养"，等于一张空卡。关系账户的规矩是——先存后取，多存少取。</div></div><div class="fs2"><div class="fn2">忌</div><div class="ft2"><strong>最伤关系的两件事</strong>：一是"用人朝前，不用人朝后"；二是把别人帮的忙当成理所当然、从不回礼。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>中国人情社会的底层规则是"礼尚往来"的互惠循环。你释放的善意不是交易，是<strong>信号</strong>——传递"我是懂规矩、值得长期交往的人"。账户余额决定关键时刻别人愿不愿意为你冒险。</p><div class="insight"><strong>深层洞见：</strong>多数人只在"有用"时经营关系，本质是把关系当消费而非投资。真正的高手在<strong>完全看不到回报的时候</strong>依然对人和善、愿意帮忙——因为他在乎的是十年账户，不是这一单。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>中国人情社会的底层规则是"礼尚往来"的互惠循环。你释放的善意不是交易，是<strong>信号</strong>——传递"我是懂规矩、值得长期交往的人"。账户余额决定关键时刻别人愿不愿意为你冒险。</p><div class="insight"><strong>深层洞见：</strong>多数人只在"有用"时经营关系，本质是把关系当消费而非投资。真正的高手在<strong>完全看不到回报的时候</strong>依然对人和善、愿意帮忙——因为他在乎的是十年账户，不是这一单。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">客户没单子时也保持联系、分享行业信息，别只在要续约时才出现。你"不图什么"的时候出现的频率，决定了别人有需求时第一个想到谁。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">列出你的"关系账户"：过去一年你主动为哪几个人存了款、又向谁只取不存？只取不存的关系，正在悄悄破产。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 先做朋友再做生意</a><a class="rt" href="mao.html#card-12">毛选 · 群众路线</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 先做朋友再做生意</a><a class="rt" href="mao.html#card-12">毛选 · 群众路线</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="lf,bz,mg">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>书名"青瓷"是全书的隐喻：青瓷之美在于<strong>釉面的开片裂纹</strong>，太完美的瓷器反而像假的。做人做事同理——<strong>留一点瑕疵、留三分余地，比滴水不漏更可信、更长久。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">裂</div><div class="ft2"><strong>适度的"不完美"是信任的来源</strong>：把自己说得太圆满、太无懈可击，别人反而防备。暴露一点小缺点、承认"这事我也没把握"，更让人信你。</div></div><div class="fs2"><div class="fn2">余</div><div class="ft2"><strong>凡事留一线</strong>：话不说绝、事不做尽、利不占全。留出的那道"缝"，是给对方的体面，也是给自己的退路。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这背后是"水至清则无鱼，人至察则无徒"的系统智慧。一个把什么都算到极致的系统是没有弹性的——一旦环境变化就崩。留白=留出容错和转圜的空间。</p><div class="insight"><strong>深层洞见：</strong>追求"完美无瑕"其实是控制欲和不安全感。真正成熟的人接受"半开"的状态：项目做到八成、话说七分、关系保持恰当的距离。<strong>满则溢，月盈则亏</strong>——留余地不是软弱，是给事物留生长的空间。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这背后是"水至清则无鱼，人至察则无徒"的系统智慧。一个把什么都算到极致的系统是没有弹性的——一旦环境变化就崩。留白=留出容错和转圜的空间。</p><div class="insight"><strong>深层洞见：</strong>追求"完美无瑕"其实是控制欲和不安全感。真正成熟的人接受"半开"的状态：项目做到八成、话说七分、关系保持恰当的距离。<strong>满则溢，月盈则亏</strong>——留余地不是软弱，是给事物留生长的空间。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">不必把自己包装得完美。适当示弱、承认不会、坦白难处，反而拉近关系。人人都爱有裂纹的真青瓷，没人信无瑕的赝品。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">对下属、对方案都留一分容错。把人逼到"零瑕疵"，得到的是隐瞒和造假；留出安全边界，才得到真话。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 花看半开，酒饮微醺</a><a class="rt" href="sunzi.html#card-2">孙子 · 先胜后战（留余地）</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 花看半开，酒饮微醺</a><a class="rt" href="sunzi.html#card-2">孙子 · 先胜后战（留余地）</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="bz,mg,cr">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>关系网里有三层人：<strong>求人的、帮人的、搭台的</strong>。最高明的是做"局"的人——不直接下场争利，而是把各方连起来、造一个场，让别人的需求互相咬合，自己在中间掌握信息与位置。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">连</div><div class="ft2"><strong>做连接者</strong>：把 A 的需求对接到 B 的资源，撮合成交。你不生产价值，你让价值流动，流动中你自然有位置。</div></div><div class="fs2"><div class="fn2">台</div><div class="ft2"><strong>搭台子</strong>：组一个局、办一场活动、建一个平台，让别人在你的台上唱戏。台主收的是"场租"和"话语权"。</div></div><div class="fs2"><div class="fn2">位</div><div class="ft2"><strong>占信息枢纽位</strong>：谁掌握了各方都不知道的全局信息，谁就掌握了主动权。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"结构洞"的处世版：网络中连接两个不相连群体的那个"洞"，位置价值最高。做局者占据的就是结构洞——信息、资源、人脉在此交汇，他不必最强，但不可或缺。</p><div class="insight"><strong>深层洞见：</strong>别只想着"我要拿到那笔生意"（玩家思维），要想"我能不能造一个让几方都受益、而我居中"的局（做局思维）。<strong>争利者累，谋局者逸</strong>——把蛋糕怎么分的设计权拿到手，比抢一块蛋糕高一个段位。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这是"结构洞"的处世版：网络中连接两个不相连群体的那个"洞"，位置价值最高。做局者占据的就是结构洞——信息、资源、人脉在此交汇，他不必最强，但不可或缺。</p><div class="insight"><strong>深层洞见：</strong>别只想着"我要拿到那笔生意"（玩家思维），要想"我能不能造一个让几方都受益、而我居中"的局（做局思维）。<strong>争利者累，谋局者逸</strong>——把蛋糕怎么分的设计权拿到手，比抢一块蛋糕高一个段位。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">与其自己抢一个项目，不如把甲方、乙方、资源方攒到一起做东，你来做撮合与规则设计。中间人赚的是三方都愿意给的钱。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">跨部门协作推不动时，别硬推——搭一个让各部门利益都对齐的机制/例会（局），让协作在局里自然发生。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 借嘴说话</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="sunzi.html#card-5">孙子 · 致人而不致于人</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 借嘴说话</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="sunzi.html#card-5">孙子 · 致人而不致于人</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="lf,mg,bz">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>最好的状态是"将满未满"：花半开最美、酒微醺最舒服。做事<strong>做到八九分就收</strong>，留一分给天、给人、给变化。把事做绝、把利占尽、把话说满，是取祸之道。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">半</div><div class="ft2"><strong>不追求100分</strong>：赢了留三分给对方面子，赚了留一分给别人甜头，占了留一线给对手退路。</div></div><div class="fs2"><div class="fn2">度</div><div class="ft2"><strong>分寸=知道在哪一步停</strong>：热情不过界、帮忙不包办、亲密不失敬、坚持不固执。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>盛极必衰是系统的普遍规律——一个变量推到极值，往往就是反转点。"半开"是主动停在峰值之前，避开"满招损"的那一下反噬。这不是消极，是对周期的敬畏。</p><div class="insight"><strong>深层洞见：</strong>分寸感的核心是<strong>克制</strong>：明明能赢更多却收手，明明能把话说死却留白。短期看"少拿了"，长期看是给自己和别人都留了活路。会做人的人，从不把一件事的便宜占干净。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>盛极必衰是系统的普遍规律——一个变量推到极值，往往就是反转点。"半开"是主动停在峰值之前，避开"满招损"的那一下反噬。这不是消极，是对周期的敬畏。</p><div class="insight"><strong>深层洞见：</strong>分寸感的核心是<strong>克制</strong>：明明能赢更多却收手，明明能把话说死却留白。短期看"少拿了"，长期看是给自己和别人都留了活路。会做人的人，从不把一件事的便宜占干净。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">劝人、帮忙、给建议都点到为止。说一次是提醒，说三次是冒犯。给别人留"自己决定"的空间，比替他做对更重要。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">谈合作别把利润榨到对方没有。让合作方也赚到钱、有面子，这单才会变成十单。你留的那一分利，是复购和口碑的种子。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 青瓷哲学（留余地）</a><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破</a><a class="rt" href="sunzi.html#card-6">孙子 · 兵贵胜不贵久（不过度）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 青瓷哲学（留余地）</a><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破</a><a class="rt" href="sunzi.html#card-6">孙子 · 兵贵胜不贵久（不过度）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="bz,cr,lf">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>中国人谈生意的顺序是<strong>"先谈交情，再谈买卖"</strong>。直接甩条款、开门见山要合作，是把对方当对手。先把人做熟、把信任建立起来，生意是交情水到渠成的结果。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">序</div><div class="ft2"><strong>顺序不能反</strong>：先建立"自己人"的感觉，再谈利益。反过来先谈钱，就把关系锁死在"外人/对手"框架里了。</div></div><div class="fs2"><div class="fn2">藏</div><div class="ft2"><strong>把目的藏在交情里</strong>：不直说"我要你这单"，而是先帮对方解决问题、一起吃几次饭、聊几次非业务，等对方主动问"你需要什么"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>信任能大幅降低交易成本。当对方把你当"自己人"，很多条款、防备、讨价还价都省了——因为他信你不会坑他。先做朋友，本质是<strong>先付信任的成本，再收交易的低摩擦</strong>。</p><div class="insight"><strong>深层洞见：</strong>急功近利的人上来就谈业务，把每一次接触都变成索取；会经营的人把业务放在最后，前面全在给。看似慢，实则快——<strong>关系到位了，生意挡都挡不住；关系没到位，再好的方案也被挑刺。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>信任能大幅降低交易成本。当对方把你当"自己人"，很多条款、防备、讨价还价都省了——因为他信你不会坑他。先做朋友，本质是<strong>先付信任的成本，再收交易的低摩擦</strong>。</p><div class="insight"><strong>深层洞见：</strong>急功近利的人上来就谈业务，把每一次接触都变成索取；会经营的人把业务放在最后，前面全在给。看似慢，实则快——<strong>关系到位了，生意挡都挡不住；关系没到位，再好的方案也被挑刺。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">见重要客户，第一次别带方案，先聊行业、聊他的难处、聊他这个人。让他觉得"你懂他"，第二次再谈合作，阻力减半。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">谈判僵住时，先跳出议题、恢复关系（约个饭、聊点别的），把人谈热了再回来谈事。很多事是"谈人"谈成的，不是"谈事"谈成的。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 关系是养出来的</a><a class="rt" href="javascript:scrollCard(10)">→ 把"我要"说成"为您"</a><a class="rt" href="game-theory.html#card-20">博弈论 · 声誉</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 关系是养出来的</a><a class="rt" href="javascript:scrollCard(10)">→ 把"我要"说成"为您"</a><a class="rt" href="game-theory.html#card-20">博弈论 · 声誉</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="mg,cr,lf">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>心里门儿清，嘴上留一线。<strong>看穿对方的算计、尴尬、谎话，不当场戳穿</strong>——给他留体面，就是给自己留后路。面子在中国社会是硬通货，撕人面子是最贵的消耗。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">看</div><div class="ft2"><strong>看破</strong>：对方的话术、难处、小心思，你心里要有数——这是判断力。</div></div><div class="fs2"><div class="fn2">不说</div><div class="ft2"><strong>不说破</strong>：知道但不点穿，装作没看穿，给对方台阶——这是分寸。看破是聪明，不说破是智慧。</div></div><div class="fs2"><div class="fn2">护</div><div class="ft2"><strong>公开场合永远护人面子</strong>：有不同意见私下说，当众只给支持。让人下不来台的事，一次就结仇。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人被当众戳穿时，第一反应不是反省而是防御和记恨——你会把"解决问题"变成"制造敌人"。给对方留面子，是让他<strong>有余地主动调整</strong>，而不是被逼到必须死扛。保全他的自尊，他才可能给你合作。</p><div class="insight"><strong>深层洞见：</strong>很多人赢了道理、输了关系：当场把对方驳得哑口无言，事情也没谈成。<strong>真正的高手让对手"体面地让步"</strong>——给他一个台阶、一个说法，让他觉得自己是主动配合的，而不是被你打败的。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人被当众戳穿时，第一反应不是反省而是防御和记恨——你会把"解决问题"变成"制造敌人"。给对方留面子，是让他<strong>有余地主动调整</strong>，而不是被逼到必须死扛。保全他的自尊，他才可能给你合作。</p><div class="insight"><strong>深层洞见：</strong>很多人赢了道理、输了关系：当场把对方驳得哑口无言，事情也没谈成。<strong>真正的高手让对手"体面地让步"</strong>——给他一个台阶、一个说法，让他觉得自己是主动配合的，而不是被你打败的。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">下属汇报有明显漏洞，别当众"你这不对"。先肯定能肯定的部分，把问题变成"我们一起看看这里怎么完善"。给面子，他才敢说真话。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">朋友吹牛、说了不实的话，笑笑就好，不必当场纠正。你不是来赢他的，是来处关系的。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 拒绝：只关门不堵路</a><a class="rt" href="mao.html#card-17">毛选 · 党委会方法（对事不对人）</a><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 拒绝：只关门不堵路</a><a class="rt" href="mao.html#card-17">毛选 · 党委会方法（对事不对人）</a><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="cr,bz,lf">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>高手说话<strong>只说三分，留七分让对方去品</strong>。不把意思说满、说死、说透——留出解读空间。对方接住了，顺势推进；接不住，你也没把话说死，随时能收回。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">留白</div><div class="ft2"><strong>点到为止</strong>：暗示需求而不明说，表达态度而不摊牌。让对方"听懂"，而不是"被告知"。</div></div><div class="fs2"><div class="fn2">弹性</div><div class="ft2"><strong>说出去的话要能收</strong>：话说七分，万一对方反应不对，你可以说"我不是那个意思"，全身而退。</div></div><div class="fs2"><div class="fn2">补全</div><div class="ft2"><strong>让对方参与意义建构</strong>：人对自己"悟出来"的话，比被告知的更信服、更愿意行动。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>直接说满有三个代价：一是失去回旋余地，二是显得不懂规矩（太直白像要挟或乞求），三是剥夺了对方面子。含蓄把"要求"包装成"暗示"，让对方主动给，双方都体面。</p><div class="insight"><strong>深层洞见：</strong>含蓄不是虚伪，是<strong>给关系上保险</strong>。把决定权和主动权藏在话里递给对方——他若愿意，会顺着你的三分话把七分补齐；他若不愿意，也听得懂、不失礼。这就是"听话听音"要配套用的表达端。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>直接说满有三个代价：一是失去回旋余地，二是显得不懂规矩（太直白像要挟或乞求），三是剥夺了对方面子。含蓄把"要求"包装成"暗示"，让对方主动给，双方都体面。</p><div class="insight"><strong>深层洞见：</strong>含蓄不是虚伪，是<strong>给关系上保险</strong>。把决定权和主动权藏在话里递给对方——他若愿意，会顺着你的三分话把七分补齐；他若不愿意，也听得懂、不失礼。这就是"听话听音"要配套用的表达端。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">想要对方降价/加资源，别直说"你得给我"。可以说"这个条件我要是拿回去，恐怕不太好交代啊……"——把诉求变成一句留白的感叹，等对方接。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">提意见、表达不满时，说一半留一半，观察反应再加码或收。一上来把话说绝，就把天聊死了。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 听话听音</a><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破</a><a class="rt" href="game-theory.html#card-19">博弈论 · 廉价交谈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 听话听音</a><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破</a><a class="rt" href="game-theory.html#card-19">博弈论 · 廉价交谈</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="cr,mg,lf">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>关键信息往往不在对方说了什么，而在<strong>没说什么、怎么说的、为什么这么说</strong>。"改天吧"="不"；"这个有点难"="给够好处就不难"；"原则上可以"="具体还得看我"。会听话外之音，才不会被字面意思骗。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">推脱</div><div class="ft2"><strong>模糊=拒绝</strong>："再说、研究研究、看情况、改天"——都是不，只是不伤面子的不。别当真去等"改天"。</div></div><div class="fs2"><div class="fn2">暗示</div><div class="ft2"><strong>强调=缺什么</strong>：反复说"我这人实在、不搞虚的"，往往在试探你实不实在；说"钱不是问题"，多半是在意钱。</div></div><div class="fs2"><div class="fn2">反问</div><div class="ft2"><strong>答非所问=回避</strong>：你问A他答B，B里藏着他真正想说的。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>中国式表达是"高语境"的：大量信息编码在关系、场合、语气、留白里，而非字面。因为直接说破成本高（伤面子、丢主动、担风险），所以人们习惯性地把真实意图包在客气话里。听话听音，是解码这套高语境系统。</p><div class="insight"><strong>深层洞见：</strong>别做"字面主义者"——别人一说"改天"你就回家等。要训练自己听<strong>三样东西：拒绝的委婉、需求的暗示、情绪的信号</strong>。听懂了不必点破（见"看破不说破"），顺着那层意思去回应即可。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>中国式表达是"高语境"的：大量信息编码在关系、场合、语气、留白里，而非字面。因为直接说破成本高（伤面子、丢主动、担风险），所以人们习惯性地把真实意图包在客气话里。听话听音，是解码这套高语境系统。</p><div class="insight"><strong>深层洞见：</strong>别做"字面主义者"——别人一说"改天"你就回家等。要训练自己听<strong>三样东西：拒绝的委婉、需求的暗示、情绪的信号</strong>。听懂了不必点破（见"看破不说破"），顺着那层意思去回应即可。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方说"我个人是支持的，但要走流程"——真实信息是"他一个人做不了主/还有顾虑"。别急着推进，先帮他解决"流程"背后的顾虑。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">下属说"好的收到"但没追问细节，多半是没懂或有意见不敢说。补一句"你觉得哪里可能落不了地？"把没说的那半句钓出来。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 说三分留七分</a><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破</a><a class="rt" href="mao.html#card-6">毛选 · 阶级分析（看立场）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 说三分留七分</a><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破</a><a class="rt" href="mao.html#card-6">毛选 · 阶级分析（看立场）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="mg,bz,cr">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>重要的话（批评、试探、传话、表态、抬人）不直接从自己嘴里说出来，而是<strong>借第三方的嘴、借一个故事、借"别人都这么说"</strong>来传递。既达到目的，又不得罪人、不留话柄。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">借人</div><div class="ft2"><strong>借他人之口</strong>：想夸某人/提某方案，让第三方在你面前"不经意"提起；想传个意思，托中间人去说。</div></div><div class="fs2"><div class="fn2">借事</div><div class="ft2"><strong>借故事说事</strong>：不直接批评，讲一个"我认识一个人也这样，后来……"，让对方自己对号入座。</div></div><div class="fs2"><div class="fn2">借势</div><div class="ft2"><strong>借"大家"</strong>："这个想法很好，很多优秀公司都这么做"——把个人观点包装成共识，降低被反驳的概率。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>自己直接说，等于把立场、意图、话柄全暴露在自己身上，对方只能选择接受或拒绝你本人。借嘴说，把"我对你"变成"事情本身/大家的意思"，<strong>对方反驳的是那个第三方或故事，不是你</strong>——你始终站在场外，进退自如。</p><div class="insight"><strong>深层洞见：</strong>这也是"做局者"的语言版（见卡3）：真正有分量的人往往不冲在前面把话说满，而是让信息通过别人流到该去的地方。夸人要背后夸（传到对方耳朵效果翻倍），批评要间接提，表态要借共识。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>自己直接说，等于把立场、意图、话柄全暴露在自己身上，对方只能选择接受或拒绝你本人。借嘴说，把"我对你"变成"事情本身/大家的意思"，<strong>对方反驳的是那个第三方或故事，不是你</strong>——你始终站在场外，进退自如。</p><div class="insight"><strong>深层洞见：</strong>这也是"做局者"的语言版（见卡3）：真正有分量的人往往不冲在前面把话说满，而是让信息通过别人流到该去的地方。夸人要背后夸（传到对方耳朵效果翻倍），批评要间接提，表态要借共识。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">想提醒某人别太张扬，别说"你太高调了"。讲个"以前有个很有才的人，最后栽在……"的故事，让他自己悟。你既点了他，又没当面说他。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">想让关键人知道你的诚意/实力，别自吹。安排一次饭局，让信任的中间人"顺便"提一嘴你的靠谱，胜过你说十句。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 做局者思维</a><a class="rt" href="javascript:scrollCard(12)">→ 赞美要夸到点子上</a><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 做局者思维</a><a class="rt" href="javascript:scrollCard(12)">→ 赞美要夸到点子上</a><a class="rt" href="game-theory.html#card-13">博弈论 · 信号博弈</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="cr,bz,mg">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>求人办事、提要求时，<strong>别从"我需要什么"出发，而要从"这样做对您有什么好处"出发</strong>。把你的诉求翻译成对方的利益，让对方觉得帮你=帮他自己。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">换框</div><div class="ft2"><strong>把"帮我"变成"给您"</strong>：不说"请您支持我这个项目"，说"这个项目能帮您把XX指标做上去/解决您头疼的XX问题"。</div></div><div class="fs2"><div class="fn2">找利</div><div class="ft2"><strong>先研究对方要什么</strong>：开口前先想清楚——他关心KPI？要面子？怕风险？想立功？把你的要求挂到他的诉求上。</div></div><div class="fs2"><div class="fn2">给台阶</div><div class="ft2"><strong>让对方帮你帮得"顺手、有面子"</strong>：把成本降到最低、把好处说得具体。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人行动的动机是自己的利益，不是你的需要。你强调"我多需要"，是在给对方施加亏欠感（对方本能想逃）；你强调"对您有什么用"，是在激活对方的自利动机（对方主动想做）。这是从"索取框架"到"共赢框架"的转换。</p><div class="insight"><strong>深层洞见：</strong>不是让你虚伪，是让你<strong>找到真实的利益交汇点</strong>并讲清楚。多数请求里双方其实都有好处，只是你习惯只说自己的那半。把对方的那半也说出来，请求就从"人情债"变成"合作"，谁都没负担。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人行动的动机是自己的利益，不是你的需要。你强调"我多需要"，是在给对方施加亏欠感（对方本能想逃）；你强调"对您有什么用"，是在激活对方的自利动机（对方主动想做）。这是从"索取框架"到"共赢框架"的转换。</p><div class="insight"><strong>深层洞见：</strong>不是让你虚伪，是让你<strong>找到真实的利益交汇点</strong>并讲清楚。多数请求里双方其实都有好处，只是你习惯只说自己的那半。把对方的那半也说出来，请求就从"人情债"变成"合作"，谁都没负担。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">向老板要资源，别说"我人手不够"。说"这个市场窗口就三个月，多配两个人能把A客户拿下，明年这块能贡献XX万"——把你要人变成帮他赚钱。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">求客户转介绍，别说"帮我多介绍几个"。说"您圈子里要也有类似困扰，我按服务您的标准给他做，也给您长脸"。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 先做朋友再做生意</a><a class="rt" href="javascript:scrollCard(11)">→ 拒绝：只关门不堵路</a><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计（算对方利害）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 先做朋友再做生意</a><a class="rt" href="javascript:scrollCard(11)">→ 拒绝：只关门不堵路</a><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计（算对方利害）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="lf,mg,cr">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>拒绝的艺术在于：<strong>拒的是"这件事"，不伤"这个人"，还留"下次的口子"</strong>。生硬说"不行"是把门关死；高手是"这事我确实帮不上（关门），但你的难处我记着，下次有合适的我第一时间想着你（留窗）"。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">软</div><div class="ft2"><strong>先接情绪，再拒事情</strong>："我特别理解你现在的难处（接），只是这件事我这边确实……（拒）"。先让对方感到被重视。</div></div><div class="fs2"><div class="fn2">因</div><div class="ft2"><strong>给"对事"的理由</strong>：把拒绝归因于客观限制（权限/时机/规定），而非"我不想帮你"。给对方台阶。</div></div><div class="fs2"><div class="fn2">补</div><div class="ft2"><strong>给替代方案</strong>：帮不了这个，可以指条别的路、介绍别人、帮个小忙。拒绝时递一根别的稻草。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>直接拒绝伤的是关系（对方觉得你不给面子、不讲义气）；但无原则答应伤的是自己（透支、背锅）。"只关门不堵路"同时保护两者：守住边界，又保全了对方的面子和未来的可能。</p><div class="insight"><strong>深层洞见：</strong>记住中国人情里"一次把话说死"的代价——对方会记住你拒绝的姿态，下次你有事他也在。会拒绝的人，让被拒方<strong>虽然没办成事，但心里还是暖的、还是承你情的</strong>。拒绝见人品，也最考验分寸。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>直接拒绝伤的是关系（对方觉得你不给面子、不讲义气）；但无原则答应伤的是自己（透支、背锅）。"只关门不堵路"同时保护两者：守住边界，又保全了对方的面子和未来的可能。</p><div class="insight"><strong>深层洞见：</strong>记住中国人情里"一次把话说死"的代价——对方会记住你拒绝的姿态，下次你有事他也在。会拒绝的人，让被拒方<strong>虽然没办成事，但心里还是暖的、还是承你情的</strong>。拒绝见人品，也最考验分寸。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">朋友借钱你不想借，别冷冰冰"没有"。说"真不巧我最近钱也都在理财里取不出（对事），要不我帮你问问别的路子（留窗）？"——拒绝但不结仇。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">驳回下属方案，先肯定出发点，再讲客观约束，最后给方向："思路对，但预算这季度卡死了；你把范围缩到核心功能，下季度我们优先做。"</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破（给面子）</a><a class="rt" href="javascript:scrollCard(4)">→ 花看半开（不做绝）</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务（接受批评）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 看破不说破（给面子）</a><a class="rt" href="javascript:scrollCard(4)">→ 花看半开（不做绝）</a><a class="rt" href="mao.html#card-15">毛选 · 为人民服务（接受批评）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="mg,lf,bz">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>泛泛的"你真棒""好厉害"廉价又无效。高级的赞美夸三样：<strong>夸具体的细节</strong>（说明你真关注他了）、<strong>背后夸</strong>（传到耳朵里效果翻倍）、<strong>夸努力和"不容易"</strong>（肯定他付出的成本，而非天赋）。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">细</div><div class="ft2"><strong>夸到具体处</strong>：不说"方案写得好"，说"你第二部分那个数据对比，一下就抓住了客户痛点，太到位了"。细节=真诚。</div></div><div class="fs2"><div class="fn2">背</div><div class="ft2"><strong>背后夸人</strong>：当着第三方的面夸某人，话一定会传回去，且加了"你居然这么说他"的信任buff。</div></div><div class="fs2"><div class="fn2">难</div><div class="ft2"><strong>夸"不容易"</strong>："这事换别人早放弃了，你顶下来了"——肯定他的付出和坚持，比夸聪明更戳心。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人最渴望的是"被看见"。泛泛夸奖谁都会说，只有注意到具体细节、说出他背后的不易，才让对方感到"你真的懂我、在意我"——这满足的是被认可的深层需求，比夸天赋更能建立好感与忠诚。</p><div class="insight"><strong>深层洞见：</strong>夸天赋（你真聪明）让人怕辜负、不敢挑战；夸努力（你真拼、方法真好）鼓励继续投入。所以<strong>带团队尤其要夸过程和态度</strong>。而背后夸人几乎是零成本高回报的处世利器——既抬了被夸的人，又显出你的厚道。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人最渴望的是"被看见"。泛泛夸奖谁都会说，只有注意到具体细节、说出他背后的不易，才让对方感到"你真的懂我、在意我"——这满足的是被认可的深层需求，比夸天赋更能建立好感与忠诚。</p><div class="insight"><strong>深层洞见：</strong>夸天赋（你真聪明）让人怕辜负、不敢挑战；夸努力（你真拼、方法真好）鼓励继续投入。所以<strong>带团队尤其要夸过程和态度</strong>。而背后夸人几乎是零成本高回报的处世利器——既抬了被夸的人，又显出你的厚道。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">表扬下属别只说"干得不错"。当众点出一个具体动作+背后肯定他的坚持："这次客户那么刁，他居然三次上门把方案磨过了——这股韧劲值得学。"</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">想拉近关系，就在别人面前夸他，别当面夸。夸得越具体、越"懂他"，传回去他越把你当知己。</div></div</div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 借嘴说话</a><a class="rt" href="mao.html#card-12">毛选 · 群众路线（团结人）</a><a class="rt" href="game-theory.html#card-20">博弈论 · 声誉</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 借嘴说话</a><a class="rt" href="mao.html#card-12">毛选 · 群众路线（团结人）</a><a class="rt" href="game-theory.html#card-20">博弈论 · 声誉</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

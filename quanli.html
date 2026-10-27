@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>展示才华的方式，是让它<strong>照到上司身上</strong>，而不是遮住他。功劳再大，只要让上位者感到被比下去、被威胁，你的才能就从资产变成风险。真正聪明的做法是让领导"显得更聪明"，把舞台的光最终汇聚到他身上——他升了，你的位置和資源才跟着稳。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">藏</div><div class="ft2"><strong>锋芒是筹码也是靶子</strong>：越级闪光、抢镜、当众纠正领导，都在提醒上位者"你比我危险"。</div></div><div class="fs2"><div class="fn2">借</div><div class="ft2"><strong>把功劳上移</strong>：你的成果用"在您给的方向下、按您的思路"的框架呈现，让他成为决策主角，你成为执行关键。</div></div><div class="fs2"><div class="fn2">安</div><div class="ft2"><strong>先让他安全</strong>：人只会提拔让自己感到被衬托、不被威胁的人。消除"你威胁我"的隐性恐惧，资源才会流向你。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>权力顶端最怕的不是下属无能，而是下属功高震主。上司自己也处在一个权力结构里——你的光芒若让他在他老板面前失分，他会本能地压制你。<strong>这不是心胸问题，是结构问题</strong>。读懂这一层，才不会天真地以为"只要我够优秀就会被看见"。</p><div class="insight"><strong>深层洞见：</strong>防御视角同样重要：当你的领导刻意在人前贬低你、把你的方案说成他的，你要识别这是他在"吸你的光"。健康做法是把关键贡献留下书面与时间戳记录（邮件、文档版本、群里最初的提出人），既不打架，也不让自己被彻底抹去。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>权力顶端最怕的不是下属无能，而是下属功高震主。上司自己也处在一个权力结构里——你的光芒若让他在他老板面前失分，他会本能地压制你。<strong>这不是心胸问题，是结构问题</strong>。读懂这一层，才不会天真地以为"只要我够优秀就会被看见"。</p><div class="insight"><strong>深层洞见：</strong>防御视角同样重要：当你的领导刻意在人前贬低你、把你的方案说成他的，你要识别这是他在"吸你的光"。健康做法是把关键贡献留下书面与时间戳记录（邮件、文档版本、群里最初的提出人），既不打架，也不让自己被彻底抹去。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>向上管理</div><div class="stx">汇报时先给结论"这个方向是您之前提过的"，再摆数据讲落地。让领导带着你的成果去他老板那里露脸——他升了，你的位置才稳。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">跨部门抢资源时，别做那个"处处显得比对方负责人更懂"的人。适度让对方也没那么难看，舆论才不会反噬你"难合作、爱出风头"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 话少才有分量</a><a class="rt" href="jiushi.html#card-10">遥远的救世主 · 不解释</a><a class="rt" href="qingci.html#card-7">青瓷 · 说三分留七分</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 话少才有分量</a><a class="rt" href="jiushi.html#card-10">遥远的救世主 · 不解释</a><a class="rt" href="qingci.html#card-7">青瓷 · 说三分留七分</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="mg,cr,lf">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>说得越多，越显得急切、越暴露底牌、越容易留下可被引用的把柄。权力感很大程度来自<strong>"稀缺的表达"</strong>——重要的话少而准，停顿和留白比滔滔不绝更有压迫感。开会抢着把每句话填满的人，往往最先失去分量。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">稀</div><div class="ft2"><strong>话是筹码会贬值</strong>：每多说一句无价值的话，你"开口=有信息"的信用就被稀释一分。保持"你一说话大家会停下来听"的稀缺感。</div></div><div class="fs2"><div class="fn2">柄</div><div class="ft2"><strong>言多必失</strong>：你说过的气话、评价、承诺，都会被记下来、传出去、在关键时刻反噬你。少说=少给对手可乘之机。</div></div><div class="fs2"><div class="fn2">默</div><div class="ft2"><strong>沉默是主动</strong>：不接对方的激将、不急着表态、用停顿逼对方先补话——沉默把球踢回给焦虑的人。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人对"信息量稀少的人"会自动脑补更多权威和深意（你越难读，越显高深）；反之，话说太满的人被认为轻浮、可预测、易操控。这也是谈判里<strong>"谁先说话谁让步"</strong>的机制。</p><div class="insight"><strong>深层洞见：</strong>防御——当有人不停追问、逼你当场表态、要你"给个说法"，那是用话术把你的底牌榨出来。你有权说"我需要看一下数据再回复"。沉默不是理亏，是主权。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人对"信息量稀少的人"会自动脑补更多权威和深意（你越难读，越显高深）；反之，话说太满的人被认为轻浮、可预测、易操控。这也是谈判里<strong>"谁先说话谁让步"</strong>的机制。</p><div class="insight"><strong>深层洞见：</strong>防御——当有人不停追问、逼你当场表态、要你"给个说法"，那是用话术把你的底牌榨出来。你有权说"我需要看一下数据再回复"。沉默不是理亏，是主权。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">开会别急着第一个抢话。先听后收尾，用一两句定性 + 复述关键点来锚定结论，分量自然来。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">资源争夺的桌上，少解释、少抱怨、少承诺。把"我很需要这个预算"换成"这是投入产出数据，您判断"——把话变成事实。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 别盖过上司</a><a class="rt" href="javascript:scrollCard(9)">→ 太常见会贬值</a><a class="rt" href="jiushi.html#card-10">遥远的救世主 · 不解释</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 别盖过上司</a><a class="rt" href="javascript:scrollCard(9)">→ 太常见会贬值</a><a class="rt" href="jiushi.html#card-10">遥远的救世主 · 不解释</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="lf,mg,cr">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>人在判断你有几分斤两时，很大程度读的是你的<strong>外在信号</strong>——从容、笃定、不慌的姿态。这不是让你冒充能力，而是：先按"你已经是那个人"的方式行动、说话、占据空间，别人就会按更高标准待你，机会随之而来，最终逼自己真的够上。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">信</div><div class="ft2"><strong>他人靠信号下注</strong>：没人有精力核查你的真实水平，他们用你的神态、语速、是否直视、是否敢要来给你定价。</div></div><div class="fs2"><div class="fn2">演</div><div class="ft2"><strong>内部跟不上时先演外壳</strong>：镇定、准备充分、想清楚再开口——外稳会反过来驯化内慌（行为塑造心态）。</div></div><div class="fs2"><div class="fn2">度</div><div class="ft2"><strong>别演过头</strong>：装懂、抢不属于自己的功劳、承诺做不到的事是"冒领"，迟早暴雷。要演的是从容和担当，不是资历和数据。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"自我实现的预言 + 印象管理"的结合。当你按更高角色行事，环境会给你该角色的资源与信息，你就真的长成了那个角色。而怯懦姿态会让人下意识低估你——即便你有实力，也拿不到匹配的机会。</p><div class="insight"><strong>深层洞见：</strong>防御——识破别人用"气场"包装空壳。判断一个人别只被他从从容容的样子唬住，回到事实：他拿得出什么、兑现过什么。同时警惕被"冒领者"带节奏。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这是"自我实现的预言 + 印象管理"的结合。当你按更高角色行事，环境会给你该角色的资源与信息，你就真的长成了那个角色。而怯懦姿态会让人下意识低估你——即便你有实力，也拿不到匹配的机会。</p><div class="insight"><strong>深层洞见：</strong>防御——识破别人用"气场"包装空壳。判断一个人别只被他从从容容的样子唬住，回到事实：他拿得出什么、兑现过什么。同时警惕被"冒领者"带节奏。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">争取更大的项目/角色时，别等"完全准备好"才敢上。用"假如我是这个负责人会怎么做"的标准提前行动，边做边补能力。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">面对跨团队评审或向上汇报，把紧张藏在充分准备后面：开场稳、语速慢、结论先行，他人对你专业度的判断会被姿态抬高。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 名声先行</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威：服从的是权威的样子</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 名声先行</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威：服从的是权威的样子</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="mg,cr,lf">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>你身边是谁，决定了别人怎么给你定价，也决定了你会被拖进什么风险。野心过剩、爱搬弄、惯于甩锅的人，短期能带你飞，长期一定会把火烧到你身上——<strong>因为他对别人做的事，迟早对你做</strong>。选错同盟，比没有同盟更危险。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">价</div><div class="ft2"><strong>圈子即背书</strong>：别人评估你，常通过"你和谁走得近"。沾上信誉差的人，你的名声会被连坐。</div></div><div class="fs2"><div class="fn2">察</div><div class="ft2"><strong>看他对不在场的人</strong>：当面跟你吐槽、把别人私话传给你的人，也会把你的私话传给别人。用"他如何议论缺席者"预判他会如何议论你。</div></div><div class="fs2"><div class="fn2">远</div><div class="ft2"><strong>问题人物不可救</strong>：别指望用交情感化成性的人。对野心家/搅局者，保持礼貌距离——不深交、不共谋、不交底。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>权力联盟里，风险是不对称的——和危险人物绑定，你共享不了他的收益，却共担他的翻车。而"敌人"很多不是天生的，是你<strong>疏于择友、放纵边界后自己养出来的</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御——警惕那种"只对你一个人好、快速拉你入伙、一起吐槽第三方"的结盟邀约。这种"敌意三角"拉你进去，是为让你当枪、当同盟、当挡箭牌。入伙前先问：他上一批"朋友"现在怎么样了？</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>权力联盟里，风险是不对称的——和危险人物绑定，你共享不了他的收益，却共担他的翻车。而"敌人"很多不是天生的，是你<strong>疏于择友、放纵边界后自己养出来的</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御——警惕那种"只对你一个人好、快速拉你入伙、一起吐槽第三方"的结盟邀约。这种"敌意三角"拉你进去，是为让你当枪、当同盟、当挡箭牌。入伙前先问：他上一批"朋友"现在怎么样了？</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">组建跨部门协作圈时，看能力更要看信誉。能力强但爱甩锅、抢功的人放进核心，会把整个项目组带进政治泥潭。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">面对递过来的"我们一起搞某个人"的暗示，不接、不表态、不扩散。保持距离就是最省力的自保。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 保持被需要</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a><a class="rt" href="javascript:scrollCard(12)">→ 知道何时收手</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 保持被需要</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a><a class="rt" href="javascript:scrollCard(12)">→ 知道何时收手</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="mg,bz,lf">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>权力的实在基础之一是"别人离不开你"——你掌握着关键知识、稀缺资源、独家关系或别人搞不定的能力。当离开你会让事情转不动，你就有了议价权。但要清醒：目标是<strong>"被需要"，不是"卡住别人来要挟"</strong>；后者会招来绕开你的反扑。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">缺</div><div class="ft2"><strong>制造你的稀缺</strong>：持续积累别人短期学不会、替代不了的东西——专有数据口径、难搞的 KA 关系、"只有你懂"的关键系统。</div></div><div class="fs2"><div class="fn2">度</div><div class="ft2"><strong>依赖≠绑架</strong>：故意藏能力让别人离不开你是养虎。适度留一手即可，别做团队单点故障，否则你休假即塌方、也压死自己晋升。</div></div><div class="fs2"><div class="fn2">换</div><div class="ft2"><strong>依赖转成筹码</strong>：被需要要能兑换成资源/话语权，不能只是"能者多劳却不得利"。适时把"只有我能做"谈成"那我需要什么支持"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>谁掌握了别人达成目标所必需的东西，谁就有了"说不"的影响力。但过度索取会把<strong>"感激型依赖"变成"怨恨型依赖"</strong>——对方一旦培养出替代方案，就第一个甩开你。</p><div class="insight"><strong>深层洞见：</strong>防御——识别组织里的"故意不让你学会"。有的上级/老同事垄断关键信息和流程，让你永远只能打下手。这是用依赖控制你，不是培养你。要主动争取全流程可见、建立第二信息源。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>谁掌握了别人达成目标所必需的东西，谁就有了"说不"的影响力。但过度索取会把<strong>"感激型依赖"变成"怨恨型依赖"</strong>——对方一旦培养出替代方案，就第一个甩开你。</p><div class="insight"><strong>深层洞见：</strong>防御——识别组织里的"故意不让你学会"。有的上级/老同事垄断关键信息和流程，让你永远只能打下手。这是用依赖控制你，不是培养你。要主动争取全流程可见、建立第二信息源。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">想升职别把自己做成"离了不转"的救火队长。要么把独门能力变成可教的方法论（带出接班人=你能腾身上移），要么让"我很关键"体现在跨部门议价而非日常琐事。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">对 KA 品牌方，让品牌依赖你的数据洞察与资源调度能力，而非单纯低价。前者是长期议价权，后者随时被更低价的对手替换。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 谨慎择友</a><a class="rt" href="javascript:scrollCard(9)">→ 太常见会贬值</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者思维（搭台的人）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 谨慎择友</a><a class="rt" href="javascript:scrollCard(9)">→ 太常见会贬值</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者思维（搭台的人）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="mg,bz,cr">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>靠威慑和职权压人，能换来一次服从，却换来持久的抵触与阳奉阴违；靠"给人好处、让人有面子、给人想要的"来驱动，才能换来心甘情愿和长期同盟。真正的权力是<strong>让对方觉得"帮你就是帮他自己"</strong>。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">欲</div><div class="ft2"><strong>先想他要什么</strong>：推动别人前先算清对方的利益、KPI、面子、恐惧——把"我要的"翻译成"你能得到的"。</div></div><div class="fs2"><div class="fn2">恩</div><div class="ft2"><strong>好处给在前面/公开</strong>：主动让利、公开分功劳、帮人解决他的难题——互惠会让人欠你、也想帮你。</div></div><div class="fs2"><div class="fn2">威</div><div class="ft2"><strong>大棒是最后手段</strong>：威胁只在"胡萝卜给不起且对方是纯掠夺者"时用，且说到做到；虚张声势的大棒最伤信誉。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>恐惧触发的是防御和逃避——人表面配合、暗地使绊、寻找替代；好感与利益绑定触发的是主动和忠诚。呼应《影响力》的<strong>互惠与喜好</strong>：先给予、让人喜欢，顺从自然发生。</p><div class="insight"><strong>深层洞见：</strong>防御——也要看穿别人递给你的"胡萝卜"。无缘无故的殷勤、来得太容易的好处，往往是为让你欠人情、松原则、进圈子。给好处的动机比好处本身更值得审视。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>恐惧触发的是防御和逃避——人表面配合、暗地使绊、寻找替代；好感与利益绑定触发的是主动和忠诚。呼应《影响力》的<strong>互惠与喜好</strong>：先给予、让人喜欢，顺从自然发生。</p><div class="insight"><strong>深层洞见：</strong>防御——也要看穿别人递给你的"胡萝卜"。无缘无故的殷勤、来得太容易的好处，往往是为让你欠人情、松原则、进圈子。给好处的动机比好处本身更值得审视。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>跨部门</div><div class="stx">求人配合数据/资源时，别拿流程和大老板压。先说清"这事对你 KPI 的帮助"，再给一点即时回报（署名、复用成果、下次优先），推动力翻倍。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">面对不配合的对手，硬碰只会两败。先递台阶、给利益让局面动起来，比威胁"我上报领导"更能拿到结果。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="yingxiangli.html#card-3">影响力 · 互惠</a><a class="rt" href="javascript:scrollCard(8)">→ 借手成事</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="yingxiangli.html#card-3">影响力 · 互惠</a><a class="rt" href="javascript:scrollCard(8)">→ 借手成事</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="bz,mg,cr">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>在没人来得及了解你真实能力的场合，人们按你的<strong>名声/形象</strong>决定要不要给你机会、信不信你的话、怕不怕你。名声是一块先于实力的招牌：它替你说话、替你开路，也替你挡住一部分攻击。经营形象不是虚荣，是降低协作成本、抬高他人预期的权力技术。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">先</div><div class="ft2"><strong>形象先于事实抵达</strong>：别人对你的判断，往往在你开口前就由"他们听说的你"决定了。主动管理别人嘴里那个你。</div></div><div class="fs2"><div class="fn2">一</div><div class="ft2"><strong>一个清晰标签</strong>：有穿透力的名声需要一个简单记忆点（"他数据最扎实""她谈判拿得下"），比"我什么都行"更被信任、更被想起。</div></div><div class="fs2"><div class="fn2">守</div><div class="ft2"><strong>破窗效应</strong>：一次公开失态、一次掉链子的口碑，会覆盖很多次默默靠谱。名声维护要"零容忍小裂缝"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>名声是一种<strong>"社会证明 + 权威"的复合信号</strong>，它把别人评估你的成本外包给了"大家怎么说"。好名声让你在谈判、争取资源前先赢半子——因为对方预期你会成，也怕错过你。</p><div class="insight"><strong>深层洞见：</strong>防御——识破被"包装"出来的名声。热搜型光环、众口一词的吹捧，可能是刻意经营来抬高预期、诱导你下注。把"名声"和"作品"分开看：他到底交付过什么。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>名声是一种<strong>"社会证明 + 权威"的复合信号</strong>，它把别人评估你的成本外包给了"大家怎么说"。好名声让你在谈判、争取资源前先赢半子——因为对方预期你会成，也怕错过你。</p><div class="insight"><strong>深层洞见：</strong>防御——识破被"包装"出来的名声。热搜型光环、众口一词的吹捧，可能是刻意经营来抬高预期、诱导你下注。把"名声"和"作品"分开看：他到底交付过什么。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">在 KA 生态里，"那位总答应的一定兑现"就是资产。宁可少接，也别接了做不到——一次失信，圈子里传得比广告还快。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">跨部门协作前先立"专业标签"：把某类难题（价格口径、新店标尺）做成你的名字，别人遇到就来找你，资源自然向你聚。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 姿态先于实力</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a><a class="rt" href="qingci.html#card-12">青瓷 · 赞美要夸到点子上</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 姿态先于实力</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a><a class="rt" href="qingci.html#card-12">青瓷 · 赞美要夸到点子上</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="mg,bz,cr">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>高段位的做事方式是"借"——借别人的力、别人的嘴、别人的手来达成意图，自己<strong>保持距离、保留退路与清白</strong>。让别人去执行、去表态、甚至去承担后果，你只掌方向。这样既放大产能，也避免自己站到火线上成为唯一靶子。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">借</div><div class="ft2"><strong>借力</strong>：不必事事亲自冲。把意愿转成"别人的主张"——借规则、借上级的既定意图、借其他部门的诉求来推你想推的事。</div></div><div class="fs2"><div class="fn2">嘴</div><div class="ft2"><strong>借嘴</strong>：不好自己出口的批评、价格、拒绝，借他人之口、借数据、借"大家都觉得"来说。</div></div><div class="fs2"><div class="fn2">担</div><div class="ft2"><strong>借事不借锅</strong>：借手的代价是功劳和锅都会分给别人。关键责任不能全外包，否则出事你就是那个"没在场"的失责者。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>亲自出手意味着直接暴露意图、承担因果、树敌。借他人之手则制造了缓冲带：成功有你一份，风险被分散到多人身上，且对方往往还没察觉自己是被引导的。这是<strong>"以迂为直"</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御——识别有人把你当"手"用。当某人总怂恿你去提要求、去怼别的部门、去当恶人，好处归他、恶名归你——你被"借"了。看清谁受益、谁担责，别做别人权力的工具。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>亲自出手意味着直接暴露意图、承担因果、树敌。借他人之手则制造了缓冲带：成功有你一份，风险被分散到多人身上，且对方往往还没察觉自己是被引导的。这是<strong>"以迂为直"</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御——识别有人把你当"手"用。当某人总怂恿你去提要求、去怼别的部门、去当恶人，好处归他、恶名归你——你被"借"了。看清谁受益、谁担责，别做别人权力的工具。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>跨部门</div><div class="stx">需要别的团队配合却对方不买账时，别自己硬刚。借规则/借双方共同 KPI/借上级既定方向去推，你只是"帮忙落地的那个人"。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">不方便的表态借数据说话、借第三方视角说话。把"我认为你不对"变成"这份口径显示对不齐"，攻击性降低、可反驳性也降低。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="qingci.html#card-9">青瓷 · 借嘴说话</a><a class="rt" href="javascript:scrollCard(6)">→ 打动人心</a><a class="rt" href="sunzi.html#card-4">孙子 · 以正合以奇胜</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="qingci.html#card-9">青瓷 · 借嘴说话</a><a class="rt" href="javascript:scrollCard(6)">→ 打动人心</a><a class="rt" href="sunzi.html#card-4">孙子 · 以正合以奇胜</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="mg,bz,lf">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>随叫随到、有求必应、永远在线，会让你的时间和关注变得廉价。人对"稀缺"的东西估值更高。适度制造缺席——<strong>不秒回、不每次都到场、让别人需要排队或争取你的资源</strong>——能抬高你的分量与议价感。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">稀</div><div class="ft2"><strong>可得性=定价</strong>：你出现得越频繁、越好说话，你的注意力和帮忙就越不值钱。稀缺让人害怕失去、于是更珍惜。</div></div><div class="fs2"><div class="fn2">退</div><div class="ft2"><strong>主动收缩供给</strong>：不是摆架子，而是把精力留给高价值的事；对低质量需求，用"延迟/婉拒/需排队"来过滤。</div></div><div class="fs2"><div class="fn2">度</div><div class="ft2"><strong>别缺席关键</strong>：稀缺用在"锦上添花"的日常，不能用在关键时刻。该在场、该兜底时必须出现，否则稀缺变成"不靠谱"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>心理机制上，人高估"机会正在变少"的东西（稀缺原理）。行为上，秒回、有求必应会训练出别人"你随时可用"的预期——一旦你偶尔没满足，反被扣分。不如一开始就设定"我需要提前约"的节奏。</p><div class="insight"><strong>深层洞见：</strong>防御——留意别人正用"稀缺"操控你。故意吊着你、忽冷忽热、制造名额有限/时间紧迫让你仓促决定，是典型的短缺施压。真正的好机会经得起你冷静评估；催你"马上定否则没了"的，先停三秒。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>心理机制上，人高估"机会正在变少"的东西（稀缺原理）。行为上，秒回、有求必应会训练出别人"你随时可用"的预期——一旦你偶尔没满足，反被扣分。不如一开始就设定"我需要提前约"的节奏。</p><div class="insight"><strong>深层洞见：</strong>防御——留意别人正用"稀缺"操控你。故意吊着你、忽冷忽热、制造名额有限/时间紧迫让你仓促决定，是典型的短缺施压。真正的好机会经得起你冷静评估；催你"马上定否则没了"的，先停三秒。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">别做群里那个永远第一个响应、什么忙都接的人。把可用范围和时间节奏立起来："这类需求走工单，我按序处理"，帮你挡掉廉价消耗。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">争取资源/坑位时，稀缺是双向的。你手里紧俏的资源要"分配"而非"有求必给"；同理品牌方给你的独家权益，别把它当常态。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="yingxiangli.html#card-8">影响力 · 短缺</a><a class="rt" href="javascript:scrollCard(2)">→ 话少才有分量</a><a class="rt" href="javascript:scrollCard(5)">→ 保持被需要</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="yingxiangli.html#card-8">影响力 · 短缺</a><a class="rt" href="javascript:scrollCard(2)">→ 话少才有分量</a><a class="rt" href="javascript:scrollCard(5)">→ 保持被需要</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="cr,lf,mg">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>操控之所以奏效，是因为它<strong>绕过了你的理性、直接拨动情绪</strong>（被喜欢、被害怕、被孤立的原始需求）。清醒的第一步是把"对方的话术"和"事情的本质"分开：当你在强烈情绪里想做决定时，往往正是被下手的时刻。识别三大手法：投你所好（奉承）、以恐惧胁迫、把你从群体里孤立。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">捧</div><div class="ft2"><strong>奉承是入口</strong>：突如其来的吹捧、"只有你懂""就指望你了"，是为让你放松戒备、欠人情、做出平时不会做的让步。享受但不信。</div></div><div class="fs2"><div class="fn2">吓</div><div class="ft2"><strong>恐惧让人服从</strong>：放大后果、制造紧迫感、暗示"不配合就……"。恐惧一起来，人就放弃判断只求安全。</div></div><div class="fs2"><div class="fn2">孤</div><div class="ft2"><strong>先 isolate 再下手</strong>：切断你的信息源、离间你的同盟、让你觉得"没人站你这边"，你就更依赖操控者。孤立是控制的前置动作。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>操控利用的是人自动反应的系统1。它不跟你讲道理，而是触发情绪反射——你一旦在情绪驱动下行动，就把主权交给了对方。解药是<strong>"延迟 + 回到实质"</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御核心动作——一旦察觉"我此刻情绪很强（很爽/很怕/很孤单）"，按下暂停问三句：撇开他怎么夸/怎么吓，这件事本身对我有利吗？信息是否完整、我是不是被隔开了？这个决定能不能晚点做？操控最怕冷静和多方信源。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>操控利用的是人自动反应的系统1。它不跟你讲道理，而是触发情绪反射——你一旦在情绪驱动下行动，就把主权交给了对方。解药是<strong>"延迟 + 回到实质"</strong>。</p><div class="insight"><strong>深层洞见：</strong>防御核心动作——一旦察觉"我此刻情绪很强（很爽/很怕/很孤单）"，按下暂停问三句：撇开他怎么夸/怎么吓，这件事本身对我有利吗？信息是否完整、我是不是被隔开了？这个决定能不能晚点做？操控最怕冷静和多方信源。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">被对手当众戴高帽"您是专家，这肯定没问题"逼你当场背书——别被架着走。微笑回"我看完材料再给结论"，把捧你的力气卸掉。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">察觉有人在你和某关键盟友之间反复传话制造隔阂（让你怀疑对方），别信单面之词，直接找当事人当面对一次口径，孤立战术当场失效。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="yingxiangli.html#card-9">影响力 · 防御总纲</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a><a class="rt" href="javascript:scrollCard(7)">→ 名声先行</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="yingxiangli.html#card-9">影响力 · 防御总纲</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a><a class="rt" href="javascript:scrollCard(7)">→ 名声先行</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="lf,cr,bz">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>死守"我永远正确/清白/有原则"的姿态，常常不是美德而是枷锁——它把你的底牌、边界和情绪按钮全暴露给别人，一激就上钩。清醒的人务实灵活：<strong>原则用于守底线，不必用于每一次表态</strong>；不被"你必须按我的标准做圣人"绑架。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">僵</div><div class="ft2"><strong>完美姿态=可预测</strong>：一旦别人摸清你"绝不能碰的雷区、必须有的反应"，他们就能用激将、用道德绑架精确拨动你——你被"你自己的人设"操控了。</div></div><div class="fs2"><div class="fn2">内</div><div class="ft2"><strong>原则是内在底线不是外在表演</strong>：真正有原则的人不需要每件事都高举旗帜。守住不可让步的核心，其余可以灵活、可以沉默、可以不接招。</div></div><div class="fs2"><div class="fn2">灰</div><div class="ft2"><strong>接受策略性模糊</strong>：不必把所有立场公开摊牌、不必赢得每场辩论。"战略性不表态""看破不说破"是成熟，不是虚伪。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>对手最擅长给你搭一个"你必须表态/必须自证清白"的台。你越急着维护正义形象，越容易失态、说多、被抓住把柄。务实者把<strong>"对错"和"利弊"分开评估</strong>，不被情绪与面子驱动行动。</p><div class="insight"><strong>深层洞见：</strong>防御——警惕"用你的原则要挟你"的人："你这么正直一定不会计较这点小事吧""你既然是 X 就该做到 Y"。这是把你的道德感当杠杆。你可以有原则，但原则由你定义，不接受别人临场塞给你的标准。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>对手最擅长给你搭一个"你必须表态/必须自证清白"的台。你越急着维护正义形象，越容易失态、说多、被抓住把柄。务实者把<strong>"对错"和"利弊"分开评估</strong>，不被情绪与面子驱动行动。</p><div class="insight"><strong>深层洞见：</strong>防御——警惕"用你的原则要挟你"的人："你这么正直一定不会计较这点小事吧""你既然是 X 就该做到 Y"。这是把你的道德感当杠杆。你可以有原则，但原则由你定义，不接受别人临场塞给你的标准。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">被人故意挑衅、泼脏水要你当场对线时，不接"你必须证明你没错"的框架。越自证越被动。回到事实与流程，让记录说话。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">别为维持"老好人/绝不占便宜"的人设而牺牲应得的资源和机会。争取正当利益不等于变坏，僵化的清高有时只是怕被评价。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 看穿操控</a><a class="rt" href="jiushi.html#card-10">遥远的救世主 · 不解释</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 看穿操控</a><a class="rt" href="jiushi.html#card-10">遥远的救世主 · 不解释</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="mg,bz,cr">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>最危险的时刻，往往是你最风光、赢得最彻底的时候。赶尽杀绝会把对手逼成不死不休的敌人，把路人吓成你的反对者。真正的权力是<strong>知道在哪一步收手</strong>：留一线给对手，留余地给自己，留体面给所有人。树敌的利息，会在你最想不到的时刻连本带利找上门。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">止</div><div class="ft2"><strong>知道够</strong>：设定"赢到哪一步就停"。见好就收不是软弱，是避免为最后一点收益背上全部仇恨。</div></div><div class="fs2"><div class="fn2">余</div><div class="ft2"><strong>给对手台阶</strong>：让人输得体面，他就不必跟你鱼死网破。今天留的路，是明天你自己的退路。</div></div><div class="fs2"><div class="fn2">数</div><div class="ft2"><strong>数一数敌人</strong>：定期盘点"因为我的强势，多少人恨我、多少人等着看我笑话"。敌人太多，系统风险已经埋下。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>权力是关系网络的产物，不是单场输赢。赢得太绝会改变网络里的"人心账"——合作者怕你、旁观者同情弱者、被剥夺者伺机反扑。这与《青瓷》的"花看半开"、胡雪岩"退场的智慧"同频：<strong>留余地既是慈悲，也是自保</strong>。</p><div class="insight"><strong>深层洞见：</strong>自省——当你开始享受"碾压"的快感、觉得"我全对所以他们活该"，正是最该踩刹车的时候。克制不是压抑实力，而是算清了"多赢这三分，代价是结多少仇"之后的主动选择。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>权力是关系网络的产物，不是单场输赢。赢得太绝会改变网络里的"人心账"——合作者怕你、旁观者同情弱者、被剥夺者伺机反扑。这与《青瓷》的"花看半开"、胡雪岩"退场的智慧"同频：<strong>留余地既是慈悲，也是自保</strong>。</p><div class="insight"><strong>深层洞见：</strong>自省——当你开始享受"碾压"的快感、觉得"我全对所以他们活该"，正是最该踩刹车的时候。克制不是压抑实力，而是算清了"多赢这三分，代价是结多少仇"之后的主动选择。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>跨部门</div><div class="stx">资源争夺你赢了，也别忘了给对方留面子和一份小好处（下次优先、共享署名）。赢得合作比赢得一次预算重要得多，圈子就这么大。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">价格战/谈判把对手逼到亏本也没好下场——行业会记住你的狠，品牌方和同行都会防备你。赢单留三分利润给平台和伙伴，生态才长期给你饭吃。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="huxueyan.html#card-12">胡雪岩 · 退场的智慧</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开</a><a class="rt" href="javascript:scrollCard(5)">→ 保持被需要</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="huxueyan.html#card-12">胡雪岩 · 退场的智慧</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开</a><a class="rt" href="javascript:scrollCard(5)">→ 保持被需要</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

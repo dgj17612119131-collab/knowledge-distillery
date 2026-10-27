@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩处世的第一信条是<strong>"花花轿子人抬人"</strong>——你抬我、我抬你，在互相成就里把彼此的身价和局面一起抬上去。这不是零和抢位子，而是正和搭台子：你替别人撑场、荐人、让利、分面子，别人就来撑你的场。人脉和生意，都在这"一抬一报"之间滚大。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">抬</div><div class="ft2"><strong>公开给别人抬轿</strong>：捧场、荐人、让利、把功劳和面子分出去，让对方在你的支持下先成事。</div></div><div class="fs2"><div class="fn2">报</div><div class="ft2"><strong>抬是长期账</strong>：今天你抬的人，就是他日抬你轿子的人。别算一时得失，你的"肯抬人"会替你传播、替你聚人。</div></div><div class="fs2"><div class="fn2">界</div><div class="ft2"><strong>抬轿不是谄媚</strong>：抬的是能力和事，不是无底线吹捧权贵。抬错了人、抬成了奉承，反而自贬身价。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>把自我价值从"我抢到哪把交椅"换成"我能让多少人因我而成"，你就从竞争者变成了生态里的<strong>节点与搭台人</strong>。一个网络里最值钱的人，往往不是最强的那一个，而是能连接并成就最多人、因此被所有人依赖的那一个。</p><div class="insight"><strong>深层洞见：</strong>对 BD 的直接启示——别只想着从品牌方、资源方手里"要"东西，先想"我能替他抬什么"：给他一个爆款案例、在平台内部替他争取一个资源位、把功劳署名给他。你把他抬上"标杆"的位置，他在生态里就离不开你，最好的货和价自然流向你。反之，一味索取、从不替人抬轿的人，关系会迅速枯竭。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>把自我价值从"我抢到哪把交椅"换成"我能让多少人因我而成"，你就从竞争者变成了生态里的<strong>节点与搭台人</strong>。一个网络里最值钱的人，往往不是最强的那一个，而是能连接并成就最多人、因此被所有人依赖的那一个。</p><div class="insight"><strong>深层洞见：</strong>对 BD 的直接启示——别只想着从品牌方、资源方手里"要"东西，先想"我能替他抬什么"：给他一个爆款案例、在平台内部替他争取一个资源位、把功劳署名给他。你把他抬上"标杆"的位置，他在生态里就离不开你，最好的货和价自然流向你。反之，一味索取、从不替人抬轿的人，关系会迅速枯竭。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">面对品牌方，开口前先想"我能帮他做成什么"——帮他打造标杆案例、在内部替他挣面子、争取资源倾斜，而不是张口就要补贴。你把他抬成"样板"，他自然把独家货和最优价给你。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">主动在同事和上下游的场合替人说话、荐人、分功。你抬过的人，是你日后最硬的关系资产；没人抬的孤胆英雄，走不远。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 拜盟兄弟与结网</a><a class="rt" href="javascript:scrollCard(9)">→ 舍小利谋大局</a><a class="rt" href="yingxiangli.html#card-3">影响力 · 互惠</a><a class="rt" href="qingci.html#card-1">青瓷 · 关系是养出来的</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 拜盟兄弟与结网</a><a class="rt" href="javascript:scrollCard(9)">→ 舍小利谋大局</a><a class="rt" href="yingxiangli.html#card-3">影响力 · 互惠</a><a class="rt" href="qingci.html#card-1">青瓷 · 关系是养出来的</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="bz,cr,lf">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩信"先做人，后做生意"。货可以一时不好，<strong>牌子（信誉）塌了就再也捡不起来</strong>。他把"胡庆余堂"的招牌看得比单笔利润更重——宁可自己吃亏也要兑现承诺，因为信用是他真正的本金：别人敢把生意、钱、人脉交给他，靠的不是货，是这块招牌。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">本</div><div class="ft2"><strong>信用＝本金</strong>：钱亏了能再赚，信用亏了就清零。所有生意都是在"别人相信你会兑现"这个前提上加的杠杆。</div></div><div class="fs2"><div class="fn2">牌</div><div class="ft2"><strong>招牌＞单笔</strong>：为一次利润砸口碑是赔本买卖；为守口碑吃一次眼前亏，是划算的长期投资。</div></div><div class="fs2"><div class="fn2">慢</div><div class="ft2"><strong>做人是慢变量</strong>：信誉靠一件件小事长期累积，却能毁于一次失信。所以宁可事前不轻诺，诺了就必兑现。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>从交易成本看，信任能降低每一次打交道的验证与防范成本。有信用的人，别人愿意<strong>主动让利、愿意先把资源押在你身上</strong>——因为跟你打交道风险低。信用是一种能反复收租的资产，货是一次性的收益。</p><div class="insight"><strong>深层洞见：</strong>对 KA 运营——写进方案的排期、补贴、资源位、数据反馈，哪怕内部难推也要兑现；推不动要提前打招呼，绝不能消失或赖账。你的"说到做到"，就是你个人在品牌方那里的<strong>信用额度</strong>。额度高的人，谈判时对方愿意赌你后续能落地，条件自然好谈。反面：为签单夸大承诺、履约时暴雷，一次就把多年 BD 积累的信任烧光。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>从交易成本看，信任能降低每一次打交道的验证与防范成本。有信用的人，别人愿意<strong>主动让利、愿意先把资源押在你身上</strong>——因为跟你打交道风险低。信用是一种能反复收租的资产，货是一次性的收益。</p><div class="insight"><strong>深层洞见：</strong>对 KA 运营——写进方案的排期、补贴、资源位、数据反馈，哪怕内部难推也要兑现；推不动要提前打招呼，绝不能消失或赖账。你的"说到做到"，就是你个人在品牌方那里的<strong>信用额度</strong>。额度高的人，谈判时对方愿意赌你后续能落地，条件自然好谈。反面：为签单夸大承诺、履约时暴雷，一次就把多年 BD 积累的信任烧光。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">谈判桌上不轻易许诺做不到的资源；一旦写进方案，动用内部关系也要交付。把"这个人、这个平台说话算数"经营成你随身携带的招牌。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">同行用低价或夸大承诺抢单时，不跟着吹。用可靠履约，把口碑慢慢做成对手抄不走、抢不走的护城河。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 花花轿子人抬人</a><a class="rt" href="javascript:scrollCard(6)">→ 给人留面子</a><a class="rt" href="yuanze.html#card-1">原则 · 极度求真</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 花花轿子人抬人</a><a class="rt" href="javascript:scrollCard(6)">→ 给人留面子</a><a class="rt" href="yuanze.html#card-1">原则 · 极度求真</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="bz,lf,mg">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩有两条看似矛盾、实则互补的规矩：一旦决定出手就<strong>"落子无悔"</strong>，全力执行、不摇摆、不留半截子事；但在布每一步之前，永远给自己<strong>留一条退路（后手）</strong>。果断用在执行，谨慎用在开局——正因为留了后手，才敢下重注。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">断</div><div class="ft2"><strong>落子无悔</strong>：想清楚就下重注，不在执行中反复后悔、中途撤火。半途而废最伤元气，也最伤信用。</div></div><div class="fs2"><div class="fn2">留</div><div class="ft2"><strong>先算退路</strong>：下注前问"最坏会怎样、我输得起吗、有没有第二条路"。留后手不是怯懦，是敢赌的底气。</div></div><div class="fs2"><div class="fn2">分</div><div class="ft2"><strong>分清可逆/不可逆</strong>：可逆的小事快决快改；押上身家、招牌、核心关系的不可逆大决策，必须留足后手再落子。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"杠铃策略"的处世版：大部分资源放在有安全边际的地方（保本钱、保信用、保核心关系），小部分放在高风险高回报的赌注上。如此既能激进下注、博取超额收益，又不至于一次意外就爆仓出局、再无翻盘资格。</p><div class="insight"><strong>深层洞见：</strong>很多人栽跟头，不是因为不够果断，而是<strong>在没有退路的地方太果断</strong>。真正的高手把"胆大"和"留后路"配套使用：先确保输得起，再去赌赢得大。落子前的犹豫是成本极低的保险，落子后的内耗才是真正致命的浪费。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这是"杠铃策略"的处世版：大部分资源放在有安全边际的地方（保本钱、保信用、保核心关系），小部分放在高风险高回报的赌注上。如此既能激进下注、博取超额收益，又不至于一次意外就爆仓出局、再无翻盘资格。</p><div class="insight"><strong>深层洞见：</strong>很多人栽跟头，不是因为不够果断，而是<strong>在没有退路的地方太果断</strong>。真正的高手把"胆大"和"留后路"配套使用：先确保输得起，再去赌赢得大。落子前的犹豫是成本极低的保险，落子后的内耗才是真正致命的浪费。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">主推一个品牌方案、压上重资源之前，先设"止损线"和"备份方案"——万一品牌方不配合、活动不及预期，我拿什么兜底、及时撤到哪。定好就全力推，不反复自我消耗。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">刻意训练"决策—执行"分离：布局阶段允许自己慢、多留后手；但一旦拍板，就别在执行里内耗后悔。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="javascript:scrollCard(8)">→ 囤积与 Timing</a><a class="rt" href="fanruique.html#card-4">反脆弱 · 杠铃策略（留后手）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="javascript:scrollCard(8)">→ 囤积与 Timing</a><a class="rt" href="fanruique.html#card-4">反脆弱 · 杠铃策略（留后手）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="bz,cr,mg">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩的关系网不是要用时才搭，而是<strong>提前很多年、在对方还没价值时就"烧香"结拜</strong>。他广结盟兄弟、认朋友、资助落难者、跟三教九流都留一份交情，本质是把关系当成需要长期养护的<strong>资产</strong>，而不是临时借用的工具。用时才联系，是最低效也最廉价的关系。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">早</div><div class="ft2"><strong>平时烧香</strong>：在对方"用不上、还没起来"时就投入。雪中送炭一次的记账，胜过锦上添花十次。</div></div><div class="fs2"><div class="fn2">养</div><div class="ft2"><strong>关系要定期维护</strong>：联络、礼数、帮小忙、记着对方提过的事。不养护的网，会自己烂掉。</div></div><div class="fs2"><div class="fn2">广</div><div class="ft2"><strong>跨层级结网</strong>：上至官场、中至商帮、下至伙计都留交情。你永远不知道哪根线哪天救命。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>社交资本是复利式积累的，而且在"没人跟你抢"的低位时最便宜、最真诚。临渴掘井不但成本高、姿态低，还会暴露你的功利，反被对方看轻——因为他清楚你只是来"用"他，不是来"交"他。</p><div class="insight"><strong>深层洞见：</strong>对 KA/BD——别只在要签单、要资源时才找品牌方、才麻烦内部同学。淡季也要维护：给对方带一条行业信息、帮一个小忙、记住他随口提过的事。等你需要"抬轿、借势、救场"时，那张<strong>预存了人情</strong>的网才调得动。临时抱佛脚调不动的，正是因为你从没往账户里存过钱。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>社交资本是复利式积累的，而且在"没人跟你抢"的低位时最便宜、最真诚。临渴掘井不但成本高、姿态低，还会暴露你的功利，反被对方看轻——因为他清楚你只是来"用"他，不是来"交"他。</p><div class="insight"><strong>深层洞见：</strong>对 KA/BD——别只在要签单、要资源时才找品牌方、才麻烦内部同学。淡季也要维护：给对方带一条行业信息、帮一个小忙、记住他随口提过的事。等你需要"抬轿、借势、救场"时，那张<strong>预存了人情</strong>的网才调得动。临时抱佛脚调不动的，正是因为你从没往账户里存过钱。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">维护一份"关系资产台账"：核心品牌的关键人、内部资源方、跨部门盟友，定期（哪怕一条消息）维护，别只在活动期才冒出来。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">提前跟非直接利益方结善缘（物流、市场、数据、产品同学）。关键战役打起来时，这些"闲棋"就是你临时能调动的隐形兵力。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 花花轿子人抬人</a><a class="rt" href="javascript:scrollCard(5)">→ 借势红顶逻辑</a><a class="rt" href="qingci.html#card-1">青瓷 · 关系是养出来的</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 花花轿子人抬人</a><a class="rt" href="javascript:scrollCard(5)">→ 借势红顶逻辑</a><a class="rt" href="qingci.html#card-1">青瓷 · 关系是养出来的</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="bz,cr">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩是"红顶商人"——他把官场的政治资源转化为商业杠杆：借官势压价、借官府存款周转、借权力背书拿下别人拿不下的生意。剔除掉"依附皇权"这一时代局限，其可迁移内核是：<strong>识别当下最强大的"势"（平台、政策、大客户、趋势），主动把自己的生意嫁接上去，借势能撬资源。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">识</div><div class="ft2"><strong>先看清势在哪</strong>：谁是平台方、什么政策在放红利、哪个大客户有资源、哪股趋势在涨。借势的前提是识势。</div></div><div class="fs2"><div class="fn2">嫁</div><div class="ft2"><strong>把自己挂到势上</strong>：不是自己硬扛，而是让"势"的目标包含你的目标——帮平台完成 KPI、帮大客户做成案例，借它的动能顺带达成自己。</div></div><div class="fs2"><div class="fn2">界</div><div class="ft2"><strong>借势不失身</strong>：势是杠杆不是靠山。一旦完全依附，势倒你倒（胡雪岩后期正败于靠山失势）。要保独立现金流和退路。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>现代最贴合的场景就是平台生态：KA 运营本身就活在"平台之势"里——流量、补贴、大促、政策都握在平台手上。会借势的人，把品牌诉求翻译成平台战略的语言，用平台之势撬品牌更好的价与货，再反过来用品牌的标杆案例撬平台更多资源，形成飞轮。</p><div class="insight"><strong>深层洞见：</strong>借势的最高境界是"双赢地蹭"——你让平台/大客户<strong>因为你而更容易达成它自己的目标</strong>，它就顺手把你带上。红线是：别让公司、或你个人的独立生存能力，完全吊在某一个"势"上。势一变，纯依附者一起沉。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>现代最贴合的场景就是平台生态：KA 运营本身就活在"平台之势"里——流量、补贴、大促、政策都握在平台手上。会借势的人，把品牌诉求翻译成平台战略的语言，用平台之势撬品牌更好的价与货，再反过来用品牌的标杆案例撬平台更多资源，形成飞轮。</p><div class="insight"><strong>深层洞见：</strong>借势的最高境界是"双赢地蹭"——你让平台/大客户<strong>因为你而更容易达成它自己的目标</strong>，它就顺手把你带上。红线是：别让公司、或你个人的独立生存能力，完全吊在某一个"势"上。势一变，纯依附者一起沉。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">谈资源时把"我要流量"改译成"我帮你完成平台的品类增长/优质供给指标"，用平台的势去换品牌的让利，再拿这个案例回来要更多资源，形成闭环。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">借大促、借平台政策、借标杆案例的势，以小博大，去撬本来正面谈不下的头部品牌——你给不了的钱，势能给。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 拜盟兄弟与结网</a><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者搭台</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 拜盟兄弟与结网</a><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="qingci.html#card-3">青瓷 · 做局者搭台</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="bz,cr,lf">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩深谙"面子即硬通货"。当众让人下不来台，赢了一时、结了一世仇；<strong>看透对方的算计却不点破、给别人留体面、给事情留余地，反而是给自己留后路</strong>。得饶人处且饶人——今天你饶的人、你留的路，改天可能救命。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">面</div><div class="ft2"><strong>面子要护</strong>：尤其当众。批评、拆穿、逼对方认错，都放到私下、给对方台阶。让人体面，别人才愿长期与你共事。</div></div><div class="fs2"><div class="fn2">默</div><div class="ft2"><strong>看破不说破</strong>：识破对方的话术与算计，心里有数即可，不必当场戳穿、逼对方社死。留白就是留合作空间。</div></div><div class="fs2"><div class="fn2">余</div><div class="ft2"><strong>给事留余地</strong>：不把价格、条件、关系逼到死角。留一线，事情回旋的余地就大，遭反噬的概率就小。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>中国式商业里，关系和情面是写在显性合同之下的<strong>隐性合同</strong>。当众撕破脸，等于当众撕毁这份隐性合同——此后一切都会退回到最坏的、互不设防的博弈。留面子，本质是在维护这份隐性合同的信用，让长期交易成本保持低位。</p><div class="insight"><strong>深层洞见：</strong>BD 谈判常被对方的夸大承诺或话术激得想当场揭穿。但你的目的<strong>不是赢一场辩论，而是把生意谈成、把关系留住</strong>。更高级的做法是：看破，然后不动声色地把条款改写成保护你自己的版本（加验收、加对赌、加退出条件）——比说破高明得多，也不树敌。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>中国式商业里，关系和情面是写在显性合同之下的<strong>隐性合同</strong>。当众撕破脸，等于当众撕毁这份隐性合同——此后一切都会退回到最坏的、互不设防的博弈。留面子，本质是在维护这份隐性合同的信用，让长期交易成本保持低位。</p><div class="insight"><strong>深层洞见：</strong>BD 谈判常被对方的夸大承诺或话术激得想当场揭穿。但你的目的<strong>不是赢一场辩论，而是把生意谈成、把关系留住</strong>。更高级的做法是：看破，然后不动声色地把条款改写成保护你自己的版本（加验收、加对赌、加退出条件）——比说破高明得多，也不树敌。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">对手或品牌方用了话术，心里记账、把条款收紧，别当众让他难堪。让他体面地按你的规则走，比让他记恨你更划算。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">拒绝或压价时给对方台阶（"这次预算实在有限，下次我一定优先您"）。只关门，不堵路——今天不接你单的品牌，明年可能是你最大的合作。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 退场的智慧</a><a class="rt" href="javascript:scrollCard(2)">→ 做生意先做人</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 退场的智慧</a><a class="rt" href="javascript:scrollCard(2)">→ 做生意先做人</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="bz,mg,lf">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩能成大事，靠的是把精力放在<strong>"大账"</strong>上——方向、格局、长期现金流、关键人的信任，而不是在每笔小钱上锱铢必较。但在执行细节上他又极其严谨，账要算到分厘。着眼要大（别为一时小利误了大局），着手要小（大战略要落到每个可执行的小动作）。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">大</div><div class="ft2"><strong>先定大账</strong>：这件事在三年格局里值不值、对核心资产（信用/关系/生态位）有没有加成。大账算得过来就干。</div></div><div class="fs2"><div class="fn2">小</div><div class="ft2"><strong>小处不含糊</strong>：落地时每分钱、每条款、每个 SKU 都抠清楚。大处放手（不为一时小亏纠结），小处较真（不因大而化之漏了风险）。</div></div><div class="fs2"><div class="fn2">戒</div><div class="ft2"><strong>别为省小钱误大局</strong>：在无关紧要的成本上死磕，把关键人得罪掉、把关键窗口错过，是典型的算错账。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>本质是注意力与资源的分配问题，以及"局部最优≠全局最优"。真正<strong>贵的是不可逆的大变量</strong>（时机、信任、生态位），<strong>便宜的是可再生的小变量</strong>（一次差价、一点小钱）。把带宽花在哪，决定了你是在做格局还是在做记账。</p><div class="insight"><strong>深层洞见：</strong>对 KA——谈判别在几千块补贴上跟品牌方僵持到错过大促报名窗口。窗口、信任、标杆位置是大账，那点差价是小钱。但落地排期、库存、履约细节要抠死——别让"抓大放小"变成"大事糊涂、小事也糊涂"。先问"这事三年后还重要吗"，再决定在哪较劲。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>本质是注意力与资源的分配问题，以及"局部最优≠全局最优"。真正<strong>贵的是不可逆的大变量</strong>（时机、信任、生态位），<strong>便宜的是可再生的小变量</strong>（一次差价、一点小钱）。把带宽花在哪，决定了你是在做格局还是在做记账。</p><div class="insight"><strong>深层洞见：</strong>对 KA——谈判别在几千块补贴上跟品牌方僵持到错过大促报名窗口。窗口、信任、标杆位置是大账，那点差价是小钱。但落地排期、库存、履约细节要抠死——别让"抓大放小"变成"大事糊涂、小事也糊涂"。先问"这事三年后还重要吗"，再决定在哪较劲。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">把决策项分成"影响生态位/信任/时机"的大项和纯"金额"的小项：先保大项，小项设一个阈值，超过再纠结，低于就不花精力。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">给自己配一个过滤器："这件事三年后还重要吗？"重要就投大账的精力，不重要就别让它吃掉你的带宽。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 舍小利谋大局</a><a class="rt" href="javascript:scrollCard(8)">→ 囤积与 Timing</a><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 找到杠杆点</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 舍小利谋大局</a><a class="rt" href="javascript:scrollCard(8)">→ 囤积与 Timing</a><a class="rt" href="zhanlue.html#card-4">好战略坏战略 · 找到杠杆点</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="bz,cr">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩发家的关键一役是<strong>囤积生丝</strong>：预判行情、在低价时重仓买入、等供给紧张时高价出手，赚的是"时机差"和"信息差"。核心能力不是勤奋，而是对周期与供需的判断——<strong>在别人还没看懂时布局，在别人恐慌抛售时接货，在别人贪婪追高时离场。</strong>时机（Timing）常常比努力更重要。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">判</div><div class="ft2"><strong>先判断周期位置</strong>：现在是供过于求（便宜、该进）还是供不应求（贵、该出）。逆着情绪，顺着供需。</div></div><div class="fs2"><div class="fn2">忍</div><div class="ft2"><strong>布局后要扛得住</strong>：囤的是"等得起"的钱。用短期要用的钱去赌时机，会被波动逼得割在最低点（呼应卡3留后手）。</div></div><div class="fs2"><div class="fn2">出</div><div class="ft2"><strong>会买的是徒弟，会卖的是师傅</strong>：在众人追高、情绪最热时兑现，不贪最后一个铜板。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"逆向布局 + 现金流纪律"的结合。低估值、无人问津时建仓（资源、关系、供给），高潮、人人抢时兑现。最大的两个风险是：<strong>用不能亏的钱做长期赌注</strong>（中途被迫割肉），以及把"便宜"当成"还会更便宜"而始终不敢动手。</p><div class="insight"><strong>深层洞见：</strong>对 KA——大促、新品类、新政策窗口的初期，往往就是"别人恐惧我贪婪"的时机：多数品牌观望时，你提前锁供给、抢资源位、谈独家，等对手看懂时好位置已被你占死。但前提是留好后手——压重注的底气，来自你的现金流扛得住"等"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这是"逆向布局 + 现金流纪律"的结合。低估值、无人问津时建仓（资源、关系、供给），高潮、人人抢时兑现。最大的两个风险是：<strong>用不能亏的钱做长期赌注</strong>（中途被迫割肉），以及把"便宜"当成"还会更便宜"而始终不敢动手。</p><div class="insight"><strong>深层洞见：</strong>对 KA——大促、新品类、新政策窗口的初期，往往就是"别人恐惧我贪婪"的时机：多数品牌观望时，你提前锁供给、抢资源位、谈独家，等对手看懂时好位置已被你占死。但前提是留好后手——压重注的底气，来自你的现金流扛得住"等"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">识别品类或平台政策的"低谷期"（没人抢资源、品牌愿意让利时），提前重仓布局；等风口起来、对手开始抢时，你已握有时机差的红利。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">对手恐慌收缩、观望不前的时候，反手加投、抢占货架和心智份额——多数超额收益，是在别人不敢下场的窗口里锁定的。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 落子无悔与留后手</a><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="fanruique.html#card-5">反脆弱 · 期权思维</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 落子无悔与留后手</a><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="fanruique.html#card-5">反脆弱 · 期权思维</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="bz,mg,cr">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩的分钱哲学是"利不出尽"。他把看得见的利润大方分出去——给伙计、给合伙人、给关键人、给客户，<strong>宁可自己少吃，也要让跟着他有肉吃、让合作有利可图</strong>。因为他算的是大账：把利益分出去，才能把人才、货源、局面聚拢进来，把盘子做大；一个人赚尽，路也就走尽了。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">分</div><div class="ft2"><strong>主动分钱</strong>：让合作者、团队、关键人分到超出预期的利，用眼前的让利换长期的追随与稳定供给。</div></div><div class="fs2"><div class="fn2">亏</div><div class="ft2"><strong>敢吃小亏</strong>：首单让利、关键处贴钱、该送的人情送。吃亏是买"未来交易权"。</div></div><div class="fs2"><div class="fn2">大</div><div class="ft2"><strong>把盘子做大</strong>：分出去的钱变成别人帮你把生意做大的动力；蛋糕整体变大后，你那份反而更多。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这把"零和分蛋糕"转成了"正和做大蛋糕"。过度榨取每一分利润，会让供给方消极、隐瞒、随时跳反——你省下的是眼前小利，赔上的是长期供给稳定和合作意愿。大方让利，本质是给关系和忠诚定价。</p><div class="insight"><strong>深层洞见：</strong>对 KA——不要逼品牌方把利润压到没得赚。给对方留出体面利润和成长空间（爆款给他、流量给他、案例署名给他），他才会把<strong>最好的货、最低的价、首发独家</strong>给你，你在平台内部也就拿到了最好的品牌供给。让利不是软弱，是买独占和忠诚。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这把"零和分蛋糕"转成了"正和做大蛋糕"。过度榨取每一分利润，会让供给方消极、隐瞒、随时跳反——你省下的是眼前小利，赔上的是长期供给稳定和合作意愿。大方让利，本质是给关系和忠诚定价。</p><div class="insight"><strong>深层洞见：</strong>对 KA——不要逼品牌方把利润压到没得赚。给对方留出体面利润和成长空间（爆款给他、流量给他、案例署名给他），他才会把<strong>最好的货、最低的价、首发独家</strong>给你，你在平台内部也就拿到了最好的品牌供给。让利不是软弱，是买独占和忠诚。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">给核心品牌设计"他赚得多、我赚格局"的双赢结构（独家货＋流量＋补贴），而不是一味单方面压价。他赚到了，才会把资源锁给你。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队和盟友的功劳、收益大方分出去，别独吞。独吞一次，下次就没人肯替你抬轿——你把小钱赚了，把人散了。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 花花轿子人抬人</a><a class="rt" href="javascript:scrollCard(7)">→ 大处着眼</a><a class="rt" href="yingxiangli.html#card-3">影响力 · 互惠</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 花花轿子人抬人</a><a class="rt" href="javascript:scrollCard(7)">→ 大处着眼</a><a class="rt" href="yingxiangli.html#card-3">影响力 · 互惠</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="bz,lf,mg">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩的败局和胜局用的是同一套打法：借势、加杠杆、囤积、多头铺开。顺境时，杠杆放大他的财富；一旦生丝滞销、官场靠山失势、债主逼债<strong>同时到来</strong>，过度扩张的资金链瞬间断裂，商业帝国崩塌。教训是：<strong>让你成功的能力和让你毁灭的，往往是同一个</strong>——杠杆不会消失，只会在最不巧的时刻连本带利讨回。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">扩</div><div class="ft2"><strong>扩张有隐形上限</strong>：摊子越大，对"一切顺利"的依赖越强。多线同时押注＝多个环节都可能先断。</div></div><div class="fs2"><div class="fn2">链</div><div class="ft2"><strong>盯资金链，而非账面利润</strong>：利润是纸面，现金流断裂当天就出局。杠杆越大，安全边际越要留足（呼应卡3）。</div></div><div class="fs2"><div class="fn2">同</div><div class="ft2"><strong>顺境的药是逆境的毒</strong>：顺时用来加速的借势/囤积/杠杆，逆时就变催命符。必须预设"势变了怎么办"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>现代对应：<strong>过度依赖单一外部条件</strong>（一个大客户、一项政策、一个平台补贴、一条资金链）＝单点脆弱。极致效率和单点依赖看似漂亮，实则是把生存押在了自己不掌控的变量上。反脆弱强调冗余和选择权胜过极致效率——能活下来的，是断裂一根线还能撑住的结构。</p><div class="insight"><strong>深层洞见：</strong>对 KA/BD——警惕"把所有赌注押在一个品牌/一个政策窗口"的扩张。你漂亮的数字，很可能建立在你并不掌控的条件上（补贴、平台流量、某位靠山）。要主动留冗余：多品牌、多资源来源、可控的自有关系。这样即便单点断裂，也不至全盘崩塌。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>现代对应：<strong>过度依赖单一外部条件</strong>（一个大客户、一项政策、一个平台补贴、一条资金链）＝单点脆弱。极致效率和单点依赖看似漂亮，实则是把生存押在了自己不掌控的变量上。反脆弱强调冗余和选择权胜过极致效率——能活下来的，是断裂一根线还能撑住的结构。</p><div class="insight"><strong>深层洞见：</strong>对 KA/BD——警惕"把所有赌注押在一个品牌/一个政策窗口"的扩张。你漂亮的数字，很可能建立在你并不掌控的条件上（补贴、平台流量、某位靠山）。要主动留冗余：多品牌、多资源来源、可控的自有关系。这样即便单点断裂，也不至全盘崩塌。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">给关键增长做压力测试：砍掉最大补贴、失去头部品牌、政策退坡时，我还剩什么？趁顺的时候提前建冗余，别等断了才想找备份。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">心里分清楚"我实力赚的"和"势/杠杆借来的"。把借来的那部分当成随时可能收回的钱，别当本金花掉——收回那天才不至于崩盘。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 落子无悔与留后手</a><a class="rt" href="javascript:scrollCard(5)">→ 借势红顶逻辑</a><a class="rt" href="javascript:scrollCard(11)">→ 得意时莫忘形</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 落子无悔与留后手</a><a class="rt" href="javascript:scrollCard(5)">→ 借势红顶逻辑</a><a class="rt" href="javascript:scrollCard(11)">→ 得意时莫忘形</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="lf,bz,mg">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩一生有两个心性关口：<strong>危机时要比所有人冷静</strong>（别人慌你乱就死得更快，要稳住阵脚、砍仓、保现金流），<strong>得意时要比所有人警醒</strong>（最风光、众人捧、扩张最顺时，往往正是顶）。盛极而衰不是运气，是规律——越顺风，越要主动去找"哪根线最先断"。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">危</div><div class="ft2"><strong>危险时反恐慌</strong>：越崩盘越要冷静排序——先止血（保命、保信用、保核心），再救次要。慌乱中做的决定多半最坏。</div></div><div class="fs2"><div class="fn2">盛</div><div class="ft2"><strong>得意时设预警</strong>：最顺的时候强迫自己回答"我在哪最脆弱、什么信号出现就该收手"。别人都在加，你要开始减。</div></div><div class="fs2"><div class="fn2">顶</div><div class="ft2"><strong>认得出"顶"的标志</strong>：人人夸你、机会主动上门、能轻松借到很多钱、扩张毫无阻力——这些恰恰是危险的信号。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>顺境会系统性地掩盖风险、放大自负、诱使你加不该加的杠杆——这正是"过度稳定化制造脆弱"。当一切顺利、所有人都说你对的时候，你的风险识别能力最弱，而恰恰是加杠杆、扩摊子最多的时候。逆人性的功课是：在最容易乐观的处境里做最悲观的体检。</p><div class="insight"><strong>深层洞见：</strong>对 KA——当你签单一路顺、被品牌方和内部都捧、资源随便调的时候，就是最该做体检的时刻：我的增长有多少是垫在补贴和风口的沙上？哪些承诺我将来兑现不了？哪些关系其实随时会撤？<strong>提前在晴天修屋顶</strong>，别等逼债才想起砍仓。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>顺境会系统性地掩盖风险、放大自负、诱使你加不该加的杠杆——这正是"过度稳定化制造脆弱"。当一切顺利、所有人都说你对的时候，你的风险识别能力最弱，而恰恰是加杠杆、扩摊子最多的时候。逆人性的功课是：在最容易乐观的处境里做最悲观的体检。</p><div class="insight"><strong>深层洞见：</strong>对 KA——当你签单一路顺、被品牌方和内部都捧、资源随便调的时候，就是最该做体检的时刻：我的增长有多少是垫在补贴和风口的沙上？哪些承诺我将来兑现不了？哪些关系其实随时会撤？<strong>提前在晴天修屋顶</strong>，别等逼债才想起砍仓。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">给自己配一张"得意预警清单"（最依赖的外部条件是什么、砍了会怎样、什么信号该收手），每次特别顺利时强迫过一遍。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">危机谈判（数据崩、品牌流失、活动翻车）时，先稳住情绪和核心关系，按优先级止血，绝不病急乱投医、乱承诺——慌乱中的承诺会变成下一场危机的伏笔。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="javascript:scrollCard(12)">→ 退场的智慧</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 成也杠杆败也杠杆</a><a class="rt" href="javascript:scrollCard(12)">→ 退场的智慧</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="bz,lf,mg">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>胡雪岩最终的悲剧，是败在<strong>"不懂收、不肯退"</strong>。局势已变、靠山已失、盘子和杠杆都撑不住时，他仍恋战、仍想翻本，结果把早年赚下的全部连同招牌一起赔光。真正难的从来不是进场，而是收手：<strong>见好就收、势去则退、及时砍掉撑不住的摊子</strong>，才能保住胜利果实和体面。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">收</div><div class="ft2"><strong>见好就收</strong>：目标达到、本轮赚够就该落袋，不贪最后一程。贪婪让人在顶部反而加仓。</div></div><div class="fs2"><div class="fn2">退</div><div class="ft2"><strong>势去则退</strong>：当赖以成功的外部条件（势/风口/靠山/补贴）转向，第一时间收缩保成果，而不是"再等等也许会回来"。</div></div><div class="fs2"><div class="fn2">断</div><div class="ft2"><strong>砍沉没成本</strong>：决定收不收手时，不看"我已经投了多少"（沉没成本），只看"从今天起还划不划算"。不肯止损＝把赢过的全还回去。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>进场靠胆识和时机，退场靠纪律和自我认知——最难的是承认"我的时代/这个窗口过去了"。人之所以恋战，往往不是判断失误，而是不甘心：投了太多、身份绑得太深、放不下"翻本"的执念。于是把一个本可体面结束的周期，拖成一场清零的灾难。</p><div class="insight"><strong>深层洞见：</strong>对 KA——一个政策红利、一场大促、一段关系周期都有生命周期。<strong>会在高点兑现、在窗口关闭前体面收手、及时把资源从衰退品牌转向新供给</strong>的人，才能把一段段胜利累积成终身战绩，而不是最后一次爆仓全归零。会赚是本事，会退是智慧——留住的信用和体面，是你下一局重新入场的门票。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>进场靠胆识和时机，退场靠纪律和自我认知——最难的是承认"我的时代/这个窗口过去了"。人之所以恋战，往往不是判断失误，而是不甘心：投了太多、身份绑得太深、放不下"翻本"的执念。于是把一个本可体面结束的周期，拖成一场清零的灾难。</p><div class="insight"><strong>深层洞见：</strong>对 KA——一个政策红利、一场大促、一段关系周期都有生命周期。<strong>会在高点兑现、在窗口关闭前体面收手、及时把资源从衰退品牌转向新供给</strong>的人，才能把一段段胜利累积成终身战绩，而不是最后一次爆仓全归零。会赚是本事，会退是智慧——留住的信用和体面，是你下一局重新入场的门票。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">给每个大项目预设"退出/收手条件"（达成什么就兑现、出现什么信号就砍、沉没多少必须止损），用规则对抗恋战和沉没成本的绑架。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">练习"主动结束"——一段合作、一个玩法到头了就体面收尾，把口碑和关系留住，为下一局留好退路。敢于干净利落地谢幕，是顶级选手的标志。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 落子无悔与留后手</a><a class="rt" href="javascript:scrollCard(11)">→ 得意时莫忘形</a><a class="rt" href="fanruique.html#card-4">反脆弱 · 杠铃策略（留后手）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 落子无悔与留后手</a><a class="rt" href="javascript:scrollCard(11)">→ 得意时莫忘形</a><a class="rt" href="fanruique.html#card-4">反脆弱 · 杠铃策略（留后手）</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

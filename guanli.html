@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>衡量一个管理者，<strong>不看他的日程多满、本人多能干，而看"经过他，他管辖的部门、以及他能影响的周边部门，一共产出了多少"</strong>。个人英雄式的产出会随你离开归零；把别人的产出放大，才是管理岗真正的产出。你的产出 = Σ(直接管辖部门产出) + (影响到的邻部门产出)。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">和</div><div class="ft2"><strong>产出是加总，不是独角戏</strong>：你的价值不落在"你亲手做了什么"，而落在"你让哪些部门多产出了多少"。</div></div><div class="fs2"><div class="fn2">断</div><div class="ft2"><strong>用这条尺子筛动作</strong>：每件事都问"它会不会让我管的一块产出变高"，而不是"它让我看起来忙不忙"。</div></div><div class="fs2"><div class="fn2">迁</div><div class="ft2"><strong>从"我来做"迁到"我让别人做成"</strong>：成果越建立在团队产出上，你的产出天花板越高。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>一个技术最强的个人，一年能产出的量有物理上限；但他若带出十个人、并把协作链理顺，产出可以是单干的十倍。管理岗的"产能"来自<strong>杠杆</strong>，不来自<strong>工时</strong>。把自我价值绑在"我个人做了多少"上，会不自觉地不放权、不建体系，最终把自己变成整条链最慢的一环。</p><div class="insight"><strong>深层洞见：</strong>一条自检：本周你亲手做完的事里，有多少是"只有你能做"、多少是"本该下属做、你替他做了"。<strong>后者是在偷团队的产出，冒充自己的产出</strong>——短期好看，长期把你锁死在执行层。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>一个技术最强的个人，一年能产出的量有物理上限；但他若带出十个人、并把协作链理顺，产出可以是单干的十倍。管理岗的"产能"来自<strong>杠杆</strong>，不来自<strong>工时</strong>。把自我价值绑在"我个人做了多少"上，会不自觉地不放权、不建体系，最终把自己变成整条链最慢的一环。</p><div class="insight"><strong>深层洞见：</strong>一条自检：本周你亲手做完的事里，有多少是"只有你能做"、多少是"本该下属做、你替他做了"。<strong>后者是在偷团队的产出，冒充自己的产出</strong>——短期好看，长期把你锁死在执行层。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">述职别只列"我亲自谈下了 X 品牌"，要列"我搭的方法让 BD 团队整体多签 Y、物流/品类侧因我对齐多产出 Z"。让上级看见的是加总，不是个人英雄。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">你负责的 KA 盘子（某城市某品类）总净 GMV 增长才是你的产出；拆成"哪些品牌是我主导起量、哪些是我赋能别人起量"，别把平台大盘红利算成个人功劳。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 找高杠杆活动</a><a class="rt" href="javascript:scrollCard(9)">→ 三层控制放大产出</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 找高杠杆活动</a><a class="rt" href="javascript:scrollCard(9)">→ 三层控制放大产出</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="mg,bz,cr">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>任何把输入变成输出的过程——带团队、做活动、跑 BD——都是一个<strong>生产循环</strong>。循环的总产出由"限制步骤（瓶颈）"决定。管理者最该做的不是处处发力，而是<strong>找到那唯一卡住全链的一环，把它松开</strong>。在瓶颈之外的任何改进，都不会抬高总产出。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">拆</div><div class="ft2"><strong>把事拆成三段</strong>：投入（信息/人/预算）→ 活动（处理）→ 产出（决策/单量/签约），每段都能量化速度与滞留。</div></div><div class="fs2"><div class="fn2">找</div><div class="ft2"><strong>沿链找堵点</strong>：哪一步堆积最多、等待最久就是限制步骤；积压、返工、排队、反复催都是"漏"的指示器。</div></div><div class="fs2"><div class="fn2">松</div><div class="ft2"><strong>只在瓶颈处加资源</strong>：在非瓶颈处省下的钱和时间不会抬高总产出，反而制造更多"做了一半的在制品"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>生产系统里，瓶颈决定流量，就像公路最窄的那条车道决定整条路的通行量。管理者常被"看起来最忙、最吵"的环节牵着，把资源投向最响的地方而非最卡的地方。<strong>识别瓶颈要求你先忍住"多点开花"的冲动</strong>，接受"只改一处、别处先不管"。</p><div class="insight"><strong>深层洞见：</strong>把瓶颈思维再推一层：带团队最大的限制步骤常常不是执行，而是<strong>你本人</strong>——你的审批、你的注意力、你的决策速度。这时最该改造的是"把你从关键路径上挪开"（授权、立规则），而不是更卖力地加班。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>生产系统里，瓶颈决定流量，就像公路最窄的那条车道决定整条路的通行量。管理者常被"看起来最忙、最吵"的环节牵着，把资源投向最响的地方而非最卡的地方。<strong>识别瓶颈要求你先忍住"多点开花"的冲动</strong>，接受"只改一处、别处先不管"。</p><div class="insight"><strong>深层洞见：</strong>把瓶颈思维再推一层：带团队最大的限制步骤常常不是执行，而是<strong>你本人</strong>——你的审批、你的注意力、你的决策速度。这时最该改造的是"把你从关键路径上挪开"（授权、立规则），而不是更卖力地加班。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队交付慢，先画"线索→接触→谈判→签约→上线→复盘"，标每段平均滞留天数。卡在"上线"就去治履约/产品的堵点，而不是催 BD 多打电话。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">某品牌活动没起量，拆成"曝光→点击→转化→复购"四段漏斗，只补转化率最低那一段；别在已经很好的环节继续加预算——那是往非瓶颈处灌水。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 杠杆率</a><a class="rt" href="javascript:scrollCard(7)">→ 决策要快</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 杠杆率</a><a class="rt" href="javascript:scrollCard(7)">→ 决策要快</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="mg,bz,lf">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>同样一小时，效果可以差百倍，差别在<strong>杠杆率</strong>：一件事做完，是只影响你一个人，还是波及你的整个团队、整条协作链。格鲁夫把管理者产出写成"Σ(各类活动 × 其杠杆率)"——<strong>要把最好的精力，留给杠杆率最高的动作</strong>。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">量</div><div class="ft2"><strong>估"波及面 × 持续时间"</strong>：影响十个人半年的制度，远高于你自己改一份 PPT。</div></div><div class="fs2"><div class="fn2">类</div><div class="ft2"><strong>认高杠杆的样子</strong>：一次培训让所有人都会做、一次定标准让所有单少返工、一次关键对齐解锁三个部门。</div></div><div class="fs2"><div class="fn2">排</div><div class="ft2"><strong>给"重要不紧急"腾整块时间</strong>：高杠杆活动往往延迟见效，最容易被紧急琐事挤掉，必须主动排进去。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>低杠杆活动做再多，产出只是线性增长；抓住高杠杆活动，产出是阶跃式增长。多数人忙的是"能立刻看到反馈"的低杠杆事，回避"要很久才显形"的高杠杆事——<strong>因为反馈延迟会让人误以为它不重要</strong>。</p><div class="insight"><strong>深层洞见：</strong>高杠杆常常是"现在做、很久后才见效"（建体系、带人、定规则）。它的反馈延迟，正是它被拖延的原因。<strong>判断你有没有在真管理，就看你有没有为"延迟见效但影响面大"的事保留时间。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>低杠杆活动做再多，产出只是线性增长；抓住高杠杆活动，产出是阶跃式增长。多数人忙的是"能立刻看到反馈"的低杠杆事，回避"要很久才显形"的高杠杆事——<strong>因为反馈延迟会让人误以为它不重要</strong>。</p><div class="insight"><strong>深层洞见：</strong>高杠杆常常是"现在做、很久后才见效"（建体系、带人、定规则）。它的反馈延迟，正是它被拖延的原因。<strong>判断你有没有在真管理，就看你有没有为"延迟见效但影响面大"的事保留时间。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">与其替下属改十份方案（低杠杆），不如做一次"方案模板 + 评审标准"的培训，让以后所有 BD 的方案都提质（高杠杆）。前者只解一单，后者解一片。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">把每周的会议按"时长 × 影响面"排一遍，砍掉或授权那些"只影响你一人"的，把省下的整块时间投到能撬动团队的动作上。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 两类杠杆活动</a><a class="rt" href="javascript:scrollCard(6)">→ 时机与节奏</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效评估是最高杠杆</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 两类杠杆活动</a><a class="rt" href="javascript:scrollCard(6)">→ 时机与节奏</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效评估是最高杠杆</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="mg,lf">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>很多人把"管事"当工作、把"带人"当额外负担。格鲁夫说<strong>两类活动都直接产生杠杆</strong>：任务相关活动（收集信息、决策、开会、协调）推动当下产出；人员相关活动（培训、激励、团建、绩效）通过提升"以后所有人干活的能力和意愿"放大产出。<strong>忽略后者，等于自断一半杠杆。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">事</div><div class="ft2"><strong>任务相关</strong>：让工作往下走的一切——把信息对齐、把决策做出、把跨部门摩擦抹平。</div></div><div class="fs2"><div class="fn2">人</div><div class="ft2"><strong>人员相关</strong>：训练他、点醒他、把他放到合适位置。一个人被激活，他未来的全部产出都被你抬高。</div></div><div class="fs2"><div class="fn2">衡</div><div class="ft2"><strong>人员活动杠杆更高但更慢</strong>：培养下属、给真实反馈短期看不到账，必须刻意排进日程，否则永远被任务挤掉。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人员相关活动的杠杆是"复利"：它作用于"人这个生产要素本身"，改善一次，后续无数次动作都受益。任务相关活动多是"当期交付"，做完即清零。<strong>一个只会救火（任务）、从不建设队伍能力（人员）的管理者，产能永远靠透支自己维持</strong>。</p><div class="insight"><strong>深层洞见：</strong>把"跟人有关的事"正式当成 KPI：每周一次一对一是人员活动、一次复盘辅导是人员活动。若你连续两周没做任何人员活动，说明你在退化成一个"高级执行者"，而不是管理者。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人员相关活动的杠杆是"复利"：它作用于"人这个生产要素本身"，改善一次，后续无数次动作都受益。任务相关活动多是"当期交付"，做完即清零。<strong>一个只会救火（任务）、从不建设队伍能力（人员）的管理者，产能永远靠透支自己维持</strong>。</p><div class="insight"><strong>深层洞见：</strong>把"跟人有关的事"正式当成 KPI：每周一次一对一是人员活动、一次复盘辅导是人员活动。若你连续两周没做任何人员活动，说明你在退化成一个"高级执行者"，而不是管理者。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">跨部门协作推不动时，除了开协调会（任务活动），更要花"人员活动"——跟隔壁负责人私下对齐诉求、建立下次好办事的关系，别每次都临时求人救火。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">你的时间账本分两栏记："推进了事"和"激活了人"。长期只填第一栏，是你带团队最隐蔽的风险——事在动、人在原地。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 会议是工作介质</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效评估</a><a class="rt" href="javascript:scrollCard(11)">→ 识人测试</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 会议是工作介质</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效评估</a><a class="rt" href="javascript:scrollCard(11)">→ 识人测试</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="mg,cr">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>管理者的产出大量是在会议里被制造、或被浪费的。格鲁夫把会议称为<strong>"管理工作的介质"</strong>——就像车间之于工厂。关键不是少开会，而是让<strong>每个会议属于正确的类型、按正确的规则开</strong>。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">流</div><div class="ft2"><strong>流程型（定期）</strong>：一对一、团队例会、运营复盘——承载信息流动与决策习惯，是组织的固定节律，轻易别取消。</div></div><div class="fs2"><div class="fn2">任</div><div class="ft2"><strong>任务型（一次性）</strong>：为一个具体决定/项目临时召集——散会必须有结论、有责任人和时间点。</div></div><div class="fs2"><div class="fn2">知</div><div class="ft2"><strong>知识型（生想法）</strong>：头脑风暴、跨部门共创——先求多样性、暂缓评判，把"提想法"和"下结论"分成两段。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>会议最大的杠杆不在"这一次决定了什么"，而在"它建立了什么习惯"。固定的高质量流程型会议，让信息自动上浮、问题早暴露、决策不靠催；<strong>一旦取消，你以为省了时间，实则拆掉了组织的信息循环</strong>。</p><div class="insight"><strong>深层洞见：</strong>一条纪律——每个会先声明"这是哪一类"。用头脑风暴的方式去做决策会，会得到一堆没人负责的点子；用决策会的方式去开知识会，会没人敢说真话。<strong>会前定类型，比会中费力引导更省力。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>会议最大的杠杆不在"这一次决定了什么"，而在"它建立了什么习惯"。固定的高质量流程型会议，让信息自动上浮、问题早暴露、决策不靠催；<strong>一旦取消，你以为省了时间，实则拆掉了组织的信息循环</strong>。</p><div class="insight"><strong>深层洞见：</strong>一条纪律——每个会先声明"这是哪一类"。用头脑风暴的方式去做决策会，会得到一堆没人负责的点子；用决策会的方式去开知识会，会没人敢说真话。<strong>会前定类型，比会中费力引导更省力。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">与品牌 BD 下属的一对一，"主动权在下属"——让他带议题，你做教练和决策者，而不是把它开成你的汇报会。固定双周，再忙也别取消。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">跨部门（产品/物流/市场）扯皮时，开"任务型"临时会而不是流程型大会：议题单一、时间盒死、散会即定责到人，别把一场临时冲突开成每周例行大会。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 时机与节奏</a><a class="rt" href="javascript:scrollCard(7)">→ 决策要快</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 时机与节奏</a><a class="rt" href="javascript:scrollCard(7)">→ 决策要快</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="bz,mg,lf">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>格鲁夫反复强调：管理者的时间极易被别人的需求占满，变成"被动响应"。真正的杠杆来自<strong>提前</strong>——在问题还没堵到面前时就动手。同一步动作，早做和晚做的效果差很多，<strong>因为晚了选择会变少、代价会变高</strong>。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">守</div><div class="ft2"><strong>主动给日程留白</strong>：保护整块时间做"你发起"的高杠杆事，否则它永远被"别人发起"的琐事吃掉。</div></div><div class="fs2"><div class="fn2">前</div><div class="ft2"><strong>识别时机杠杆</strong>：招聘、预警、对齐、决策，越早启动越从容；等火烧眉毛再做，只能将就。</div></div><div class="fs2"><div class="fn2">攻</div><div class="ft2"><strong>保持进攻姿态</strong>：用"下一步该做什么"来安排一天，而不是"现在该应付谁"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>很多管理灾难不是能力问题，是"时机"问题：信息晚到一步、决策晚拍一天、预警晚上周，就把一个可以低成本解决的事，拖成只能高成本止损的事。<strong>提前行动的本质，是在"选择还未收窄"时下注。</strong></p><div class="insight"><strong>深层洞见：</strong>一个可操作习惯：对每个"未来会爆发"的已知问题，现在记下"最早可行动的那一步"和"它一旦恶化就找谁"。把被动救火前移成主动布防——这就是把日程从"别人驱动"夺回"自己驱动"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>很多管理灾难不是能力问题，是"时机"问题：信息晚到一步、决策晚拍一天、预警晚上周，就把一个可以低成本解决的事，拖成只能高成本止损的事。<strong>提前行动的本质，是在"选择还未收窄"时下注。</strong></p><div class="insight"><strong>深层洞见：</strong>一个可操作习惯：对每个"未来会爆发"的已知问题，现在记下"最早可行动的那一步"和"它一旦恶化就找谁"。把被动救火前移成主动布防——这就是把日程从"别人驱动"夺回"自己驱动"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">大促 / 年度 KA 目标提前一个季度启动品牌谈判与资源锁定，别等排期截止周才发现坑没填、预算没批——那时你只剩妥协的份。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">察觉某下属状态不对、有离职苗头，立刻安排一对一聊，而不是等辞呈递上来再挽留；时机一过，你能调动的杠杆直接归零。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 杠杆率</a><a class="rt" href="javascript:scrollCard(9)">→ 三层控制</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 杠杆率</a><a class="rt" href="javascript:scrollCard(9)">→ 三层控制</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="mg,bz,cr">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>管理者的价值不只是"做对的决定"，还包括"及时做出、讲清楚、并让所有人坚决执行"。格鲁夫的范式：<strong>拍板前鼓励最充分的争论与反对</strong>（质量来自冲突）；<strong>一旦拍板，无论谁当初反对，都必须公开支持、全力执行</strong>（"反对但执行"）。最坏的不是慢决策，是"决策悬而未决、执行各留一手"。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">辩</div><div class="ft2"><strong>决策前</strong>：把不同意见摆上台面，管理者有义务逼出冲突、当场"对峙—解决"，不许把分歧憋着。</div></div><div class="fs2"><div class="fn2">断</div><div class="ft2"><strong>决策时</strong>：及时定、不含糊。宁可做一个清晰的、事后小修的中等决定，也不要一个永远"再研究研究"的完美决定。</div></div><div class="fs2"><div class="fn2">行</div><div class="ft2"><strong>决策后</strong>：明确"谁拍板、谁负责、怎么算成功"，然后要求所有人（含反对者）全力投入。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>决策的产出 = 准确性 × 承诺度。一个正确的决定，如果执行者各怀异议、阳奉阴违，落地效果照样是负的。<strong>"反对但执行"不是压制异议，而是把"表达异议的权利"和"执行决定的义务"分成两段时间</strong>：前者在会内用尽，后者从散会开始无条件。</p><div class="insight"><strong>深层洞见：</strong>警惕两种假象：一是"以共识之名拖延"——反复开会征求所有人同意，实则没人敢拍板；二是"拍得草率、执行更草率"——没真争论就全票通过，会后各自理解。检验：<strong>散会时，最反对的人愿不愿意执行？</strong>不愿，说明这一步没走完。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>决策的产出 = 准确性 × 承诺度。一个正确的决定，如果执行者各怀异议、阳奉阴违，落地效果照样是负的。<strong>"反对但执行"不是压制异议，而是把"表达异议的权利"和"执行决定的义务"分成两段时间</strong>：前者在会内用尽，后者从散会开始无条件。</p><div class="insight"><strong>深层洞见：</strong>警惕两种假象：一是"以共识之名拖延"——反复开会征求所有人同意，实则没人敢拍板；二是"拍得草率、执行更草率"——没真争论就全票通过，会后各自理解。检验：<strong>散会时，最反对的人愿不愿意执行？</strong>不愿，说明这一步没走完。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">定品牌打法/资源分配，先让 BD 和运营充分吵，你最后拍板并当场说清"选 A 不选 B 的理由、谁负责、下季度看哪个数"；之后不许翻旧账、不许阳奉阴违。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">竞品动作快时，市场窗口不等"完美方案"——用"够好的决策 + 全员坚决执行 + 快速回看修正"，胜过一场迟迟没有结论的长期讨论。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 会议介质</a><a class="rt" href="javascript:scrollCard(8)">→ 管控模式</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 会议介质</a><a class="rt" href="javascript:scrollCard(8)">→ 管控模式</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="mg,lf,cr">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>格鲁夫的"管控"不看人品、不看工龄，看一个人在<strong>当前这件具体任务</strong>上的两个维度：任务相关能力（会不会做）和任务相关意愿（愿不愿负责），二者合称"任务相关成熟度"。低成熟度 → 直接告诉他做什么、怎么做、何时交；高成熟度 → 少插手、多支持、真授权。<strong>用错模式，比用错方法更伤产出。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">能</div><div class="ft2"><strong>能力维度</strong>：他做过类似的事吗、懂标准吗——不熟就加"结构 + 示例"，讲清做什么怎么做。</div></div><div class="fs2"><div class="fn2">意</div><div class="ft2"><strong>意愿维度</strong>：他对这件具体事上心吗、有信心吗——意愿会波动（新任务、受挫后），要单独判。</div></div><div class="fs2"><div class="fn2">配</div><div class="ft2"><strong>按档配风格</strong>：成熟度低就得贴身带；成熟度高你却还紧盯，会同时伤效率和士气（高杠杆变负杠杆）。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>"同一个人在不同任务上成熟度不同"是关键：一位资深 BD 在成熟品类是高成熟度、可以放手；让他去打一个全新业态，可能一夜回到低成熟度，需要重回结构化。<strong>管理不是给人贴"能/不能"的标签，而是对"这件事 × 这个人"实时判档，并允许升档降档。</strong></p><div class="insight"><strong>深层洞见：</strong>授权不等于弃权——格鲁夫警告"没有跟进的授权是甩手（abdication）"。放手的前提是你能看到进展、有中途检查点；一旦察觉某项任务意愿或能力掉了，要敢从"授权模式"退回"紧盯模式"。这不可耻，是负责。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>"同一个人在不同任务上成熟度不同"是关键：一位资深 BD 在成熟品类是高成熟度、可以放手；让他去打一个全新业态，可能一夜回到低成熟度，需要重回结构化。<strong>管理不是给人贴"能/不能"的标签，而是对"这件事 × 这个人"实时判档，并允许升档降档。</strong></p><div class="insight"><strong>深层洞见：</strong>授权不等于弃权——格鲁夫警告"没有跟进的授权是甩手（abdication）"。放手的前提是你能看到进展、有中途检查点；一旦察觉某项任务意愿或能力掉了，要敢从"授权模式"退回"紧盯模式"。这不可耻，是负责。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">带新人 BD 跑第一单、老店主打新玩法，前期用结构化清单（模板 + 节点检查），成熟后转"只谈目标与风险"，别一直微观管理，把能干的人逼走。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">老板对你忽松忽紧，别只读成"信不信任我"；也问自己：这项新任务上，我是不是暂时处在低成熟度、需要多给他一点确定性。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 三层控制</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效反馈</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 三层控制</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效反馈</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="mg,bz,lf">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>每个管理者都有"能直接督导的人数上限"。组织要成长，控制方式就得升级：第一层靠你亲自盯（<strong>直接督导</strong>）；人多了靠你管的主管去管（<strong>间接督导</strong>，通过团队放大）；再大到跨部门、隔了几层，靠不了人盯人，只能靠共享的规则、制度和价值观（<strong>文化与规则</strong>）来协调。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">直</div><div class="ft2"><strong>小团队 · 直接督导</strong>：你直接对结果负责，靠你的判断和在场，事事过你。</div></div><div class="fs2"><div class="fn2">间</div><div class="ft2"><strong>中团队 · 间接督导</strong>：你主要通过"培养一批主管"放大产出——杠杆转移到"管你的下属怎么管他们的下属"。</div></div><div class="fs2"><div class="fn2">规</div><div class="ft2"><strong>大/跨部门 · 文化与规则</strong>：靠共享的原则、流程、考核与价值观协调，因为没人能事事拍板到你。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>组织越大，越依赖"不需要你在场，也能做出一致行为"的机制。这就是文化的作用：<strong>它是"管理者不在时运行的操作系统"</strong>。很多管理者卡在"直接督导"这一层不肯升级，结果规模一大，全靠他一个人决策、审批，把自己变成全公司最慢的瓶颈。</p><div class="insight"><strong>深层洞见：</strong>一条成长判据：如果你休假一周、团队就停摆，说明你还在用"直接督导"扛一个本该由"间接督导 + 规则"运行的组织。升级的代价是先花时间建主管梯队和标准，但这是把你从瓶颈里解放出来的唯一路。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>组织越大，越依赖"不需要你在场，也能做出一致行为"的机制。这就是文化的作用：<strong>它是"管理者不在时运行的操作系统"</strong>。很多管理者卡在"直接督导"这一层不肯升级，结果规模一大，全靠他一个人决策、审批，把自己变成全公司最慢的瓶颈。</p><div class="insight"><strong>深层洞见：</strong>一条成长判据：如果你休假一周、团队就停摆，说明你还在用"直接督导"扛一个本该由"间接督导 + 规则"运行的组织。升级的代价是先花时间建主管梯队和标准，但这是把你从瓶颈里解放出来的唯一路。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">城市 KA 盘从你直管 3 个 BD 扩到 10 个，就要立"间接督导"：培养 1–2 个资深带小组，你转而管方法、定复盘节奏，而不是继续把 10 个人一起抓在手里。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">跨品牌/跨部门协同靠不了每次都拉你拍板，要把"怎么合作、怎么分账、什么算达标"沉淀成规则，让规则替你做协调。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 管控模式</a><a class="rt" href="javascript:scrollCard(12)">→ 双轨组织</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 管控模式</a><a class="rt" href="javascript:scrollCard(12)">→ 双轨组织</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="mg,lf">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>格鲁夫认为绩效评估是管理者手上<strong>杠杆最高的动作之一</strong>，因为它一次性作用于"一个人未来的全部表现"，还会通过他影响更多人。它唯一的正当目的是<strong>提升被评估者的表现</strong>——为此你必须敢于给出真实、具体、他之前没意识到的反馈。一场"大家都开心、但没人知道该改什么"的评估，等于失职。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">实</div><div class="ft2"><strong>反馈要"真"</strong>：讲具体事实和影响，不绕弯、不搞平均主义、不用"还行、继续努力"糊过去。</div></div><div class="fs2"><div class="fn2">平</div><div class="ft2"><strong>无"惊吓"原则</strong>：年底评估里的批评，必须在平时一对一时就说过；评估只做汇总，不做突袭。</div></div><div class="fs2"><div class="fn2">敢</div><div class="ft2"><strong>承受"当下不被喜欢"的代价</strong>：让人难过的真话，比让人舒服的假话，是更大的负责。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>绩效杠杆之所以高，是因为它同时传递两件事：<strong>"什么在这里算做得好"（标准）</strong>和<strong>"你离它有多远"（差距）</strong>。含糊地给高分，看似和气，实则抹掉了标准、误导了当事人，还让真正优秀的人觉得不公平而流失。评分的宽容，是对高绩效者的残忍。</p><div class="insight"><strong>深层洞见：</strong>这构成一个真实张力——青瓷讲"看破不说破"是处世修养，但绩效评估上"看破就必须说破"，因为不说破，当事人就没有改变的机会。分寸在于：对事、对未来负责，用"直接但不羞辱"的方式说破，而不是为维护关系把话咽下去。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>绩效杠杆之所以高，是因为它同时传递两件事：<strong>"什么在这里算做得好"（标准）</strong>和<strong>"你离它有多远"（差距）</strong>。含糊地给高分，看似和气，实则抹掉了标准、误导了当事人，还让真正优秀的人觉得不公平而流失。评分的宽容，是对高绩效者的残忍。</p><div class="insight"><strong>深层洞见：</strong>这构成一个真实张力——青瓷讲"看破不说破"是处世修养，但绩效评估上"看破就必须说破"，因为不说破，当事人就没有改变的机会。分寸在于：对事、对未来负责，用"直接但不羞辱"的方式说破，而不是为维护关系把话咽下去。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">给 BD 做绩效，别只说"这季度表现不错"；说清"哪几个 KA 品牌他没拿下、卡在哪、下季度我要看到什么"，并当场一起写下 2–3 条可核查的改进项。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">收到上级含糊的正向评价时主动追问："我具体哪里还能更好？"——把"被夸"转成"被校准"，别错过别人手里那面你看不到的镜子。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 提前（平时就反馈）</a><a class="rt" href="javascript:scrollCard(11)">→ 测试原则</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 提前（平时就反馈）</a><a class="rt" href="javascript:scrollCard(11)">→ 测试原则</a><a class="rt" href="qingci.html#card-6">青瓷 · 看破不说破</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="mg,lf,cr">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>招人、提人、给重任，最可靠的预测变量是<strong>"这个人过去在类似情境、类似压力下真实做过什么"</strong>，而不是他的假设回答、聪明表态或简历头衔。格鲁夫的"测试原则"：把评估锚定在"可验证的过往行为"上，而不是"对未来潜力的美好想象"上。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">往</div><div class="ft2"><strong>问过去的具体事件</strong>："讲一次你搞定过最难的品牌/最难的跨部门谈判"，追问细节、他本人做了什么、结果如何。</div></div><div class="fs2"><div class="fn2">压</div><div class="ft2"><strong>情境要"类似"</strong>：顺境里的好不代表逆境可靠；要看他在压力、资源不足、被拒绝时的真实反应。</div></div><div class="fs2"><div class="fn2">疑</div><div class="ft2"><strong>对"漂亮假设"打折</strong>：一个从没做过却把答案说得头头是道的人，风险高于一个讲得出失败细节的人。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人会在面试/述职时"表演最好的自己"，但很难伪造一连串可交叉验证的过往行为。锚定行为证据，本质是降低"被叙事欺骗"的概率。更要警惕一种常见错：<strong>因为某人在原岗位是业务尖子，就推断他也能当好管理者</strong>——这是两回事，要分别用行为证据检验。</p><div class="insight"><strong>深层洞见：</strong>一条反向应用：评估自己、争取晋升时，也别用"我有能力/我很努力"这种假设句，而用"我在 X 情境下做过 Y、拿到 Z"的行为句去举证。<strong>你说服上级的逻辑，应当和你想识别一个人的逻辑一致。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人会在面试/述职时"表演最好的自己"，但很难伪造一连串可交叉验证的过往行为。锚定行为证据，本质是降低"被叙事欺骗"的概率。更要警惕一种常见错：<strong>因为某人在原岗位是业务尖子，就推断他也能当好管理者</strong>——这是两回事，要分别用行为证据检验。</p><div class="insight"><strong>深层洞见：</strong>一条反向应用：评估自己、争取晋升时，也别用"我有能力/我很努力"这种假设句，而用"我在 X 情境下做过 Y、拿到 Z"的行为句去举证。<strong>你说服上级的逻辑，应当和你想识别一个人的逻辑一致。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">选拔带小组的资深 BD，别选"最会讲方法"的，选"带出过结果、救过火、被竞品抢单后又翻过盘"的——用他的真实战绩当测试，而不是他的口头承诺。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">别人给你推荐新人/新方案，多问一句"类似情况下，上次实际结果是什么"，把决策从"听起来靠谱"拉回"验证过"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 管控模式</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效评估</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 管控模式</a><a class="rt" href="javascript:scrollCard(10)">→ 绩效评估</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="mg,bz,lf">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>组织同时干两件本质冲突的事：把现有业务<strong>稳定高效地跑下去</strong>（工作导向/职能/层级），以及不断<strong>做出新东西、应对变化</strong>（变革导向/项目/跨职能团队）。只有一条线，要么僵化、要么混乱。格鲁夫的"双轨"：日常归职能、变革归项目小组，一个人可能同时属于两条线，冲突由管理者主动平衡，而不是等它自己消失。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">常</div><div class="ft2"><strong>工作轨（职能/层级）</strong>：标准、考核、稳定交付——保住今天的产出与质量。</div></div><div class="fs2"><div class="fn2">变</div><div class="ft2"><strong>变革轨（项目/新任务）</strong>：跨部门抽调、临时编组、允许越级沟通——把新项目、新打法、新合作做出来。</div></div><div class="fs2"><div class="fn2">衡</div><div class="ft2"><strong>两轨必然抢人抢资源</strong>：双重汇报会别扭，这不是设计失误，是需要被持续管理的固有张力。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>职能线擅长"确定性"，项目线擅长"适应变化"，但两者混在一起会互相拖累。双轨的代价是有人同时被两个老板、两个优先级拉扯。成熟的做法是<strong>显式承认张力、给它配机制</strong>（清晰的项目角色、资源仲裁规则、双轨绩效），而不是幻想"大家自己会平衡"。</p><div class="insight"><strong>深层洞见：</strong>对带 KA 的人尤其现实：一边要守住存量品牌的日常运营（工作轨），一边要抓新店型、新渠道、新合作模式这类不确定项目（变革轨）。<strong>别让新任务永远让位于救火——给变革轨单独排资源、单列考核，它才长得出来。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>职能线擅长"确定性"，项目线擅长"适应变化"，但两者混在一起会互相拖累。双轨的代价是有人同时被两个老板、两个优先级拉扯。成熟的做法是<strong>显式承认张力、给它配机制</strong>（清晰的项目角色、资源仲裁规则、双轨绩效），而不是幻想"大家自己会平衡"。</p><div class="insight"><strong>深层洞见：</strong>对带 KA 的人尤其现实：一边要守住存量品牌的日常运营（工作轨），一边要抓新店型、新渠道、新合作模式这类不确定项目（变革轨）。<strong>别让新任务永远让位于救火——给变革轨单独排资源、单列考核，它才长得出来。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">存量 KA 运营走常规模组与考核；同时立一个"新场景/新品牌突破"的虚拟项目组，跨品类/物流/产品抽人，单独定里程碑，允许绕过层级快速拍板。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">一个品牌既要按月度 KPI 跑量（工作轨），又要试点一个尚未验证的新玩法（变革轨）——试点资源单独划、单独看，别用成熟业务的考核去扼杀它。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 三层控制</a><a class="rt" href="javascript:scrollCard(7)">→ 决策执行</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 三层控制</a><a class="rt" href="javascript:scrollCard(7)">→ 决策执行</a><a class="rt" href="yuanze.html#card-8">原则 · 用机器视角看组织</a></div></details></div>
 </div></div>
 </div>
 

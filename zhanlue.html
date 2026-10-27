@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>好战略不是一句鼓舞人心的话，而是一个有<strong>结构</strong>的东西：<strong>先「诊断」</strong>——把混沌现实压缩成"我到底在应对哪一两个关键挑战"；<strong>再定「指导方针」</strong>——选定一条应对的整体路径；<strong>最后落到「连贯性行动」</strong>——一组互相咬合、都指向同一目标的具体动作。三件套缺一，就不是战略。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">诊</div><div class="ft2"><strong>诊断=定义关键挑战</strong>：回答"事情为什么难、真正的瓶颈在哪"。答不出这一句，后面全是空转。</div></div><div class="fs2"><div class="fn2">方</div><div class="ft2"><strong>指导方针=给方向的取舍逻辑</strong>：它不给细节，但约束也赋能——让所有人知道"遇到冲突时往哪边靠"。</div></div><div class="fs2"><div class="fn2">行</div><div class="ft2"><strong>连贯性行动=把方针变成事实</strong>：资源、政策、流程围绕同一路径编排，彼此增强而非互相拆台。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>战略的价值核心是<strong>聚焦</strong>：把有限资源集中到一个能撬动全局的点上。只喊目标（"要增长、要领先"）说明"想要什么"，却不回答"凭什么、先动哪一步"——那正是坏战略的起点。三件套强迫你直面问题、做出取舍。</p><div class="insight"><strong>深层洞见：</strong>检验你手上那份东西是不是战略，看能不能一句话说清：<strong>"我的诊断是什么、据此我选的路径是什么、我为此对齐了哪些动作"</strong>。三句都答得上来，才算数。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>战略的价值核心是<strong>聚焦</strong>：把有限资源集中到一个能撬动全局的点上。只喊目标（"要增长、要领先"）说明"想要什么"，却不回答"凭什么、先动哪一步"——那正是坏战略的起点。三件套强迫你直面问题、做出取舍。</p><div class="insight"><strong>深层洞见：</strong>检验你手上那份东西是不是战略，看能不能一句话说清：<strong>"我的诊断是什么、据此我选的路径是什么、我为此对齐了哪些动作"</strong>。三句都答得上来，才算数。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">写品牌年度经营计划时，别一上来堆 GMV 目标。先用一页写清"这个品牌今年真正的瓶颈是什么（拉新？复购？客单？某几个城市群的渗透？）"，再定一条指导方针，最后把补贴、货品、履约、投放都朝它对齐。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">下属交方案，追问三句：你诊断的问题是啥？你的打法逻辑是啥？这个动作和你别的动作方向一致吗？答不齐就退回。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计</a><a class="rt" href="javascript:scrollCard(2)">→ 坏战略的识别</a><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="sunzi.html#card-3">孙子 · 五事七计</a><a class="rt" href="javascript:scrollCard(2)">→ 坏战略的识别</a><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="bz,mg,lf">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>坏战略有共同症状，一眼可辨：<strong>用华丽空泛的词掩盖无法解决的问题</strong>；<strong>把"目标"当"战略"</strong>（喊翻倍增长却不讲怎么办）；<strong>回避真正的难点</strong>，专挑软柿子；<strong>一堆互不相关的 KPI 拼贴</strong>，看似全面实则没有主线。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">空</div><div class="ft2"><strong>空话</strong>：用"赋能/生态/抓手/全面领先"代替具体判断——听着都对，做时无据。</div></div><div class="fs2"><div class="fn2">标</div><div class="ft2"><strong>目标冒充战略</strong>："明年增长 50%"是目标不是战略；战略是"这 50% 从哪来、凭什么、第一步动什么"。</div></div><div class="fs2"><div class="fn2">避</div><div class="ft2"><strong>回避挑战</strong>：绕开最硬的那个约束去做容易的事，结果问题还在原地。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>KPI 堆砌最危险的地方在于：它给人一种"已经在认真管理"的错觉，实则是把"需要取舍的难题"推卸给指标表。<strong>战略的本质是取舍，而 KPI 清单恰恰在回避取舍</strong>——什么都在乎，等于什么都不选。</p><div class="insight"><strong>深层洞见：</strong>好战略读起来像"诊断书+作战方案"，坏战略读起来像"许愿池"。判据：满屏形容词、并列目标、无先后顺序、没有一句"我们不做…"——基本可判坏战略。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>KPI 堆砌最危险的地方在于：它给人一种"已经在认真管理"的错觉，实则是把"需要取舍的难题"推卸给指标表。<strong>战略的本质是取舍，而 KPI 清单恰恰在回避取舍</strong>——什么都在乎，等于什么都不选。</p><div class="insight"><strong>深层洞见：</strong>好战略读起来像"诊断书+作战方案"，坏战略读起来像"许愿池"。判据：满屏形容词、并列目标、无先后顺序、没有一句"我们不做…"——基本可判坏战略。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">JBP/年度方案里，把"提升品牌影响力、优化用户结构、强化供给"这类话逐条还原成可验证的具体命题，还原不动的，就是空话。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">给自己定计划时，警惕把"我想成为…"当成战略。逼自己补一句"我为此愿意放弃什么"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 好战略内核</a><a class="rt" href="javascript:scrollCard(12)">→ 写不出诊断就没想清楚</a><a class="rt" href="javascript:scrollCard(11)">→ 取舍即战略</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 好战略内核</a><a class="rt" href="javascript:scrollCard(12)">→ 写不出诊断就没想清楚</a><a class="rt" href="javascript:scrollCard(11)">→ 取舍即战略</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="cr,bz">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>战略不是宏大 ambition，也不是鼓舞人心的愿景，而是<strong>"针对当下最关键挑战的一套连贯应对设计"</strong>。愿景回答"我们想去哪"，战略回答"眼前这道坎具体怎么跨过去"。把愿景当战略，是坏战略最常见的伪装。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">挑</div><div class="ft2"><strong>挑出关键挑战</strong>：从一堆问题里找出那个"解决了它，其余会跟着变容易"的枢纽难题。</div></div><div class="fs2"><div class="fn2">设</div><div class="ft2"><strong>围绕它设计路径</strong>：拿出具体的应对逻辑，而不是一句态度鲜明的口号。</div></div><div class="fs2"><div class="fn2">连</div><div class="ft2"><strong>让每个动作为跨坎服务</strong>：与这道坎无关的动作，再诱人也该砍。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>资源永远有限，没有聚焦的"战略"等于没有战略。<strong>识别关键挑战的能力，就是战略能力的核心</strong>——它决定你把力气花在哪。愿景提供动力，但只有对挑战的精准判断才能提供方向。</p><div class="insight"><strong>深层洞见：</strong>每个经营周期该反复问一句："这个阶段真正卡住我的是哪一件事？"在 KA 场景里，它可能是某城市群的渗透率天花板、某价格带的竞争力，或某品牌失衡的供给结构。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>资源永远有限，没有聚焦的"战略"等于没有战略。<strong>识别关键挑战的能力，就是战略能力的核心</strong>——它决定你把力气花在哪。愿景提供动力，但只有对挑战的精准判断才能提供方向。</p><div class="insight"><strong>深层洞见：</strong>每个经营周期该反复问一句："这个阶段真正卡住我的是哪一件事？"在 KA 场景里，它可能是某城市群的渗透率天花板、某价格带的竞争力，或某品牌失衡的供给结构。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">竞品分析不止罗列对手动作，要提炼出"对手对我构成的最关键挑战是什么"，再据此定应对，而不是它做啥我跟啥。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">城市群策略：先诊断每个城市群的核心挑战（拉新见顶？竞对压制？履约短板？），再定差异化方针，而非一套模板套所有城市。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 三件套内核</a><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a><a class="rt" href="jiushi.html#card-7">遥远的救世主 · 弱势破强势</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 三件套内核</a><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a><a class="rt" href="jiushi.html#card-7">遥远的救世主 · 弱势破强势</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="bz,cr,lf">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>好战略寻找<strong>杠杆效应</strong>：某些位置上，很小的连贯投入能撬动远超比例的变化。战略能力很大程度上就是<strong>找到这个支点、并把资源集中压上去</strong>，而不是把预算平均撒到每一处。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">识</div><div class="ft2"><strong>识别约束点</strong>：找出"一旦松动、全局跟着变"的那个节点（可能是供给密度、价格带心智、或履约时效）。</div></div><div class="fs2"><div class="fn2">聚</div><div class="ft2"><strong>从面广而弱收拢到点深而强</strong>：把钱和人从"每个都投一点"改为"关键处投够量"。</div></div><div class="fs2"><div class="fn2">连</div><div class="ft2"><strong>持续压同一支点</strong>：用一连串互相加强的动作形成滚雪球，而非打一枪换一个地方。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>平均用力必败，因为<strong>分散投入让每处都达不到"起效的临界质量"</strong>——钱花了，水花没起来。杠杆点思维是对抗"资源平庸化"的解药：真正的进展往往来自一个点被投到临界点之上。</p><div class="insight"><strong>深层洞见：</strong>"每个城市都投一点、每个价格带都补一点"的平铺打法，是坏战略的典型特征。好战略敢在个别点上做看似"过度集中"的下注。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>平均用力必败，因为<strong>分散投入让每处都达不到"起效的临界质量"</strong>——钱花了，水花没起来。杠杆点思维是对抗"资源平庸化"的解药：真正的进展往往来自一个点被投到临界点之上。</p><div class="insight"><strong>深层洞见：</strong>"每个城市都投一点、每个价格带都补一点"的平铺打法，是坏战略的典型特征。好战略敢在个别点上做看似"过度集中"的下注。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">年度经营预算别按城市/GMV 等比例分。先测算 ROI 弹性最高的 2-3 个杠杆（某品类、某人群、某几个城市群），把增量资源重点压上去。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">找那个"对手跟了伤利润、不跟丢市场"的点作为杠杆，逼它在两难中被动（呼应机制设计）。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="jiushi.html#card-7">遥远的救世主 · 弱势破强势</a><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a><a class="rt" href="javascript:scrollCard(11)">→ 取舍即战略</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="jiushi.html#card-7">遥远的救世主 · 弱势破强势</a><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a><a class="rt" href="javascript:scrollCard(11)">→ 取舍即战略</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="lf,bz,mg">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>真正有竞争力的战略洞察，来自<strong>只有你掌握的"域内知识/特殊专长"</strong>——对具体场景、具体人群、具体流程的深入理解，而不是行业通用报告。别人花钱也买不来的优势，往往藏在这种"沉下去才看得见"的细节里。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">沉</div><div class="ft2"><strong>到一线去</strong>：门店、商家、骑手、用户——看到报表和二手结论看不到的东西。</div></div><div class="fs2"><div class="fn2">独</div><div class="ft2"><strong>提炼独特判断</strong>：形成"外人看不到、通用方法论覆盖不到"的情境化洞察。</div></div><div class="fs2"><div class="fn2">用</div><div class="ft2"><strong>转成抄不走的动作</strong>：把只有你懂的洞察变成结构性领先的打法。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>战略之所以难以被复制，是因为它的根基常常是<strong>隐性(tacit)的域内知识</strong>——藏在细节和情境里。对手能抄走你的补贴力度、你上线的功能，却抄不走你在一线积累的观察和由此产生的判断。</p><div class="insight"><strong>深层洞见：</strong>你的护城河未必是资源，很可能是"你在一线花时间获得、而别人懒得去获得的那层理解"。坐在办公室做战略，做的是别人的战略。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>战略之所以难以被复制，是因为它的根基常常是<strong>隐性(tacit)的域内知识</strong>——藏在细节和情境里。对手能抄走你的补贴力度、你上线的功能，却抄不走你在一线积累的观察和由此产生的判断。</p><div class="insight"><strong>深层洞见：</strong>你的护城河未必是资源，很可能是"你在一线花时间获得、而别人懒得去获得的那层理解"。坐在办公室做战略，做的是别人的战略。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">别只刷行业 PPT。坚持实地走访门店和商家，把"体感细节"沉淀成可复用的判断，这是别人抄不走的积累。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">某城市群的打法，应来自对该群商户结构、配送半径、消费习惯的实地洞察，而非照搬总部模板。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">汇报前先自问："这条结论是我在一线验证过的，还是二手转述的？"</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a><a class="rt" href="javascript:scrollCard(6)">→ 区分约束与习惯</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-6">第一性原理 · 破界创新</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a><a class="rt" href="javascript:scrollCard(6)">→ 区分约束与习惯</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="bz,lf,mg">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>坏战略常被"从来都这么做"的<strong>假约束</strong>捆住手脚。真约束（物理规律、法规、现金红线）不可违背；但很多"不可能"只是习惯、行业惯例或心理默认。<strong>好战略先分辨：哪些是墙、哪些只是一条旧路。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>逐条审问</strong>："这条限制是硬约束，还是只是大家都在这么做？"</div></div><div class="fs2"><div class="fn2">破</div><div class="ft2"><strong>对习惯敢于重设</strong>；<strong>对真约束老实承认</strong>，并在约束之内做设计。</div></div><div class="fs2"><div class="fn2">记</div><div class="ft2"><strong>把破除的旧框变成方法</strong>：下次能更快识别哪些"不可能"是假的。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>惯例之所以伪装成约束，是因为它省认知、避风险，于是被当成不可动的东西沿用。但<strong>竞争格局一旦变化，正是这些"想当然"遮蔽了杠杆点的发现</strong>——别人不敢碰的地方，往往藏着空位。</p><div class="insight"><strong>深层洞见：</strong>当你听到或说出"这个做不了""行业就这样""平台不让"，先把它标为"待验证的假约束"，去查清是真红线还是旧习惯，别直接当墙。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>惯例之所以伪装成约束，是因为它省认知、避风险，于是被当成不可动的东西沿用。但<strong>竞争格局一旦变化，正是这些"想当然"遮蔽了杠杆点的发现</strong>——别人不敢碰的地方，往往藏着空位。</p><div class="insight"><strong>深层洞见：</strong>当你听到或说出"这个做不了""行业就这样""平台不让"，先把它标为"待验证的假约束"，去查清是真红线还是旧习惯，别直接当墙。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">年度计划里把"不能降补/不能改货品结构/不能碰某渠道"逐条审：是平台规则、成本红线（真约束），还是往年惯性（可重设）？</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">竞对"从不进入的价格带/场景"可能只是它的习惯，而非不可行——那正是你可以切入的结构性空位。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="fp.html#card-1">第一性原理 · 回到基点</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="fp.html#card-1">第一性原理 · 回到基点</a><a class="rt" href="jiushi.html#card-4">遥远的救世主 · 见路不走</a><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="bz,mg">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>面对又大又难的目标，好战略设立<strong>"近程目标"(proximate objectives)</strong>——近期、具体、以当下资源和能力能够达成的中间目标。它把宏大的方向翻译成"今天就能动手、并且为下一步铺路"的任务。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">近</div><div class="ft2"><strong>切近</strong>：把年度大目标切成一个季度、一个冲刺能落地的近程目标。</div></div><div class="fs2"><div class="fn2">具</div><div class="ft2"><strong>具体</strong>：每个近程目标明确"做什么、达到什么可验证的信号"。</div></div><div class="fs2"><div class="fn2">路</div><div class="ft2"><strong>铺路</strong>：近程目标之间有推进关系——达成一个，解锁下一个。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>宏大目标反而让人瘫痪：当目标超出当前能力，人不知从哪下手，于是退回日常事务。近程目标<strong>重建"行动—反馈"闭环</strong>，让战略变得可执行、可校准，把"够不着的焦虑"变成"能推进的清单"。</p><div class="insight"><strong>深层洞见：</strong>判断目标该不该设，看它是否"跳一跳够得着"——够不着的是幻想，太容易的是浪费。近程目标不是降低志向，而是让志向可走通。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>宏大目标反而让人瘫痪：当目标超出当前能力，人不知从哪下手，于是退回日常事务。近程目标<strong>重建"行动—反馈"闭环</strong>，让战略变得可执行、可校准，把"够不着的焦虑"变成"能推进的清单"。</p><div class="insight"><strong>深层洞见：</strong>判断目标该不该设，看它是否"跳一跳够得着"——够不着的是幻想，太容易的是浪费。近程目标不是降低志向，而是让志向可走通。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">把全年 GMV 增长拆成季度近程目标：Q1 先攻供给密度，Q2 再放量，Q3 优化价格带——每段都可独立验证，而非年初拍一个总数。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">给团队定"这两周能把哪座城市的哪个指标推到 X"，而不是"今年市占翻倍"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 链式推进</a><a class="rt" href="javascript:scrollCard(12)">→ 写清诊断</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 链式推进</a><a class="rt" href="javascript:scrollCard(12)">→ 写清诊断</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="bz,cr,mg">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>连贯性的战略像<strong>链条</strong>：行动 A 的成果构成行动 B 的前提，环环相扣、逐步累积优势。而不是同时铺开一堆互不依赖、各自为战的项目——那不叫战略，叫项目堆。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">序</div><div class="ft2"><strong>排出依赖</strong>：什么必须先成立，后面的动作才走得动。</div></div><div class="fs2"><div class="fn2">链</div><div class="ft2"><strong>每步为上一步造条件</strong>：让前期投入被后期复用，形成推进势能。</div></div><div class="fs2"><div class="fn2">砍</div><div class="ft2"><strong>砍掉旁支</strong>：与主链无关、无法被主链利用的"顺手项目"该停就停。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>纯并行会分散资源且彼此不加成；<strong>链式让前期投入被后期复用，产生复利与累积优势</strong>。战略的力量不在"同时做多少"，而在"动作之间的相互增强"。</p><div class="insight"><strong>深层洞见：</strong>好战略读起来像一条有因果的路径；坏战略读起来像一张互不相干的愿望清单。检验：把动作排一遍，看后一个是否依赖前一个的成果——依赖不上，就是散弹。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>纯并行会分散资源且彼此不加成；<strong>链式让前期投入被后期复用，产生复利与累积优势</strong>。战略的力量不在"同时做多少"，而在"动作之间的相互增强"。</p><div class="insight"><strong>深层洞见：</strong>好战略读起来像一条有因果的路径；坏战略读起来像一张互不相干的愿望清单。检验：把动作排一遍，看后一个是否依赖前一个的成果——依赖不上，就是散弹。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">先做供给密度 → 再提履约时效 → 再打价格带心智，每步为下一步铺路，而非三件事同时上、互相抢资源。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>竞争</div><div class="stx">先在一个城市群把打法跑通，形成可复制的样板，再沿链条复制到同类城市群，而不是一上来全域铺开。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 近程目标</a><a class="rt" href="javascript:scrollCard(9)">→ 连贯而非分散</a><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 近程目标</a><a class="rt" href="javascript:scrollCard(9)">→ 连贯而非分散</a><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="bz,mg">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>"不把鸡蛋放一个篮子"常被误解成什么都做一点。鲁梅尔特强调的是<strong>连贯性</strong>：所有动作指向同一方向。看似"保留选择"、实则四处下注的分散，会让每笔投入都不足量、无法形成合力，最后哪个篮子都守不住。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">贯</div><div class="ft2"><strong>连贯优先</strong>：先保证方向一致，再谈风险分散——方向矛盾的下注彼此抵消。</div></div><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>真分散≠乱押</strong>：分散应是围绕主线的有序期权/备份，而非互相打架的赌注。</div></div><div class="fs2"><div class="fn2">检</div><div class="ft2"><strong>定期收拢</strong>：手上的动作是否都在为同一条方针加码？背离的砍掉。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>"什么都不敢放弃"的本质是回避取舍，而<strong>回避取舍=没有战略</strong>。把资源摊平，既守不住既有优势，也抓不住新机会——它只是为了不承担"选择就要付出代价"的心理舒适。</p><div class="insight"><strong>深层洞见：</strong>战略的"专注"不等于"孤注一掷押单点"，而是"所有下注都朝着同一个诊断出来的方向"。可以留后手，但后手也要与主线同向。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>"什么都不敢放弃"的本质是回避取舍，而<strong>回避取舍=没有战略</strong>。把资源摊平，既守不住既有优势，也抓不住新机会——它只是为了不承担"选择就要付出代价"的心理舒适。</p><div class="insight"><strong>深层洞见：</strong>战略的"专注"不等于"孤注一掷押单点"，而是"所有下注都朝着同一个诊断出来的方向"。可以留后手，但后手也要与主线同向。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">评审多个在跑的营销/供给项目时，先砍掉与当年指导方针不一致的，哪怕它单项数据好看——不一致的漂亮项目是资源黑洞。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">城市群策略保持同一逻辑主线（如都先补供给密度），而非 A 群拉新、B 群降补、C 群改品，彼此打法互相拆台。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a><a class="rt" href="javascript:scrollCard(11)">→ 取舍即战略</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 连贯性行动</a><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a><a class="rt" href="javascript:scrollCard(11)">→ 取舍即战略</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="bz,mg">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>指导方针只是"想法"，<strong>连贯性行动</strong>才把它变成"事实"：资源分配、流程设计、考核政策、组织架构都朝同一方向摆齐。任何一处对不上，方针就退化成墙上的一句口号。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">资</div><div class="ft2"><strong>钱和人按方针倾斜</strong>：而不是沿用历史惯性"去年多少今年多少"。</div></div><div class="fs2"><div class="fn2">流</div><div class="ft2"><strong>流程为方针让路</strong>：审批、协作、日常动作安排都要服务方针。</div></div><div class="fs2"><div class="fn2">政</div><div class="ft2"><strong>政策奖励方针要的行为</strong>：考核指标奖励想要的，惩罚背离的。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>大多数战略死于落地，不是因为想法错，而是<strong>资源、流程、KPI 仍在按旧逻辑运转，无声地拆方针的台</strong>。你说"聚焦高价值人群"，但预算和绩效还按人头数分配——那"聚焦"永远不会发生。连贯性就是把"说的"和"分配的"对齐。</p><div class="insight"><strong>深层洞见：</strong>判断一个战略是真是假，别看 PPT 写得多漂亮，看<strong>预算表、排班表、KPI 表</strong>——它们有没有往同一个方向摆。三张表不听话，方针就是口号。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>大多数战略死于落地，不是因为想法错，而是<strong>资源、流程、KPI 仍在按旧逻辑运转，无声地拆方针的台</strong>。你说"聚焦高价值人群"，但预算和绩效还按人头数分配——那"聚焦"永远不会发生。连贯性就是把"说的"和"分配的"对齐。</p><div class="insight"><strong>深层洞见：</strong>判断一个战略是真是假，别看 PPT 写得多漂亮，看<strong>预算表、排班表、KPI 表</strong>——它们有没有往同一个方向摆。三张表不听话，方针就是口号。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">若方针是"聚焦某几个高价值城市群"，则补贴预算、BD 排兵、绩效权重必须同步向这些城市倾斜，否则方针只是共识不是战略。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">JBP 里品牌承诺的方向，要落到具体资源位、货品政策、履约承诺上——只有"共识"没有"资源对齐"的方案，签完就沉底。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="javascript:scrollCard(1)">→ 三件套内核</a><a class="rt" href="javascript:scrollCard(9)">→ 连贯而非分散</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="javascript:scrollCard(1)">→ 三件套内核</a><a class="rt" href="javascript:scrollCard(9)">→ 连贯而非分散</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="bz,cr,lf">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>战略的核心是<strong>取舍(trade-off)</strong>：因为资源有限，选择做 A 就意味着不做 B。真正的好战略清楚写明"<strong>我们不做什么</strong>"；只列"要做的事"、从不说"要放弃什么"，等于没做取舍，也就没做战略。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">弃</div><div class="ft2"><strong>明确主动放弃</strong>：写下不碰的市场/人群/价格带/动作，并说明为什么。</div></div><div class="fs2"><div class="fn2">一</div><div class="ft2"><strong>不做与要做不矛盾</strong>：取舍要自洽，不能一边"聚焦"一边"全都要"。</div></div><div class="fs2"><div class="fn2">顶</div><div class="ft2"><strong>顶住机会诱惑</strong>：对"这个也想要"的压力守住取舍，不轻易加回已放弃项。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>难的不是"做"，而是"不做"——做加法让人安心、政治正确，放弃让人焦虑。但正是<strong>放弃释放出的资源，让"做"的部分达到起效的临界质量</strong>。没有放弃就没有聚焦，没有聚焦就没有杠杆（呼应卡4）。</p><div class="insight"><strong>深层洞见：</strong>一份没有"我们不做…"清单的年度计划，几乎注定资源分散、什么都做不透。取舍不是能力不足，恰恰是战略能力的体现——它把"要赢在哪"押到了台面上。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>难的不是"做"，而是"不做"——做加法让人安心、政治正确，放弃让人焦虑。但正是<strong>放弃释放出的资源，让"做"的部分达到起效的临界质量</strong>。没有放弃就没有聚焦，没有聚焦就没有杠杆（呼应卡4）。</p><div class="insight"><strong>深层洞见：</strong>一份没有"我们不做…"清单的年度计划，几乎注定资源分散、什么都做不透。取舍不是能力不足，恰恰是战略能力的体现——它把"要赢在哪"押到了台面上。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">品牌年度经营计划里写清"今年主动放弃哪些低价值场景/城市/价格带"，把省下的补贴、人力、坑位压到选定的杠杆点上。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">个人精力管理同理：列不出"我不做什么"，说明还没做真正选择，只是被日程推着走。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a><a class="rt" href="javascript:scrollCard(9)">→ 连贯而非分散</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 找杠杆点</a><a class="rt" href="javascript:scrollCard(9)">→ 连贯而非分散</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="mg,bz,lf">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>战略失败常不是败在执行，而是败在<strong>"根本没想清楚"</strong>。判据很硬：<strong>如果你写不出一段具体、可验证、不含空话的"诊断"，说明你还不懂问题在哪</strong>——此时定目标、铺动作都是空中楼阁。清晰，是战略的第一美德。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">写</div><div class="ft2"><strong>强迫写下来</strong>：诊断、方针、行动三段都要成文，一段都不能含糊。</div></div><div class="fs2"><div class="fn2">测</div><div class="ft2"><strong>用可证伪检验每句</strong>：能否被验证/被反驳？空话通不过这一关。</div></div><div class="fs2"><div class="fn2">补</div><div class="ft2"><strong>写不下去处=盲区</strong>：卡壳说明认知有洞，回去补调研，而不是绕过去。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>模糊的念头在脑中可以自欺，<strong>落到纸上会暴露逻辑断裂、假设缺失、术语遮丑</strong>。写作是对思考的强制审计——它逼你把"我以为我懂了"变成"我真的能说清楚"。</p><div class="insight"><strong>深层洞见：</strong>卡壳之处即机会之处——你写不清的那一段，往往正是团队真正没想明白、需要深挖的关键挑战。别急着跳过，那才是该投入思考的地方。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>模糊的念头在脑中可以自欺，<strong>落到纸上会暴露逻辑断裂、假设缺失、术语遮丑</strong>。写作是对思考的强制审计——它逼你把"我以为我懂了"变成"我真的能说清楚"。</p><div class="insight"><strong>深层洞见：</strong>卡壳之处即机会之处——你写不清的那一段，往往正是团队真正没想明白、需要深挖的关键挑战。别急着跳过，那才是该投入思考的地方。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">方案定稿前做"一句话检验"：让负责人用一句话讲清"在解决什么问题、怎么解决"。讲不清就退回再想，别带着模糊往下执行。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">每个 JBP/年度方案先有一段"硬诊断"（有数据支撑的瓶颈定位），才允许往下写目标——诊断立不住，后面全推翻。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 三件套内核</a><a class="rt" href="javascript:scrollCard(2)">→ 坏战略识别</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 三件套内核</a><a class="rt" href="javascript:scrollCard(2)">→ 坏战略识别</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

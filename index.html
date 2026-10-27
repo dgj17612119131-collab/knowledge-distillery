@@ -190,7 +190,25 @@ a{color:var(--accent);text-decoration:none}
   .hero-stats{flex-wrap:wrap}
   .stat{min-width:25%}
 }
-</style>
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </head>
 <body>
 
@@ -199,65 +217,49 @@ a{color:var(--accent);text-decoration:none}
 <div class="hero">
   <div class="hero-icon">📖</div>
   <h1>知识蒸馏工坊</h1>
-  <div class="hero-sub">17本经典 · 212张决策卡片 · 从竞争策略到创新突破到中国式处世与说服心理学的思维工具箱</div>
+  <div class="hero-sub">17本经典 · 212张决策卡片 · 按主题找书，或去全部卡片页搜索与问题求解</div>
   <div class="hero-stats">
     <div class="stat"><div class="stat-n">17</div><div class="stat-l">本书</div></div>
     <div class="stat"><div class="stat-n">212</div><div class="stat-l">卡片</div></div>
+    <div class="stat"><div class="stat-n">5</div><div class="stat-l">分组</div></div>
     <div class="stat"><div class="stat-n">5</div><div class="stat-l">主题</div></div>
-    <div class="stat"><div class="stat-n">5</div><div class="stat-l">场景</div></div>
   </div>
 </div>
 
-<!-- Books -->
+<div class="nav-cards">
+  <a class="nav-card" href="all-cards.html"><b>🔍 全部卡片 · 关键词搜索</b><span>212 张卡，按主题与场景筛选</span></a>
+  <a class="nav-card" href="all-cards.html#solve"><b>🎯 问题求解</b><span>描述问题 → 模板方案 / 深度求解提示词</span></a>
+</div>
+
+<div class="group"><div class="group-h">⚔️ 战略与竞争<span class="group-c">3 本 · 40 卡</span></div></div>
 <div class="books">
   <a class="book" href="sunzi.html">
     <div class="book-title">华杉讲透孙子兵法</div>
     <div class="book-author">华杉</div>
     <div class="book-count">6 张卡片</div>
   </a>
-  <a class="book" href="mao.html">
-    <div class="book-title">毛泽东选集</div>
-    <div class="book-author">原文蒸馏 · 159篇</div>
-    <div class="book-count">18 张卡片</div>
-  </a>
-  <a class="book" href="fp.html">
-    <div class="book-title">第一性原理</div>
-    <div class="book-author">亚里士多德 → 马斯克</div>
-    <div class="book-count">10 张卡片</div>
+  <a class="book" href="zhanlue.html">
+    <div class="book-title">好战略，坏战略</div>
+    <div class="book-author">鲁梅尔特 · 诊断与连贯行动</div>
+    <div class="book-count">12 张卡片</div>
   </a>
   <a class="book" href="game-theory.html">
     <div class="book-title">博弈论</div>
     <div class="book-author">纳什 → 现代应用</div>
     <div class="book-count">22 张卡片</div>
   </a>
-  <a class="book" href="qingci.html">
-    <div class="book-title">青瓷</div>
-    <div class="book-author">浮石 · 处世与关系智慧</div>
-    <div class="book-count">12 张卡片</div>
+</div>
+
+<div class="group"><div class="group-h">🧠 思维与认知<span class="group-c">6 本 · 70 卡</span></div></div>
+<div class="books">
+  <a class="book" href="fp.html">
+    <div class="book-title">第一性原理</div>
+    <div class="book-author">亚里士多德 → 马斯克</div>
+    <div class="book-count">10 张卡片</div>
   </a>
-  <a class="book" href="jiushi.html">
-    <div class="book-title">遥远的救世主</div>
-    <div class="book-author">豆豆 · 文化属性与规律</div>
-    <div class="book-count">12 张卡片</div>
-  </a>
-  <a class="book" href="yingxiangli.html">
-    <div class="book-title">影响力</div>
-    <div class="book-author">西奥迪尼 · 说服心理学</div>
-    <div class="book-count">12 张卡片</div>
-  </a>
-  <a class="book" href="yuanze.html">
-    <div class="book-title">原则</div>
-    <div class="book-author">达利欧 · 极度求真与算法化决策</div>
-    <div class="book-count">12 张卡片</div>
-  </a>
-  <a class="book" href="tanhua.html">
-    <div class="book-title">掌控谈话</div>
-    <div class="book-author">克里斯·沃斯 · FBI谈判实战术</div>
-    <div class="book-count">12 张卡片</div>
-  </a>
-  <a class="book" href="zhanlue.html">
-    <div class="book-title">好战略，坏战略</div>
-    <div class="book-author">鲁梅尔特 · 诊断与连贯行动</div>
+  <a class="book" href="xitong.html">
+    <div class="book-title">系统之美</div>
+    <div class="book-author">梅多斯 · 存量流量与杠杆点</div>
     <div class="book-count">12 张卡片</div>
   </a>
   <a class="book" href="fanruique.html">
@@ -265,14 +267,9 @@ a{color:var(--accent);text-decoration:none}
     <div class="book-author">塔勒布 · 从波动中获益</div>
     <div class="book-count">12 张卡片</div>
   </a>
-  <a class="book" href="xitong.html">
-    <div class="book-title">系统之美</div>
-    <div class="book-author">梅多斯 · 存量流量与杠杆点</div>
-    <div class="book-count">12 张卡片</div>
-  </a>
-  <a class="book" href="guanli.html">
-    <div class="book-title">高产出管理</div>
-    <div class="book-author">格鲁夫 · 管理者的产出杠杆</div>
+  <a class="book" href="yuanze.html">
+    <div class="book-title">原则</div>
+    <div class="book-author">达利欧 · 极度求真与算法化决策</div>
     <div class="book-count">12 张卡片</div>
   </a>
   <a class="book" href="jiyin.html">
@@ -285,6 +282,34 @@ a{color:var(--accent);text-decoration:none}
     <div class="book-author">芒格 · 多元思维模型与逆向思考</div>
     <div class="book-count">12 张卡片</div>
   </a>
+</div>
+
+<div class="group"><div class="group-h">🗣 心理与影响<span class="group-c">2 本 · 24 卡</span></div></div>
+<div class="books">
+  <a class="book" href="yingxiangli.html">
+    <div class="book-title">影响力</div>
+    <div class="book-author">西奥迪尼 · 说服心理学</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
+  <a class="book" href="tanhua.html">
+    <div class="book-title">掌控谈话</div>
+    <div class="book-author">克里斯·沃斯 · FBI谈判实战术</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
+</div>
+
+<div class="group"><div class="group-h">🏮 中国式智慧<span class="group-c">4 本 · 48 卡</span></div></div>
+<div class="books">
+  <a class="book" href="qingci.html">
+    <div class="book-title">青瓷</div>
+    <div class="book-author">浮石 · 处世与关系智慧</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
+  <a class="book" href="jiushi.html">
+    <div class="book-title">遥远的救世主</div>
+    <div class="book-author">豆豆 · 文化属性与规律</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
   <a class="book" href="huxueyan.html">
     <div class="book-title">胡雪岩</div>
     <div class="book-author">高阳 · 红顶商人的处世商道</div>
@@ -294,697 +319,26 @@ a{color:var(--accent);text-decoration:none}
     <div class="book-title">权力48法则</div>
     <div class="book-author">格林 · 看懂权力游戏</div>
     <div class="book-count">12 张卡片</div>
-  </a></div>
-
-<!-- Search -->
-<div class="search-section">
-  <div class="search-label">🔍 关键词搜索</div>
-  <div class="search-row">
-    <input class="search-input" id="searchInput" type="text" placeholder="输入关键词搜索（如：谈判、竞争、创新）...">
-    <button class="search-btn" onclick="doSearch()">搜索</button>
-  </div>
-  <div class="search-label" style="margin-top:4px">💡 问题匹配</div>
-  <div class="question-row">
-    <textarea class="question-input" id="questionInput" placeholder="描述你的问题（如：如何谈薪资？团队冲突怎么办？）"></textarea>
-    <div class="q-btns">
-      <button class="question-btn" onclick="doMatch()">匹配</button>
-      <button class="question-btn deep-btn" onclick="deepSolve()">🧠 深度求解</button>
-    </div>
-  </div>
-  <div class="search-hint">搜索范围：标题、核心概念、标签 · 匹配=离线速查 · 深度求解=生成提示词，复制到 QoderWork 对话里跑五段式深度方案</div>
-  <div class="deep-box" id="deepBox" style="display:none">
-    <div class="deep-box-head">🧠 深度求解提示词（已带上你命中的卡片）<button class="copy-btn" id="copyBtn" onclick="copyDeep()">复制</button></div>
-    <textarea class="deep-prompt" id="deepPrompt" readonly></textarea>
-    <div class="deep-tip">用法：点上面「复制」→ 打开 QoderWork 对话框粘贴发送 → 我用 knowledge-problem-solver 深度版给你跑「⓪澄清 ①根因 ②方法论讲透 ③具体行动 ④对抗检验」五段方案。信息不足时我会先反问你。</div>
-  </div>
+  </a>
 </div>
 
-<!-- Result Count -->
-<div class="result-count" id="resultCount"></div>
-
-<!-- Match Results -->
-<div class="match-section" id="matchSection">
-  <div class="match-header">🎯 匹配结果 <span class="match-count" id="matchCount"></span></div>
-  <div class="match-grid" id="matchGrid"></div>
+<div class="group"><div class="group-h">👥 组织与管理<span class="group-c">2 本 · 30 卡</span></div></div>
+<div class="books">
+  <a class="book" href="mao.html">
+    <div class="book-title">毛泽东选集</div>
+    <div class="book-author">原文蒸馏 · 159篇</div>
+    <div class="book-count">18 张卡片</div>
+  </a>
+  <a class="book" href="guanli.html">
+    <div class="book-title">高产出管理</div>
+    <div class="book-author">格鲁夫 · 管理者的产出杠杆</div>
+    <div class="book-count">12 张卡片</div>
+  </a>
 </div>
 
-<!-- Topic Nav -->
-<div class="topic-nav">
-  <button class="topic-btn active" data-topic="all" onclick="filterTopic('all')">全部 212</button>
-  <button class="topic-btn" data-topic="compete" onclick="filterTopic('compete')">⚔️ 竞争策略</button>
-  <button class="topic-btn" data-topic="decision" onclick="filterTopic('decision')">🧠 决策方法</button>
-  <button class="topic-btn" data-topic="system" onclick="filterTopic('system')">🌐 系统思维</button>
-  <button class="topic-btn" data-topic="org" onclick="filterTopic('org')">👥 组织管理</button>
-  <button class="topic-btn" data-topic="innovate" onclick="filterTopic('innovate')">💡 创新突破</button>
-</div>
-
-<!-- Cards Container -->
-<div id="allCards"></div>
+<div class="hint-note">说明：以上 5 个分组是本知识库的<b>导航标签</b>（非原书自带分类）。各书卡片内容、来源声明与交叉引用以书内页为准，本次改版只调整布局与导航，未修改任何卡片文字。</div>
 
 <div class="footer">知识蒸馏工坊 · 2026 · 17本经典 · 212张决策卡片</div>
 </div>
-
-<script>
-const cards=[
-// 孙子兵法
-{id:"s1",n:1,t:"不战而屈人之兵",bk:"sunzi",bn:"孙子兵法",c:"战争本身是失败。真正的胜利是不需要通过战斗就能达成的胜利。",tg:["战略哲学","KA","商业","职业","生活"],tp:["compete"],f:"sunzi.html",kw:"不战 屈人 伐谋 伐交 竞争 壁垒 实力 蜜雪冰城 拼多多 垄断 避免竞争"},
-{id:"s2",n:2,t:"先胜后战",bk:"sunzi",bn:"孙子兵法",c:"胜利不是打仗打出来的，是开战前就创造了必胜条件。",tg:["决策逻辑","KA","商业","职业"],tp:["compete","decision"],f:"sunzi.html",kw:"先胜 后战 条件 准备 必胜 足力健 华为 ofo 耐心 Go NoGo"},
-{id:"s3",n:3,t:"五事七计",bk:"sunzi",bn:"孙子兵法",c:"开战前用系统化维度对比双方实力。赢面大打，赢面小不打。",tg:["系统评估","KA","管理","商业","职业"],tp:["system","decision"],f:"sunzi.html",kw:"五事 七计 道天地将法 评估 系统 打分 美团 饿了么 西贝 对标 五维"},
-{id:"s4",n:4,t:"以正合，以奇胜",bk:"sunzi",bn:"孙子兵法",c:"正（基本面）稳住局面，奇（额外投入）取得胜利。没正=赌博，没奇=消耗战。",tg:["资源配置","KA","管理","商业","生活"],tp:["compete","innovate"],f:"sunzi.html",kw:"正奇 基本面 创新 配置 资源 蜜雪冰城 厨邦 瑞幸 突破"},
-{id:"s5",n:5,t:"致人而不致于人",bk:"sunzi",bn:"孙子兵法",c:"让对手跟你节奏走，不是你被牵着走。主动权=可选战场、时间、方式。",tg:["主动权","KA","管理","职业","商业"],tp:["compete"],f:"sunzi.html",kw:"致人 主动权 选择权 谈判 苹果 谈薪 offer 规则 战场 主导"},
-{id:"s6",n:6,t:"兵贵胜，不贵久",bk:"sunzi",bn:"孙子兵法",c:"贵在速战速决。每天烧钱，拖越久成本越高。宁可笨拙地快，不要精巧地慢。",tg:["节奏控制","KA","商业","职业","生活"],tp:["compete","decision"],f:"sunzi.html",kw:"速战速决 兵贵胜 速度 止损 拙速 ofo 抖音 快手 消耗 快速"},
-// 毛选
-{id:"m1",n:1,t:"积极防御",bk:"mao",bn:"毛泽东选集",c:"弱势时，防御不是退缩，而是保存实力、等待反攻时机的主动战略。",tg:["战略防御","KA","商业","管理"],tp:["compete"],f:"mao.html",kw:"积极防御 弱势 反攻 诱敌深入 退让 保存实力 以退为进 防御"},
-{id:"m2",n:2,t:"集中优势兵力",bk:"mao",bn:"毛泽东选集",c:"在关键战场配置压倒性资源优势。宁可放弃非关键战场，也不平分兵力。",tg:["资源配置","KA","商业","管理"],tp:["compete","decision"],f:"mao.html",kw:"集中兵力 歼灭 资源 聚焦 压强 断指 华为 OKR 重点 做减法"},
-{id:"m3",n:3,t:"矛盾分析法",bk:"mao",bn:"毛泽东选集",c:"矛盾有主次，在条件下可相互转化。抓主要矛盾，创造转化条件。",tg:["矛盾分析","KA","商业","管理","职业"],tp:["system","decision"],f:"mao.html",kw:"矛盾 主次 转化 优先级 二重性 坏事变好事 团结批评团结 冲突"},
-{id:"m4",n:4,t:"调查研究",bk:"mao",bn:"毛泽东选集",c:"一切正确决策的前提是掌握第一手事实。不做周密侦察就下判断=盲人摸象。",tg:["调研方法","KA","商业","管理"],tp:["decision"],f:"mao.html",kw:"调查 研究 侦察 一手事实 去粗取精 去伪存真 摸熟 信息 数据"},
-{id:"m5",n:5,t:"实践认识循环",bk:"mao",bn:"毛泽东选集",c:"认识不是一次完成的，而是计划-执行-检验-修正的持续循环。",tg:["迭代验证","KA","商业","职业","生活"],tp:["decision","system"],f:"mao.html",kw:"实践 认识 循环 迭代 验证 修正 MVP 反馈 假设 试错"},
-{id:"m6",n:6,t:"阶级分析法",bk:"mao",bn:"毛泽东选集",c:"先分析各方的经济地位和利益诉求，就能判断他们的态度和立场。",tg:["利益分析","管理","KA","职业"],tp:["system","org"],f:"mao.html",kw:"阶级 利益 分析 立场 态度 经济地位 两重性 利益相关者 干系人"},
-{id:"m7",n:7,t:"没有调查没有发言权",bk:"mao",bn:"毛泽东选集",c:"不做调查就没有资格做判断。一切结论必须产生于调查之后。",tg:["反教条","KA","商业","管理"],tp:["decision"],f:"mao.html",kw:"调查 发言权 本本主义 教条 结论 寻乌 闭嘴 盲目执行"},
-{id:"m8",n:8,t:"矛盾论",bk:"mao",bn:"毛泽东选集",c:"一切事物都包含矛盾。找到主要矛盾就找到全局的钥匙。",tg:["矛盾哲学","KA","商业","管理","职业"],tp:["system"],f:"mao.html",kw:"矛盾论 对立统一 普遍性 特殊性 主要矛盾 转化 条件 系统分析"},
-{id:"m9",n:9,t:"实践论",bk:"mao",bn:"毛泽东选集",c:"认识从实践开始，经实践得理论认识，再回到实践验证。循环往复以至无穷。",tg:["认识论","KA","商业","职业","生活"],tp:["decision","system"],f:"mao.html",kw:"实践论 感性认识 理性认识 螺旋 飞跃 经验 理论 精益 迭代"},
-{id:"m10",n:10,t:"论持久战",bk:"mao",bn:"毛泽东选集",c:"面对强大对手时，接受持久性、规划阶段性、在持久中积蓄力量。",tg:["持久战略","商业","职业","KA"],tp:["compete"],f:"mao.html",kw:"持久战 三阶段 防御 相持 反攻 速胜 亡国 创业 弱势 长期"},
-{id:"m11",n:11,t:"改造我们的学习",bk:"mao",bn:"毛泽东选集",c:"学习必须有的放矢。三种坏作风：不研究现状、不研究历史、不应用理论。",tg:["学习态度","管理","职业","KA","商业"],tp:["decision"],f:"mao.html",kw:"改造学习 有的放矢 实事求是 主观主义 教条 现状 历史 应用 学习"},
-{id:"m12",n:12,t:"从群众中来到群众中去",bk:"mao",bn:"毛泽东选集",c:"正确领导方法：收集分散意见→系统化→推回群众→实践检验→再次收集。",tg:["领导方法","管理","KA","职业","商业"],tp:["org"],f:"mao.html",kw:"群众路线 领导方法 从群众中来 到群众中去 收集 系统化 试点 推广 用户"},
-{id:"m13",n:13,t:"愚公移山精神",bk:"mao",bn:"毛泽东选集",c:"面对不可能的任务，用坚定信念+持续行动+广泛动员来达成。",tg:["信念方法","商业","管理","职业"],tp:["org"],f:"mao.html",kw:"愚公移山 信念 坚持 动员 分解目标 下定决心 不怕牺牲 长期项目"},
-{id:"m14",n:14,t:"星星之火可以燎原",bk:"mao",bn:"毛泽东选集",c:"弱小力量只要方向正确，就有成长为强大力量的必然性。",tg:["战略判断","商业","职业","KA"],tp:["compete"],f:"mao.html",kw:"星星之火 燎原 战略乐观 本质 趋势 弱小 成长 创业 信心"},
-{id:"m15",n:15,t:"为人民服务",bk:"mao",bn:"毛泽东选集",c:"以服务对象利益为最高准则，有缺点就改，不论谁指出都接受。",tg:["价值观","管理","KA","商业"],tp:["org"],f:"mao.html",kw:"为人民服务 价值观 用户 批评 张思德 泰山 鸿毛 五湖四海 开放"},
-{id:"m16",n:16,t:"反对自由主义",bk:"mao",bn:"毛泽东选集",c:"11种自由主义表现腐蚀组织。有问题当面说、背后不议论。",tg:["组织纪律","管理","KA"],tp:["org"],f:"mao.html",kw:"自由主义 组织纪律 当面说 背后议论 一团和气 明哲保身 腐蚀 团队"},
-{id:"m17",n:17,t:"党委会的工作方法",bk:"mao",bn:"毛泽东选集",c:"问题摆桌面+事先通知+集体讨论+形成决议。领导=善于当班长。",tg:["领导方法","管理"],tp:["org"],f:"mao.html",kw:"党委会 工作方法 摆桌面 安民告示 班长 协调 集体讨论 会议 决策流程"},
-{id:"m18",n:18,t:"将革命进行到底",bk:"mao",bn:"毛泽东选集",c:"关键时刻不能妥协、不被假和平迷惑、不半途而废。识别蛇的本质。",tg:["战略坚持","商业","管理"],tp:["compete"],f:"mao.html",kw:"将革命进行到底 坚持 半途而废 农夫与蛇 假和平 妥协 关键时刻 完成"},
-// 第一性原理
-{id:"f1",n:1,t:"第一性原理的定义",bk:"fp",bn:"第一性原理",c:"每个系统中都存在一个最基本的命题，不能被省略、删除或违反。",tg:["核心定义","全部场景"],tp:["decision","system"],f:"fp.html",kw:"第一性原理 定义 亚里士多德 不可省略 不可删除 不可违反 基点 5why 追问"},
-{id:"f2",n:2,t:"演绎法 vs 归纳法",bk:"fp",bn:"第一性原理",c:"归纳从经验总结（特殊→一般），演绎从原理推导（一般→特殊）。创新靠演绎。",tg:["推理方法","商业","KA"],tp:["decision"],f:"fp.html",kw:"演绎法 归纳法 推理 类比 三段论 连续 非连续 诺基亚 iPhone"},
-{id:"f3",n:3,t:"公理化方法",bk:"fp",bn:"第一性原理",c:"少量公理+严格逻辑=整个知识体系。欧几里得5条公理构建几何学。",tg:["体系构建","商业","管理"],tp:["system","decision"],f:"fp.html",kw:"公理化 欧几里得 牛顿 笛卡尔 我思故我在 公理 定理 体系 框架"},
-{id:"f4",n:4,t:"马斯克的第一性原理实践",bk:"fp",bn:"第一性原理",c:"拆解到物理/原材料层面，重新计算成本，发现行业共识不过是未被质疑的假设。",tg:["实战案例","商业","KA"],tp:["innovate"],f:"fp.html",kw:"马斯克 SpaceX 特斯拉 电池 火箭 拆解 物理层 成本 重构 Cybertruck"},
-{id:"f5",n:5,t:"白痴指数",bk:"fp",bn:"第一性原理",c:"白痴指数=成品成本/基本材料成本。指数越高，溢价泡沫越大。",tg:["量化工具","商业","KA"],tp:["innovate"],f:"fp.html",kw:"白痴指数 成本 原材料 成品 倍数 泡沫 重构 供应链 审计 价格"},
-{id:"f6",n:6,t:"破界创新",bk:"fp",bn:"第一性原理",c:"真正的创新不是做得更好，而是发现并打破系统中的隐含假设。",tg:["创新框架","商业","职业"],tp:["innovate"],f:"fp.html",kw:"破界创新 隐含假设 打破 iPhone 纳德拉 微软 特斯拉 内燃机 键盘 颠覆"},
-{id:"f7",n:7,t:"非连续性与第二曲线",bk:"fp",bn:"第一性原理",c:"任何增长曲线都会到极限点。在极限前必须启动第二曲线。",tg:["战略框架","商业","职业"],tp:["innovate","system"],f:"fp.html",kw:"第二曲线 非连续性 极限点 增长 切换 失速 新旧 转型 创新"},
-{id:"f8",n:8,t:"多元思维模型",bk:"fp",bn:"第一性原理",c:"单一学科导致铁锤人综合症。多学科核心模型组成网络才能看清全貌。",tg:["思维工具库","商业","管理","职业"],tp:["system"],f:"fp.html",kw:"多元思维模型 芒格 跨学科 铁锤人 复利 临界点 熵增 lollapalooza 查理"},
-{id:"f9",n:9,t:"刻意练习与思维模型",bk:"fp",bn:"第一性原理",c:"知道≠掌握。模型必须经过提炼-讲授-迭代循环才能内化。",tg:["学习方法","职业","生活"],tp:["org"],f:"fp.html",kw:"刻意练习 建模 讲课 迭代 内化 李善友 套路 心理表征 学习 成长"},
-{id:"f10",n:10,t:"第一性原理的边界",bk:"fp",bn:"第一性原理",c:"第一性原理不是万能钥匙。在错误场景使用代价大于收益。",tg:["适用边界","全部场景"],tp:["decision"],f:"fp.html",kw:"边界 局限 误用 归纳 演绎 选择 日常 低风险 瘫痪 适用"},
-// 博弈论
-{id:"g1",n:1,t:"战略式博弈",bk:"gt",bn:"博弈论",c:"用三要素描述博弈：参与者集合、战略集、收益函数。",tg:["基础概念","全场景"],tp:["system"],f:"game-theory.html",kw:"战略式 正规式 参与者 战略集 收益函数 收益矩阵 囚徒困境 价格战"},
-{id:"g2",n:2,t:"纳什均衡",bk:"gt",bn:"博弈论",c:"每个参与者的战略都是对他人战略的最优反应。没人想单方面偏离。",tg:["核心概念","商业","管理"],tp:["compete","system"],f:"game-theory.html",kw:"纳什均衡 最优反应 自我强化 稳定 性别战 市场均衡 预测"},
-{id:"g3",n:3,t:"囚徒困境",bk:"gt",bn:"博弈论",c:"个体理性导致集体非理性。每个人都追求自身利益最大化，最终所有人都更差。",tg:["核心悖论","全场景"],tp:["compete","system"],f:"game-theory.html",kw:"囚徒困境 个体理性 集体非理性 背叛 合作 价格战 公地悲剧 军备竞赛 搭便车"},
-{id:"g4",n:4,t:"扩展式博弈",bk:"gt",bn:"博弈论",c:"用博弈树表示动态决策过程：决策节点、信息集、行动、收益。",tg:["动态博弈","商业","管理"],tp:["system","decision"],f:"game-theory.html",kw:"扩展式 博弈树 动态 决策节点 信息集 完美信息 进入反击 先后"},
-{id:"g5",n:5,t:"逆向归纳",bk:"gt",bn:"博弈论",c:"从最后一个决策节点开始倒推每个参与者的最优选择。",tg:["求解方法","商业","管理"],tp:["decision"],f:"game-theory.html",kw:"逆向归纳 倒推 后向归纳 从后往前 承诺 不可信威胁 蜈蚣博弈 动态"},
-{id:"g6",n:6,t:"子博弈完美均衡",bk:"gt",bn:"博弈论",c:"战略组合在每个子博弈中都是纳什均衡。排除不可信威胁。",tg:["均衡概念","商业","管理"],tp:["system","decision"],f:"game-theory.html",kw:"子博弈完美 不可信威胁 纳什 子树 进入反击 可信"},
-{id:"g7",n:7,t:"期望效用理论",bk:"gt",bn:"博弈论",c:"理性人在不确定性下最大化期望效用。效用函数捕捉对风险的态度。",tg:["风险决策","商业","职业"],tp:["decision"],f:"game-theory.html",kw:"期望效用 不确定性 风险规避 风险偏好 风险中性 保险 彩票 决策"},
-{id:"g8",n:8,t:"混合策略",bk:"gt",bn:"博弈论",c:"以概率分布随机选择策略。让对手无法预测你。",tg:["策略类型","商业","职业"],tp:["compete"],f:"game-theory.html",kw:"混合策略 随机 概率分布 石头剪刀布 点球 不可预测 竞价"},
-{id:"g9",n:9,t:"重复博弈",bk:"gt",bn:"博弈论",c:"重复进行博弈。无限重复中，触发策略可以维持合作。",tg:["动态博弈","全场景"],tp:["compete","org"],f:"game-theory.html",kw:"重复博弈 触发策略 冷酷策略 以牙还牙 未来阴影 合作 OPEC 长期关系"},
-{id:"g10",n:10,t:"无名氏定理",bk:"gt",bn:"博弈论",c:"如果未来足够重要，任何帕累托优于纳什均衡的收益都可以实现。",tg:["核心定理","全场景"],tp:["compete","org"],f:"game-theory.html",kw:"无名氏定理 Folk Theorem 贴现因子 合作条件 未来阴影 长期 耐心"},
-{id:"g11",n:11,t:"不完全信息博弈",bk:"gt",bn:"博弈论",c:"参与者拥有私人信息。如何在信息不对称下做最优决策？",tg:["信息结构","商业","职业"],tp:["system","decision"],f:"game-theory.html",kw:"不完全信息 私人信息 信息不对称 逆向选择 道德风险 柠檬市场 二手车"},
-{id:"g12",n:12,t:"贝叶斯博弈",bk:"gt",bn:"博弈论",c:"不完全信息博弈的形式化。给定自己类型，选对他人类型的最优反应。",tg:["均衡概念","商业","职业"],tp:["system","decision"],f:"game-theory.html",kw:"贝叶斯 类型 信念 概率 拍卖 面试 密封 信息"},
-{id:"g13",n:13,t:"信号博弈",bk:"gt",bn:"博弈论",c:"知情方通过信号传递信息。信号成本对不同类型不同才可信。",tg:["信号机制","商业","职业"],tp:["innovate","org"],f:"game-theory.html",kw:"信号博弈 信号 教育 学历 品牌 成本 可信 Spence 能力 面试 简历"},
-{id:"g14",n:14,t:"拍卖理论",bk:"gt",bn:"博弈论",c:"不同拍卖机制下最优竞价策略。收益等价定理：某些机制期望收益相同。",tg:["机制设计","商业","职业"],tp:["innovate","decision"],f:"game-theory.html",kw:"拍卖 竞价 一级价格 二级价格 英式 荷式 收益等价 Vickrey 招标"},
-{id:"g15",n:15,t:"机制设计",bk:"gt",bn:"博弈论",c:"逆向博弈论——给定目标，设计规则使自利参与者做出社会最优行为。",tg:["机制设计","商业","管理"],tp:["org","innovate"],f:"game-theory.html",kw:"机制设计 逆向博弈论 激励相容 个体理性 VCG Myerson 规则 制度 薪酬"},
-{id:"g16",n:16,t:"讨价还价",bk:"gt",bn:"博弈论",c:"研究如何分配合作剩余。耐心是谈判中的权力。",tg:["谈判机制","全场景"],tp:["compete","innovate"],f:"game-theory.html",kw:"讨价还价 谈判 Rubinstein 耐心 贴现因子 薪资 并购 议价 谈薪 加薪"},
-{id:"g17",n:17,t:"演化博弈",bk:"gt",bn:"博弈论",c:"策略在群体中的演化。ESS：大多数用该策略时，少数变异无法入侵。",tg:["动态演化","商业","管理"],tp:["system","org"],f:"game-theory.html",kw:"演化博弈 ESS 演化稳定 鹰鸽 群体 规范 文化 入侵 行业规范"},
-{id:"g18",n:18,t:"合作博弈",bk:"gt",bn:"博弈论",c:"研究联盟如何形成、如何分配合作收益。",tg:["联盟形成","商业","管理"],tp:["org"],f:"game-theory.html",kw:"合作博弈 联盟 特征函数 核心 稳定 合资 手套博弈 分配"},
-{id:"g19",n:19,t:"廉价交谈",bk:"gt",bn:"博弈论",c:"无成本沟通。利益一致时空口说白话可传递信息；利益不一致则不能。",tg:["沟通机制","商业","管理"],tp:["org"],f:"game-theory.html",kw:"廉价交谈 沟通 利益一致 信任 顾问 员工 固定薪资 绩效 可信"},
-{id:"g20",n:20,t:"声誉",bk:"gt",bn:"博弈论",c:"长期关系中建立的信誉。好声誉带来长期收益。",tg:["信誉机制","全场景"],tp:["org","compete"],f:"game-theory.html",kw:"声誉 信誉 长期 品牌 电商 好评 连锁 个人品牌 口碑"},
-{id:"g21",n:21,t:"核心与沙普利值",bk:"gt",bn:"博弈论",c:"合作收益的两种分配方法：核心强调稳定性，沙普利值强调公平性。",tg:["分配机制","商业","管理"],tp:["org"],f:"game-theory.html",kw:"核心 沙普利值 分配 稳定 公平 边际贡献 合资 利润 分红"},
-{id:"g22",n:22,t:"边界与应用总结",bk:"gt",bn:"博弈论",c:"博弈论假设理性人、收益已知、信息明确。现实中这些假设可能不成立。",tg:["边界总结","全场景"],tp:["system","decision"],f:"game-theory.html",kw:"边界 局限 行为博弈 不完全契约 理性 假设 适用范围"},
-// 青瓷
-{id:"q1",n:1,t:"关系是养出来的",bk:"qc",bn:"青瓷",c:"关系是账户：平时持续存入，急时才有得取。用时才想起是透支。",tg:["关系哲学","商业","为人"],tp:["org","decision"],f:"qingci.html",kw:"关系 养 储蓄 长期 人情 存款 平时 维系 客户 复购 人脉 账户"},
-{id:"q2",n:2,t:"青瓷哲学：留余地",bk:"qc",bn:"青瓷",c:"有裂纹才真，留余地才活。太完美反而假，凡事留三分。",tg:["分寸","为人","管理"],tp:["system","decision"],f:"qingci.html",kw:"青瓷 裂纹 残缺 余地 留白 完美 分寸 弹性 容错 示弱 真实"},
-{id:"q3",n:3,t:"做局者思维",bk:"qc",bn:"青瓷",c:"最高级的角色是搭台的人——连接各方、造场、掌握信息与位置。",tg:["战略位置","商业","管理"],tp:["system","compete"],f:"qingci.html",kw:"做局 搭台 中间人 撮合 连接 结构洞 信息 位置 庄家 平台 组局"},
-{id:"q4",n:4,t:"花看半开 酒饮微醺",bk:"qc",bn:"青瓷",c:"做到八九分就收，留一分给天给人给变化。把事做尽是取祸之道。",tg:["分寸感","为人","管理"],tp:["decision","system"],f:"qingci.html",kw:"半开 微醺 分寸 留余地 不做绝 克制 收手 让 满则溢 度"},
-{id:"q5",n:5,t:"先做朋友再做生意",bk:"qc",bn:"青瓷",c:"关系先于交易，把生意化进交情里。先谈交情再谈买卖。",tg:["商业","谈判"],tp:["compete","org"],f:"qingci.html",kw:"朋友 生意 交情 关系 信任 交易 客户 铺垫 自己人 顺序"},
-{id:"q6",n:6,t:"看破不说破",bk:"qc",bn:"青瓷",c:"心里门儿清，嘴上留一线。给人留面子=给自己留后路。",tg:["面子","管理","为人"],tp:["org","decision"],f:"qingci.html",kw:"看破 不说破 面子 体面 台阶 洞察 分寸 当众 护面子 糊涂"},
-{id:"q7",n:7,t:"说三分留七分",bk:"qc",bn:"青瓷",c:"含蓄表达，话不说满。进可攻退可守，让对方补全。",tg:["语言艺术","谈判"],tp:["decision","compete"],f:"qingci.html",kw:"含蓄 弦外之音 点到为止 留白 暗示 说三分 弹性 收 高语境"},
-{id:"q8",n:8,t:"听话听音",bk:"qc",bn:"青瓷",c:"听懂没说出口的那半句。改天吧=不，模糊=拒绝，强调=缺什么。",tg:["倾听","谈判","管理"],tp:["decision","org"],f:"qingci.html",kw:"听话听音 言外之意 潜台词 改天 推脱 暗示 回避 字面 高语境 拒绝"},
-{id:"q9",n:9,t:"借嘴说话",bk:"qc",bn:"青瓷",c:"不方便自己说的，借第三方/故事/共识的嘴替你说，不得罪人。",tg:["语言艺术","管理"],tp:["org","decision"],f:"qingci.html",kw:"借嘴 传话 借他人之口 故事 背后夸 第三方 共识 表态 不得罪 中间人"},
-{id:"q10",n:10,t:"提要求：把我要说成为您",bk:"qc",bn:"青瓷",c:"用对方的利益包装自己的诉求，让帮你=帮他自己。",tg:["说话方式","谈判","商业"],tp:["compete","decision"],f:"qingci.html",kw:"提要求 求人 利益 为您 共赢 说服 谈判 资源 诉求 换位 好处"},
-{id:"q11",n:11,t:"拒绝：只关门不堵路",bk:"qc",bn:"青瓷",c:"拒的是事不伤的是人，还留下次的口子。给台阶、给替代。",tg:["说话方式","为人","管理"],tp:["org","decision"],f:"qingci.html",kw:"拒绝 说不 台阶 留余地 替代 对事不对人 边界 面子 不结仇 委婉"},
-{id:"q12",n:12,t:"赞美要夸到点子上",bk:"qc",bn:"青瓷",c:"夸细节、夸背后、夸不容易。让人被看见，比夸天赋更戳心。",tg:["说话方式","管理","为人"],tp:["org","decision"],f:"qingci.html",kw:"赞美 夸奖 背后夸 具体 细节 努力 不容易 被看见 认可 带团队"},
-// 遥远的救世主
-{id:"j1",n:1,t:"文化属性决定命运",bk:"js",bn:"遥远的救世主",c:"决定命运的是文化属性：强势文化遵循规律自立，弱势文化等靠要。",tg:["核心思想","成长","商业"],tp:["system","decision"],f:"jiushi.html",kw:"文化属性 强势文化 弱势文化 靠 自立 规律 命运 操作系统 思维底色 扶贫"},
-{id:"j2",n:2,t:"世上没有救世主",bk:"js",bn:"遥远的救世主",c:"能救你的只有你自己。把希望寄托在贵人/救世主身上，本身就是弱势文化。",tg:["核心思想","成长"],tp:["decision","system"],f:"jiushi.html",kw:"救世主 自救 觉醒 等靠要 自立 主动 条件 行动 不指望 外因内因"},
-{id:"j3",n:3,t:"实事求是按规律办事",bk:"js",bn:"遥远的救世主",c:"从真实条件出发按客观规律推演，不唯心、不唯书、不唯面子，只唯实。",tg:["方法论","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"实事求是 规律 客观 事实 条件 唯实 不扭曲 判断 因果 天道"},
-{id:"j4",n:4,t:"见路不走",bk:"js",bn:"遥远的救世主",c:"不照经验不照教条，按当下条件走没有路的路。不是反着走，是只看条件。",tg:["思维方法","商业","成长"],tp:["decision","innovate"],f:"jiushi.html",kw:"见路不走 经验主义 本本主义 教条 条件 独立推演 不从众 实事求是 惯例"},
-{id:"j5",n:5,t:"条件论·因果律",bk:"js",bn:"遥远的救世主",c:"想改结果先改条件。倒推结果所需条件，能造就造，造不了就调整目标。",tg:["决策方法","商业","管理"],tp:["decision","system"],f:"jiushi.html",kw:"条件 因果 倒推 侥幸 清单 可控 工程思维 目标 焦虑 尽人事"},
-{id:"j6",n:6,t:"认知差距决定胜负",bk:"js",bn:"遥远的救世主",c:"人只能在自己认知内做选择。看不见的机会与风险，对你不存在。",tg:["认知","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"认知 差距 看不见 盲区 世界 维度 护城河 复盘 提升认知 信息"},
-{id:"j7",n:7,t:"弱势破强势的设计",bk:"js",bn:"遥远的救世主",c:"把强者拖进你定的规则里打。换赛道，让对手的优势变成负担。",tg:["商战","竞争"],tp:["compete","innovate"],f:"jiushi.html",kw:"弱势 强势 规则 赛道 结构 成本 格律诗 乐圣 以弱胜强 两难 机制"},
-{id:"j8",n:8,t:"布局者思维·算到最后一步",bk:"js",bn:"遥远的救世主",c:"从对手反应往回推，把博弈树推到终局再落第一子。不赌对手失误。",tg:["战略","商业","竞争"],tp:["compete","decision"],f:"jiushi.html",kw:"布局 逆向 推演 博弈树 终局 对手反应 倒推 必然 算 设计"},
-{id:"j9",n:9,t:"杀富济贫的悖论与代价",bk:"js",bn:"遥远的救世主",c:"赢了规则不等于赢了。合规律未必合道义，要同时算技术账和人心账。",tg:["伦理","商业","成长"],tp:["decision","system"],f:"jiushi.html",kw:"代价 悖论 道义 人心 反噬 报应 余地 慈悲 边界 值不值 赢"},
-{id:"j10",n:10,t:"不解释·不辩·随缘",bk:"js",bn:"遥远的救世主",c:"懂你的人不必解释，不懂你的人不必解释。守住中心，不被评价牵动。",tg:["处世","为人"],tp:["org","decision"],f:"jiushi.html",kw:"不解释 不辩 随缘 体面 认同 自足 误解 沟通 内耗 结果说话"},
-{id:"j11",n:11,t:"强者的孤独与自洽",bk:"js",bn:"遥远的救世主",c:"能承受'我是对的但没人认同'而不回头求认同。把对错和认同等分开。",tg:["境界","成长"],tp:["decision","system"],f:"jiushi.html",kw:"孤独 自洽 独立 从众 认同 内在标准 坚持 被误解 超前 定力"},
-{id:"j12",n:12,t:"觉悟与自在",bk:"js",bn:"遥远的救世主",c:"如实观照、破执着、心无挂碍。尽力创造条件，对结果不偏执。",tg:["境界","为人"],tp:["system","decision"],f:"jiushi.html",kw:"觉悟 自在 执着 观照 贪嗔痴 我执 放下 尽人事听天命 清醒 坦然 ego"},
-// 影响力
-{id:"y1",n:1,t:"固定行为模式",bk:"yx",bn:"影响力",c:"触发特征→自动响应。捷径是效率也是漏洞，高手伪造触发器让你自己的惯性说服你。",tg:["底层机制","谈判","自保"],tp:["decision","system"],f:"yingxiangli.html",kw:"固定行为 咔哒 触发 捷径 自动 时间压力 不确定 信息过载 火鸡 红点"},
-{id:"y2",n:2,t:"对比原理",bk:"yx",bn:"影响力",c:"感受是相对的：先给你的决定后给你的。锚定、报价顺序、划线原价的祖宗。",tg:["底层机制","商业","谈判"],tp:["decision","compete"],f:"yingxiangli.html",kw:"对比 锚定 原价 参照 顺序 垫房 先大后小 先小后大 韦伯 划算"},
-{id:"y3",n:3,t:"互惠",bk:"yx",bn:"影响力",c:"先给的人掌握主动权：亏欠感由给予者设定。免费样品、拒绝-退让、不请自来的好处。",tg:["武器","商业","谈判"],tp:["compete","org"],f:"yingxiangli.html",kw:"互惠 亏欠 先给 免费试用 样品 拒绝退让 门把 让步 回报 薄荷糖"},
-{id:"y4",n:4,t:"承诺和一致",bk:"yx",bn:"影响力",c:"小承诺锁死大身份：主动公开费力的承诺会自我绑定。登门槛、贴标签、签到玩法。",tg:["武器","商业","管理"],tp:["org","decision"],f:"yingxiangli.html",kw:"承诺 一致 登门槛 签到 目标 公开 身份 标签 骑虎难下 失调"},
-{id:"y5",n:5,t:"社会认同",bk:"yx",bn:"影响力",c:"不确定时看别人，尤其相似的人。销量榜单好评是工业产品；假认同污染决策系统。",tg:["武器","商业","自保"],tp:["decision","system"],f:"yingxiangli.html",kw:"社会认同 从众 销量 榜单 好评 相似 旁观者 信息瀑布 水军 反共识"},
-{id:"y6",n:6,t:"喜好",bk:"yx",bn:"影响力",c:"无法拒绝喜欢的人：相似、赞美、熟悉、同盟四台发动机。把人和事分开是防御关键。",tg:["武器","谈判","管理"],tp:["org","compete"],f:"yingxiangli.html",kw:"喜好 相似 赞美 熟悉 同盟 曝光 特百惠 人设 共同敌人 光环"},
-{id:"y7",n:7,t:"权威",bk:"yx",bn:"影响力",c:"服从的不是专家是专家的样子：头衔、制服、行头三触发器。两问：真专家？说实话？",tg:["武器","谈判","管理"],tp:["decision","org"],f:"yingxiangli.html",kw:"权威 头衔 制服 白大褂 米尔格拉姆 背书 专家 符号 示弱 借势"},
-{id:"y8",n:8,t:"短缺",bk:"yx",bn:"影响力",c:"越得不到越想要：损失厌恶+心理逆反。限量限时竞价是放大器，心跳加速地抢是触发铁证。",tg:["武器","商业","谈判"],tp:["compete","decision"],f:"yingxiangli.html",kw:"短缺 稀缺 限量 限时 秒杀 倒计时 竞价 逆反 损失厌恶 饥饿营销"},
-{id:"y9",n:9,t:"防御总纲",bk:"yx",bn:"影响力",c:"把戏和实质分开：识别→暂停→拆。所有武器都怕延迟，被操纵感本身是数据。",tg:["防御","自保","谈判"],tp:["decision","system"],f:"yingxiangli.html",kw:"防御 识别 暂停 拆开 明天答复 决策分级 裸请求 记账 信号"},
-{id:"y10",n:10,t:"伦理边界",bk:"yx",bn:"影响力",c:"真触发器是影响，假触发器是操纵。三测试：真实性、可逆性、重复博弈可持续性。",tg:["伦理","管理","商业"],tp:["org","decision"],f:"yingxiangli.html",kw:"伦理 操纵 真实 可逆 长期 声誉 假原价 刷单 不玩假的 信任"},
-{id:"y11",n:11,t:"运营组合拳",bk:"yx",bn:"影响力",c:"一次活动按六个按钮（lollapalooza）：六要素清单设计+反向审计，按漏斗配武器。",tg:["应用","商业","管理"],tp:["innovate","system"],f:"yingxiangli.html",kw:"组合拳 lollapalooza 六要素 活动设计 拉新 转化 留存 归因 审计 JBP"},
-{id:"y12",n:12,t:"决策主权",bk:"yx",bn:"影响力",c:"终极用途是向内：别活成别人的武器。决策分级、信息源独立、复盘自己的固定按钮。",tg:["应用","自保","成长"],tp:["decision","system"],f:"yingxiangli.html",kw:"决策主权 分级 独立信源 复盘 被俘 弱点 重力 可预测 选择"}
-];
-
-const topics={
-  compete:{name:"竞争策略",color:"var(--blue)",icon:"\u2694\ufe0f"},
-  decision:{name:"决策方法",color:"var(--violet)",icon:"\ud83e\udde0"},
-  system:{name:"系统思维",color:"var(--emerald)",icon:"\ud83c\udf10"},
-  org:{name:"组织管理",color:"var(--crimson)",icon:"\ud83d\udc65"},
-  innovate:{name:"创新突破",color:"var(--orange)",icon:"\ud83d\udca1"}
-};
-
-const qMap={
-  "谈判|薪资|谈薪|议价|加薪|涨薪|面试":["s5","g16","g13","g14","m6"],
-  "竞争|打仗|打败|对手|竞品|价格战":["s1","s2","s3","s5","m1","m2","m10","g2","g3"],
-  "团队|协作|合作|管理|带人|领导":["m12","m15","m16","m17","g9","g18","g19","g21"],
-  "冲突|矛盾|分歧|吵架|不和":["m3","m8","m16","g3","g9"],
-  "创业|商业|做生意|开公司":["s1","m2","m10","m14","f4","f6","f7"],
-  "创新|突破|颠覆|变革|转型":["f6","f4","f5","s4","f7"],
-  "决策|选择|判断|该不该":["s2","s3","m4","m7","m9","f1","f2","g5","g7"],
-  "学习|成长|提升|进步":["f9","f8","m11","m9"],
-  "信息|不对称|欺骗|信任|真假":["g11","g12","g13","g19","g20","m4","m7"],
-  "资源|分配|投入|聚焦|优先级":["m2","s4","g18","g21","m3"],
-  "弱势|以弱胜强|小公司|小团队|创业初期":["m1","m10","m14","s1","s5"],
-  "坚持|放弃|长期|耐心|持续":["m10","m13","m18","s6","g9","g10"],
-  "速度|快速|效率|拖延":["s6","f4","f5"],
-  "调查|了解|研究|分析|数据":["m4","m7","m3","m8","m11"],
-  "规则|制度|设计|激励|考核":["g15","m17","g18","g21"],
-  "价格|成本|补贴|定价|收费":["f5","g3","g14","s1"],
-  "职业|跳槽|求职|面试|转行":["s5","g13","g16","m14","f7"],
-  "组织|文化|纪律|风气":["m16","m15","m12","g17","g20"],
-  "风险|不确定|概率|赌博":["g7","g8","g11","g12","s2"],
-  "品牌|营销|用户|客户":["s1","g20","g13","m15","f4"]
-};
-
-function renderCard(c,score){
-  const sc=score!==undefined?`<span class="ci-score">${score}</span>`:'';
-  const tags=c.tg.slice(0,3).map(t=>`<span class="tag tag-b">${t}</span>`).join('');
-  return `<a class="ci" data-book="${c.bk}" data-id="${c.id}" href="${c.f}" target="_blank" rel="noopener">
-    <div class="ci-head"><span class="ci-num">${c.n}</span><span class="ci-title">${c.t}</span>${sc}</div>
-    <div class="ci-book">${c.bn}</div>
-    <div class="ci-concept">${c.c}</div>
-    <div class="ci-tags">${tags}</div>
-  </a>`;
-}
-
-function renderAll(){
-  const el=document.getElementById('allCards');
-  let h='';
-  for(const[k,v]of Object.entries(topics)){
-    const tc=cards.filter(c=>c.tp.includes(k));
-    h+=`<div class="topic-section" data-topic="${k}">
-      <div class="topic-header"><div class="topic-dot" style="background:${v.color}"></div><h2>${v.icon} ${v.name}</h2><span class="tc">${tc.length} 张</span></div>
-      <div class="cards-grid">${tc.map(c=>renderCard(c)).join('')}</div>
-    </div>`;
-  }
-  el.innerHTML=h;
-}
-
-let curTopic='all';
-function filterTopic(t){
-  curTopic=t;
-  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector(`.topic-btn[data-topic="${t}"]`).classList.add('active');
-  document.querySelectorAll('.topic-section').forEach(s=>{
-    s.style.display=(t==='all'||s.dataset.topic===t)?'':'none';
-  });
-  document.getElementById('matchSection').classList.remove('show');
-  document.getElementById('resultCount').classList.remove('show');
-  document.getElementById('searchInput').value='';
-  document.querySelectorAll('.ci').forEach(c=>c.classList.remove('hidden'));
-}
-
-function doSearch(){
-  const q=document.getElementById('searchInput').value.trim().toLowerCase();
-  if(!q){
-    document.querySelectorAll('.ci').forEach(c=>c.classList.remove('hidden'));
-    document.getElementById('resultCount').classList.remove('show');
-    document.getElementById('matchSection').classList.remove('show');
-    return;
-  }
-  const terms=q.split(/\s+/).filter(Boolean);
-  let count=0;
-  document.querySelectorAll('.ci').forEach(el=>{
-    const card=cards.find(c=>c.id===el.dataset.id);
-    if(!card)return;
-    const hay=(card.t+' '+card.c+' '+card.tg.join(' ')+' '+card.kw+' '+card.bn).toLowerCase();
-    const match=terms.some(t=>hay.includes(t));
-    if(match){el.classList.remove('hidden');count++}else{el.classList.add('hidden')}
-  });
-  const rc=document.getElementById('resultCount');
-  rc.textContent=`搜索"${q}"找到 ${count} 张卡片`;
-  rc.classList.add('show');
-  document.getElementById('matchSection').classList.remove('show');
-  document.querySelectorAll('.topic-section').forEach(s=>s.style.display='');
-  curTopic='all';
-  document.querySelectorAll('.topic-btn').forEach(b=>b.classList.remove('active'));
-  document.querySelector('.topic-btn[data-topic="all"]').classList.add('active');
-}
-
-/* ===== 四段式解决方案模板 ===== */
-const SOLUTIONS=[
-{id:"salary",title:"如何谈薪资 / 谈判要资源",kw:["谈薪","薪资","工资","涨薪","加薪","谈判","谈资源","要资源","砍价","议价"],
- diagnosis:"谈判的本质是讨价还价博弈：谁更有耐心、谁有Plan B（选择权），谁就掌握主动权。你不是在\"要\"，而是在分配合作剩余。",
- methods:[
-  {n:"讨价还价",b:"博弈论",w:"Rubinstein模型：耐心是谈判权力。你越不急于达成，议价能力越强",l:"game-theory.html#card-16"},
-  {n:"致人而不致于人",b:"孙子兵法",w:"选择权=主动权。手里有Plan B（另一个offer/备选供应商），你就有走掉的底气",l:"sunzi.html#card-5"},
-  {n:"先胜后战",b:"孙子兵法",w:"先让自己不可替代（业绩数据、独有能力），再上谈判桌",l:"sunzi.html#card-2"}
- ],
- steps:[
-  {a:"盘点你的Plan B：是否有备选offer/备选方案？没有就先创造（投简历/找备选供应商）",s:"致人而不致于人"},
-  {a:"准备数据弹药：你的贡献量化（业绩/项目成果/稀缺性），让对方无法拒绝",s:"先胜后战"},
-  {a:"让对方先报价：先出价者暴露底牌，后出价者掌握调整空间",s:"讨价还价"},
-  {a:"报出锚点后沉默：不要急着让步，每一轮让步幅度递减，传递\"快到极限\"的信号",s:"讨价还价"}
- ],
- risks:["如果你确实没有Plan B且对方知情，这套策略失效——先去创造选择权","情绪化谈判会毁掉耐心优势——谈判桌上永远保持\"可以走\"的冷静","如果对方是流程化的HR（无议价空间），博弈策略无效，此时应改为争取其他维度（职级/股权/转岗机会）"]},
-
-{id:"job",title:"该不该跳槽 / 换方向",kw:["跳槽","换工作","离职","裸辞","offer","职业选择","要不要走","转行"],
- diagnosis:"跳槽决策的本质是五维评估：不是\"这里不好\"就该走，而是\"新机会在关键维度上是否显著优于现状\"。裸辞=先战而后求胜。",
- methods:[
-  {n:"五事七计",b:"孙子兵法",w:"道天地将法五维对比新旧机会：目标认同/行业趋势/岗位资源/上级/制度",l:"sunzi.html#card-3"},
-  {n:"先胜后战",b:"孙子兵法",w:"有offer在手再谈离职，先为不可胜",l:"sunzi.html#card-2"},
-  {n:"第二曲线",b:"第一性原理",w:"第一曲线见顶前启动新曲线——别等被迫离开才想下一步",l:"fp.html#card-7"}
- ],
- steps:[
-  {a:"用五事七计打分：现状 vs 新机会，逐项1-10分对比（道/天/地/将/法）",s:"五事七计"},
-  {a:"若新机会≥3项领先才认真考虑；若只在薪资一项领先，警惕\"为钱跳坑\"",s:"五事七计"},
-  {a:"骑驴找马：先拿offer再谈离职，保持选择权",s:"先胜后战"},
-  {a:"离职前用最小成本验证新方向（找业内人士聊/试做小项目），不靠想象决策",s:"第二曲线"}
- ],
- risks:["五事七计依赖信息准确——对新公司的\"道/将\"评估最容易失真（面试时都是最好的一面）","如果现状已到身心健康的红线，不要机械等待\"先胜\"——保命优先","频繁跳槽损害声誉（重复博弈视角：HR会看到你的履历模式）"]},
-
-{id:"pricewar",title:"如何应对价格战 / 恶性竞争",kw:["价格战","补贴","降价","恶性竞争","竞品","抢市场","打不过","竞争"],
- diagnosis:"价格战是典型的囚徒困境：跟进=双输，不跟进=短期失血。真正的问题是判断对手补贴是战略投入还是虚张声势，以及找到对手\"伐不动\"的维度。",
- methods:[
-  {n:"囚徒困境",b:"博弈论",w:"识别双输结构，避免情绪化跟进",l:"game-theory.html#card-3"},
-  {n:"不战而屈人之兵",b:"孙子兵法",w:"价格战是\"攻城\"（最下策），先找伐谋路径：供应链/体验/复购体系",l:"sunzi.html#card-1"},
-  {n:"调查研究",b:"毛泽东选集",w:"先搞清对手补贴的力度/时长/资金来源，再谈应对",l:"mao.html#card-4"},
-  {n:"兵贵胜不贵久",b:"孙子兵法",w:"若必须短期回应，设止损线，拒绝无限消耗",l:"sunzi.html#card-6"}
- ],
- steps:[
-  {a:"调查三件事：对手补贴力度、持续时间、钱从哪来（品牌方自掏？平台补？）",s:"调查研究"},
-  {a:"判断对手主要矛盾：抢份额？清库存？造势？短期行为就不跟进，等它结束",s:"矛盾论"},
-  {a:"把补贴预算投到对手伐不动的地方：供应链成本、门店体验、会员复购",s:"不战而屈人之兵"},
-  {a:"若必须回应：定点小额反击（1-2个核心商圈）+ 2周止损线，守不住就说明不是补贴问题",s:"兵贵胜不贵久"}
- ],
- risks:["对手资本远强于你且铁了心烧钱换市场时，\"不跟进\"会持续失血——此时该找平台资源而非自己扛","行业格局未定的早期，价格战可能是\"谁先怂谁出局\"，不适用","如果你无法获取对手成本数据，判断会失真"]},
-
-{id:"freerider",title:"团队有人搭便车怎么办",kw:["搭便车","偷懒","摸鱼","不出力","团队","激励","考核","KPI","分工"],
- diagnosis:"搭便车是团队版的囚徒困境：每个人都在等别人多干活。本质是激励机制缺陷，不是人品问题——好人被坏机制教坏。",
- methods:[
-  {n:"囚徒困境",b:"博弈论",w:"识别搭便车的博弈结构：偷懒是占优策略，除非改变收益",l:"game-theory.html#card-3"},
-  {n:"机制设计",b:"博弈论",w:"设计激励相容的规则：让\"不偷懒\"成为占优策略",l:"game-theory.html#card-15"},
-  {n:"反对自由主义",b:"毛泽东选集",w:"11种腐蚀组织的行为：明知不对少说为佳、背后议论不摆桌面",l:"mao.html#card-16"},
-  {n:"党委会工作方法",b:"毛泽东选集",w:"问题摆到桌面上，事先通知，集体讨论",l:"mao.html#card-17"}
- ],
- steps:[
-  {a:"先诊断：搭便车是因为\"不会做\"还是\"不愿做\"？前者是能力问题（培训/带教），后者才是机制问题",s:"囚徒困境"},
-  {a:"重新设计激励：个人贡献可度量+团队绩效挂钩，让偷懒有明确代价",s:"机制设计"},
-  {a:"公开摆桌面：一对一沟通+会上对齐分工，明确每个人的产出标准",s:"党委会工作方法"},
-  {a:"用重复博弈的力量：明确传达\"长期合作中，偷懒者会被边缘化\"的信号",s:"重复博弈"}
- ],
- risks:["度量个人贡献本身有成本——过度度量会挫伤主动性和创新","如果搭便车者是老板的亲信，机制设计会失效——此时是政治问题不是机制问题","小团队（<5人）中度量体系性价比低，直接面对面沟通更有效"]},
-
-{id:"xfunc",title:"跨部门协作扯皮怎么办",kw:["跨部门","扯皮","推诿","协作","配合","甩锅","沟通","部门墙"],
- diagnosis:"跨部门扯皮的本质是廉价交谈问题：双方利益不一致时，语言沟通无法传递可信信息。根源通常是目标不一致+规则缺失。",
- methods:[
-  {n:"廉价交谈",b:"博弈论",w:"利益不一致时沟通无效——先对齐利益，再谈协作",l:"game-theory.html#card-19"},
-  {n:"党委会工作方法",b:"毛泽东选集",w:"问题摆桌面、事先通知、形成书面决议",l:"mao.html#card-17"},
-  {n:"群众路线",b:"毛泽东选集",w:"从对方团队收集真实诉求，提炼共识再推回执行",l:"mao.html#card-12"}
- ],
- steps:[
-  {a:"先识别双方的真实利益：对方部门KPI是什么？扯皮对谁有利？",s:"廉价交谈"},
-  {a:"把问题摆到桌面上：组织正式会议，事先发议程，会上形成书面决议+责任人+时间点",s:"党委会工作方法"},
-  {a:"找共同上级对齐目标：如果双方目标本质冲突，请上级拍板优先级",s:"群众路线"},
-  {a:"建立规则而非靠人情：明确协作流程/SLA，下次不扯皮",s:"机制设计"}
- ],
- risks:["如果根源是组织设计缺陷（两个部门的KPI天然冲突），个体努力只能缓解无法根治","频繁升级到上级会消耗你的政治资本——先自己谈，谈不动再升级","书面决议若无人跟进=废纸，必须指定唯一责任人"]},
-
-{id:"newmarket",title:"要不要进入新市场 / 新赛道",kw:["新市场","进入","扩张","新业务","赛道","开店","区域","下沉"],
- diagnosis:"进入新市场的本质是五事七计的Go/No-Go评估：不是\"市场有空间\"就该进，而是\"你在关键维度上是否领先\"。多数失败源于调研不足和优势错配。",
- methods:[
-  {n:"调查研究",b:"毛泽东选集",w:"没有调查没有发言权——亲自走访目标市场，不靠报告决策",l:"mao.html#card-4"},
-  {n:"五事七计",b:"孙子兵法",w:"道天地将法五维自评vs对手，得算多者胜",l:"sunzi.html#card-3"},
-  {n:"白痴指数",b:"第一性原理",w:"拆解目标市场的成本结构，找重构空间",l:"fp.html#card-5"}
- ],
- steps:[
-  {a:"实地走访：目标市场的用户/竞品/供应商，至少解剖1-2个典型（麻雀）",s:"调查研究"},
-  {a:"五事打分：你的道天地将法在目标市场各几分？对手几分？≥3项领先才进",s:"五事七计"},
-  {a:"算白痴指数：目标市场现有玩家的成本结构有没有\"泡沫环节\"可重构？",s:"白痴指数"},
-  {a:"小规模验证：选1个最小可验证的点进入（1家店/1个产品），跑通再放大",s:"实践认识"}
- ],
- risks:["调研再充分也无法消除不确定性——进入决策永远是概率决策，别追求100%把握","五事七计中\"天\"（时机）权重最高——市场很好但时机不对照样死","沉没成本会绑架你：进入后要定期重估，别因为\"已经投入了\"而硬撑"]},
-
-{id:"stop",title:"项目该不该继续投入 / 止损",kw:["止损","放弃","继续投入","项目","亏损","该不该","撑","坚持"],
- diagnosis:"止损决策的本质是日成本核算：不是\"项目还有希望吗\"，而是\"每天在烧什么、烧到什么时候你承受不起\"。最危险的是用\"再给点时间\"代替止损。",
- methods:[
-  {n:"兵贵胜不贵久",b:"孙子兵法",w:"战争有日成本，久则钝兵挫锐——设止损线，到线就走",l:"sunzi.html#card-6"},
-  {n:"实践认识",b:"毛泽东选集",w:"计划→执行→检验→修正：连续3次修正仍不成立，方向本身有问题",l:"mao.html#card-5"},
-  {n:"第二曲线",b:"第一性原理",w:"判断这个项目是第一曲线（该养）还是已见顶（该切换）",l:"fp.html#card-7"}
- ],
- steps:[
-  {a:"算日成本：这个项目每天消耗什么（钱/人力/注意力/机会成本）？写下来",s:"兵贵胜不贵久"},
-  {a:"定止损线：按日成本算出\"最多再撑多久\"，写下一个明确日期",s:"兵贵胜不贵久"},
-  {a:"回顾迭代记录：过去3次\"修正后重试\"的结果如何？连续失败=方向问题，不是执行问题",s:"实践认识"},
-  {a:"到止损线就执行退出：把退出写成流程（怎么退/损失多少/谁负责），避免\"再给一周\"",s:"兵贵胜不贵久"}
- ],
- risks:["止损线定了但没人执行=白定——需要指定\"止损执行人\"（最好是旁观者）","品牌建设类项目不适用速胜逻辑——它需要时间沉淀，止损线要放宽","\"日成本\"容易漏算机会成本——算上\"这钱投别处能赚多少\""]},
-
-{id:"promo",title:"如何获得晋升 / 职业成长",kw:["晋升","升职","成长","提拔","发展","职业规划","涨薪","进步"],
- diagnosis:"晋升的本质是信号博弈：老板无法完全观察你的能力，你需要发送\"可信信号\"。可信信号=高成本+高区分度（做出了别人做不出的成绩）。",
- methods:[
-  {n:"信号博弈",b:"博弈论",w:"发送高成本信号：学历/项目成果/独有能力，让老板低成本识别你",l:"game-theory.html#card-13"},
-  {n:"集中兵力",b:"毛泽东选集",w:"伤其十指不如断其一指——聚焦1-2件大事做穿，而非样样平庸",l:"mao.html#card-2"},
-  {n:"刻意练习",b:"第一性原理",w:"核心算法×大量重复：找到关键技能刻意训练",l:"fp.html#card-9"}
- ],
- steps:[
-  {a:"识别晋升的\"信号标准\"：这个岗位的晋升评审看重什么？（问老板/看晋升者的共同特征）",s:"信号博弈"},
-  {a:"集中资源打1-2个标杆项目：做成\"别人提到你的名字就想到的成果\"",s:"集中兵力"},
-  {a:"把成果变成可见信号：汇报/分享/文档化，让决策者低成本看到",s:"信号博弈"},
-  {a:"刻意练习关键技能：每周固定时间训练核心能力，建立复利",s:"刻意练习"}
- ],
- risks:["只发信号不干实事（表演式工作）短期有效长期反噬——信号成本必须真实","在论资排辈的组织里，信号博弈弱于关系博弈——先判断组织类型","过度聚焦单一项目有风险：项目失败=信号崩塌，需要分散1-2个次重点"]},
-
-{id:"strongrival",title:"竞争对手太强怎么办",kw:["对手强","竞品强","巨头","打不过","垄断","强敌","碾压"],
- diagnosis:"面对强敌的核心是强弱转换规律：力量小的同人民（用户）联系的强，力量大的脱离用户的弱。你不需要全面战胜它，只需要在它\"伐不动\"的局部形成优势。",
- methods:[
-  {n:"积极防御",b:"毛泽东选集",w:"弱势方先退让保存实力，等对手疲劳犯错再反击",l:"mao.html#card-1"},
-  {n:"集中优势兵力",b:"毛泽东选集",w:"在关键战场配置压倒性资源，宁断一指不伤十指",l:"mao.html#card-2"},
-  {n:"混合策略",b:"博弈论",w:"让对手无法预测你的动作，避免被针对",l:"game-theory.html#card-8"}
- ],
- steps:[
-  {a:"五事七计找对手的弱点：巨头通常在\"地\"（本地化）和\"法\"（决策速度）上弱于你",s:"五事七计"},
-  {a:"战略退却：放弃与对手正面硬刚的战场（如价格/规模），保存实力",s:"积极防御"},
-  {a:"集中兵力打1个细分：选对手\"不值得打\"的利基市场，投3倍资源做穿",s:"集中优势兵力"},
-  {a:"保持不可预测：多产品线/多渠道并行，让对手无法全面封锁",s:"混合策略"}
- ],
- risks:["退却≠放弃：如果你退到无路可退还不反击，退却就变成了溃败","细分市场太小会饿死——利基选择必须验证市场规模","对手若用资本直接收购你所在品类，博弈策略失效（此时考虑被收购或合作）"]},
-
-{id:"bigdec",title:"如何做重大决策",kw:["重大决策","决策","选择困难","纠结","犹豫","怎么办","怎么选"],
- diagnosis:"重大决策的错误率来自用归纳法处理非连续问题。正确的做法：拆到第一性原理（不可违反的基本事实），再用演绎法推导。",
- methods:[
-  {n:"第一性原理",b:"第一性原理",w:"追问5个为什么，找到不可省略/删除/违反的基本命题",l:"fp.html#card-1"},
-  {n:"矛盾论",b:"毛泽东选集",w:"找主要矛盾：解决了它其他问题松动的那个",l:"mao.html#card-8"},
-  {n:"期望效用",b:"博弈论",w:"量化各选项的期望效用，结合你的风险态度选择",l:"game-theory.html#card-7"}
- ],
- steps:[
-  {a:"用5 Whys追问决策的本质：这个决策真正决定的是什么？（如买房≠买房子，=锁定生活方式）",s:"第一性原理"},
-  {a:"找主要矛盾：列出所有考量因素，问\"哪个因素解决了，其他都松动\"",s:"矛盾论"},
-  {a:"列出选项的期望效用：各选项的收益×概率，明确自己是风险规避还是偏好",s:"期望效用"},
-  {a:"做最小验证：决策可逆的部分先试（先租后买/先兼职后全职）",s:"实践认识"}
- ],
- risks:["5 Whys可能过度追问导致分析瘫痪——追问到\"再往下不影响决策\"为止","期望效用依赖概率估计准确，而人对小概率事件的估计偏差极大","重大决策中情绪权重远高于理性——冷静期（24小时）后再确认"]},
-
-{id:"influence",title:"如何建立个人影响力 / 声誉",kw:["影响力","声誉","个人品牌","信任","口碑","存在感","人脉"],
- diagnosis:"声誉是重复博弈的产物：好声誉让陌生人愿意与你合作。建立影响力的核心是持续发送\"可信承诺+兑现记录\"。",
- methods:[
-  {n:"声誉",b:"博弈论",w:"好声誉带来长期收益——长期关系中人们更愿意与有声誉者合作",l:"game-theory.html#card-20"},
-  {n:"为人民服务",b:"毛泽东选集",w:"价值观驱动：为他人创造价值，开放接受批评",l:"mao.html#card-15"},
-  {n:"致人而不致于人",b:"孙子兵法",w:"先提框架=掌握主导权：主动输出观点而非被动响应",l:"sunzi.html#card-5"}
- ],
- steps:[
-  {a:"选定声誉赛道：1个你希望\"被记住\"的标签（如\"懂餐饮KA的数据人\"）",s:"集中兵力"},
-  {a:"持续兑现小承诺：说到做到，哪怕小事——声誉靠积累不靠事件",s:"声誉"},
-  {a:"主动输出：写复盘/做分享/在会议上先提方案，建立\"有观点\"的认知",s:"致人而不致于人"},
-  {a:"开放接受批评：有人指出问题就改，\"为他人利益坚持好的改正错的\"",s:"为人民服务"}
- ],
- risks:["声誉积累慢、崩塌快——一次重大失信可能毁掉多年积累","只输出不兑现=表演型声誉，长期必被识破","在流动性强的组织中，声誉贴现率低（人走茶凉），长期主义策略收益打折"]},
-
-{id:"setback",title:"遇到挫折 / 失败怎么办",kw:["挫折","失败","受挫","打击","低谷","难受","崩溃","坚持不下去"],
- diagnosis:"失败有二重性：坏事中包含好事的种子。关键不是消除失败，而是创造条件让失败向学习转化——用实践认识的循环把失败变成认识升级。",
- methods:[
-  {n:"矛盾分析",b:"毛泽东选集",w:"坏事可以变好事：失败中找胜利的种子，创造条件让它转化",l:"mao.html#card-3"},
-  {n:"实践认识",b:"毛泽东选集",w:"失败是认识升级的必经之路：从失败中提取修正后的假设",l:"mao.html#card-5"},
-  {n:"愚公移山",b:"毛泽东选集",w:"信念+坚持+动员：把大目标分解为可持续的小行动",l:"mao.html#card-13"}
- ],
- steps:[
-  {a:"做失败复盘：写下\"我以为会发生什么 vs 实际发生什么\"，找出错误假设",s:"实践认识"},
-  {a:"二重性分析：这次失败中包含什么好事的种子？（暴露了问题/认识了人/排除了选项）",s:"矛盾分析"},
-  {a:"修正假设后小步重启：用最小成本验证修正后的方向，不急着翻盘",s:"实践认识"},
-  {a:"把目标分解：如果目标太大，拆成\"每天都能推进一点\"的小行动",s:"愚公移山"}
- ],
- risks:["\"坏事变好事\"不是阿Q精神——需要主动创造条件，不是自我安慰","情绪创伤期不宜立即复盘——先处理情绪，再分析认知","连续失败要警惕方向性错误：3次修正仍失败，考虑换方向而非更努力"]},
-{id:"yz1",n:1,t:"极度求真先于极度透明",bk:"yz",bn:"原则",c:"给每个判断标注置信度：这是事实、推断还是愿望？先对自己诚实，再对团队透明。",tg:["世界观与求真","成长","商业","管理"],tp:["decision","system"],f:"yuanze.html",kw:"极度求真 极度透明 置信度 事实 推断 愿望 认知 光谱 竞品分析 补贴 复盘"},
-{id:"yz2",n:2,t:"痛苦加反思等于进步",bk:"yz",bn:"原则",c:"痛感是撞到盲区的信号。丢单、被拒、被打脸，只有复盘成一条原则才兑换成免疫力。",tg:["世界观与求真","成长","管理","商业"],tp:["decision","org"],f:"yuanze.html",kw:"痛苦 反思 进步 复盘 错误 进化 盲区 谈判破裂 归因 机制 教训"},
-{id:"yz3",n:3,t:"可信度加权",bk:"yz",bn:"原则",c:"谁的话该听几分，取决于他在这件事上过往的成功记录+讲得清因果，而非职级或嗓门。",tg:["世界观与求真","管理","商业","竞争"],tp:["org","decision"],f:"yuanze.html",kw:"可信度 加权 独裁 民主 战绩 权威 光环效应 跨部门 补贴 ROI 决策"},
-{id:"yz4",n:4,t:"把决策做成可复用的原则",bk:"yz",bn:"原则",c:"把重复出现的判断沉淀成'当X则Y因为Z'的原则+可跑的算法/打分表。",tg:["决策算法化","商业","管理","运营"],tp:["decision","system"],f:"yuanze.html",kw:"原则 算法 决策 打分表 if-then 补贴跟投 准入 退出 复用 伪原则 交接"},
-{id:"yz5",n:5,t:"五步流目标问题诊断方案执行",bk:"yz",bn:"原则",c:"目标→问题→诊断→方案→执行五步各归其位，最常跳过、回报最高的是诊断根因。",tg:["决策算法化","商业","管理","运营"],tp:["decision","system"],f:"yuanze.html",kw:"五步流 目标 问题 诊断 方案 执行 根因 症状 归因 复盘 GMV下滑"},
-{id:"yz6",n:6,t:"期望值下注而非赌对错",bk:"yz",bn:"原则",c:"用概率×赔率决策，好决定不等于好结果；接受'这次输了但下注是对的'。",tg:["决策算法化","商业","竞争","运营"],tp:["decision","compete"],f:"yuanze.html",kw:"期望值 概率 赔率 不确定性 大数 结果偏误 凯利 补贴投放 竞对跟价 下注"},
-{id:"yz7",n:7,t:"创意择优有意义博弈",bk:"yz",bn:"原则",c:"让最好的想法胜出而非职位最高的：把分歧摆上桌，为'哪个更可能对'而争，决策后全力执行。",tg:["组织与识人","管理","成长","竞争"],tp:["org","decision"],f:"yuanze.html",kw:"创意择优 有意义博弈 极度透明 分歧 反驳 ego 被说服 disagree commit 评审"},
-{id:"yz8",n:8,t:"用机器视角看组织",bk:"yz",bn:"原则",c:"文化+人=机器，结果是机器的体检报告。反复出现的问题是机器设计缺陷，不是偶发。",tg:["组织与识人","管理","商业","运营"],tp:["system","org"],f:"yuanze.html",kw:"机器 文化 人 结果 系统 抽身 设计者 续约流失 选品 资源分配 机制"},
-{id:"yz9",n:9,t:"识人雷达图匹配岗位",bk:"yz",bn:"原则",c:"人是一组属性的雷达图，问'哪个维度适合这件事'，把峰值用在刀刃上而非补短板。",tg:["组织与识人","管理","竞争","成长"],tp:["org"],f:"yuanze.html",kw:"识人 雷达图 属性 匹配 岗位 错配 谈判型 分析型 关系型 用人 识己"},
-{id:"yz10",n:10,t:"自我觉察找到盲区",bk:"yz",bn:"原则",c:"越资深盲区越隐蔽；靠外部镜子、复盘和'归因外化'的痕迹把自己看不见的照出来。",tg:["个人修炼","成长","管理"],tp:["decision","org"],f:"yuanze.html",kw:"自我觉察 盲区 确认偏误 归因外化 反馈 魔鬼代言人 镜子 复盘 校准"},
-{id:"yz11",n:11,t:"极度开明我可能是错的",bk:"yz",bn:"原则",c:"真诚去找'证明我错'的证据，尽早被证伪比带着错误信念下注便宜；有倾向但对被说服开放。",tg:["个人修炼","成长","竞争","管理"],tp:["decision"],f:"yuanze.html",kw:"极度开明 radical open-mindedness 我可能是错 反证 确认偏误 主观确信 好奇 竞对情报"},
-{id:"yz12",n:12,t:"极端所有权自己兜结果",bk:"yz",bn:"原则",c:"别停在'我配合过了'，把最终结果当自己责任主动打通卡点——对结果负责而非对过程接管。",tg:["个人修炼","成长","管理","运营"],tp:["org","decision"],f:"yuanze.html",kw:"极端所有权 对结果负责 责任 灰色地带 越界 补位 主动 跨部门 兜底 KPI"},
-{id:"th1",n:1,t:"谈判是发现游戏不是分蛋糕",bk:"th",bn:"掌控谈话",c:"别默认对方是理性人。先看清那盘被情绪、面子、内部交差驱动的棋，才谈得动数字。",tg:["心态与准备","谈判","商业","成长"],tp:["decision","system"],f:"tanhua.html",kw:"谈判 情绪 理性人 面子 交差 KPI 非理性 游戏 补贴 BD 品牌方 掌控谈话 双赢 分蛋糕"},
-{id:"th2",n:2,t:"先管理自己的情绪再进入高风险对话",bk:"th",bn:"掌控谈话",c:"最先失控的往往是你自己；稳不住自己之前别指望改变别人，情绪一崩话术全失灵。",tg:["心态与准备","成长","管理","谈判"],tp:["decision","org"],f:"tanhua.html",kw:"情绪管理 冷静 深呼吸 战或逃 上头 谈薪 反驳 提问 复述 留面子 红线"},
-{id:"th3",n:3,t:"准备-区分对方的现实与诉求",bk:"th",bn:"掌控谈话",c:"分清对方绕不过的现实约束和他嘴上开的立场价，现实与立场之间的落差就是你的操作空间。",tg:["心态与准备","商业","谈判","管理"],tp:["decision","system"],f:"tanhua.html",kw:"准备 调研 现实 诉求 立场 决策地图 预算 KPI 补贴 JBP 交差 假设 验证"},
-{id:"th4",n:4,t:"战术同理心-用对方的框架理解世界",bk:"th",bn:"掌控谈话",c:"Tactical Empathy 不是当好人，而是系统搞懂对方怎么看世界并让他知道你看懂，用来拿信息卸防御。",tg:["战术共情","谈判","管理","商业"],tp:["decision","org"],f:"tanhua.html",kw:"战术同理心 共情 视角 信任 防御 情报 复述 JBP 品牌方 KPI 探针"},
-{id:"th5",n:5,t:"标注-给情绪命名",bk:"th",bn:"掌控谈话",c:"用你似乎听起来给我感觉给对方情绪贴名字，负面说破即降温，正面标注会放大。",tg:["战术共情","谈判","管理","成长"],tp:["decision","org"],f:"tanhua.html",kw:"标注 labeling 情绪 命名 杏仁核 降温 顾虑 发火 补贴 留白 谈判 在意"},
-{id:"th6",n:6,t:"镜像-重复对方最后1-3个词",bk:"th",bn:"掌控谈话",c:"温和重复对方末尾的词再停顿，近乎催眠地诱导他展开解释，关键信息藏在多解释那句里。",tg:["战术共情","谈判","管理"],tp:["decision","org"],f:"tanhua.html",kw:"镜像 mirroring 重复 停顿 空白 情报 BD 拜访 拉新 追问 报价"},
-{id:"th7",n:7,t:"校准问题-把难题变成对方的任务",bk:"th",bn:"掌控谈话",c:"用怎么做、什么让你这样的开放式问题把难题踢回对方，我该如何答应你是体面地说不。",tg:["战术共情","管理","谈判","商业"],tp:["compete","decision"],f:"tanhua.html",kw:"校准问题 calibrated 怎么 什么 如何 How 开放式 谈薪 补贴 ROI 交回 防守 协作者"},
-{id:"th8",n:8,t:"说不才是开始",bk:"th",bn:"掌控谈话",c:"别追着要是。能说不才有安全感说真话；主动邀请对方说不，把拒绝的理由当信息。",tg:["掌控节奏","谈判","商业","管理"],tp:["compete","decision"],f:"tanhua.html",kw:"说不 安全感 掌控 邀请 异议 客户 拖延 补贴 兴趣 条件 推销"},
-{id:"th9",n:9,t:"沉默与深夜电台DJ嗓音",bk:"th",bn:"掌控谈话",c:"慢下来、降调，说完关键句就停顿让空白替你说话；你越不怕冷场，越显得没退路。",tg:["掌控节奏","谈判","管理"],tp:["compete","decision"],f:"tanhua.html",kw:"沉默 停顿 DJ嗓音 降调 放慢 冷场 权威 镇定 报价 僵持 谈判 数三秒"},
-{id:"th10",n:10,t:"别逼人说是不是假顺从的陷阱",bk:"th",bn:"掌控谈话",c:"是分真承诺、客套、假顺从三种，逼来的是不是没成本事后必反悔，绑定怎么做才算数。",tg:["掌控节奏","谈判","管理","商业"],tp:["decision","org"],f:"tanhua.html",kw:"是 假顺从 yes ladder 承诺 敷衍 落地 签字 加码 校准 验证 诱供"},
-{id:"th11",n:11,t:"锚定与让步-让步要小且慢",bk:"th",bn:"掌控谈话",c:"数字靠参照说话，先抛夸张锚或逼对方先锚；让步要越来越小越来越慢，用折中给对方台阶。",tg:["争取价值","商业","谈判"],tp:["compete","decision"],f:"tanhua.html",kw:"锚定 参照 报价 让步 折中 对比原理 谈薪 补贴 加码 底线 交换 咬价"},
-{id:"th12",n:12,t:"黑天鹅信息-找到你不知道的关键信息",bk:"th",bn:"掌控谈话",c:"每场谈判藏着1到2条一旦知道就重定义局面的隐藏信息，用同理心工具当侦探把它钓出来。",tg:["争取价值","商业","谈判","成长"],tp:["decision","system"],f:"tanhua.html",kw:"黑天鹅 隐藏信息 信息不对称 侦探 独家 动机 时间压力 重定义 JBP 续约 谈判"},
-{id:"zl1",n:1,t:"好战略的内核：诊断+指导方针+连贯行动",bk:"zl",bn:"好战略坏战略",c:"战略的本质",tg:["战略的本质","商业","管理"],tp:["p1","bz"],f:"zhanlue.html",kw:"诊断 指导方针 连贯行动 三件套 年度经营计划 瓶颈 战略结构"},
-{id:"zl2",n:2,t:"坏战略的识别：空话、把目标当战略、KPI堆砌",bk:"zl",bn:"好战略坏战略",c:"战略的本质",tg:["战略的本质","商业","管理"],tp:["p1","bz"],f:"zhanlue.html",kw:"坏战略 空话 KPI堆砌 目标不是战略 许愿池 取舍 回避挑战"},
-{id:"zl3",n:3,t:"战略是应对关键挑战的设计，不是愿景",bk:"zl",bn:"好战略坏战略",c:"战略的本质",tg:["战略的本质","竞争","商业"],tp:["p1","cr"],f:"zhanlue.html",kw:"关键挑战 愿景 ambition 聚焦 竞品分析 城市群诊断 应对设计"},
-{id:"zl4",n:4,t:"找到杠杆点：用小而连贯的动作撬动大变化",bk:"zl",bn:"好战略坏战略",c:"发现优势",tg:["发现优势","商业","竞争"],tp:["p2","bz"],f:"zhanlue.html",kw:"杠杆点 支点 临界质量 资源集中 预算分配 ROI弹性 平摊必败"},
-{id:"zl5",n:5,t:"域内知识是战略之源：深入一线获得别人没有的洞察",bk:"zl",bn:"好战略坏战略",c:"发现优势",tg:["发现优势","成长","商业"],tp:["p2","lf"],f:"zhanlue.html",kw:"域内知识 特殊专长 一线洞察 隐性知识 护城河 门店走访 抄不走"},
-{id:"zl6",n:6,t:"区分约束与习惯：不设不可能的框",bk:"zl",bn:"好战略坏战略",c:"发现优势",tg:["发现优势","商业","成长"],tp:["p2","bz"],f:"zhanlue.html",kw:"约束 习惯 假约束 惯例 行业就这样 结构性空位 破框"},
-{id:"zl7",n:7,t:"近程目标：把大战略拆成够得着的具体任务",bk:"zl",bn:"好战略坏战略",c:"制定方法",tg:["制定方法","商业","管理"],tp:["p3","bz"],f:"zhanlue.html",kw:"近程目标 proximate objectives 季度拆解 可验证 行动反馈闭环 跳一跳够得着"},
-{id:"zl8",n:8,t:"链式推进：一个行动的成效是下一个的前提",bk:"zl",bn:"好战略坏战略",c:"制定方法",tg:["制定方法","商业","竞争"],tp:["p3","bz"],f:"zhanlue.html",kw:"链式 依赖 先后次序 复利 累积优势 供给密度 样板复制 散弹"},
-{id:"zl9",n:9,t:"保持选择的连贯，而非分散",bk:"zl",bn:"好战略坏战略",c:"制定方法",tg:["制定方法","商业","管理"],tp:["p3","bz"],f:"zhanlue.html",kw:"连贯性 分散 鸡蛋篮子 有序期权 方向一致 回避取舍 资源摊平"},
-{id:"zl10",n:10,t:"连贯性行动：资源流程政策对齐同一方向",bk:"zl",bn:"好战略坏战略",c:"落地与取舍",tg:["落地与取舍","商业","管理"],tp:["p4","bz"],f:"zhanlue.html",kw:"连贯性行动 资源分配 流程 考核KPI 预算表 排班表 JBP落地 战略对齐"},
-{id:"zl11",n:11,t:"取舍即战略：明确不做什么比做什么更重要",bk:"zl",bn:"好战略坏战略",c:"落地与取舍",tg:["落地与取舍","商业","竞争"],tp:["p4","bz"],f:"zhanlue.html",kw:"取舍 trade-off 放弃清单 不做 聚焦 临界质量 机会诱惑 年度计划"},
-{id:"zl12",n:12,t:"用思考的清晰度对抗目标的模糊性",bk:"zl",bn:"好战略坏战略",c:"落地与取舍",tg:["落地与取舍","管理","商业"],tp:["p4","mg"],f:"zhanlue.html",kw:"思考清晰度 写不出诊断 可证伪 硬诊断 认知盲区 一句话检验 假大空"},
-{id:"fr1",n:1,t:"脆弱·强韧·反脆弱三分法",bk:"fr",bn:"反脆弱",c:"三元结构",tg:["三元结构","商业","成长","管理"],tp:["p1","bz"],f:"fanruique.html",kw:"反脆弱三元组 脆弱 强韧 鲁棒 从波动获益 玻璃杯 石头 肌肉 越挫越强 不出事假设"},
-{id:"fr2",n:2,t:"过度稳定化反而制造脆弱",bk:"fr",bn:"反脆弱",c:"三元结构",tg:["三元结构","管理","商业"],tp:["p1","mg"],f:"fanruique.html",kw:"过度稳定 压制波动 火鸡问题 隐性风险 黑天鹅 刚性化 兜底 补贴退坡 反馈切断"},
-{id:"fr3",n:3,t:"杀不死我的需要正确条件",bk:"fr",bn:"反脆弱",c:"三元结构",tg:["三元结构","成长","管理"],tp:["p1","lf"],f:"fanruique.html",kw:"适度压力 过度补偿 剂量 恢复期 超量恢复 别美化苦难 burnout 压力训练 可恢复区间"},
-{id:"fr4",n:4,t:"杠铃策略：极端保守+极端冒险",bk:"fr",bn:"反脆弱",c:"应对不确定性",tg:["应对不确定性","商业","成长","管理"],tp:["p2","bz"],f:"fanruique.html",kw:"杠铃 极端保守 极端冒险 避开中间 下行有限 收益无限 尾部风险 预算分配 存活优先"},
-{id:"fr5",n:5,t:"期权思维：下行有限上行无限",bk:"fr",bn:"反脆弱",c:"应对不确定性",tg:["应对不确定性","商业","成长"],tp:["p2","bz"],f:"fanruique.html",kw:"期权 凸性 不对称性 权利金 可选择性 预测不如布局 JBP试点 多持选项"},
-{id:"fr6",n:6,t:"预测不可靠，冗余和可选项才可靠",bk:"fr",bn:"反脆弱",c:"应对不确定性",tg:["应对不确定性","管理","商业"],tp:["p2","mg"],f:"fanruique.html",kw:"少预测多准备 冗余 缓冲 可选项 灵活性 效率与生存 A/B预案 满负荷风险"},
-{id:"fr7",n:7,t:"皮肤在游戏中 Skin in the Game",bk:"fr",bn:"反脆弱",c:"决策与行动",tg:["决策与行动","商业","管理","竞争"],tp:["p3","bz"],f:"fanruique.html",kw:"skin in the game 承担后果 权责对等 代理问题 共担 对赌 单方面兜底 指标担责"},
-{id:"fr8",n:8,t:"减法优先 via negativa",bk:"fr",bn:"反脆弱",c:"决策与行动",tg:["决策与行动","管理","商业"],tp:["p3","mg"],f:"fanruique.html",kw:"via negativa 减法 负面知识 去掉有害 计划外副作用 砍流程 停止伤害 删最脆一环"},
-{id:"fr9",n:9,t:"试错法：小失败是信息，避免大失败是智慧",bk:"fr",bn:"反脆弱",c:"决策与行动",tg:["决策与行动","商业","成长","竞争"],tp:["p3","bz"],f:"fanruique.html",kw:"试错 快速廉价可逆 小失败 灰度 变异选择 不可逆大赌 探索红线 别裸辞all-in"},
-{id:"fr10",n:10,t:"绿色森林谬误·领域特定性",bk:"fr",bn:"反脆弱",c:"结构与领域",tg:["结构与领域","商业","成长"],tp:["p4","bz"],f:"fanruique.html",kw:"绿色森林谬误 领域特定 类比陷阱 检查前提 可逆 自我修复 跨域硬搬 框架边界"},
-{id:"fr11",n:11,t:"层级反脆弱：下层承压、上层受益",bk:"fr",bn:"反脆弱",c:"结构与领域",tg:["结构与领域","管理","成长"],tp:["p4","mg"],f:"fanruique.html",kw:"层级反脆弱 个体脆弱 整体强韧 转嫁代价 伦理拷问 承压 受益 系统问题内化"},
-{id:"fr12",n:12,t:"反对干预主义：医源性伤害与计划外后果",bk:"fr",bn:"反脆弱",c:"结构与领域",tg:["结构与领域","管理","商业"],tp:["p4","mg"],f:"fanruique.html",kw:"干预主义 医源性伤害 iatrogenics 计划外后果 虚荣干预 按兵观察 加码救市 无人问责"},
-{id:"xt1",n:1,t:"系统三件套：要素·连接·功能",bk:"xt",bn:"系统之美",c:"看清一个系统先找三样：零件(要素)、规则与信息流(连接)、真实目标(功能)。越看不见的越决定走向。",tg:["系统语言","KA","商业","管理","职业"],tp:["system"],f:"xitong.html",kw:"系统 要素 连接 功能 目标 结构 信息流 激励 城市群 品牌 复盘 口号 KPI 换零件 治本"},
-{id:"xt2",n:2,t:"存量与流量：水位是记忆",bk:"xt",bn:"系统之美",c:"存量是蓄水池(用户池/门店/心智)，流量是进出(新增/流失/补贴)。水位只由流入减流出净额决定。",tg:["系统语言","KA","商业","管理","职业"],tp:["system","decision"],f:"xitong.html",kw:"存量 流量 用户池 复购 净增 水位 记忆 补贴 拉新 流失 留存 单位经济 GMV 资产 沪上阿姨 蓄水 破洞"},
-{id:"xt3",n:3,t:"反馈回路：增强R与调节B",bk:"xt",bn:"系统之美",c:"系统行为=两种回路叠加：增强回路滚雪球(增长飞轮)，调节回路寻目标(天花板/恒温器)。",tg:["系统语言","KA","商业","管理","职业"],tp:["system"],f:"xitong.html",kw:"反馈回路 增强 调节 飞轮 雪球 增长 天花板 饱和 限速环节 目标 绩效 指数 停滞 撞墙 供给 履约"},
-{id:"xt4",n:4,t:"延迟：别猛打方向盘",bk:"xt",bn:"系统之美",c:"因与果在时空分离，反馈慢导致过冲与震荡。补贴见效有延迟，设观察窗口再调，别反复加码撤火。",tg:["系统行为","KA","商业","竞争","管理"],tp:["system","decision"],f:"xitong.html",kw:"延迟 过冲 震荡 鞭打效应 补贴 见效 T+N 观察窗口 节奏 撤火 加码 对手跟进 心智 慢变量 复盘周期"},
-{id:"xt5",n:5,t:"政策抵制：系统推回原状",bk:"xt",bn:"系统之美",c:"违背结构的干预会被系统抵消，推一下动一下、松手回弹。越加力越糟，出路是改结构、对齐各方目标。",tg:["系统行为","KA","商业","管理"],tp:["system","org"],f:"xitong.html",kw:"政策抵制 回弹 结构 调节回路 利益对齐 执行不力 加预算 改革 制度落地 潜规则 反向回路 城市群失灵"},
-{id:"xt6",n:6,t:"非线性：投入产出不成正比",bk:"xt",bn:"系统之美",c:"边际递减/递增/阈值跳变。用直线直觉管曲线系统是预算错配根源，要用边际ROI而非平均ROI决策。",tg:["系统行为","KA","商业","职业"],tp:["system","decision"],f:"xitong.html",kw:"非线性 边际递减 边际递增 阈值 跳变 拐点 最优补贴强度 边际ROI 起量规模 摊薄 止损 潜力城市 成熟盘"},
-{id:"xt7",n:7,t:"八种系统基模：治未病",bk:"xt",bn:"系统之美",c:"同类问题反复重演多半踩了基模(结构套路)：政策抵制/公地悲剧/目标侵蚀/竞争升级/富者愈富/转嫁负担/规则破坏/目标错位。",tg:["系统陷阱","KA","商业","管理","竞争"],tp:["system","decision"],f:"xitong.html",kw:"系统基模 陷阱 反复 价格战 竞争升级 转嫁负担 上瘾 外部代理 治未病 结构 好心办坏事 短期缓解 长期更糟"},
-{id:"xt8",n:8,t:"公地悲剧与外部性",bk:"xt",bn:"系统之美",c:"共享资源免费开放时个体理性、集体毁灭。根子是成本没计价(负外部性)，解法是配额、定价、透明反馈而非说教。",tg:["系统陷阱","KA","商业","管理","竞争"],tp:["system","org"],f:"xitong.html",kw:"公地悲剧 外部性 共享资源 流量大盘 补贴池 价格心智 运力 免费 无上限 配额 定价 台账 大促 囚徒困境 节奏控制"},
-{id:"xt9",n:9,t:"目标侵蚀：温水煮青蛙",bk:"xt",bn:"系统之美",c:"达不到就悄悄降标准，用降低期望消灭差距，烂状态成了新常态。解药是锚定外部绝对标杆让差距保持疼。",tg:["系统陷阱","KA","职业","商业","管理"],tp:["system","decision"],f:"xitong.html",kw:"目标侵蚀 下棘轮 降标准 温水煮青蛙 新常态 补贴单量 自然经营能力 复购 绝对标准 竞对标杆 创造性策略 自我安慰"},
-{id:"xt10",n:10,t:"找到高杠杆点",bk:"xt",bn:"系统之美",c:"杠杆排序：参数<缓冲<流量<信息流<规则<自组织<目标<范式。多数人一辈子在最低层反复调参数。",tg:["杠杆点","KA","商业","管理","竞争"],tp:["system","decision"],f:"xitong.html",kw:"杠杆点 四两拨千斤 参数 信息流 规则 目标 自组织 调补贴 跨城对比 看见数据 改规则 支点 提效 结构性"},
-{id:"xt11",n:11,t:"最高杠杆：超越范式",bk:"xt",bn:"系统之美",c:"范式=系统赖以生成的隐形心智模式。改范式会让整层结构连锁重建，是从操盘手跃迁到设计者的分水岭。",tg:["杠杆点","KA","职业","商业","管理"],tp:["system","innovate"],f:"xitong.html",kw:"范式 心智模式 世界观 假设 框错问题 买流量 用户资产 LTV 换视角 认知天花板 默认假设 跃迁 设计者"},
-{id:"xt12",n:12,t:"与系统共舞：觉知参与者",bk:"xt",bn:"系统之美",c:"复杂系统不能被控制，只能与之共舞：先倾听、小步可逆试探、跟随反馈调整，放下傲慢做学徒再做设计者。",tg:["杠杆点","KA","职业","管理","商业"],tp:["system","decision"],f:"xitong.html",kw:"与系统共舞 觉知 参与者 倾听 小步试点 可逆 反馈 试错 谦逊 控制 城市群 试点 规模化 复盘 甘为学徒"},
-{id:"gl1",n:1,t:"管理者的产出=影响部门产出之和",bk:"gl",bn:"高产出管理",c:"产出的本质",tg:["产出的本质","管理","商业"],tp:["p1","mg"],f:"guanli.html",kw:"管理者产出 部门产出之和 加总 不个人英雄 影响邻部门 述职 净GMV 产能来自杠杆 不来自工时"},
-{id:"gl2",n:2,t:"生产循环：投入→活动→产出，找限制步骤",bk:"gl",bn:"高产出管理",c:"产出的本质",tg:["产出的本质","管理","商业"],tp:["p1","mg"],f:"guanli.html",kw:"生产循环 投入活动产出 限制步骤 瓶颈 指示器 在制品 非瓶颈假忙 漏斗 滞留 你本人是瓶颈"},
-{id:"gl3",n:3,t:"杠杆率：优先做影响很多人很多事的活动",bk:"gl",bn:"高产出管理",c:"产出的本质",tg:["产出的本质","管理","成长"],tp:["p1","mg"],f:"guanli.html",kw:"杠杆率 高杠杆活动 影响面 波及面 重要不紧急 阶跃增长 建体系 定标准 培训 延迟见效"},
-{id:"gl4",n:4,t:"两类杠杆活动：任务相关 & 人员相关",bk:"gl",bn:"高产出管理",c:"管理杠杆",tg:["管理杠杆","管理","成长"],tp:["p2","mg"],f:"guanli.html",kw:"任务相关活动 人员相关活动 培训 激励 复利 当期交付 时间账本 高级执行者 激活人"},
-{id:"gl5",n:5,t:"会议是管理工作的介质：流程型/任务型/知识型",bk:"gl",bn:"高产出管理",c:"管理杠杆",tg:["管理杠杆","管理","竞争"],tp:["p2","mg"],f:"guanli.html",kw:"会议 管理工作介质 流程型 任务型 知识型 一对一 运营复盘 会前定类型 建立习惯"},
-{id:"gl6",n:6,t:"时机与节奏：提前行动制造缓冲",bk:"gl",bn:"高产出管理",c:"管理杠杆",tg:["管理杠杆","商业","管理"],tp:["p2","bz"],f:"guanli.html",kw:"时机杠杆 提前行动 制造缓冲 日程被别人填满 被动响应 进攻姿态 截止日期之前 离职苗头 布防"},
-{id:"gl7",n:7,t:"决策要快执行要坚决：及时·清晰·果断",bk:"gl",bn:"高产出管理",c:"组织与决策",tg:["组织与决策","管理","竞争"],tp:["p3","mg"],f:"guanli.html",kw:"决策质量 承诺度 反对但执行 对峙解决 及时清晰果断 以共识拖延 执行坚决 准确性乘承诺度"},
-{id:"gl8",n:8,t:"管控模式：任务相关能力×意愿定放手还是紧盯",bk:"gl",bn:"高产出管理",c:"组织与决策",tg:["组织与决策","管理","成长"],tp:["p3","mg"],f:"guanli.html",kw:"管控模式 任务相关成熟度 能力 意愿 放手 紧盯 授权非弃权 跟进 升档降档 结构化"},
-{id:"gl9",n:9,t:"组织成长瓶颈：直接督导→间接督导→文化与规则",bk:"gl",bn:"高产出管理",c:"组织与决策",tg:["组织与决策","管理","商业"],tp:["p3","mg"],f:"guanli.html",kw:"组织成长 直接督导 间接督导 文化与规则 人数上限 跨部门 休假停摆 主管梯队 操作系统"},
-{id:"gl10",n:10,t:"绩效评估是最重要杠杆：敢于给真实反馈",bk:"gl",bn:"高产出管理",c:"绩效与人才",tg:["绩效与人才","管理","成长"],tp:["p4","mg"],f:"guanli.html",kw:"绩效评估 杠杆最高 真实反馈 无惊吓原则 敢于说破 标准与差距 评分宽容 改进项 提升表现"},
-{id:"gl11",n:11,t:"测试原则：看过去在类似压力下的真实行为",bk:"gl",bn:"高产出管理",c:"绩效与人才",tg:["绩效与人才","管理","成长"],tp:["p4","mg"],f:"guanli.html",kw:"测试原则 过往行为 类似压力 面试 晋升 假设题打折 行为句 业务尖子未必好管理 交叉验证"},
-{id:"gl12",n:12,t:"双轨组织：工作导向×变革导向并行",bk:"gl",bn:"高产出管理",c:"绩效与人才",tg:["绩效与人才","管理","商业"],tp:["p4","mg"],f:"guanli.html",kw:"双轨组织 工作导向 变革导向 职能 项目 跨部门 矩阵 越级 新任务单列考核 资源仲裁"},
-{id:"jy1",n:1,t:"选择的基本单位是基因",bk:"jy",bn:"自私的基因",c:"别问谁受益，问什么在被复制。个体会死，基因长存——读懂演化的第一步是把选择单位放对。",tg:["视角转换","商业","成长"],tp:["system","decision"],f:"jiyin.html",kw:"基因 复制子 选择单位 谁在复制 生存机器 拷贝 模式复制 连锁 爆款模板 投放模型 扩张引擎 自私的基因 沪上阿姨 门店SOP"},
-{id:"jy2",n:2,t:"生存机器：身体是基因的载具",bk:"jy",bn:"自私的基因",c:"个体是复制子建造的载具。分清载体利益与复制子利益，才看得懂那些反直觉的自我牺牲。",tg:["视角转换","商业","管理"],tp:["system","org"],f:"jiyin.html",kw:"生存机器 载体 复制子利益 载体利益 工蜂 员工burnout 资源流向 愿景 激励 考核 网络效应 用户习惯 机制对齐"},
-{id:"jy3",n:3,t:"视角转换的力量",bk:"jy",bn:"自私的基因",c:"换个复制子单位，很多利他、牺牲、合作突然可解释。视角决定你能看见哪些因果。",tg:["视角转换","成长","商业"],tp:["decision","system"],f:"jiyin.html",kw:"视角 分析单位 记账单位 反常行为 因果 解释力 元技能 能量守恒 平台补贴 交易入口 动机 资源流向"},
-{id:"jy4",n:4,t:"互惠利他：合作源于重复相遇",bk:"jy",bn:"自私的基因",c:"合作不靠善良，靠重复相遇+可识别个体+记得住。把一次性博弈改造成无限次重复博弈。",tg:["合作的进化","商业","竞争"],tp:["compete","org"],f:"jiyin.html",kw:"互惠利他 重复博弈 可识别 记忆 以牙还牙 未来阴影 账期 续约 履约记录 长期关系 跨部门协作 停火 声誉"},
-{id:"jy5",n:5,t:"进化稳定策略ESS",bk:"jy",bn:"自私的基因",c:"一旦被群体采用，少数变异无法入侵。行业惯例牢固不是因为它最好，而是偏离先吃亏。",tg:["合作的进化","商业","竞争"],tp:["system","org"],f:"jiyin.html",kw:"ESS 进化稳定策略 纳什均衡 行业惯例 默认规格 通用话术 入侵 临界质量 稳定点 大促节奏 定价带 群体切换 破局"},
-{id:"jy6",n:6,t:"欺骗与反欺骗的军备竞赛",bk:"jy",bn:"自私的基因",c:"信号必须昂贵才可信。能被廉价伪造的话会被淘汰，造假成本高的承诺才携带真实信息。",tg:["合作的进化","商业","竞争"],tp:["compete","decision"],f:"jiyin.html",kw:"信号博弈 昂贵信号 分离均衡 军备竞赛 造假成本 假一赔十 长期质保 可追溯 违约条款 诚意 品牌承诺 广告合规 第三方检测"},
-{id:"jy7",n:7,t:"亲缘选择 rB>C",bk:"jy",bn:"自私的基因",c:"当相关度×收益>成本，利他就被选择。人会优先帮像自己的——同赛道、同源的盟友。",tg:["竞争结构","商业","竞争"],tp:["system","org"],f:"jiyin.html",kw:"亲缘选择 Hamilton 相关度 拟亲缘 同源 圈子 同门 校友 资源倾斜 孵化体系 同一团队 共享方法论 凝聚力 队尾"},
-{id:"jy8",n:8,t:"炫耀成本：孔雀尾巴=高成本信号",bk:"jy",bn:"自私的基因",c:"越无用越可信的开销，是无法被弱者模仿的实力证明。品牌砸广告是同一条逻辑。",tg:["竞争结构","商业","竞争"],tp:["compete","innovate"],f:"jiyin.html",kw:"累赘原则 handicap 孔雀尾巴 性内竞争 炫耀成本 品牌广告 进入壁垒 烧得起 旗舰店 冠名 战略亏损 能量泄漏 模仿门槛"},
-{id:"jy9",n:9,t:"代际冲突与资源分配",bk:"jy",bn:"自私的基因",c:"平台/商家/骑手/用户四方各有各的自私函数，冲突是结构性的常态，不是意外。",tg:["竞争结构","管理","商业"],tp:["org","system"],f:"jiyin.html",kw:"代际冲突 亲子冲突 资源分配 四方博弈 平台 商家 骑手 用户 抽佣 补贴 配送费 激励相容 套利 规避 补贴退坡 机制设计"},
-{id:"jy10",n:10,t:"模因meme：文化也会复制竞争",bk:"jy",bn:"自私的基因",c:"观念、口号、方法论、梗都像基因一样复制、变异、抢注意力。流行的未必真，只是善传。",tg:["模因与文化","商业","成长"],tp:["system","innovate"],f:"jiyin.html",kw:"模因 meme 复制子 变异 注意力竞争 爆款 梗 slogan 方法论 二创 情绪钩子 可复用 模因工程师 出圈 传播"},
-{id:"jy11",n:11,t:"模因传播力≠真实性",bk:"jy",bn:"自私的基因",c:"决定扩散的是可复制性而非真假。越让人忍不住转发的结论，越要先查证据链。",tg:["模因与文化","成长","商业"],tp:["decision","system"],f:"jiyin.html",kw:"传播力 真实性 病毒式 认知糖精 恐惧 愤怒 身份认同 流行误解 反病毒自检 一手证据 社会认同 失真 竞品神话"},
-{id:"jy12",n:12,t:"人类可以反抗复制子",bk:"jy",bn:"自私的基因",c:"人是唯一能逆基因、逆模因而行动的物种。看清机制，是为了不再被出厂设置绑架。",tg:["模因与文化","成长","管理"],tp:["decision","org"],f:"jiyin.html",kw:"反抗复制子 觉悟 理性 出厂设置 偏袒自己人 忍不住转发 觉察 看见即自由 制度设计 自私引向公益 道德能动性 遥远的救世主"},
-{id:"mg1",n:1,t:"多元思维模型：不能只有一把锤子",bk:"mg",bn:"穷查理宝典",c:"现实问题不属于单一学科。跨学科掌握80/90个核心模型，织成思维格栅，让每个判断经过多模型交叉审视。",tg:["思维格栅","商业","成长"],tp:["system","decision"],f:"munger.html",kw:"多元思维模型 芒格 思维格栅 跨学科 锤子 钉子 80 90 复利 临界质量 机会成本 贝叶斯 人类误判 铁锤人"},
-{id:"mg2",n:2,t:"lollapalooza 效应",bk:"mg",bn:"穷查理宝典",c:"两个以上心理倾向朝同一方向叠加，产生非线性的极端结果。泡沫、狂热、踩踏都源于多股力同向共振。",tg:["思维格栅","商业","竞争","管理"],tp:["system","decision"],f:"munger.html",kw:"lollapalooza 叠加 共振 社会认同 权威 稀缺 一致 非线性 泡沫 踩踏 狂热 从众 同向"},
-{id:"mg3",n:3,t:"模型要挂到现实上：交叉验证",bk:"mg",bn:"穷查理宝典",c:"把每个模型挂到亲历经验上，用多个独立信源检验同一结论。单一证据链最脆弱，多源才敢下手。",tg:["思维格栅","商业","成长"],tp:["decision","system"],f:"munger.html",kw:"交叉验证 独立信源 挂现实 反例 单一证据链 多模型 审计 决策 外部数据 对照组 一线反馈"},
-{id:"mg4",n:4,t:"反过来想 Always invert",bk:"mg",bn:"穷查理宝典",c:"正面攻不动就从反面一击即中：先问什么会搞垮它，然后避开。想清楚在哪会死，就知道该往哪躲。",tg:["逆向思维","商业","成长","竞争"],tp:["decision","system"],f:"munger.html",kw:"反过来想 逆向 invert 事前验尸 避免失败 死法 清单 边界 下限 雅可比 护栏 止损"},
-{id:"mg5",n:5,t:"能力圈 ＋ 太难篮子",bk:"mg",bn:"穷查理宝典",c:"把机会分可以/不能/太难三堆。不懂的、没优势的、超出能力的直接扔进太难——放弃不是损失，乱下注才是。",tg:["决策纪律","商业","成长"],tp:["decision","system"],f:"munger.html",kw:"能力圈 太难篮子 弃权 边界 优势 期望值 看不懂 硬上 赌 深耕 复利 主动弃权"},
-{id:"mg6",n:6,t:"证伪与开放：攻击自己最热爱的信念",bk:"mg",bn:"穷查理宝典",c:"越珍视的观点越要最先攻击。刻意找反面证据，把打脸当赚钱，把纠错速度当竞争力。",tg:["认知","成长","竞争"],tp:["decision","system"],f:"munger.html",kw:"证伪 确认偏误 攻击自己 推翻 打脸 钢人 立场 面子 纠错 开放 盲点 我错了"},
-{id:"mg7",n:7,t:"耐心 ＋ 决断：等好球再重仓",bk:"mg",bn:"穷查理宝典",c:"平时极度耐心什么都不做，等肥球；机会真来了、又有优势时，极度果断下重注。别撒胡椒面。",tg:["决策纪律","商业","竞争"],tp:["decision","compete"],f:"munger.html",kw:"耐心 决断 肥球 fat pitch 重仓 集中 空仓 狙击手 凯利 好机会稀缺 all in 撒胡椒面 弹药"},
-{id:"mg8",n:8,t:"不犯蠢优先于求聪明",bk:"mg",bn:"穷查理宝典",c:"长期赢的人不是绝顶聪明，而是系统性避免愚蠢。先确保别出局，别用一次致命错误清零所有成绩。",tg:["决策纪律","商业","管理"],tp:["decision","system"],f:"munger.html",kw:"不犯蠢 避免愚蠢 长期 复利 出局 爆仓 杠杆 失信 蠢事清单 防守 留在牌桌 遍历性"},
-{id:"mg9",n:9,t:"激励与偏误：看穿奖励造成的偏见",bk:"mg",bn:"穷查理宝典",c:"给我看激励，我就能看出结果。人会真诚相信对自己有利那套；定KPI前先问它会不会让人损害大局。",tg:["决策纪律","管理","商业"],tp:["system","org"],f:"munger.html",kw:"激励 奖励机制 偏见 一致性 KPI 立场 卖方 羊毛党 刷单 机制设计 逆向 承诺 唯GMV"},
-{id:"mg10",n:10,t:"诚实与声誉是复利资产",bk:"mg",bn:"穷查理宝典",c:"可信赖是最赚钱的策略。声誉靠长年一致攒起来、毁掉只需一件事——别用几十年复利换一次性蝇头小利。",tg:["人生认知","成长","商业"],tp:["decision","org"],f:"munger.html",kw:"诚实 声誉 复利 可信赖 长期博弈 交易成本 归零 风险溢价 护城河 个人品牌 底线 睡得着"},
-{id:"mg11",n:11,t:"终身学习：每天比昨天聪明一点点",bk:"mg",bn:"穷查理宝典",c:"知识是复利：今天的模型让明天学得更快。定最小可持续动作、带问题读跨学科经典，让能力圈慢慢扩大。",tg:["人生认知","成长","商业"],tp:["decision","system"],f:"munger.html",kw:"终身学习 每天聪明一点 阅读 复利 日拱一卒 移动图书馆 问题导向 跨科 能力圈扩张 最小可持续"},
-{id:"mg12",n:12,t:"面对失败的韧性：把挫败当教育",bk:"mg",bn:"穷查理宝典",c:"不怨天尤人，把每次失败当昂贵学费榨出教训。允许失败，但不允许什么都没学到的失败。",tg:["人生认知","成长","商业"],tp:["decision","system"],f:"munger.html",kw:"韧性 失败 挫败 学费 教育 不怨天尤人 归因 自己承担 复盘 提取教训 反脆弱 向前 反刍"},
-{id:"hx1",n:1,t:"花花轿子人抬人：成就别人就是成就自己",bk:"hx",bn:"胡雪岩",c:"商道根本",tg:["商道根本","商业","成长"],tp:["p1","bz"],f:"huxueyan.html",kw:"互相抬轿 成就别人 搭台人 节点 分面子 荐人 让利 正和 生态位 BD价值"},
-{id:"hx2",n:2,t:"做生意先做人：信用是本钱，招牌比货重要",bk:"hx",bn:"胡雪岩",c:"商道根本",tg:["商道根本","商业","竞争"],tp:["p1","bz"],f:"huxueyan.html",kw:"信用本金 招牌 口碑 兑现承诺 交易成本 信用额度 不轻诺 履约 护城河"},
-{id:"hx3",n:3,t:"落子无悔与留后手：决断果断，布局永远留退路",bk:"hx",bn:"胡雪岩",c:"商道根本",tg:["商道根本","商业","成长"],tp:["p1","bz"],f:"huxueyan.html",kw:"落子无悔 留后手 杠铃策略 可逆不可逆 止损线 备份方案 决策执行分离 输得起"},
-{id:"hx4",n:4,t:"拜盟兄弟与结网：把关系当长期资产，平时多烧香",bk:"hx",bn:"胡雪岩",c:"关系经营",tg:["关系经营","商业","竞争"],tp:["p2","bz"],f:"huxueyan.html",kw:"关系资产 平时烧香 雪中送炭 定期维护 跨层级结网 复利 临渴掘井 关系台账 隐形兵力"},
-{id:"hx5",n:5,t:"借势红顶逻辑：把平台/政策/大客户的势转成商业杠杆",bk:"hx",bn:"胡雪岩",c:"关系经营",tg:["关系经营","商业","竞争"],tp:["p2","bz"],f:"huxueyan.html",kw:"红顶 借势 识势 嫁接 平台KPI 双赢地蹭 飞轮 不失身 独立现金流 以小博大"},
-{id:"hx6",n:6,t:"给人留面子给事留余地：看破不说破，得饶人处且饶人",bk:"hx",bn:"胡雪岩",c:"关系经营",tg:["关系经营","竞争","成长"],tp:["p2","cr"],f:"huxueyan.html",kw:"面子 隐性合同 看破不说破 留台阶 只关门不堵路 不动声色改条款 树敌 长期博弈"},
-{id:"hx7",n:7,t:"大处着眼小处着手：算大账不算小钱",bk:"hx",bn:"胡雪岩",c:"格局与眼光",tg:["格局与眼光","商业","管理"],tp:["p3","bz"],f:"huxueyan.html",kw:"算大账 三年格局 生态位 时机 不可改变量 局部最优 抓大放小 阈值 带宽 三年后还重要吗"},
-{id:"hx8",n:8,t:"囤积与Timing：别人恐惧我贪婪的时机博弈",bk:"hx",bn:"胡雪岩",c:"格局与眼光",tg:["格局与眼光","商业","竞争"],tp:["p3","bz"],f:"huxueyan.html",kw:"生丝囤积 时机差 信息差 周期位置 供过于求 逆向布局 现金流纪律 会卖是师傅 抢资源位 独家"},
-{id:"hx9",n:9,t:"舍小利谋大局：肯吃亏会分钱，把盘子做大",bk:"hx",bn:"胡雪岩",c:"格局与眼光",tg:["格局与眼光","商业","管理"],tp:["p3","bz"],f:"huxueyan.html",kw:"利不出尽 主动分钱 敢吃小亏 正和做大蛋糕 独占忠诚 互惠 未来交易权 双赢结构 不独吞"},
-{id:"hx10",n:10,t:"成也杠杆败也杠杆：过度扩张与资金链断裂",bk:"hx",bn:"胡雪岩",c:"风险与结局",tg:["风险与结局","商业","成长"],tp:["p4","bz"],f:"huxueyan.html",kw:"杠杆反噬 单点脆弱 资金链 现金流 账面利润 压力测试 冗余 借来的钱 依赖补贴 多头押注"},
-{id:"hx11",n:11,t:"最危险时最冷静，得意时莫忘形：盛极而衰的预警",bk:"hx",bn:"胡雪岩",c:"风险与结局",tg:["风险与结局","成长","商业"],tp:["p4","lf"],f:"huxueyan.html",kw:"反恐慌 止血排序 得意预警清单 顶的标志 过度稳定化 晴天修屋顶 自负 最顺最脆弱 冷静体检"},
-{id:"hx12",n:12,t:"退场的智慧：懂得何时收手、何时离场",bk:"hx",bn:"胡雪岩",c:"风险与结局",tg:["风险与结局","商业","成长"],tp:["p4","bz"],f:"huxueyan.html",kw:"见好就收 势去则退 砍沉没成本 恋战翻本 退出条件 体面谢幕 生命周期 会退是智慧 重新入场门票"},
-{id:"ql1",n:1,t:"别盖过上司的光芒：让上位者显得更聪明",bk:"ql",bn:"权力48法则",c:"自我掌控",tg:["自我掌控","管理","成长"],tp:["p1","mg"],f:"quanli.html",kw:"向上管理 功高震主 藏锋芒 让领导更安全 功劳上移 时间戳记录 别遮光 越级 抢镜"},
-{id:"ql2",n:2,t:"话越少越有分量：沉默制造权威",bk:"ql",bn:"权力48法则",c:"自我掌控",tg:["自我掌控","管理","竞争"],tp:["p1","mg"],f:"quanli.html",kw:"少说话 沉默 底牌 把柄 言多必失 停顿 不轻易表态 主权 谈判谁先开口"},
-{id:"ql3",n:3,t:"姿态先于实力：假装拥有直到真正拥有",bk:"ql",bn:"权力48法则",c:"自我掌控",tg:["自我掌控","成长","管理"],tp:["p1","lf"],f:"quanli.html",kw:"从容 印象管理 自我实现预言 信号 气场 占位 别冒领 提前按角色行动"},
-{id:"ql4",n:4,t:"与虎谋皮代价先算：别让野心家和问题人物靠近",bk:"ql",bn:"权力48法则",c:"人际博弈",tg:["人际博弈","管理","竞争"],tp:["p2","mg"],f:"quanli.html",kw:"谨慎择友 圈子背书 连坐 甩锅 看他对缺席者 敌意三角 保持距离 盟友风险"},
-{id:"ql5",n:5,t:"保持被需要：不可替代是权力但别做成要挟",bk:"ql",bn:"权力48法则",c:"人际博弈",tg:["人际博弈","管理","商业"],tp:["p2","mg"],f:"quanli.html",kw:"议价权 单点故障 感激型依赖 怨恨型依赖 独门能力 垄断信息 被需要 筹码兑换"},
-{id:"ql6",n:6,t:"打动人心胜过威胁：胡萝卜比大棒更有效",bk:"ql",bn:"权力48法则",c:"人际博弈",tg:["人际博弈","管理","商业"],tp:["p2","mg"],f:"quanli.html",kw:"互惠 给面子 先给好处 大棒最后手段 阳奉阴违 让人愿意 帮你即帮他 利益翻译"},
-{id:"ql7",n:7,t:"名声先行：Reputation是权力的基石",bk:"ql",bn:"权力48法则",c:"影响战术",tg:["影响战术","商业","管理"],tp:["p3","bz"],f:"quanli.html",kw:"形象管理 破窗效应 记忆标签 社会证明 先赢半子 包装的名声 交付过什么 专业标签"},
-{id:"ql8",n:8,t:"借手成事保留自己：让别人去做去说去担",bk:"ql",bn:"权力48法则",c:"影响战术",tg:["影响战术","管理","商业"],tp:["p3","mg"],f:"quanli.html",kw:"借规则 借嘴说话 缓冲带 以迂为直 借事不借锅 被当枪使 谁受益谁担责 幕后掌方向"},
-{id:"ql9",n:9,t:"太常见会贬值：适时消失抬高身价",bk:"ql",bn:"权力48法则",c:"影响战术",tg:["影响战术","管理","商业"],tp:["p3","mg"],f:"quanli.html",kw:"稀缺 短缺原理 可得性定价 秒回贬值 排队 别缺席关键 忽冷忽热施压 提前约节奏"},
-{id:"ql10",n:10,t:"看穿操控的手法：奉承、制造恐惧、孤立你",bk:"ql",bn:"权力48法则",c:"防御边界",tg:["防御边界","竞争","成长"],tp:["p4","cr"],f:"quanli.html",kw:"奉承入口 恐惧服从 孤立isolate 系统1 情绪驱动 延迟回实质 戴高帽逼背书 多方信源"},
-{id:"ql11",n:11,t:"别让正确变成软肋：僵化的道德表演会被利用",bk:"ql",bn:"权力48法则",c:"防御边界",tg:["防御边界","成长","竞争"],tp:["p4","lf"],f:"quanli.html",kw:"完美姿态可预测 激将 道德绑架 内在底线非表演 策略性模糊 自证陷阱 对错与利弊分开 正当利益"},
-{id:"ql12",n:12,t:"权力的尽头是克制：知止、留余地、不树敌过多",bk:"ql",bn:"权力48法则",c:"防御边界",tg:["防御边界","商业","管理"],tp:["p4","bz"],f:"quanli.html",kw:"见好就收 赶尽杀绝 树敌利息 给对手台阶 人心账 留余地 花看半开 退场智慧 赢得体面"}
-];
-
-function renderSolution(sol){
-  const m=sol.methods.map(x=>`<div class="sol-method"><div class="m-name">${x.n}</div><div class="m-desc">${x.w}<br><span class="m-book">📚 ${x.b} · <a href="${x.l}" target="_blank" rel="noopener">查看卡片</a></span></div></div>`).join('');
-  const s=sol.steps.map((x,i)=>`<div class="sol-step"><div class="s-n">${i+1}</div><div class="s-t">${x.a}<span class="s-src">— ${x.s}</span></div></div>`).join('');
-  const r=sol.risks.map(x=>`<div class="sol-risk">${x}</div>`).join('');
-  return `<div class="sol-box">
-    <div class="sol-header">🎯 解决方案：${sol.title}</div>
-    <div class="sol-sec sol-diag"><h3><span class="num">①</span>问题诊断</h3><p>${sol.diagnosis}</p></div>
-    <div class="sol-sec sol-methods"><h3><span class="num">②</span>适用方法论</h3>${m}</div>
-    <div class="sol-sec sol-steps"><h3><span class="num">③</span>行动步骤</h3>${s}</div>
-    <div class="sol-sec sol-risks"><h3><span class="num">④</span>风险提示</h3>${r}</div>
-  </div>`;
-}
-
-function doMatch(){
-  const q=document.getElementById('questionInput').value.trim();
-  if(!q)return;
-  // 保存问题到URL hash，页面重载后可从hash恢复方案
-  try{history.replaceState(null,'','#q='+encodeURIComponent(q))}catch(e){}
-  const ql=q.toLowerCase();
-  const ms=document.getElementById('matchSection');
-  const mc=document.getElementById('matchCount');
-  const mg=document.getElementById('matchGrid');
-
-  // 优先匹配四段式解决方案模板
-  let bestSol=null,bestScore=0;
-  SOLUTIONS.forEach(sol=>{
-    let score=0;
-    sol.kw.forEach(k=>{if(ql.includes(k))score+=3});
-    [...ql].filter(ch=>/[\u4e00-\u9fff]/.test(ch)).forEach(ch=>{sol.kw.forEach(k=>{if(k.includes(ch))score+=0.5})});
-    if(score>bestScore){bestScore=score;bestSol=sol}
-  });
-
-  if(bestSol && bestScore>=2){
-    ms.classList.add('show');
-    mc.textContent='';
-    mg.innerHTML=renderSolution(bestSol)+`<div class="sol-fallback-tip">💡 需要更定制化的方案？在QoderWork中对我说"用知识库帮我解决：<b>${q}</b>"，我会做深度推理。</div>`;
-    ms.scrollIntoView({behavior:'smooth',block:'start'});
-    return;
-  }
-
-  // 回退：卡片列表匹配
-  const scored=[];
-  cards.forEach(card=>{
-    let score=0;
-    for(const[pat,ids]of Object.entries(qMap)){
-      if(new RegExp(pat,'i').test(ql)){
-        if(ids.includes(card.id))score+=10;
-      }
-    }
-    const hay=(card.t+' '+card.c+' '+card.tg.join(' ')+' '+card.kw+' '+card.bn).toLowerCase();
-    const terms=ql.split(/[\s\uff0c\u3002\uff1f\uff01\u3001,.\?!]+/).filter(t=>t.length>=2);
-    terms.forEach(t=>{if(hay.includes(t))score+=3});
-    [...ql].filter(ch=>/[\u4e00-\u9fff]/.test(ch)).forEach(ch=>{if(hay.includes(ch))score+=1});
-    if(score>0)scored.push({card,score});
-  });
-  scored.sort((a,b)=>b.score-a.score);
-  const top=scored.slice(0,12);
-  if(!top.length){
-    ms.classList.add('show');mc.textContent='- 未找到匹配，试试换个描述';mg.innerHTML='';return;
-  }
-  ms.classList.add('show');
-  mc.textContent=`- ${top.length} 张相关卡片`;
-  mg.innerHTML=top.map(({card,score})=>renderCard(card,score)).join('');
-  ms.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function deepSolve(){
-  const q=document.getElementById('questionInput').value.trim();
-  if(!q){document.getElementById('questionInput').focus();return;}
-  try{history.replaceState(null,'','#q='+encodeURIComponent(q))}catch(e){}
-  const ql=q.toLowerCase();
-  // 与 doMatch 回退路径同款打分，取 top 8 卡片
-  const scored=[];
-  cards.forEach(card=>{
-    let score=0;
-    for(const[pat,ids]of Object.entries(qMap)){
-      if(new RegExp(pat,'i').test(ql)){if(ids.includes(card.id))score+=10;}
-    }
-    const hay=(card.t+' '+card.c+' '+card.tg.join(' ')+' '+card.kw+' '+card.bn).toLowerCase();
-    const terms=ql.split(/[\s，。？！、,.\?!]+/).filter(t=>t.length>=2);
-    terms.forEach(t=>{if(hay.includes(t))score+=3});
-    [...ql].filter(ch=>/[\u4e00-\u9fff]/.test(ch)).forEach(ch=>{if(hay.includes(ch))score+=1});
-    if(score>0)scored.push({card,score});
-  });
-  scored.sort((a,b)=>b.score-a.score);
-  const top=scored.slice(0,8);
-  const cardList=top.length
-    ? top.map(({card},i)=>`${i+1}. ${card.bn}·${card.t} — ${card.c}`).join('\n')
-    : '（未命中特定卡片，请从全部212张中自行选取最相关的2-4张）';
-  const prompt=
-`请用「知识库问题求解器（深度版）」帮我分析下面这个问题，严格按五段式输出，反套话、落到我的具体处境。
-
-【我的问题】
-${q}
-
-【我的知识库中命中的方法论卡片（优先从中选2-4张，也可补充）】
-${cardList}
-
-【输出要求（五段式，逐段达标）】
-⓪ 问题重述与澄清：一句话复述你理解的问题本质让我确认；若信息不足以做出"落到我处境"的推理，先反问我1-3个最关键的问题再作答；补的假设标【假设】，缺口标【待确认】。
-① 根因诊断：用5 Whys把症状挖到至少第3层根因；区分真问题vs伪问题；抓主要矛盾；判断这是连续环境(可用经验/归纳)还是非连续拐点(须从第一性演绎)；给出可检验的"什么算解决了"。
-② 适用方法论：选2-4张卡片，每张讲透三层——机制(为什么会成立)、映射(为什么恰好对得上我的具体情况，接到我的事实上)、边界(在我这场景哪里会失效)；说明卡片之间的张力与调和；并解释"为什么是这几张、不是别的"。
-③ 具体行动步骤：3-6步，每步写"做什么→怎么做(具体到动作/话术/数字)→用哪张卡→判断这步做对了的信号→这步失败怎么办"；标注先后依赖和关键决策点；给出今天就能做的最小第一步。
-④ 对抗性检验：这套方案依赖哪些前提、哪个不成立就崩；最可能栽在哪一步、为什么；出现什么可观察的早期预警信号该停/该调；谁会因为这套动作反制、我忽略了哪些利益相关者；反过来做会怎样、最坏情况的PlanB/止损线。诚实说明把握多大、哪里没底，不保证一定有效。
-
-硬性自检：任何一句话如果换到别的问题上也成立，就是空话，删掉重写。`;
-  document.getElementById('deepPrompt').value=prompt;
-  const box=document.getElementById('deepBox');
-  box.style.display='block';
-  box.scrollIntoView({behavior:'smooth',block:'start'});
-}
-
-function copyDeep(){
-  const ta=document.getElementById('deepPrompt');
-  const btn=document.getElementById('copyBtn');
-  ta.select();ta.setSelectionRange(0,99999);
-  let ok=false;
-  try{ok=document.execCommand('copy')}catch(e){}
-  if(!ok&&navigator.clipboard){navigator.clipboard.writeText(ta.value).then(()=>flash(btn)).catch(()=>flash(btn));return;}
-  flash(btn);
-}
-function flash(btn){const o=btn.textContent;btn.textContent='已复制✓';setTimeout(()=>btn.textContent=o,1500);}
-
-document.addEventListener('DOMContentLoaded',()=>{
-  renderAll();
-  document.getElementById('searchInput').addEventListener('keydown',e=>{if(e.key==='Enter')doSearch()});
-  document.getElementById('questionInput').addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();doMatch()}});
-  // 从URL hash恢复之前的问题和方案（返回书库/刷新页面后方案不丢）
-  const hm=location.hash.match(/#q=(.+)/);
-  if(hm){
-    try{
-      const savedQ=decodeURIComponent(hm[1]);
-      document.getElementById('questionInput').value=savedQ;
-      doMatch();
-    }catch(e){}
-  }
-});
-</script>
 </body>
 </html>

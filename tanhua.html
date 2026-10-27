@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -202,9 +222,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>传统谈判课教你"理性出价、分割利益、争取最优"。沃斯的经验恰恰相反：谈判首先是<strong>发现对方到底在玩什么游戏</strong>——他们的恐惧、面子、内部交代、非理性坚持。人是情绪动物，<strong>先看清那盘被情绪驱动的棋，才谈得动数字</strong>。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">破</div><div class="ft2"><strong>拆掉"理性人"假设</strong>：别指望对方按经济利益最大化行动。他可能为面子、为向老板交差、为"别担责任"而死磕一个不划算的条件。</div></div><div class="fs2"><div class="fn2">看</div><div class="ft2"><strong>先问"这是什么游戏"</strong>：他是真被授权来谈，还是在演给上级看？他在保护自己什么？他最怕什么发生？</div></div><div class="fs2"><div class="fn2">应</div><div class="ft2"><strong>把策略建在"人会非理性"上</strong>：不是"对方应该懂道理"，而是"对方会带着KPI和脸色进来"，为这个现实做预案。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>博弈论把对手建模成"理性最优反应者"；现实中的对手却揣着考核口径、背过的锅、上级的态度进来。把这些"非理性因素"当噪声删掉，等于删掉了谈判里最关键的变量——你以为在算账，其实在跟一个怕丢脸的人较劲。</p><div class="insight"><strong>深层洞见：</strong>上桌前别只准备"我的底线和目标价"，花同样力气准备<strong>"对方在跟谁交差、他最怕什么、什么会让他没面子"</strong>。补贴博弈里，品牌方运营要向老板证明"这单没白谈"——你要做的不是压垮他，是给他一个能回去交差的赢法。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>博弈论把对手建模成"理性最优反应者"；现实中的对手却揣着考核口径、背过的锅、上级的态度进来。把这些"非理性因素"当噪声删掉，等于删掉了谈判里最关键的变量——你以为在算账，其实在跟一个怕丢脸的人较劲。</p><div class="insight"><strong>深层洞见：</strong>上桌前别只准备"我的底线和目标价"，花同样力气准备<strong>"对方在跟谁交差、他最怕什么、什么会让他没面子"</strong>。补贴博弈里，品牌方运营要向老板证明"这单没白谈"——你要做的不是压垮他，是给他一个能回去交差的赢法。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">开场别急着摆条件，先用两三句摸出对方是"决策者"还是"传话者"。传话者的游戏是"不出错、好交差"，你的方案要替他备好交差的话。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">遇到"讲不通"的人，先别断定他蠢或坏。换个问句："在他眼里什么才算合理？"——很多僵局是两套道理在撞，不是一个人不讲理。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 摸清对方的现实与诉求</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="yingxiangli.html#card-9">影响力 · 把戏和实质分开</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 摸清对方的现实与诉求</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="yingxiangli.html#card-9">影响力 · 把戏和实质分开</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="lf,mg,cr">
@@ -212,9 +232,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>高风险对话里，最先失控的往往不是对方，而是你自己——心跳加速、想反驳、想赢回面子。<strong>在你稳得住自己之前，别指望改变别人。</strong>情绪一崩，后面所有话术全部失灵。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">察</div><div class="ft2"><strong>先给自己"标注"</strong>：心里默念"我现在很急／很生气／怕输"。承认它，它就没那么容易劫持你。</div></div><div class="fs2"><div class="fn2">缓</div><div class="ft2"><strong>生理先行</strong>：深呼吸、放慢语速、喝口水——先让交感神经降温，再让脑子在线。</div></div><div class="fs2"><div class="fn2">隔</div><div class="ft2"><strong>把"我"和"事"分开</strong>：对方的拒绝不是对你这个人的否定，只是他立场里的一个动作，不值得你上头。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人在感到威胁时会进入"战或逃"模式，负责理性的前额叶掉线。你越"想赢"，越容易说出逼对方设防的话；对方一设防，你又更想赢——螺旋升级，双输收场。谈判者最贵的能力，是<strong>带着情绪但不被情绪开车</strong>。</p><div class="insight"><strong>深层洞见：</strong>给自己设一条"红线动作"：<strong>一旦感到上头，只做两件事——提问或复述，绝不做陈述和反驳。</strong>把"我要赢你"的冲动，换成"我先搞懂你"的动作。你稳，对方才会稳；你急，全场都急。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人在感到威胁时会进入"战或逃"模式，负责理性的前额叶掉线。你越"想赢"，越容易说出逼对方设防的话；对方一设防，你又更想赢——螺旋升级，双输收场。谈判者最贵的能力，是<strong>带着情绪但不被情绪开车</strong>。</p><div class="insight"><strong>深层洞见：</strong>给自己设一条"红线动作"：<strong>一旦感到上头，只做两件事——提问或复述，绝不做陈述和反驳。</strong>把"我要赢你"的冲动，换成"我先搞懂你"的动作。你稳，对方才会稳；你急，全场都急。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方抛出羞辱性报价或翻旧账时，别当场回击。停三秒，标注一句"听起来这单让你们很不舒服"，把火泄掉再谈事。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">被下属顶撞、被同事甩锅时，先处理自己的情绪再回邮件。带着怒气的即时回复，第二天多半要撤回。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 沉默与降调</a><a class="rt" href="javascript:scrollCard(5)">→ 标注 Labeling</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开（分寸）</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 沉默与降调</a><a class="rt" href="javascript:scrollCard(5)">→ 标注 Labeling</a><a class="rt" href="qingci.html#card-4">青瓷 · 花看半开（分寸）</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="bz,cr,mg">
@@ -222,9 +242,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>上桌前把两条线分清：<strong>对方的"现实"（他真实的处境、约束、权限、时间节点）</strong> vs <strong>对方的"立场/诉求"（他嘴上开出的那个数）</strong>。把二者混为一谈，你会去猛攻一个假目标，而真正卡住交易的约束你压根没碰。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">实</div><div class="ft2"><strong>摸清现实</strong>：他的预算上限、考核口径、上级态度、deadline、在跟谁比价——这些是他绕不过的墙，也是你能不能成的地基。</div></div><div class="fs2"><div class="fn2">诉</div><div class="ft2"><strong>分离立场</strong>："必须给我30%补贴"是立场；背后可能是"我要向老板证明我谈到了东西"的真实诉求。</div></div><div class="fs2"><div class="fn2">差</div><div class="ft2"><strong>找落差</strong>：现实与立场之间那道缝，就是你的操作空间——满足诉求，不必照单全收立场。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人质谈判的第一手情报永远关于劫持者的<strong>处境</strong>（他能不能活着走出去），而不是他开口的价码。BD 谈判同理：你搞不清品牌方的决策链、预算池和真实约束，报价就是在猜谜；猜错了还以为是对方不讲理。</p><div class="insight"><strong>深层洞见：</strong>准备清单强制分两栏：<strong>"我确认的对方现实"（注明来源与可信度）</strong> 和 <strong>"我只是以为/希望的假设"</strong>。凡是落在"假设"栏的，先验证再下注——这正是《遥远的救世主》说的"把事实和假设分开，别把假设当事实用"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人质谈判的第一手情报永远关于劫持者的<strong>处境</strong>（他能不能活着走出去），而不是他开口的价码。BD 谈判同理：你搞不清品牌方的决策链、预算池和真实约束，报价就是在猜谜；猜错了还以为是对方不讲理。</p><div class="insight"><strong>深层洞见：</strong>准备清单强制分两栏：<strong>"我确认的对方现实"（注明来源与可信度）</strong> 和 <strong>"我只是以为/希望的假设"</strong>。凡是落在"假设"栏的，先验证再下注——这正是《遥远的救世主》说的"把事实和假设分开，别把假设当事实用"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">JBP 谈判前，先画一张"对方决策地图"：谁是拍板人、谁卡预算、谁要交差、各自怕什么。对着地图谈，别对着他报的那个价谈。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方坚持"这个数没得谈"，别急着顶。先问"这个数是怎么定下来的？"——答案会暴露他的现实约束，那里才是可动的地方。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="cr,mg,bz">
@@ -232,9 +252,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>战术同理心不是"我同情你、我是好人"，而是<strong>系统性地搞清楚对方怎么看这个世界，并且让他知道你看懂了</strong>。它的目的很硬核：拿信息、建信任、卸掉对方防御。<strong>理解是手段，掌控是结果。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">框</div><div class="ft2"><strong>钻进对方的框</strong>：先别用"这很合理／不合理"评判，还原他的逻辑——在他眼里什么才是真的、什么才重要。</div></div><div class="fs2"><div class="fn2">证</div><div class="ft2"><strong>让他"被看见"</strong>：光你懂没用，要用话说出来，让他确认"你确实理解我的处境"。</div></div><div class="fs2"><div class="fn2">用</div><div class="ft2"><strong>服务于信息</strong>：同理心是探针，目标是让对方透露他真正在意什么、担心什么、能让步什么。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人只有在觉得"被理解"的时候，才会放下戒备、说出真实约束。硬碰硬只换来对方的官方口径。这是《影响力》里"喜好／相似"的进攻版——但方向是主动的：<strong>不是你讨对方喜欢，是你用理解撬开对方。</strong></p><div class="insight"><strong>深层洞见：</strong>别把同理心当成软弱或绕弯子。<strong>它是你拿情报的最短路径。</strong>JBP 谈判里，先准确复述品牌方的 KPI 压力和总部指标，他才会告诉你真实的预算池和能让渡的底线——你越早懂他，他越早交底。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人只有在觉得"被理解"的时候，才会放下戒备、说出真实约束。硬碰硬只换来对方的官方口径。这是《影响力》里"喜好／相似"的进攻版——但方向是主动的：<strong>不是你讨对方喜欢，是你用理解撬开对方。</strong></p><div class="insight"><strong>深层洞见：</strong>别把同理心当成软弱或绕弯子。<strong>它是你拿情报的最短路径。</strong>JBP 谈判里，先准确复述品牌方的 KPI 压力和总部指标，他才会告诉你真实的预算池和能让渡的底线——你越早懂他，他越早交底。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">准备三段"对方视角的复述"（他眼里的这次合作是什么、他要防什么），开场或僵持时讲出来，看对方从"对抗"切到"解释"。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">推行不受欢迎的政策前，先站在被管者角度说清"你们会怎么看这件事"，被理解了才推得动；只讲公司立场会激起阳奉阴违。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 标注 Labeling</a><a class="rt" href="yingxiangli.html#card-6">影响力 · 喜好</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 标注 Labeling</a><a class="rt" href="yingxiangli.html#card-6">影响力 · 喜好</a><a class="rt" href="qingci.html#card-5">青瓷 · 先做朋友再做生意</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="cr,mg,lf">
@@ -242,9 +262,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>用中性、描述性的话语<strong>给对方此刻的情绪或顾虑贴个名字</strong>——"你看起来对这件事很在意""听起来你担心这个决定不好交代"。<strong>给情绪命名，负面情绪会降温，正面情绪会被放大。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">句</div><div class="ft2"><strong>三个起手式</strong>："你似乎觉得…""听起来…""给我感觉…"——只描述对方，不评判、不说"你别激动"。</div></div><div class="fs2"><div class="fn2">冷</div><div class="ft2"><strong>负面标注→降温</strong>：把对方的愤怒、顾虑、不信任说出来，说破即消散一半。</div></div><div class="fs2"><div class="fn2">暖</div><div class="ft2"><strong>正面标注→强化</strong>：对方显出诚意时说"你很想把这单做成"，会把这份合作意愿放大。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>神经科学上，把情绪用语言标出（affect labeling）会降低杏仁核活跃度，让人从"情绪模式"回到"思考模式"。你说出他的感受，他觉得被看见，防御自然下降——<strong>标注是"战术同理心"的最小可执行单元。</strong></p><div class="insight"><strong>深层洞见：</strong>标注完要<strong>闭嘴</strong>，等对方接话——那是留白，不是自言自语。补贴博弈里遇到品牌方发火，先标一句"这件事让您觉得我们不够重视你们品牌"，火气往往当场降下来，因为他要说的被你替他说了。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>神经科学上，把情绪用语言标出（affect labeling）会降低杏仁核活跃度，让人从"情绪模式"回到"思考模式"。你说出他的感受，他觉得被看见，防御自然下降——<strong>标注是"战术同理心"的最小可执行单元。</strong></p><div class="insight"><strong>深层洞见：</strong>标注完要<strong>闭嘴</strong>，等对方接话——那是留白，不是自言自语。补贴博弈里遇到品牌方发火，先标一句"这件事让您觉得我们不够重视你们品牌"，火气往往当场降下来，因为他要说的被你替他说了。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方含糊推脱"这个嘛……再说吧"，标注"听起来你对这个方案还有些顾虑"——把没说出口的犹豫逼成说出口的异议，你才能处理。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">对自己也用标注：焦虑时说"我现在的感受是怕搞砸"。命名之后，情绪从"裹着你"变成"被你观察"，行动力回来了。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 战术同理心</a><a class="rt" href="javascript:scrollCard(2)">→ 先管理自己情绪</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 战术同理心</a><a class="rt" href="javascript:scrollCard(2)">→ 先管理自己情绪</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="cr,mg">
@@ -252,9 +272,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>温和地<strong>重复对方刚说的最后 1-3 个词</strong>（或最有信息量的那个词），然后停顿。这会近乎催眠地诱导对方不自觉地展开、解释、补充——<strong>你几乎什么都没做，情报却流了过来。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">复</div><div class="ft2"><strong>只重复词，不重复意思</strong>："……三个月账期？"用疑问或平静的语气抛出，像把球轻轻推回去。</div></div><div class="fs2"><div class="fn2">停</div><div class="ft2"><strong>停下来，别急着接</strong>：镜像之后必须留沉默，把话头交还给对方，让他填。</div></div><div class="fs2"><div class="fn2">挖</div><div class="ft2"><strong>用在信息稀薄处</strong>：对方给含糊回答、或你以为"有戏但不确定"时最有用——逼他多说一句。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人天然厌恶对话中的空白，会主动去填补；而重复对方的词又制造"你在认真听"的安全感，于是对方放松警惕继续说。<strong>很多关键信息，就藏在对方"忍不住多解释的那一句"里。</strong></p><div class="insight"><strong>深层洞见：</strong>BD 首次拜访别急着摊开方案 PPT。对方说"我们今年重点想拉新客"，你镜像一句"……拉新客？"，他会顺手把真实痛点、现有渠道、盘子里的预算都补出来——你还没提问，情报已到账。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人天然厌恶对话中的空白，会主动去填补；而重复对方的词又制造"你在认真听"的安全感，于是对方放松警惕继续说。<strong>很多关键信息，就藏在对方"忍不住多解释的那一句"里。</strong></p><div class="insight"><strong>深层洞见：</strong>BD 首次拜访别急着摊开方案 PPT。对方说"我们今年重点想拉新客"，你镜像一句"……拉新客？"，他会顺手把真实痛点、现有渠道、盘子里的预算都补出来——你还没提问，情报已到账。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">对方报出一个数，先镜像这个数字再沉默，不要马上还价——他大概率会补一句"当然这个还可以聊"或透露定价理由。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">下属汇报含糊或避重就轻时，重复他末尾的关键词＋停顿，比连环追问更让他自己把真实情况说出来。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 沉默的力量</a><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 沉默的力量</a><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="qingci.html#card-8">青瓷 · 听话听音</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p2" data-s="mg,cr,bz">
@@ -262,9 +282,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>用<strong>以"如何/什么"(How/What) 开头的开放式问题</strong>，礼貌地把难题踢回给对方，让他替你想办法——"我们要怎么做才能做到呢？""什么让你这么说？""这对你意味着什么？"<strong>避免那些一个"不"就能打发的封闭问题。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">开</div><div class="ft2"><strong>用"怎么/什么"，不用"是不是"</strong>："能不能加补贴"给对方一个"不"的出口；"我们怎么做才能让补贴到位"逼他给方案。</div></div><div class="fs2"><div class="fn2">软</div><div class="ft2"><strong>"如何"是体面地说不</strong>：说"我做不到"会僵住；说"我们要怎么才能做到 X 呢"把矛盾交给对方去解。</div></div><div class="fs2"><div class="fn2">让</div><div class="ft2"><strong>让对方替你解题</strong>：他一旦开始为你想办法，就心理上从"对手"变成了"协作者"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>命令或直接拒绝触发对抗；一个好问题把对方从"防守者"变成"解答者"。你在表面"交出控制权"的同时，<strong>悄悄设定了讨论的方向</strong>——问题问什么，你们就谈什么。这是最柔软的掌控。</p><div class="insight"><strong>深层洞见：</strong>记住那句万能收尾——<strong>"我要怎么做才能答应你呢？(How am I supposed to do that?)"</strong> 对方开价离谱时用它，既不认错也不硬顶，把压力优雅地送回。谈薪时："以这个薪酬包的结构，我怎么向我太太交代我接了？"——把"太低了"变成"你来想想怎么补"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>命令或直接拒绝触发对抗；一个好问题把对方从"防守者"变成"解答者"。你在表面"交出控制权"的同时，<strong>悄悄设定了讨论的方向</strong>——问题问什么，你们就谈什么。这是最柔软的掌控。</p><div class="insight"><strong>深层洞见：</strong>记住那句万能收尾——<strong>"我要怎么做才能答应你呢？(How am I supposed to do that?)"</strong> 对方开价离谱时用它，既不认错也不硬顶，把压力优雅地送回。谈薪时："以这个薪酬包的结构，我怎么向我太太交代我接了？"——把"太低了"变成"你来想想怎么补"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">资源谈判里对方要价高，别砍价也别答应，问"我们要怎么做才能把这个 ROI 算平呢？"——让他帮你把方案改成可持续的样子。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">别再下"你必须做到"的指令，改问"要做成这件事，你需要我提供什么、我们该从哪下手？"团队被问会开始自己负责。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 摸清现实与诉求</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 摸清现实与诉求</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="qingci.html#card-10">青瓷 · 把"我要"说成"为您"</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="cr,bz,mg">
@@ -272,9 +292,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>别再追着要"是"了。<strong>"不"才是谈判真正的起点</strong>——能说不，让人重获掌控感和安全感，才敢说真话。主动把对方引向"不"（"是不是现在完全不是推进的时候？"），远比他碍于情面假意答应强得多。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">安</div><div class="ft2"><strong>"不"给人安全感</strong>：只有觉得自己没被推着走，人才会松口说真实想法。</div></div><div class="fs2"><div class="fn2">引</div><div class="ft2"><strong>用话术邀请"不"</strong>："现在是你们完全不想推进的时候吗？""是不是这个方案哪里不对？"——对方答"不是/不对"，反而暴露真实需求。</div></div><div class="fs2"><div class="fn2">听</div><div class="ft2"><strong>把"不"当信息</strong>：拒绝的理由里，藏着对方真正的顾虑和可改的条件。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>逼人说"是"，是为了缓解销售/谈判者自己的焦虑；对方往往给一个敷衍的是，随后反悔、拖延、找理由退出。<strong>允许对方说不，才是把关系从"推销—抵抗"转成"一起排查问题"。</strong>先拿到一个真"不"，比拿到一百个假"是"值钱。</p><div class="insight"><strong>深层洞见：</strong>商家或品牌方说"这个补贴力度我没兴趣"——别慌、别急着加码。追问一句<strong>"是哪一点让您觉得没兴趣？"</strong>他的"不"里，正是你下一步能具体修改的条件；他的"是"里什么都没有。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>逼人说"是"，是为了缓解销售/谈判者自己的焦虑；对方往往给一个敷衍的是，随后反悔、拖延、找理由退出。<strong>允许对方说不，才是把关系从"推销—抵抗"转成"一起排查问题"。</strong>先拿到一个真"不"，比拿到一百个假"是"值钱。</p><div class="insight"><strong>深层洞见：</strong>商家或品牌方说"这个补贴力度我没兴趣"——别慌、别急着加码。追问一句<strong>"是哪一点让您觉得没兴趣？"</strong>他的"不"里，正是你下一步能具体修改的条件；他的"是"里什么都没有。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">开场用"今天是不是不方便谈这个？"这种邀请式否定，对方一句"没有没有，你说"，反而打开了话匣子。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">客户拖着不签，别反复问"您考虑得怎么样了？"改问"是不是这个方案有哪里不合适？"——引出一个具体异议，你才有得谈。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 别逼人说"是"</a><a class="rt" href="javascript:scrollCard(7)">→ 校准问题</a><a class="rt" href="qingci.html#card-11">青瓷 · 拒绝只关门不堵路</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(10)">→ 别逼人说"是"</a><a class="rt" href="javascript:scrollCard(7)">→ 校准问题</a><a class="rt" href="qingci.html#card-11">青瓷 · 拒绝只关门不堵路</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="cr,mg">
@@ -282,9 +302,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>三个节奏杠杆：<strong>慢下来、降调、停顿</strong>。用"深夜电台 DJ"那种低沉、缓慢、平静的嗓音说话，制造安全感与掌控感；说完关键的一句就沉默，<strong>让空白替你说下一句。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">沉</div><div class="ft2"><strong>嗓音降调放慢</strong>：激动高亢＝示弱与焦虑；低沉平缓＝权威与镇定。</div></div><div class="fs2"><div class="fn2">顿</div><div class="ft2"><strong>关键句后停住</strong>：报完价、问完校准问题后闭嘴等——谁先扛不住打破沉默，谁先让。</div></div><div class="fs2"><div class="fn2">留</div><div class="ft2"><strong>别填满每一秒</strong>：沉默给对方思考时间，也压住你想用话掩饰的不安。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>急促、高亢、话密会传递焦虑，并传染给对方引发对抗；低沉缓慢传递"我稳、我掌控、我不急"。而沉默造成的空白，对方会不自觉地补充信息或做出让步来填补——<strong>你什么都不用说，就能钓出他的下一步。</strong></p><div class="insight"><strong>深层洞见：</strong>记一条肌肉记忆：<strong>说完最重要的一句，然后心里数三秒。</strong>价格谈僵时，DJ 嗓音＋一句"我们怎么做才能都过得去呢"＋长久的沉默，往往把球逼到对方脚下。你越不怕冷场，越显得你没退路——而对方最怕的就是你没退路。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>急促、高亢、话密会传递焦虑，并传染给对方引发对抗；低沉缓慢传递"我稳、我掌控、我不急"。而沉默造成的空白，对方会不自觉地补充信息或做出让步来填补——<strong>你什么都不用说，就能钓出他的下一步。</strong></p><div class="insight"><strong>深层洞见：</strong>记一条肌肉记忆：<strong>说完最重要的一句，然后心里数三秒。</strong>价格谈僵时，DJ 嗓音＋一句"我们怎么做才能都过得去呢"＋长久的沉默，往往把球逼到对方脚下。你越不怕冷场，越显得你没退路——而对方最怕的就是你没退路。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">被问到"到底能不能降"，别急着答。放慢、降调："我很想促成这单……"然后停顿，让对方去接那份沉默。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">谈话里说完要求后停住，不要立刻补"当然你们也难"去缓和。留白会把决定权压回对方，比解释十句更有力。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 镜像</a><a class="rt" href="javascript:scrollCard(2)">→ 先管理情绪</a><a class="rt" href="yingxiangli.html#card-1">影响力 · 固定行为模式</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 镜像</a><a class="rt" href="javascript:scrollCard(2)">→ 先管理情绪</a><a class="rt" href="yingxiangli.html#card-1">影响力 · 固定行为模式</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p3" data-s="cr,mg,bz">
@@ -292,9 +312,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>"是"有三种：真正的承诺、礼貌的敷衍、被逼出来的<strong>假顺从</strong>。追着要"是"（"对吧？""是不是该这么做？"）只会钓到假顺从——答应得爽快，回去不执行。<strong>"是"如果不跟"如何(怎么做)"绑定，就一文不值。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>分清三种"是"</strong>：点头的是、客套的是、还是真愿意掏钱掏资源的是。多数销售只练到"钓到第一种"。</div></div><div class="fs2"><div class="fn2">止</div><div class="ft2"><strong>停止"诱供式"提问</strong>：一连串"是不是／对不对／你说好不好"是危险信号，说明对方只想结束对话。</div></div><div class="fs2"><div class="fn2">验</div><div class="ft2"><strong>用"不"和"如何"验证</strong>：逼出对方的"不"和具体"怎么做"，比拿到一个"是"可靠得多。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>为了逃离被追问的压力，人会顺口答应（销售里的"yes ladder"）。这种"是"没有成本，事后必然反悔、拖延、找补。<strong>真正的承诺，来自对方先说完"不"、再说清"怎么做"之后。</strong></p><div class="insight"><strong>深层洞见：</strong>谈完品牌方满口答应下季度加码——别急着庆祝、更别急着签。补一句校准问题：<strong>"我们具体怎么做，才能把这笔预算真正批下来？"</strong>答不出落地路径的"是"，就是假顺从。你要的是他嘴里说出的"下一步动作"，不是他脸上的笑。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>为了逃离被追问的压力，人会顺口答应（销售里的"yes ladder"）。这种"是"没有成本，事后必然反悔、拖延、找补。<strong>真正的承诺，来自对方先说完"不"、再说清"怎么做"之后。</strong></p><div class="insight"><strong>深层洞见：</strong>谈完品牌方满口答应下季度加码——别急着庆祝、更别急着签。补一句校准问题：<strong>"我们具体怎么做，才能把这笔预算真正批下来？"</strong>答不出落地路径的"是"，就是假顺从。你要的是他嘴里说出的"下一步动作"，不是他脸上的笑。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">把"您觉得可以吗？"换成"这里有没有您完全行不通的地方？"——先扫干净假顺从，剩下的"可以"才算数。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">口头答应合作后，用"落地要谁签字、分几步、什么时候"把承诺钉死。能拆出动作的才是真"是"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 说不才是开始</a><a class="rt" href="javascript:scrollCard(7)">→ 校准问题</a><a class="rt" href="yingxiangli.html#card-4">影响力 · 承诺和一致</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 说不才是开始</a><a class="rt" href="javascript:scrollCard(7)">→ 校准问题</a><a class="rt" href="yingxiangli.html#card-4">影响力 · 承诺和一致</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="bz,cr">
@@ -302,9 +322,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>谈判里的数字全靠<strong>参照点</strong>说话。要么先抛一个夸张但站得住的锚，把对方预期整个拉偏；要么坚决不先报价、逼对方先锚定。轮到你让步时：<strong>幅度越来越小、节奏越来越慢、每次都要理由</strong>，让对方感觉"已经榨到最后一滴"。僵持时，用"折中"当对方体面收场的台阶。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">锚</div><div class="ft2"><strong>设定参照</strong>：一个极端但合理的第一报价，会拉高/拉低之后整段区间的中枢。</div></div><div class="fs2"><div class="fn2">让</div><div class="ft2"><strong>让步要小且慢</strong>：每次都让得比上次少，传递"见底了"；大方快速的让步＝明说"还有得谈"。</div></div><div class="fs2"><div class="fn2">台</div><div class="ft2"><strong>用"折中"给台阶</strong>：对方僵住下不来台时，提"各退一步"给他体面；但也别轻易被对方用"公平/对半"道德绑架。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人对价格的判断是相对的（《影响力》的对比原理就是锚定的祖宗）。你的让步序列本身在"说话"——越来越小的让步暗示底线逼近，对方会更努力凑近你；一上来就大让，只会把预期推得更远。</p><div class="insight"><strong>深层洞见：</strong>报价前先想清楚两件事：<strong>谁先动第一个数、我能不能用一个夸张锚把它拉开。</strong>而每次让步都要配一个"理由＋情绪标注"（"这个价我真的要咬牙回去争取了"）才显得可信。不劳而获的让步，只会喂大对方的胃口。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人对价格的判断是相对的（《影响力》的对比原理就是锚定的祖宗）。你的让步序列本身在"说话"——越来越小的让步暗示底线逼近，对方会更努力凑近你；一上来就大让，只会把预期推得更远。</p><div class="insight"><strong>深层洞见：</strong>报价前先想清楚两件事：<strong>谁先动第一个数、我能不能用一个夸张锚把它拉开。</strong>而每次让步都要配一个"理由＋情绪标注"（"这个价我真的要咬牙回去争取了"）才显得可信。不劳而获的让步，只会喂大对方的胃口。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴博弈里，先声夺人抛一个对你有利但能自圆其说的"行业基准/对照组数据"当锚；之后每次加码都给得越来越少、越来越勉强。</div></div><div class="si"><div class="slbl"><span class="ic">🗣</span>谈判</div><div class="stx">谈薪时别一次性报出可接受区间。用一个偏高的锚定对方想象，之后每次让步都要交换条件（签字费/期权/职级），别白让。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="yingxiangli.html#card-2">影响力 · 对比原理（锚定祖宗）</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 黑天鹅信息</a><a class="rt" href="yingxiangli.html#card-2">影响力 · 对比原理（锚定祖宗）</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="bz,cr,lf">
@@ -312,9 +332,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>每场谈判都藏着 1-2 个<strong>"黑天鹅"——你不知道、一旦知道就彻底改变局面和对方世界观的信息。</strong>你的任务不是重复已知，而是用好奇心（镜像、标注、校准问题）把这条隐藏信息钓出来。<strong>谁先挖到黑天鹅，谁重定义谈判。</strong></p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">设</div><div class="ft2"><strong>假设一定有隐藏信息</strong>：对方的真实动机、内部竞争、时间压力、私人顾虑——总有一条你还没掌握。</div></div><div class="fs2"><div class="fn2">探</div><div class="ft2"><strong>用同理心工具撬</strong>：镜像＋标注＋校准问题，目的不是说服，是"让他说出我不知道的那件事"。</div></div><div class="fs2"><div class="fn2">转</div><div class="ft2"><strong>拿到就重定义局面</strong>：新信息能把对方的"绝对不可能"变成"其实可以谈"。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>谈判僵局常常源于<strong>信息不对称，而非利益不可调和</strong>。你以为的"死线／红线／不可能"，可能只是对方摆出的立场。一旦挖出真实约束，很多"绝对"其实是可以绕的。（呼应博弈论的不完全信息博弈：掌握私人信息的一方改变均衡。）</p><div class="insight"><strong>深层洞见：</strong>别急着当推销员，先当侦探。品牌方死活不给独家——镜像＋标注＋提问之后，真相可能是"总部刚因为排他条款被曝光过"。<strong>这条黑天鹅一改，整个合作框架就该重设</strong>——从"要独家"变成"给足首发势能但不锁死"。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>谈判僵局常常源于<strong>信息不对称，而非利益不可调和</strong>。你以为的"死线／红线／不可能"，可能只是对方摆出的立场。一旦挖出真实约束，很多"绝对"其实是可以绕的。（呼应博弈论的不完全信息博弈：掌握私人信息的一方改变均衡。）</p><div class="insight"><strong>深层洞见：</strong>别急着当推销员，先当侦探。品牌方死活不给独家——镜像＋标注＋提问之后，真相可能是"总部刚因为排他条款被曝光过"。<strong>这条黑天鹅一改，整个合作框架就该重设</strong>——从"要独家"变成"给足首发势能但不锁死"。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">每次谈判后补一行"今天才知道的、关于对方的一件事"。攒下来就是你的黑天鹅库——下轮报价、续约、JBP 都会用到。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">跟重要的人争执不下时，先别捍卫立场，问自己"关于他/这件事，还有什么是我不知道的？"往往僵局只是缺一条信息。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 准备摸清现实</a><a class="rt" href="javascript:scrollCard(6)">→ 镜像</a><a class="rt" href="game-theory.html#card-11">博弈论 · 不完全信息博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 准备摸清现实</a><a class="rt" href="javascript:scrollCard(6)">→ 镜像</a><a class="rt" href="game-theory.html#card-11">博弈论 · 不完全信息博弈</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

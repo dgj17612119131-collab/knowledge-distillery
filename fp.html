@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 
@@ -220,12 +240,12 @@ a{color:var(--accent);text-decoration:none}
   <div class="ot"><div class="ot-q">"第一性原理的思考方式是用物理学的角度看待世界的方法，也就是说一层层剥开事物的表象，看到里面的本质，然后再从本质一层层往上走。这要消耗大量的脑力。"</div><div class="ot-s">—— 马斯克 TED 访谈（采访原文）</div></div>
   <div class="ot"><div class="ot-q">"成年人学习的目的，应该是追求更好的思维模型，而不是更多的知识。在一个落后的思维模型里，即使增加再多的信息量，也只是低水平的重复。"</div><div class="ot-s">—— 李善友（公开课程语录）</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>"不可省略、不可删除、不可违反"意味着什么？</h4>
     <p>亚里士多德的三个否定词定义了第一性原理的严格性：<strong>如果省略了它，系统就不成立；如果删除了它，系统就崩塌；如果违反了它，结论就错误。</strong>反过来，任何可以被省略、被删除、被违反的东西，都不是第一性原理——它只是中间结论或表面现象。</p>
     <div class="insight"><strong>深层洞见：</strong>多数人思考的起点是"别人怎么说"（类比）或"我以前怎么做"（经验）。第一性原理要求你找到那个"不依赖任何其他东西就能成立"的基点——<strong>当你的推理起点错了，无论后面逻辑多严密，结论都是错的。</strong></div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">李善友精要 · 原书</div>
   <div class="deep"><h4>第一性原理的四个哲学特征（第一章）</h4>
     <p>① 它是<strong>命题/假设</strong>，有边界有条件，不能神话；② 不能被省略删除或违反，但<strong>换基石、换系统就不同</strong>；③ 系统分层嵌套，基石也分层嵌套，第一性原理通常在系统之外，来自更高维的系统；④ "第一"不是唯一，可以多个并列——英文本就是复数 First Principles。</p>
@@ -254,7 +274,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">购物前追问："我为什么要买这个东西？它真的能满足我目前的核心需求吗？"（hr.edu.cn 应用案例）</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（第一性原理的推理方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（第一性原理的失效场景）</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（第一性原理的推理方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（第一性原理的失效场景）</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a></div></details></div>
 </div></div>
 
 <!-- CARD 2 -->
@@ -273,12 +293,12 @@ a{color:var(--accent);text-decoration:none}
   <div class="ot"><div class="ot-q">"也许你听我说过，要从物理学的角度思考问题，这是第一性原理。即不要进行类比推理。你把事情细分到你可以想象的最基本元素，然后你从那里开始推理。"</div><div class="ot-s">—— 马斯克 2014 南加州大学毕业演讲（采访原文）</div><div class="ot-i"><strong>解读：</strong>马斯克明确把第一性原理与"类比推理"对立。类比=看别人怎么做我照做；第一性=从基本元素自己推。</div></div>
   <div class="ot"><div class="ot-q">"人们通常模仿别人做的事情并加以微幅更改。"</div><div class="ot-s">—— 马斯克（采访原文）</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>为什么归纳法是"思维陷阱"？</h4>
     <p>归纳法的致命缺陷是<strong>隐含假设"未来和过去一样"</strong>。在稳定环境中归纳法高效（太阳明天还会升起）；在变化环境中归纳法危险（诺基亚归纳出"手机需要键盘"，iPhone演绎出"手机是一块玻璃"）。</p>
     <div class="insight"><strong>深层洞见：</strong>李善友的核心论点是：当环境连续时用归纳法（省力），当环境不连续时（技术革命、范式转移、行业颠覆）必须用演绎法。<strong>问题在于：多数人无法判断自己正处在连续性还是非连续性之中——而恰恰是在非连续性的转折点上，归纳法会让你死得最惨。</strong></div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">李善友精要 · 原书</div>
   <div class="deep"><h4>归纳的两张面孔与演绎的保真（第一章）</h4>
     <p>归纳法有<strong>空间性</strong>（一个区域有效→默认所有区域有效，如"欧洲天鹅白→全世界天鹅白"）与<strong>时间性</strong>（过去成立→默认未来成立，如"太阳总从东方升起"）两种形态，共同的隐含假设是"未来和过去一样"。休谟的判决：<strong>归纳法只能证伪，不能证真</strong>——"所有建立在经验归纳法之上的知识都不叫知识"。</p>
@@ -292,7 +312,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">"同学都去大厂了"是归纳；"我的能力结构和市场需求的最优匹配点在哪"是演绎。择业禁忌：与周围同学同化竞争、服从同一KPI（李善友价值网理论）。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 公理化方法（演绎法的极致形态）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（演绎的起点是第一性原理）</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="game-theory.html#card-12">博弈论 · 贝叶斯博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 公理化方法（演绎法的极致形态）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（演绎的起点是第一性原理）</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="mao.html#card-7">毛选 · 没有调查没有发言权</a><a class="rt" href="game-theory.html#card-12">博弈论 · 贝叶斯博弈</a></div></details></div>
 </div></div>
 
 <!-- CARD 3 -->
@@ -312,7 +332,7 @@ a{color:var(--accent);text-decoration:none}
   <div class="ot"><div class="ot-q">"Cogito, ergo sum" (我思，故我在)</div><div class="ot-s">—— 笛卡尔（哲学原典）</div><div class="ot-i"><strong>解读：</strong>这是笛卡尔找到的"不可怀疑的基点"。即使怀疑一切外在事物，怀疑这个行为本身证明"我在思考"，而"我在思考"证明"我存在"。从这个单一公理出发，笛卡尔重建了整个认识论体系。</div></div>
   <div class="ot"><div class="ot-q">"牛顿三定律是经典力学的公理体系：① 惯性定律（物体保持静止或匀速直线运动）；② F=ma（力=质量×加速度）；③ 作用力与反作用力。从这三条公理出发，可以推导出整个经典力学的定理体系。"</div><div class="ot-s">—— 经典力学公理体系（综述）</div><div class="ot-i"><strong>解读：</strong>牛顿的伟大之处在于：用三条极简的公理（而非大量经验观察）构建了描述宏观物体运动的完整体系。这就是公理化方法的力量——少量公理 + 严格演绎 = 完整知识体系。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>商业中的"公理体系"长什么样？</h4>
     <p>一个公司的战略体系、一个团队的工作方法、一个人的决策原则，都可以公理化：<strong>找到3-5条不可妥协的基本原则（公理），所有决策从这些原则推导。</strong>巴菲特的价值投资体系就是公理化：安全边际、护城河、能力圈是公理，具体买卖决策是定理。</p>
     <div class="insight"><strong>深层洞见：</strong>多数人和组织的决策体系是"没有公理的"——每条决策都是临时权衡、经验判断、看情况办。这样的体系无法积累、无法迭代、无法传承。<strong>公理化使知识可积累：你只需要修正公理，整个体系自动更新。</strong></div>
@@ -322,7 +342,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">相</div><div class="ft2"><strong>相对论</strong>：从"时间是绝对的"这个隐含假设出发，经典力学无法解释迈克尔逊-莫雷实验（光速不变）。爱因斯坦追问：时间必须是绝对的吗？引入"光速不变"公理后，时间膨胀、长度收缩成为必然推导。E=mc² 是从这些公理推导出的定理。</div></div>
     <p><strong>关键：</strong>这些发现都是"违反直觉但符合第一性"的典范。常识告诉我们时间是绝对的、能量是连续的，但第一性原理推导告诉我们相反。这就是第一性原理的力量——<strong>它让你发现"常识"可能是错的。</strong></p>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">李善友精要 · 原书</div>
   <div class="deep"><h4>欧几里得的公理化思维（第二章）</h4>
     <p>欧几里得用<strong>5条公设加5条公理</strong>，从为数不多的公理出发推导出所有定理命题，构建了整个平面几何体系。李善友特别强调：欧氏几何是<strong>纯逻辑知识</strong>，现实中根本找不到它的立足根基——本质是一个逻辑实体。</p>
@@ -335,7 +355,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">💰</span>商业决策</div><div class="stx">芒格守则："先找到一个简单基本的道理，再非常严格地按此行事。"先定义你的投资/经营公理，再推导行动。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（公理化方法使用演绎推理）</a><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（公理的来源是跨学科）</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a><a class="rt" href="game-theory.html#card-1">博弈论 · 战略式博弈</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（公理化方法使用演绎推理）</a><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（公理的来源是跨学科）</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a><a class="rt" href="game-theory.html#card-1">博弈论 · 战略式博弈</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></details></div>
 </div></div>
 
 <!-- CARD 4 -->
@@ -371,7 +391,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">"周报必须周五交"是要求还是物理定律？追问每条流程的起草人和理由——多数流程是历史惯性而非必要约束。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 白痴指数（成本重构的量化工具）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（拆解的目的是找到第一性）</a><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 白痴指数（成本重构的量化工具）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（拆解的目的是找到第一性）</a><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <!-- CARD 5 -->
@@ -394,7 +414,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">品牌营销费用里，多少是"原材料"（真实的流量/曝光/补贴），多少是"加工费"（中间商、低效投放）？白痴指数高的投放环节值得重构。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 马斯克实践（白痴指数是其核心工具）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（白痴指数不适用于服务/品牌溢价场景）</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="game-theory.html#card-14">博弈论 · 拍卖理论</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 马斯克实践（白痴指数是其核心工具）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（白痴指数不适用于服务/品牌溢价场景）</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a><a class="rt" href="game-theory.html#card-14">博弈论 · 拍卖理论</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <!-- CARD 6 -->
@@ -428,7 +448,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🎯</span>职业发展</div><div class="stx">"我必须在同一个行业继续做"是隐含假设。打破它：我的可迁移能力是什么？哪些行业需要这些能力？</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 第二曲线（破界后需要新曲线承接）</a><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（打破假设靠演绎而非归纳）</a><a class="rt" href="game-theory.html#card-2">博弈论 · 纳什均衡</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(7)">→ 第二曲线（破界后需要新曲线承接）</a><a class="rt" href="javascript:scrollCard(2)">→ 演绎法（打破假设靠演绎而非归纳）</a><a class="rt" href="game-theory.html#card-2">博弈论 · 纳什均衡</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a></div></details></div>
 </div></div>
 
 <!-- CARD 7 -->
@@ -457,7 +477,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🏪</span>KA运营</div><div class="stx">传统满减营销是第一曲线；内容化/私域运营可能是第二曲线。别等满减失效再转型。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 破界创新（第二曲线的启动方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（识别极限点需要冷静判断）</a><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a><a class="rt" href="mao.html#card-14">毛选 · 星星之火可以燎原</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(6)">→ 破界创新（第二曲线的启动方式）</a><a class="rt" href="javascript:scrollCard(10)">→ 边界（识别极限点需要冷静判断）</a><a class="rt" href="sunzi.html#card-4">孙子兵法 · 以正合，以奇胜</a><a class="rt" href="mao.html#card-14">毛选 · 星星之火可以燎原</a><a class="rt" href="game-theory.html#card-17">博弈论 · 演化博弈</a></div></details></div>
 </div></div>
 
 <!-- CARD 8 -->
@@ -492,7 +512,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">判断一个人是否撒谎看瞳孔（心理学）；判断团队健康看发言是否平均（社会学）——跨学科模型提高判断准确率。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 刻意练习（模型需要练习才能内化）</a><a class="rt" href="javascript:scrollCard(3)">→ 公理化（每个学科的模型就是该学科的"公理"）</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="mao.html#card-11">毛选 · 改造我们的学习</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 刻意练习（模型需要练习才能内化）</a><a class="rt" href="javascript:scrollCard(3)">→ 公理化（每个学科的模型就是该学科的"公理"）</a><a class="rt" href="mao.html#card-3">毛选 · 矛盾分析法</a><a class="rt" href="mao.html#card-11">毛选 · 改造我们的学习</a><a class="rt" href="sunzi.html#card-3">孙子兵法 · 五事七计</a></div></details></div>
 </div></div>
 
 <!-- CARD 9 -->
@@ -515,7 +535,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">日常重复经验无法建立思维模型——刷100个短视频不如精读1本书提炼1个模型。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（练习的对象）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（第一性原理本身就是最重要的模型）</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 多元思维模型（练习的对象）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（第一性原理本身就是最重要的模型）</a><a class="rt" href="mao.html#card-5">毛选 · 实践认识循环</a><a class="rt" href="mao.html#card-9">毛选 · 实践论</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a></div></details></div>
 </div></div>
 
 <!-- CARD 10 -->
@@ -529,14 +549,14 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">免</div><div class="ft2"><strong>不必用：</strong>日常重复决策（中午吃什么）、低风险试错（可快速验证的事直接试）、已充分验证的领域（1+1=2不需要重新推导）、情感/审美判断（喜欢哪个颜色不需要"第一性"）</div></div>
   </div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>三个常见误用</h4>
     <p>① <strong>把"我以为"当第一性</strong>——真正的第一性需要物理定律/数学公理/人性基本需求级别的确定性，"我认为用户喜欢"不是第一性，是臆断。</p>
     <p>② <strong>无限追问导致瘫痪</strong>——追问"为什么"可以无限进行（为什么吃饭？为什么活着？），需要在"够用的深度"停止。实用原则：追问到"再往下追不影响决策"为止。</p>
     <p>③ <strong>忽视归纳法的价值</strong>——归纳法在连续环境中高效省力，是演化的默认算法。全盘否定归纳法，等于放弃人类最有效的快速决策机制。</p>
     <div class="insight"><strong>深层洞见：</strong>第一性原理的最高用法不是"永远演绎"，而是<strong>知道什么时候演绎、什么时候归纳</strong>。判断标准：环境是否连续。连续→归纳（省力），非连续→演绎（保命）。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">李善友精要 · 原书</div>
   <div class="deep"><h4>不要神话 · 尾声与批判（尾声 · 批判观点）</h4>
     <p>李善友自己的提醒：<strong>不要神话第一性原理</strong>。"明白道理是一回事，灵活运用是另一回事"——学习方法是刻意练习，而不是记住结论。</p>
@@ -549,7 +569,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="si"><div class="slbl"><span class="ic">🌱</span>个人生活</div><div class="stx">选餐厅用归纳（大众点评评分）；选职业方向用演绎（从能力/兴趣/需求的第一性推导）。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法 vs 归纳法（边界的本质是场景判断）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（回到起点）</a><a class="rt" href="game-theory.html#card-22">博弈论 · 边界与应用总结</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 演绎法 vs 归纳法（边界的本质是场景判断）</a><a class="rt" href="javascript:scrollCard(1)">→ 定义（回到起点）</a><a class="rt" href="game-theory.html#card-22">博弈论 · 边界与应用总结</a><a class="rt" href="mao.html#card-8">毛选 · 矛盾论</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 </div><!-- end cards -->

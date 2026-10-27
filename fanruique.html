@@ -156,7 +156,27 @@ a{color:var(--accent);text-decoration:none}
 .tab-label{font-size:10px;font-weight:500}
 .tab-inactive{color:var(--t4)}
 @media(min-width:700px){.hero h1{font-size:34px}.sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}}
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 <div class="nav"><div class="nav-inner">
@@ -201,9 +221,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>面对波动和冲击，事物分三格：<strong>脆弱</strong>（受伤、变差）、<strong>强韧/鲁棒</strong>（不受影响、原地不动）、<strong>反脆弱</strong>（受益、变强）。关键区分是——反脆弱不是"抗打击"，那是中间那格的"强韧"；反脆弱是"被打击之后比原来更强"。多数人穷其一生只优化到"强韧"（求稳、求不出事），却误以为这就是安全，从而错过了从混乱里获利的可能。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">脆</div><div class="ft2"><strong>脆弱＝玻璃杯</strong>：一次跌落就碎。波动是它的敌人，它只希望在风平浪静里存续。</div></div><div class="fs2"><div class="fn2">韧</div><div class="ft2"><strong>强韧＝石头</strong>：跌落不动，波动中性，但也永远不成长。它只是"不受伤"，不是"变强"。</div></div><div class="fs2"><div class="fn2">反</div><div class="ft2"><strong>反脆弱＝肌肉、免疫系统、初创公司</strong>：适度的压力、混乱、失败反而让它更强。波动是它的养料。</div></div><div class="fs2"><div class="fn2">辨</div><div class="ft2"><strong>三元≠二元</strong>：真正的陷阱是把"强韧"当成终点。而且大多数东西并不中立，只在脆弱与反脆弱之间摆动。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>塔勒布给的分类轴不是"现在看起来稳不稳"，而是"<strong>对它施加压力，它是变好还是变坏</strong>"。一个系统完全可以在平静期看起来极稳（强韧的假象），一遇波动就崩（其实是脆弱）。所以判断一个东西属于哪一格，唯一诚实的方法是给它波动、看它的反应，而不是看它此刻多安详。</p><div class="insight"><strong>深层洞见：</strong>自检工具：把你的业务、职业、投资组合逐一过一遍——当一次意外发生（竞品突袭、平台规则变动、大促翻车），它是让你更强，还是让你受损？<strong>如果你的一切优化都建立在"不出事"的假设上，那你其实是脆弱的，只是还没被检验。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>塔勒布给的分类轴不是"现在看起来稳不稳"，而是"<strong>对它施加压力，它是变好还是变坏</strong>"。一个系统完全可以在平静期看起来极稳（强韧的假象），一遇波动就崩（其实是脆弱）。所以判断一个东西属于哪一格，唯一诚实的方法是给它波动、看它的反应，而不是看它此刻多安详。</p><div class="insight"><strong>深层洞见：</strong>自检工具：把你的业务、职业、投资组合逐一过一遍——当一次意外发生（竞品突袭、平台规则变动、大促翻车），它是让你更强，还是让你受损？<strong>如果你的一切优化都建立在"不出事"的假设上，那你其实是脆弱的，只是还没被检验。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴策略不要只优化"平稳期的ROI"，而要设计一种形态：当竞品突然加码、平台规则变动时，这套结构反而能趁机抢份额。把波动当机会而非威胁。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">选工作/项目时问一句：这段经历遇到挫折和变化，是消耗我还是锻炼我？纯执行、过度依赖单一平台的岗位看着稳（强韧），技能其实很脆弱。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 过度稳定化制造脆弱</a><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 过度稳定化制造脆弱</a><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-2" data-p="p1" data-s="mg,bz">
@@ -211,9 +231,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>人为地消灭波动、追求表面稳定（常年不变的价格、被保护的产业、没有竞争的市场、被一路兜底的人生），会把小风险攒成大风险——因为系统失去了"通过小波动自我调节、暴露隐患"的机制。<strong>被压住的波动不会消失，只会累积到最后一次性爆发</strong>：森林天天把火苗扑灭，最后一次烧成大火；天天刚性救灾，风险敞口越攒越惊人是同一回事。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">压</div><div class="ft2"><strong>好心消灭小冲击</strong>：不让打折、不让失败、不让竞争、不让价格波动——短期内一切"岁月静好"。</div></div><div class="fs2"><div class="fn2">断</div><div class="ft2"><strong>反馈被切断</strong>：系统收不到"哪里出问题"的信号，隐患藏在稳定表象下，无人知晓。</div></div><div class="fs2"><div class="fn2">攒</div><div class="ft2"><strong>尾部被养肥</strong>：稳定期越长，打破时的破坏越大。黑天鹅的杀伤力，恰恰来自长期稳定营造的错觉。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是"火鸡问题"与"刚性化"的核心：一只被连续喂了1000天的火鸡，在第1001天（感恩节）对"稳定"的信心最高，也最脆弱。稳定本身还制造了"从没见过波动的一代"——个体、组织、市场都因此丧失了应对波动的能力。你消灭了小的坏，就养成了大的坏。</p><div class="insight"><strong>深层洞见：</strong>警惕那些"给你绝对确定性"的安排：刚性的长期补贴、承诺永不调整的政策、被保护免于竞争的舒适位。它们在替你消化波动的同时，也在剥夺你消化波动的能力。<strong>真正的稳，是"随时能应对小乱"，而不是"从来不许有小乱"。</strong></div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这是"火鸡问题"与"刚性化"的核心：一只被连续喂了1000天的火鸡，在第1001天（感恩节）对"稳定"的信心最高，也最脆弱。稳定本身还制造了"从没见过波动的一代"——个体、组织、市场都因此丧失了应对波动的能力。你消灭了小的坏，就养成了大的坏。</p><div class="insight"><strong>深层洞见：</strong>警惕那些"给你绝对确定性"的安排：刚性的长期补贴、承诺永不调整的政策、被保护免于竞争的舒适位。它们在替你消化波动的同时，也在剥夺你消化波动的能力。<strong>真正的稳，是"随时能应对小乱"，而不是"从来不许有小乱"。</strong></div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">团队若从不给挑战性任务、从不让下属试错失败（过度保护），等于把"暴露问题"一路延后，攒到一次大事故才引爆。平时的小乱是免费的体检。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">品牌长期靠单一补贴维持价格稳定＝脆弱结构。补贴退坡那天，用户流失、价格体系崩塌；稳定维持得越久，退坡越致命。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 三分法</a><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(1)">→ 三分法</a><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-3" data-p="p1" data-s="lf,mg">
@@ -221,9 +241,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>"压力造就强者"不是无条件的真理，尼采那句话被普遍滥用。反脆弱需要两个前提：<strong>①压力适度（不到致命剂量）；②系统有"过度补偿"机制（受创后反弹到比原来更强）。</strong>超过剂量的冲击只会摧毁你；没有过度补偿机制的损伤只会留下瘢痕、让你萎缩。让一个人变强的从来不是苦难本身，而是"可控的苦难 + 充分的恢复与反弹"。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">量</div><div class="ft2"><strong>剂量决定毒与药</strong>：适度压力触发适应，过量压力造成毁灭。要能区分"锻炼"和"伤害"，别把过量当意志力。</div></div><div class="fs2"><div class="fn2">补</div><div class="ft2"><strong>过度补偿是发动机</strong>：肌肉撕裂后修复得比原来更粗（超量恢复）。设计要给"反弹溢价"留空间。</div></div><div class="fs2"><div class="fn2">息</div><div class="ft2"><strong>没有间歇就变损耗</strong>：反脆弱需要"压力→恢复→更强"的循环。持续高压只会 burnout，那是损耗不是成长。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>"最坏的伤带来最好的过度补偿"这句话，只适用于"活的、能自我修复的系统"。死的、无机的、被一次性摧毁的东西没有反弹。所以关键动作不是"接受一切打击"，而是<strong>把冲击控制在可恢复的剂量区间内</strong>，让过度补偿机制有机会启动。</p><div class="insight"><strong>深层洞见：</strong>别美化苦难。压垮你的东西只是压垮了你，不会让你更强。真正该做的是主动设计"可控的小打击 + 充分恢复"的训练节奏（试错、复盘、压力测试），而不是被动把自己扔进"一次失败就万劫不复"的高杠杆处境，再指望苦难感化你。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>"最坏的伤带来最好的过度补偿"这句话，只适用于"活的、能自我修复的系统"。死的、无机的、被一次性摧毁的东西没有反弹。所以关键动作不是"接受一切打击"，而是<strong>把冲击控制在可恢复的剂量区间内</strong>，让过度补偿机制有机会启动。</p><div class="insight"><strong>深层洞见：</strong>别美化苦难。压垮你的东西只是压垮了你，不会让你更强。真正该做的是主动设计"可控的小打击 + 充分恢复"的训练节奏（试错、复盘、压力测试），而不是被动把自己扔进"一次失败就万劫不复"的高杠杆处境，再指望苦难感化你。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">职业规划：主动去接"跳一跳够得着、但有一定翻车风险"的项目（适度压力+可复盘、能过度补偿），而不是把自己押进"一次失手就出局"的绝境赌局。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">给团队的考核压力要配恢复期。连续高压冲刺只会制造损耗和离职（无过度补偿），间歇性挑战+复盘沉淀才是"越打越强"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="javascript:scrollCard(1)">→ 三分法</a><a class="rt" href="yuanze.html#card-6">原则 · 期望值计算</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="javascript:scrollCard(1)">→ 三分法</a><a class="rt" href="yuanze.html#card-6">原则 · 期望值计算</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-4" data-p="p2" data-s="bz,lf,mg">
@@ -231,9 +251,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>反脆弱的行动结构是"杠铃"：<strong>把大部分资源（如90%）押在极端安全的一端（保证不被清出局、下行有限），把小部分（10%）押在极端高风险高回报的一端（上行无限），主动避开"看起来稳妥、实则中等风险"的中间地带。</strong>中间地带最骗人——它给你"稳"的错觉，却藏着没被定价的尾部风险。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">保</div><div class="ft2"><strong>保守端＝存活优先</strong>：主业、现金、保底收入，作用是"任何情况下都不出局"，先把下行封死。</div></div><div class="fs2"><div class="fn2">闯</div><div class="ft2"><strong>冒险端＝可完全亏光、但潜在巨大</strong>：小额、亏得起、一旦跑通回报惊人的尝试（新渠道、新玩法、副业实验）。</div></div><div class="fs2"><div class="fn2">避</div><div class="ft2"><strong>拒绝"不痛不痒的中等赌注"</strong>：回报封顶、却可能爆大雷（高杠杆的"稳健"投资、命脉压在单一不确定大客户上）。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>关键不在"风险有多大"，而在"风险的结构"。塔勒布的两类赌注：<strong>脆弱型＝收益有限、损失无限（要避开）；反脆弱型＝损失有限、收益无限（要多做）。</strong>杠铃做的事，就是把所有"脆弱成分"清零，只留下"绝对安全"和"反脆弱"两类，中间态一律不碰。</p><div class="insight"><strong>深层洞见：</strong>对个人和企业组合都适用，而最危险的恰恰是"假装稳健"的中间态：把全部身家压在一份"看着稳"上、或把钱和精力投给"看起来很专业"的中等风险——它在真正的尾部来临时让你毫无防备。杠铃的精髓是：让你在"错了"时几乎不疼，在"对了"时赚得很多。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>关键不在"风险有多大"，而在"风险的结构"。塔勒布的两类赌注：<strong>脆弱型＝收益有限、损失无限（要避开）；反脆弱型＝损失有限、收益无限（要多做）。</strong>杠铃做的事，就是把所有"脆弱成分"清零，只留下"绝对安全"和"反脆弱"两类，中间态一律不碰。</p><div class="insight"><strong>深层洞见：</strong>对个人和企业组合都适用，而最危险的恰恰是"假装稳健"的中间态：把全部身家压在一份"看着稳"上、或把钱和精力投给"看起来很专业"的中等风险——它在真正的尾部来临时让你毫无防备。杠铃的精髓是：让你在"错了"时几乎不疼，在"对了"时赚得很多。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">预算/补贴杠铃化：大部分预算投给确定性高、ROI可预测的基本盘门店和活动（保守端）；划出一小块专门做"敢亏、但跑通回报巨大"的新玩法测试（冒险端），中间那种"半推半就、不上不下"的大项目要警惕。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">保住能覆盖现金流的主业（保守端），同时用业余做小额、可完全亏损的探索（冒险端），而不是 all-in 一次"看着光鲜但不确定"的跳槽。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 期权思维</a><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 期权思维</a><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-5" data-p="p2" data-s="bz,lf">
@@ -241,9 +261,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>主动去持有大量"<strong>亏也亏得有限、赢则赢得没边</strong>"的不对称结构（凸性/期权）。你付出的最大代价是已知、封顶的（一笔权利金、一次小失败），但潜在收益不封顶。人生和商业的超额收益，来自"持有很多亏得起、赢很多的选项"，而不是来自"精准预测哪一次会中"。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">下</div><div class="ft2"><strong>有限下行</strong>：最坏情况明确可控——最多亏掉这次尝试的时间/钱，不会伤及根本。</div></div><div class="fs2"><div class="fn2">上</div><div class="ft2"><strong>无限上行</strong>：一旦押对，收益非线性爆发——小成本撬动大盘、品牌、新机会。</div></div><div class="fs2"><div class="fn2">选</div><div class="ft2"><strong>期权价值＝可选择性</strong>：多留"低成本试一试"的入口，好运来临时你才有牌可打。选择权本身是资产。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>塔勒布的核心公式：<strong>不对称性 > 预测力。</strong>你不需要判断哪次会成功（那是预测，靠不住），只需把自己放在"错了亏一点、对了赚很多"的位置（这是结构），时间和好运会自动站在凸性这一边。这和"期望值计算"方向一致，但更强调收益分布的形状（凸/凹），而不只是平均数。</p><div class="insight"><strong>深层洞见：</strong>评估一个动作，别只问"能不能成、成功率多少"，先问两件事：<strong>"错了我最多损失什么？对了最多能得到什么？"</strong>凡是"损失大、收益有限"的事（凹性/反凸）坚决回避；凡是"损失小、收益大"的事（凸性/期权）要多做——哪怕大多数会失败，只要中一次就回本翻盘。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>塔勒布的核心公式：<strong>不对称性 > 预测力。</strong>你不需要判断哪次会成功（那是预测，靠不住），只需把自己放在"错了亏一点、对了赚很多"的位置（这是结构），时间和好运会自动站在凸性这一边。这和"期望值计算"方向一致，但更强调收益分布的形状（凸/凹），而不只是平均数。</p><div class="insight"><strong>深层洞见：</strong>评估一个动作，别只问"能不能成、成功率多少"，先问两件事：<strong>"错了我最多损失什么？对了最多能得到什么？"</strong>凡是"损失大、收益有限"的事（凹性/反凸）坚决回避；凡是"损失小、收益大"的事（凸性/期权）要多做——哪怕大多数会失败，只要中一次就回本翻盘。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">BD谈判、JBP方案设计成"凸性"：先用小额试点（可撤销、成本封顶）锁定合作入口，跑出数据再放大规模，而不是一上来就压上大额、长期的承诺（下行太大）。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">主动创造"可选项"：多认识人、多留一条退路、多存一笔"随时能试新东西"的钱和时间。别把人生走成只有一条路的独木桥——选项的自由度就是反脆弱度。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 杠铃策略</a><a class="rt" href="javascript:scrollCard(6)">→ 冗余与可选项</a><a class="rt" href="yuanze.html#card-6">原则 · 期望值计算</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(4)">→ 杠铃策略</a><a class="rt" href="javascript:scrollCard(6)">→ 冗余与可选项</a><a class="rt" href="yuanze.html#card-6">原则 · 期望值计算</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-6" data-p="p2" data-s="mg,bz">
@@ -251,9 +271,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>在复杂系统里，对未来的精准预测本质上不可靠（专家预测长期看往往不如随机）。反脆弱者不去追求"算得更准"，而是承认"算不准"，转而构建<strong>"就算算错也能活"的结构：冗余（备份、缓冲、留白）、可选项（多条路）、稳健的默认值。</strong>与其押注于预测正确，不如让自己预测错了也无所谓。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">认</div><div class="ft2"><strong>承认不可知</strong>：别把身家押在"我预测下季度/对手会怎样"上，因为大概率不准。</div></div><div class="fs2"><div class="fn2">余</div><div class="ft2"><strong>建冗余</strong>：现金储备、备用方案、产能留白——看着"低效浪费"，实为给意外买的保险费。</div></div><div class="fs2"><div class="fn2">选</div><div class="ft2"><strong>留选项</strong>：保持决策灵活性（晚点定、可改、多备选），比早点做一个"精确预测"更有价值。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>效率与生存常常是对手。极致优化（零库存、满负荷、all-in单一预测）会提高"预测对时"的收益，却同时放大"预测错时"的致命性。冗余的本质是：<strong>用一点看得见的小低效，换掉一个看不见的大灭绝风险。</strong>现代 KPI 文化把冗余当浪费、把预测精度当能力，正是脆弱的根源。</p><div class="insight"><strong>深层洞见：</strong>真正的高手把确定性留给"如何不出局"（够多的缓冲、够宽的退路），把不确定性敞口交给"期权式的赌注"（卡4、卡5），而不是逼自己或团队"必须预测准"。当你听到"把每一项都排满、把每一分预算都精确投产到预测的渠道"时，警惕——那是在为一场意外做完美准备。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>效率与生存常常是对手。极致优化（零库存、满负荷、all-in单一预测）会提高"预测对时"的收益，却同时放大"预测错时"的致命性。冗余的本质是：<strong>用一点看得见的小低效，换掉一个看不见的大灭绝风险。</strong>现代 KPI 文化把冗余当浪费、把预测精度当能力，正是脆弱的根源。</p><div class="insight"><strong>深层洞见：</strong>真正的高手把确定性留给"如何不出局"（够多的缓冲、够宽的退路），把不确定性敞口交给"期权式的赌注"（卡4、卡5），而不是逼自己或团队"必须预测准"。当你听到"把每一项都排满、把每一分预算都精确投产到预测的渠道"时，警惕——那是在为一场意外做完美准备。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">排期和预算都留缓冲（别排满），给突发大促、竞品动作、人员变动预留应对余量。满负荷运转的团队，一遇意外就全线崩盘。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">别做"基于对竞品打法的单一预测"而下的全仓决策。同时备 A/B 两套预案，把"我预测错了"的代价提前设计成可承受，而不是赌它不发生。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 期权思维</a><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 期权思维</a><a class="rt" href="javascript:scrollCard(9)">→ 试错法</a><a class="rt" href="jiushi.html#card-3">遥远的救世主 · 实事求是</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-7" data-p="p3" data-s="bz,mg,cr">
@@ -261,9 +281,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>做决定的人，必须承担决定的后果——把自己的"皮肤"放进游戏。<strong>设计规则、给建议、下指标的人，如果不用为错误买单，系统就会腐烂</strong>：他们会制造下行风险给别人、把上行收益留给自己，且错误无人纠正。真正的信任、以及系统的稳健，都建立在"权责对等、输了要疼"上。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">绑</div><div class="ft2"><strong>后果绑定</strong>：决策者要承受决策代价——跟投、对赌、担责、可被问责。让"犯错"对犯错者本人有成本。</div></div><div class="fs2"><div class="fn2">斥</div><div class="ft2"><strong>反对"无风险代理"</strong>：批判那些给别人出主意却不用负责的人——纸上谈兵的顾问、拍脑袋压指标的上级、乱发补贴却不担后果的部门。</div></div><div class="fs2"><div class="fn2">验</div><div class="ft2"><strong>诚实的信号</strong>：一个人愿不愿意"下场承担"，是判断他/方案可信度最硬的指标。空谈不算数，押注才算数。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>这是塔勒布对整个现代"代理问题"的总纲：官僚化社会把"决策权"和"承担后果"拆给了两拨人，于是错误被系统性地制造、且没有进化压力去修复。只有让犯错者流血，系统才有自我纠错的机制——这跟进化靠"死亡"筛选、市场靠"破产"出清是同一条规律。</p><div class="insight"><strong>深层洞见：</strong>两把尺子随身带：<strong>①审自己</strong>——你给出的建议/方案，敢不敢押上自己的东西？不敢，说明你其实没信心，只是在做代理。<strong>②审别人</strong>——一个提方案的人愿不愿对结果负责，是他靠不靠谱最快的检验。愿意跟投、敢对赌的人，信息含金量远高于只会讲道理的人。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>这是塔勒布对整个现代"代理问题"的总纲：官僚化社会把"决策权"和"承担后果"拆给了两拨人，于是错误被系统性地制造、且没有进化压力去修复。只有让犯错者流血，系统才有自我纠错的机制——这跟进化靠"死亡"筛选、市场靠"破产"出清是同一条规律。</p><div class="insight"><strong>深层洞见：</strong>两把尺子随身带：<strong>①审自己</strong>——你给出的建议/方案，敢不敢押上自己的东西？不敢，说明你其实没信心，只是在做代理。<strong>②审别人</strong>——一个提方案的人愿不愿对结果负责，是他靠不靠谱最快的检验。愿意跟投、敢对赌的人，信息含金量远高于只会讲道理的人。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">设计补贴/JBP时引入"共担"结构：让品牌方也出一部分资金、把回报绑定到效果考核，而不是平台单方面无限兜底——纯兜底会被薅羊毛，还会扭曲对方的激励。</div></div><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">分配指标的人（上级或你自己）要对指标的合理性担责，否则"拍脑袋目标"会被层层下压，后果全由一线 BD 承担——这正是制造脆弱的代理链条。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="javascript:scrollCard(8)">→ 减法优先</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="javascript:scrollCard(8)">→ 减法优先</a><a class="rt" href="yingxiangli.html#card-7">影响力 · 权威</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-8" data-p="p3" data-s="mg,bz">
@@ -271,9 +291,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>改进一个系统，优先考虑"<strong>去掉有害的</strong>"，而不是"添加有益的"（负面知识 / via negativa）。我们很难确定什么真正有效（加法常常制造新的脆弱和副作用），但对"什么有害"往往相当确定。<strong>移除脆弱源、去掉多余干预、拆掉复杂性，比叠加优化更安全、更有效。</strong>很多人只会做加法，因为"做点什么"比"什么都不加"心理上更容易。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">知</div><div class="ft2"><strong>否定式知识更可靠</strong>：你能确信"这件事在伤害我们"，却很难确信"那件事一定有用"。先处理确定的坏处。</div></div><div class="fs2"><div class="fn2">副</div><div class="ft2"><strong>每一次"加"都带来计划外副作用</strong>（见卡12）。少加＝少引入新的、未知的风险。</div></div><div class="fs2"><div class="fn2">脆</div><div class="ft2"><strong>先删最脆的一环</strong>：与其增加抗风险功能，不如先去掉致命依赖（单一供应商、单一渠道、有毒的人或流程）。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>人体健康、工程可靠性、组织效率都反复印证一件事：最有害的东西，往往正是"人为添加/干预"制造出来的（过度医疗、过度流程、过度优化）。排除法（把坏的赶走）比追求"最优加法"更稳健，<strong>因为它不需要你懂全部因果，只需要你识别出明显的坏处</strong>——而识别坏处比预测好处容易得多。</p><div class="insight"><strong>深层洞见：</strong>面对"业绩不行/系统不稳"，先别急着再加活动、加规则、加补贴、加功能。列一张"哪些东西正在持续制造伤害或脆弱，能不能直接停掉"的清单。很多问题靠"做减法、停止干预"就解决了一半，而且不留新的副作用。加法让人安心，减法让人强韧。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>人体健康、工程可靠性、组织效率都反复印证一件事：最有害的东西，往往正是"人为添加/干预"制造出来的（过度医疗、过度流程、过度优化）。排除法（把坏的赶走）比追求"最优加法"更稳健，<strong>因为它不需要你懂全部因果，只需要你识别出明显的坏处</strong>——而识别坏处比预测好处容易得多。</p><div class="insight"><strong>深层洞见：</strong>面对"业绩不行/系统不稳"，先别急着再加活动、加规则、加补贴、加功能。列一张"哪些东西正在持续制造伤害或脆弱，能不能直接停掉"的清单。很多问题靠"做减法、停止干预"就解决了一半，而且不留新的副作用。加法让人安心，减法让人强韧。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">流程优化的第一步是"砍掉没人真正需要的审批、会议、报表"，而不是再加一套新管理系统。停止制造伤害，比新增价值更快见效、更少副作用。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴策略先做减法：找出"哪些活动在薅羊毛、在训练用户价格敏感、在隐性亏损"，先停掉这些，再谈要不要加码。别在漏水的桶上继续加水。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="javascript:scrollCard(4)">→ 杠铃策略</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="javascript:scrollCard(4)">→ 杠铃策略</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-9" data-p="p3" data-s="bz,lf,cr">
@@ -281,9 +301,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>复杂系统里，你无法靠推理把最优解想清楚，只能靠"<strong>快速、廉价、可逆的小失败</strong>"去探测。小失败传递信息（告诉你哪里不行），要主动、密集、低成本地制造它；同时死守一条红线：<strong>绝不让任何一次失败升级为致命的、不可逆的大失败。</strong>聪明＝会犯很多小错 + 绝不犯一次大错。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">快</div><div class="ft2"><strong>缩短"尝试→反馈"周期</strong>：信息越早到越值钱，慢的试错等于白试。</div></div><div class="fs2"><div class="fn2">廉</div><div class="ft2"><strong>单次成本要小到"错了也无所谓"</strong>：只有亏得起，才敢大量试（与卡5的"有限下行"绑定）。</div></div><div class="fs2"><div class="fn2">逆</div><div class="ft2"><strong>保证可逆</strong>：失败能退回，不押上不可逆的东西（一次性把品牌、现金流、信任赌没）。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>演化、创新、学习本质上都是"变异 + 选择"的过程：靠大量带噪的小试验推进，而不是靠一个聪明人的宏大蓝图。前提是把"失败的方差"控制在不致命的区间——这正是杠铃和期权给你的保护伞。<strong>自由探索 + 硬红线（不出局），缺一不可。</strong></p><div class="insight"><strong>深层洞见：</strong>反脆弱和"莽撞试错"的区别，就在"廉价"和"可逆"四个字。真正要怕的，是那种"很少出错、一出错就完蛋"的路径：完美的大计划、all-in 的重大决策——它把信息量最大的失败，延迟成了无法挽回的毁灭。宁可天天小翻车，不要一次大爆炸。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>演化、创新、学习本质上都是"变异 + 选择"的过程：靠大量带噪的小试验推进，而不是靠一个聪明人的宏大蓝图。前提是把"失败的方差"控制在不致命的区间——这正是杠铃和期权给你的保护伞。<strong>自由探索 + 硬红线（不出局），缺一不可。</strong></p><div class="insight"><strong>深层洞见：</strong>反脆弱和"莽撞试错"的区别，就在"廉价"和"可逆"四个字。真正要怕的，是那种"很少出错、一出错就完蛋"的路径：完美的大计划、all-in 的重大决策——它把信息量最大的失败，延迟成了无法挽回的毁灭。宁可天天小翻车，不要一次大爆炸。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">新补贴玩法、新城市打法：先在一小撮门店做灰度试验（低成本、可回滚），跑出数据再放大。别一上来就全网大推——那是不可逆的大赌注。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">想做新方向（副业、转岗、新技能）：用"最小成本试一次、且能撤销的动作"探路，验证真实反馈后再加码，而不是裸辞 all-in。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 期权思维</a><a class="rt" href="javascript:scrollCard(3)">→ 适度压力</a><a class="rt" href="zhanlue.html#card-7">好战略坏战略 · 近程目标</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 期权思维</a><a class="rt" href="javascript:scrollCard(3)">→ 适度压力</a><a class="rt" href="zhanlue.html#card-7">好战略坏战略 · 近程目标</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-10" data-p="p4" data-s="bz,lf">
@@ -291,9 +311,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>不要把一个领域里证明有效的直觉/方法/模型，想当然搬到另一个领域。"绿色森林谬误"＝从"森林需要适度干扰才健康"错误推出"那就去砍伐、放火烧一片森林让它更健康"。<strong>反脆弱不是万能药：在一个系统里"波动有益"，不代表在另一个（复杂程度、可逆性不同的）领域也有益。</strong>每个领域有自己的一套物理。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">类</div><div class="ft2"><strong>类比是陷阱</strong>：生物/生态/市场的规律，不能直接套到工程/医疗/组织/政策上。听着像，不等于成立。</div></div><div class="fs2"><div class="fn2">检</div><div class="ft2"><strong>检查前提</strong>："适度压力有益"需要"系统能自我修复 + 压力可逆"。不满足的领域（某些器官、不可逆的财务），加压＝伤害。</div></div><div class="fs2"><div class="fn2">验</div><div class="ft2"><strong>域内独立验证</strong>：任何迁移来的洞见，都要在目标领域重新验证，而不是靠"听起来很有道理"就上岗。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>塔勒布本人给自己的框架立了警示牌：反脆弱是<strong>描述性的视角，不是"到处适用、到处加压"的行动处方</strong>。把博弈论、进化论、生态学的隐喻直接当成工程规范或政策依据，是知识最大的滥用之一。跨域硬搬，常常把 A 领域的解药变成 B 领域的毒药。</p><div class="insight"><strong>深层洞见：</strong>对你尤其重要的一条：一个方法论在餐饮补贴里跑通，不等于在职业/团队/投资里同样成立；反过来，把"健身/生态/战争"的类比搬进业务决策时要格外小心。用任何框架时，先给它划一道边界（呼应第一性原理·边界）——越锋利的模型，越要说清它在哪儿会失效。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>塔勒布本人给自己的框架立了警示牌：反脆弱是<strong>描述性的视角，不是"到处适用、到处加压"的行动处方</strong>。把博弈论、进化论、生态学的隐喻直接当成工程规范或政策依据，是知识最大的滥用之一。跨域硬搬，常常把 A 领域的解药变成 B 领域的毒药。</p><div class="insight"><strong>深层洞见：</strong>对你尤其重要的一条：一个方法论在餐饮补贴里跑通，不等于在职业/团队/投资里同样成立；反过来，把"健身/生态/战争"的类比搬进业务决策时要格外小心。用任何框架时，先给它划一道边界（呼应第一性原理·边界）——越锋利的模型，越要说清它在哪儿会失效。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">把某个品类跑通的补贴逻辑平移到新品类之前，先验证两个品类的"用户价格弹性、复购、成本结构"是否同构，别默认迁移。差一个前提，结论就反了。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">别人在创业公司/大厂的"反脆弱成长法"，搬到你所在的平台运营岗未必成立——先看你的领域是否可逆、失败后能否自我修复，再决定要不要照搬。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 层级反脆弱</a><a class="rt" href="javascript:scrollCard(3)">→ 正确条件</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(11)">→ 层级反脆弱</a><a class="rt" href="javascript:scrollCard(3)">→ 正确条件</a><a class="rt" href="fp.html#card-10">第一性原理 · 边界</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-11" data-p="p4" data-s="mg,lf">
@@ -301,9 +321,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>反脆弱常常在"层级"之间转移：<strong>让下层（个体、组件、员工、小公司）承受波动和失败，上层（整体、系统、物种、组织）反而因此更强大。</strong>个体的脆弱换来整体的反脆弱——自然选择靠个体死亡让基因库更强，市场靠创业公司倒闭让经济更有活力。但这带来一个尖锐的伦理问题，必须看清。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">承</div><div class="ft2"><strong>谁承压</strong>：波动、失败、代价被推给层级更低、话语权更弱的个体。</div></div><div class="fs2"><div class="fn2">益</div><div class="ft2"><strong>谁受益</strong>：系统/整体从这些失败里获取信息、清除低效、变得更强。</div></div><div class="fs2"><div class="fn2">问</div><div class="ft2"><strong>伦理拷问</strong>："整体更强"能不能为"个体被牺牲"辩护？警惕掌权者用"为了系统"把脆弱向下转嫁。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>层级是理解塔勒布的关键透镜：一个层面脆弱的东西，在更高层面可能恰恰是反脆弱的。混淆层级会得出荒谬甚至危险的结论——"既然反脆弱好，那就主动害个体"。而且，如果上层借"反脆弱"话术拒绝一切对个体的保护，那很可能是给"制造别人的脆弱"穿了一件漂亮外衣。</p><div class="insight"><strong>深层洞见：</strong>保持两层清醒：<strong>①理解"允许个体小失败会让组织更强"</strong>，所以不要给下属/系统取消一切波动；<strong>②警惕自己成为"把代价向下转嫁"的那一环</strong>——你到底是在承压的下层，还是在上层受益？别用"这是成长的代价"去美化你亲手施加给他人的脆弱。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>层级是理解塔勒布的关键透镜：一个层面脆弱的东西，在更高层面可能恰恰是反脆弱的。混淆层级会得出荒谬甚至危险的结论——"既然反脆弱好，那就主动害个体"。而且，如果上层借"反脆弱"话术拒绝一切对个体的保护，那很可能是给"制造别人的脆弱"穿了一件漂亮外衣。</p><div class="insight"><strong>深层洞见：</strong>保持两层清醒：<strong>①理解"允许个体小失败会让组织更强"</strong>，所以不要给下属/系统取消一切波动；<strong>②警惕自己成为"把代价向下转嫁"的那一环</strong>——你到底是在承压的下层，还是在上层受益？别用"这是成长的代价"去美化你亲手施加给他人的脆弱。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">允许一线在可控范围内失败（小错喂养组织学习），但绝不能用"反脆弱/抗压能力"话术，把本该由管理者承担的策略失误成本转嫁给 BD 员工。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>成长</div><div class="stx">认清自己在层级里的位置：如果平台规则变化让你承压、而别人坐收其利，那是结构问题，不是"你不够反脆弱"。别把系统的问题内化成自己的失败。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="javascript:scrollCard(7)">→ 皮肤在游戏中</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(12)">→ 反对干预主义</a><a class="rt" href="javascript:scrollCard(7)">→ 皮肤在游戏中</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用</a></div></details></div>
 </div></div>
 
 <div class="card" id="card-12" data-p="p4" data-s="mg,bz">
@@ -311,9 +331,9 @@ a{color:var(--accent);text-decoration:none}
 <div class="cb">
 <div class="s"><div class="st">核心命题</div><p>"干预主义"＝明明不懂系统、又不必为后果负责的人，忍不住要去"帮、调、治、干预"。结果常常是<strong>医源性伤害（iatrogenics）：干预带来的伤害，比它本想治的原始问题更糟、更隐蔽。</strong>"帮倒忙"不是偶尔失手，而是系统性规律——因为复杂系统的计划外后果无法被干预者预判，也无法被追责，于是错误被反复复制。</p></div>
 <div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">权</div><div class="ft2"><strong>无知 + 权力</strong>：干预者不懂系统全貌，却手握干预权（过度政策、频繁改规则、乱加补贴、微管理）。</div></div><div class="fs2"><div class="fn2">外</div><div class="ft2"><strong>计划外后果</strong>：为解决 A 而引入干预，却制造出更难发现的 B/C/D 副作用（补贴→价格敏感→不打标不买→结构失衡）。</div></div><div class="fs2"><div class="fn2">债</div><div class="ft2"><strong>无问责</strong>：干预者不承担后果（违背卡7），伤害被掩盖、错误被复制，直到某次爆发。</div></div></div></div>
-<div class="s"><div class="st">原理纵深</div><div class="deep"><h4>为什么成立</h4><p>塔勒布区分两类干预：<strong>必要干预</strong>（救火、防止致命尾部）和<strong>虚荣干预</strong>（为了"显得有作为"而折腾系统）。后者专门制造脆弱：每一次对一个稳定系统的无谓扰动，都在累积无法定价的风险。这与卡2"过度稳定化"是一枚硬币的两面——一个是不许波动，一个是乱造波动，都通向崩溃。</p><div class="insight"><strong>深层洞见：</strong>出手前自问两题：<strong>①"我干预，是基于对系统的真理解，还是为了缓解'不做点什么'的焦虑？"</strong>很多干预是干预者自己的心理需求，不是系统的需要。<strong>②"如果干预出错，谁来承担后果？"</strong>如果没人承担，先别动。复杂系统里，"什么都不做、按兵观察"常常是更稳健的选项（呼应卡8减法）。</div></div></div>
+<div class="s"><details><summary class="st">原理纵深</summary><div class="deep"><h4>为什么成立</h4><p>塔勒布区分两类干预：<strong>必要干预</strong>（救火、防止致命尾部）和<strong>虚荣干预</strong>（为了"显得有作为"而折腾系统）。后者专门制造脆弱：每一次对一个稳定系统的无谓扰动，都在累积无法定价的风险。这与卡2"过度稳定化"是一枚硬币的两面——一个是不许波动，一个是乱造波动，都通向崩溃。</p><div class="insight"><strong>深层洞见：</strong>出手前自问两题：<strong>①"我干预，是基于对系统的真理解，还是为了缓解'不做点什么'的焦虑？"</strong>很多干预是干预者自己的心理需求，不是系统的需要。<strong>②"如果干预出错，谁来承担后果？"</strong>如果没人承担，先别动。复杂系统里，"什么都不做、按兵观察"常常是更稳健的选项（呼应卡8减法）。</div></div></details></div>
 <div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">👥</span>管理</div><div class="stx">少做"为显得在管事"的微管理、频繁改规则、临时加码 KPI。这类虚荣干预打乱一线节奏、制造隐性损耗，弊大于利——克制干预欲，本身是一种能力。</div></div><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">补贴/政策调整要克制出手：每次"加码救市"都可能养出依赖、扭曲用户与商户行为，并在退坡时积累脆弱（与卡2联动）。没把握时宁可按兵观察，别急着"做点什么"。</div></div></div></div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 减法优先</a><a class="rt" href="javascript:scrollCard(2)">→ 过度稳定化</a><a class="rt" href="javascript:scrollCard(7)">→ 皮肤在游戏中</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(8)">→ 减法优先</a><a class="rt" href="javascript:scrollCard(2)">→ 过度稳定化</a><a class="rt" href="javascript:scrollCard(7)">→ 皮肤在游戏中</a></div></details></div>
 </div></div>
 
 <div class="tens-sec">

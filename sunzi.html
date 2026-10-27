@@ -196,7 +196,27 @@ a{color:var(--accent);text-decoration:none}
   .hero h1{font-size:34px}
   .sg{display:grid;grid-template-columns:1fr 1fr;gap:8px}
 }
+
+/* v2 门户导航 */
+.group{margin:28px 0 10px}
+.group-h{display:flex;align-items:baseline;gap:8px;font-size:17px;font-weight:700;letter-spacing:-.01em;color:var(--text)}
+.group-c{font-size:12px;color:var(--t4);font-weight:500}
+.books{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.nav-cards{display:flex;gap:10px;margin:20px 0 4px}
+.nav-card{flex:1;background:var(--surface-solid);border-radius:var(--r-md);box-shadow:var(--shadow);padding:14px 16px;text-decoration:none;color:var(--text);display:flex;flex-direction:column;gap:3px}
+.nav-card b{font-size:15px;letter-spacing:-.01em}
+.nav-card span{font-size:12px;color:var(--t3);line-height:1.4}
+.hint-note{font-size:11px;color:var(--t4);margin:22px 2px 0;line-height:1.6}
+@media(max-width:500px){.nav-cards{flex-direction:column}}
+/* v2-fold-injected 书内页折叠 */
+details{display:block}
+summary{cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+summary.st::after{content:"\25B8";margin-left:6px;font-size:10px;color:var(--t4);transition:transform .15s;display:inline-block}
+details[open]>summary.st::after{transform:rotate(90deg)}
+details[open]>summary.st{color:var(--accent)}
 </style>
+<!-- v2-fold-done -->
 </head>
 <body>
 
@@ -263,7 +283,7 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">4</div><div class="ft2"><strong>攻城</strong> — 不计代价硬打，伤亡惨重且不确定。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>为什么"百战百胜"反而是问题？</h4>
     <p><strong>如果每次都需要打仗才能赢，说明没在战前创造足够优势。</strong>每打一次消耗一次资源、承受一次不确定性。百战百胜的人，第101次可能因资源耗尽输掉全部。</p>
     <div class="insight"><strong>深层洞见：</strong>竞争的本质是资源消耗。最高效的竞争是让对方在你不消耗资源的情况下就退出。</div>
@@ -271,7 +291,7 @@ a{color:var(--accent);text-decoration:none}
     <p>伐谋的基础是<strong>实力</strong>，不是聪明。"兵者诡道也"的"诡"是"差异/变化"，不是"欺骗"。兵法本质是实力和准备。</p>
     <div class="insight">多数人学孙子兵法想找"妙招"。华杉告诉你没有妙招——只有扎实的准备和实力的碾压。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">蜜雪冰城：供应链伐谋</div><div class="cd">核心壁垒是<strong>上游供应链的绝对控制</strong>——自建工厂、自建物流、2万+门店采购规模。成本结构低到竞品算完账发现"打不赢"，自己放弃。</div><div class="csrc">华与华公开案例</div></div>
@@ -310,7 +330,7 @@ a{color:var(--accent);text-decoration:none}
     <p><strong>竞争的本质，是要你没法跟我争，而不是我要跟你争。</strong>最高级的竞争是让对手自己放弃——呼应"善战者先为己之不可胜"。（第四章 · 军形篇）</p>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(4)">→ 以正合以奇胜</a><a class="rt" href="game-theory.html#card-3">博弈论 · 囚徒困境</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(4)">→ 以正合以奇胜</a><a class="rt" href="game-theory.html#card-3">博弈论 · 囚徒困境</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a></div></details></div>
 </div></div>
 
 <!-- CARD 2 -->
@@ -329,14 +349,14 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>先胜而后求战</strong> — 确认必胜后再开战</div></div>
   </div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>你能控制"不输"，不能控制"赢"</h4>
     <p>赢需要对手配合（犯错）。你只能确保自己不犯错。</p>
     <div class="insight">多数人："我要赢"→行动→看结果。孙子："能不能不输"→准备→等条件出现→行动。前者赌博，后者投资。</div>
     <h4 style="margin-top:14px">条件不具备时正确选择是"不打"</h4>
     <p>不是"边打边创造条件"。很多企业死掉不是打输了，是条件不具备就开打了。</p>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">足力健：先造品类再卖货</div><div class="cd">先创造"老人鞋"品类，定义标准+建认知+铺渠道，<strong>所有条件具备后才大规模销售</strong>。</div><div class="csrc">华与华公开案例</div></div>
@@ -377,7 +397,7 @@ a{color:var(--accent);text-decoration:none}
     <p><strong>终极决定性因素叫时间。</strong>要懂得等待，善于忍耐，观察和利用时间带来的变化。多数人不是败给对手，是败给自己的急躁。（后记）</p>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜（张力）</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜（张力）</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a></div></details></div>
 </div></div>
 
 <!-- CARD 3 -->
@@ -400,12 +420,12 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">→</div><div class="ft2">主孰有道？将孰有能？天地孰得？法令孰行？兵众孰强？士卒孰练？赏罚孰明？<strong>逐项打分，谁分多谁赢。</strong></div></div>
   </div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>为什么"很笨"的方法最可靠？</h4>
     <p>复杂分析模型给你"我很聪明"的错觉。五事七计的"笨"迫使你做诚实评估。</p>
     <div class="insight"><strong>深层洞见：</strong>多数人失败不是"分析不够精细"，是"在基本维度上就评估错了"。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">美团 vs 饿了么</div><div class="cd">道（聚焦度）、地（二三线渗透）、将（地推执行力）、法（数据系统）四事领先。结果不意外。</div><div class="csrc">商业分析（推演）</div></div>
@@ -447,7 +467,7 @@ a{color:var(--accent);text-decoration:none}
     <p><strong>"道"的反面案例：日本军国主义。</strong>神风特攻队——"令民与上同意"被宣传机器滥用到极致，也埋下必败的种子。（第一章 · 计篇）</p>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(5)">→ 致人</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(5)">→ 致人</a><a class="rt" href="fp.html#card-8">第一性原理 · 多元思维模型</a><a class="rt" href="mao.html#card-4">毛选 · 调查研究</a><a class="rt" href="game-theory.html#card-7">博弈论 · 期望效用理论</a></div></details></div>
 </div></div>
 
 <!-- CARD 4 -->
@@ -465,12 +485,12 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">⚠</div><div class="ft2"><strong>"奇"不是"巧"</strong>。不是靠妙招赢，是多投入一路力量。</div></div>
   </div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>"出奇制胜"是最大误读</h4>
     <p>追求"出奇制胜"的人往往因为"正"不够强。<strong>"正"越强，"奇"才越有效。基本面差时"奇"是加速死亡。</strong></p>
     <div class="insight">"奇正相生"=你的每个创新（奇）最终都变成行业标配（正）。要么持续创新，要么接受同质化。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">蜜雪冰城：正=低价标准化，奇=主题曲病毒传播</div><div class="cd">没有"正"，再洗脑的歌也留不住客户。</div><div class="csrc">华与华公开案例</div></div>
@@ -508,7 +528,7 @@ a{color:var(--accent);text-decoration:none}
     <p><strong>势，是石头与山的关系。</strong>"在一千仞高的山上推下一颗圆石。石头滚下来有多大力量，不在于石头多重，主要在于山有多高。士兵是勇是怯，不在于性格，主要在于你把他置于什么形势。"势由形生，领导者的责任是造形成势。（第五章 · 兵势篇）</p>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a><a class="rt" href="game-theory.html#card-8">博弈论 · 混合策略</a><a class="rt" href="fp.html#card-7">第一性原理 · 非连续性与第二曲线</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战</a><a class="rt" href="javascript:scrollCard(6)">→ 兵贵胜</a><a class="rt" href="mao.html#card-2">毛选 · 集中优势兵力</a><a class="rt" href="game-theory.html#card-8">博弈论 · 混合策略</a><a class="rt" href="fp.html#card-7">第一性原理 · 非连续性与第二曲线</a></div></details></div>
 </div></div>
 
 <!-- CARD 5 -->
@@ -526,12 +546,12 @@ a{color:var(--accent);text-decoration:none}
     <div class="fs2"><div class="fn2">3</div><div class="ft2"><strong>设规则</strong> — 你定义"好的标准"</div></div>
   </div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>选择权 = 致人</h4>
     <p>选择权来自<strong>你有Plan B</strong>。只有一个方案=致于人，有多个方案=致人。</p>
     <div class="insight">谈判中"致人"的不是嗓门最大的，是<strong>可以站起来走掉的那个</strong>。</div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">苹果App Store：定义平台规则</div><div class="cd">30%分成、审核规则。所有开发者在苹果框架里玩。</div><div class="csrc">商业分析（推演）</div></div>
@@ -570,7 +590,7 @@ a{color:var(--accent);text-decoration:none}
     <p><strong>以迂为直："两点之间不是直线最短。"</strong>有地形、有敌形，走直线你过不去。弯路也是路——不走弯路，就没有路。（第七章 · 军争篇）</p>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(1)">→ 不战</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="mao.html#card-1">毛选 · 积极防御</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(3)">→ 五事七计</a><a class="rt" href="javascript:scrollCard(1)">→ 不战</a><a class="rt" href="game-theory.html#card-16">博弈论 · 讨价还价</a><a class="rt" href="game-theory.html#card-15">博弈论 · 机制设计</a><a class="rt" href="mao.html#card-1">毛选 · 积极防御</a></div></details></div>
 </div></div>
 
 <!-- CARD 6 -->
@@ -582,12 +602,12 @@ a{color:var(--accent);text-decoration:none}
   <div class="ot"><div class="ot-q">"久则钝兵挫锐，力屈，国用不足。"</div><div class="ot-s">——《作战篇》</div><div class="ot-i"><strong>华杉：</strong>四重损耗递进：钝兵→挫锐→力屈→国用不足。<strong>不可逆衰退链。</strong></div></div>
   <div class="ot"><div class="ot-q">"兵闻拙速，未睹巧之久也。"</div><div class="ot-s">——《作战篇》</div><div class="ot-i">历史只证明"笨拙但快速"的胜利。速度比完美重要。</div></div>
 </div>
-<div class="s"><div class="st">原理纵深</div>
+<div class="s"><details><summary class="st">原理纵深</summary>
   <div class="deep"><h4>坚持本身在消耗赢的资本</h4>
     <p>有些战争不是"赢了但代价太大"，而是"赢了但净收益为负"。</p>
     <div class="insight">"拙速"≠鲁莽。是"不追求完美，在方案够用时尽快行动"。<strong>前提是先胜条件已具备。</strong></div>
   </div>
-</div>
+</details></div>
 <div class="s"><div class="st">案例锚定</div>
   <div class="cases"><h4>案例</h4>
     <div class="ci"><div class="cn">反面：ofo — 持久战拖垮自己</div><div class="cd">共享单车战争约2年。ofo/摩拜两败俱伤，美团低价收购。<strong>"诸侯乘其弊而起"。</strong></div><div class="csrc">商业分析（推演）</div></div>
@@ -626,7 +646,7 @@ a{color:var(--accent);text-decoration:none}
     <p><strong>小心"焦虑性动作"。</strong>"我们行动的原因，往往是因为焦虑、压力、贪欲或愤怒，而不是真正有利。"行动前先问：是它有利，还是我焦虑？（第七章 · 军争篇）</p>
   </div>
 </div>
-<div class="s"><div class="st">交叉引用</div><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战（张力）</a><a class="rt" href="javascript:scrollCard(4)">→ 正奇</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="game-theory.html#card-10">博弈论 · 无名氏定理</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a></div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(2)">→ 先胜后战（张力）</a><a class="rt" href="javascript:scrollCard(4)">→ 正奇</a><a class="rt" href="mao.html#card-10">毛选 · 论持久战</a><a class="rt" href="game-theory.html#card-10">博弈论 · 无名氏定理</a><a class="rt" href="game-theory.html#card-5">博弈论 · 逆向归纳</a></div></details></div>
 </div></div>
 
 </div><!-- end cards -->
