@@ -1,4 +1,4 @@
-const CACHE_NAME = 'knowledge-v22';
+const CACHE_NAME = 'knowledge-v23';
 const ASSETS = [
   '/',
   '/index.html',
