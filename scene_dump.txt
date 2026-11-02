@@ -1,0 +1,10 @@
+s></div>
+<div class="s"><div class="st">场景映射</div><div class="sg"><div class="si"><div class="slbl"><span class="ic">💰</span>商业</div><div class="stx">客户没单子时也保持联系、分享行业信息，别只在要续约时才出现。你"不图什么"的时候出现的频率，决定了别人有需求时第一个想到谁。</div></div><div class="si"><div class="slbl"><span class="ic">🌱</span>为人</div><div class="stx">列出你的"关系账户"：过去一年你主动为哪几个人存了款、又向谁只取不存？只取不存的关系，正在悄悄破产。</div></div</div></div>
+<div class="s"><details><summary class="st">交叉引用</summary><div class="cr"><a class="rt" href="javascript:scrollCard(5)">→ 先做朋友再做生意</a><a class="rt" href="mao.html#card-12">毛选 · 群众路线</a><a class="rt" href="game-theory.html#card-9">博弈论 · 重复博弈</a></div></details></div>
+</div></div>
+
+<div class="card" id="card-2" data-p="p1" data-s="lf,bz,mg">
+<div class="ch"><div class="cnum">2</div><div class="ctg"><div class="ct">青瓷哲学：有裂纹才真，留余地才活</div><div class="cs">完美反而假 · 残缺与分寸才是高级</div><div class="ctags"><span class="tag ts">核心思想</span><span class="tag tt">为人</span><span class="tag tt">商业</span></div></div></div>
+<div class="cb">
+<div class="s"><div class="st">核心命题</div><p>书名"青瓷"是全书的隐喻：青瓷之美在于<strong>釉面的开片裂纹</strong>，太完美的瓷器反而像假的。做人做事同理——<strong>留一点瑕疵、留三分余地，比滴水不漏更可信、更长久。</strong></p></div>
+<div class="s"><div class="st">框架拆解</div><div class="fbox"><div class="fs2"><div class="fn2">裂</div><div class="ft2"><strong>适度的"不完美"是信任的来源</strong>：把自己说得太圆满、太无懈可击，别人反而防备。暴露一点小缺点、承认"这事我也没把握"，更让人信你。</div></div><div class="fs2"><div class="fn2">余</div><div class="ft2"><stron
